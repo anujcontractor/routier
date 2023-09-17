@@ -22,14 +22,14 @@ better our recommendations will become.
 ----------------------------------
 
 # Updates  
-3/8/23 Meet 1 : Shortlisted projects to select
-4/8/23 Meet 2 : Finalised project
-5/8/23 Meet 3 : Discussed about the project and divided the work
-8/8/23 Meet 4 : Created Repository and started design and thinking about the project 
-22/8/23 Meet 5 : Created UserStories
-28/8/23 Meet 6 : Created Concept Map
-12/9/23 Meet 7 : Created Activity Diagram
-17/9/23 Meet 8 : Updated ReadMe file & Functionality discussion
+3/8/23 Meet 1 : Shortlisted projects to select  
+4/8/23 Meet 2 : Finalised project  
+5/8/23 Meet 3 : Discussed about the project and divided the work  
+8/8/23 Meet 4 : Created Repository and started design and thinking about the project   
+22/8/23 Meet 5 : Created UserStories  
+28/8/23 Meet 6 : Created Concept Map  
+12/9/23 Meet 7 : Created Activity Diagram  
+17/9/23 Meet 8 : Updated ReadMe file & Functionality discussion  
 
 
 ----------------------------------
