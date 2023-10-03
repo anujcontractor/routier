@@ -41,10 +41,11 @@ better our recommendations will become.
 ## Front-end  
 ## Back-end  
 # Design  
+[UI/UX design file](https://www.figma.com/file/7TcXpzmYLJZ0K9aL2BaTMU?type=design)
 # Implementation  
 # Testing  
 # Deployment  
-# Contrubuters
+# Contributors
 [Anuj Contractor](https://github.com/anujcontractor)  
 [Harsh Mungara](github.com/Harsh62004)  
 [Priyanshu Gagiya](https://github.com/PriyanshuGagiya)  
