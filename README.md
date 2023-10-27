@@ -8,7 +8,7 @@
   * [Front-end](#front-end)
   * [Back-end](#back-end)
 * [Deployment](#deployment)
-* [Contrubuters](#contrubuters)
+* [Contributors](#contributors)
   
 ----------------------------------
 
@@ -30,6 +30,7 @@ better our recommendations will become.
 28/8/23 Meet 6 : Created Concept Map  
 12/9/23 Meet 7 : Created Activity Diagram  
 17/9/23 Meet 8 : Updated ReadMe file & Functionality discussion  
+27/10/23 Meet 9: Discussed about the UI/UX and the frontend - backend functionalities of the project  
 
 
 ----------------------------------
