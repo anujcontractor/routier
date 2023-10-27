@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@500;600;700&display=swap');
+
+* {
+  font-family: "Poppins";
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*text*/
+.text {
+  font-size: 3.2vw;
+  letter-spacing: 0.12vw;
+  font-weight: 700;
+  color: #046b82;
+}
+
+.normaltext {
+  color: #656565;
+  font-size: 1em;
+}
+
+.titletext {
+  color: #046b82;
+}
+
+.mainCont {
+  display: flex;
+  background-color: #eaeaea;
+  height: 100vh;
+  width: 100%;
+}
+
+/*Login section*/
+.loginCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 52vw;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 0 5rem 5rem 0;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  background-color: transparent;
+  /* width: 45%; */
+}
+
+.loginForm a {
+  color: #b8b8b8;
+  text-decoration: none;
+  padding: 30px 0;
+  cursor: pointer;
+}
+
+/* .inputs,
+.header {
+    width: 100%;
+} */
+.input input {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5vw 0vw;
+  margin-top: 2vw;
+  width: 23.125vw;
+  /* width: 100%; */
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 0.1rem solid #b8b8b8;
+}
+
+::placeholder {
+  color: #b8b8b8;
+}
+
+.loginSubmit {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01125rem;
+  border: none;
+  outline: none;
+  border-radius: 0.6875rem;
+  padding: 0.5vw 0vw;
+  width: 23.125vw;
+  color: #ffffff;
+  background-color: #046b82;
+}
+
+/* Form switch */
+.loginCont #signupAcc {
+  color: #a7a3a3;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: -0.01063rem;
+  margin-top: 3vw;
+}
+
+.signup {
+  color: #046b82;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/*Logo section*/
+.logoCont {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  width: 48vw;
+  padding-top: 10vh;
+}
+
+.shortlogoCont {
+  display: none;
+}
+
+/*Image*/
+.tourSet {
+  position: absolute;
+  left: 34vw;
+  width: 50%;
+  height: auto;
+  bottom: 5vh;
+}
+
+/*media queries*/
+@media only screen and (max-width: 1000px) {
+  .loginForm {
+    width: 70%;
+  }
+
+  .inputs,
+  .input {
+    width: 100%;
+  }
+
+  .input input,
+  .loginSubmit {
+    width: 100%;
+  }
+
+  .tourSet {
+    width: 60%;
+    bottom: 10vh;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .tourSet {
+    width: 60%;
+    height: auto;
+    bottom: 12vh;
+  }
+}
+
+/*Mobile View*/
+@media only screen and (max-width: 600px) {
+  .text {
+    font-size: 1rem;
+  }
+
+  .mainCont {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .loginCont {
+    justify-content: flex-start;
+    width: 80%;
+    border-radius: 0;
+    height: auto;
+    border-end-start-radius: 2rem;
+    border-end-end-radius: 2rem;
+  }
+
+  .loginCont #signupAcc {
+    margin: 20px 0;
+  }
+
+  .shortlogoCont {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.75);
+    width: 80%;
+    padding-top: 50px;
+    padding-left: 12%;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+
+  .logoCont {
+    display: none;
+  }
+
+  .header div {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .text {
+    font-size: 1rem;
+  }
+
+  .shortlogoCont {
+    width: 90%;
+    padding-left: 15%;
+  }
+
+  .loginCont {
+    width: 90%;
+  }
+
+  .normaltext {
+    font-size: 0.9rem;
+  }
+
+  .input input {
+    font-size: 0.9rem;
+  }
+}
