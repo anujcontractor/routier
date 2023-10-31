@@ -4,9 +4,12 @@ import cookieParser from "cookie-parser";
 import { config } from 'dotenv';
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import connectDB from './config/db.js';
 
 config();
 const PORT = process.env.PORT || 8000;
+connectDB();
+
 
 const app = express();
 
