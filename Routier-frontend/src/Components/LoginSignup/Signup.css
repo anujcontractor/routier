@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+*{
+  font-family: "Poppins";
+}
+
+.logo{
+  position: absolute;
+  top: 1vh;
+  left: 1.5vw;
+  width:185px;
+  height:auto;
+}
+
+.tourset{
+  position: absolute;
+    left: 8vw;
+    width: 50%;
+    height: auto;
+    bottom: 4vh;
+}
+
+.container {
+  position: absolute;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 52vw;
+  height: 100%;
+  border-radius: 5vw 0rem 0rem 5vw;
+  background: rgba(255, 255, 255, 0.75);
+}
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: transparent;
+}
+.header .text {
+  /* font-size: 3rem; */
+  font-size: 3.2vw;
+  letter-spacing: 0.12vw;
+  font-weight: 700;
+  color: #046B82;
+}
+.input input {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5vw 0vw;
+  margin-top: 2vw;
+  width: 23.125vw;
+  /* width: 100%; */
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 0.1rem solid #b8b8b8;
+}
+::placeholder {
+  color: #b8b8b8;
+}
+.signupSubmit{
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01125rem;
+  border: none;
+  outline: none;
+  border-radius: 0.6875rem;
+  padding: 0.5vw 0vw;
+  margin-top: 3vw;
+  width: 23.125vw;
+  /* width: 24.5vw; */
+  color: #FFFFFF;
+  background-color: #046B82;
+  cursor: pointer;
+}
+
+.customlogin{
+  display: flex;
+  align-items: flex-end;
+  align-content: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.custombutton {
+  display: flex; 
+  align-items: center; 
+  border-radius: 11px;
+  border: 1px solid #B8B8B8;
+  background: rgba(255, 255, 255, 0.75);
+  width: 251px;
+  height: 36px;
+  color: #a7a3a3;
+  font-family: Poppins;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.custombutton img {
+  margin-right: 10px; 
+}
+
+.or{
+  padding-top: 1.5rem;
+  align-self: center;
+
+  color: #6D6C6C;
+  font-family: Montserrat;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.54px;
+}
+
+.alreadyacc{
+  display: flex;
+  font-size: 1.0625rem;
+  align-items: flex-end;
+  padding-top: 1.5rem;
+  color: #A7A3A3;
+}
+
+.redirect{
+  text-decoration: none;
+  color: #046B82;
+  font-size: 1.0625rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.01063rem;
+  margin-left: 0.6rem;
+  cursor: pointer;
+}
