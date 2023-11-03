@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { config } from 'dotenv';
 import restaurantRoutes from './routes/restaurantRoutes.js';
+import placeinfoRoutes from './routes/placeinfoRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import connectDB from './config/db.js';
 
@@ -20,5 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/placeinfo', placeinfoRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
