@@ -8,10 +8,10 @@ import expressAsyncHandler from "express-async-handler";
 
 const submitReview = expressAsyncHandler(async (req, res) => {
   try {
-    const {placeType, location, starRating, visitDate, visitedWith, title, reviewText } =
+    const {placeType, location, starRating, visitDate, visitedWith, title, reviewText, photos } =
       req.body;
 
-    const photos = req.files.map((file) => file.path);
+    // const photos = req.files.map((file) => file.path);
 
     const review = new Review({
       user: req.user._id,
