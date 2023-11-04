@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@500;600;700&display=swap');
+
+* {
+    font-family: "Poppins";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.review {
+    display: flex;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-top: 20px;
+}
+
+.userPhoto {
+
+    width: 20%;
+    min-width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userPhoto img{
+    border-radius: 50%;
+}
+
+.reviewText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.reviewText p {
+    margin: 0;
+    padding: 5px
+}
+
+.reviewText .reviewRating {
+    padding-top: 20px;
+}
+
+.reviewText .reviewTitle {
+    font-weight: 800;
+}
+
+.reviewText .reviewDescription,
+.reviewText .date {
+    font-size: 0.8rem;
+}
+
+.reviewText .date {
+    padding-bottom: 20px;
+}
+
+
+/*********media queries********/
+@media only screen and (max-width: 500px) {
+
+    .review {
+
+        flex-direction: column;
+
+    }
+
+    .reviewText {
+        padding: 0 1rem;
+    }
+
+    .userPhoto {
+
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem 0;
+    }
+
+}

@@ -1,36 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@500;600;700&display=swap');
 * {
   font-family: "Poppins";
-  margin: 0;
-  box-sizing: border-box;
 }
-
-/*text*/
-.text {
-  font-size: 3.2vw;
-  letter-spacing: 0.12vw;
-  font-weight: 700;
-  color: #046b82;
+button {
+  cursor: pointer;
 }
-
-.normaltext {
-  color: #656565;
-  font-size: 1em;
-}
-
-.titletext {
-  color: #046b82;
-}
-
 .mainCont {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: #eaeaea;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
 }
 
-/*Login section*/
-.loginCont {
+/* Logo section */
+.logoCont {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  width: 48vw;
+  padding-top: 10vh;
+}
+.logo {
+  position: absolute;
+  top: 1vh;
+  left: 1.5vw;
+  width: 25vw;
+  height: auto;
+}
+
+/* Image */
+.tourset {
+  position: absolute;
+  left: 8vw;
+  width: 50%;
+  height: auto;
+  bottom: 5vh;
+}
+
+/* Signup section */
+.signupCont {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,9 +48,57 @@
   height: 100%;
   width: 52vw;
   background: rgba(255, 255, 255, 0.75);
-  border-radius: 0 5rem 5rem 0;
+  border-radius: 5rem 0rem 0rem 5rem;
 }
-.loginForm {
+.header .text {
+  /* font-size: 3rem; */
+  font-size: 3.2vw;
+  letter-spacing: 0.12vw;
+  font-weight: 700;
+  color: #046b82;
+}
+
+/* Custom Login */
+.customlogin {
+  display: flex;
+  align-items: flex-end;
+  align-content: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.custombutton {
+  display: flex;
+  align-items: center;
+  border-radius: 11px;
+  border: 1px solid #b8b8b8;
+  background: rgba(255, 255, 255, 0.75);
+  width: 251px;
+  height: 36px;
+  color: #a7a3a3;
+  font-family: Poppins;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+}
+.custombutton img {
+  margin-right: 10px;
+}
+
+.or {
+  padding-top: 1.5rem;
+  align-self: center;
+  color: #6d6c6c;
+  font-family: 'Montserrat';
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.54px;
+}
+.signupForm {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -48,18 +106,6 @@
   background-color: transparent;
   /* width: 45%; */
 }
-
-.loginForm a {
-  color: #b8b8b8;
-  text-decoration: none;
-  padding: 30px 0;
-  cursor: pointer;
-}
-
-/* .inputs,
-.header {
-    width: 100%;
-} */
 .input input {
   font-size: 1rem;
   font-weight: 500;
@@ -72,12 +118,10 @@
   background: transparent;
   border-bottom: 0.1rem solid #b8b8b8;
 }
-
 ::placeholder {
   color: #b8b8b8;
 }
-
-.loginSubmit {
+.signupSubmit {
   font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: -0.01125rem;
@@ -85,58 +129,38 @@
   outline: none;
   border-radius: 0.6875rem;
   padding: 0.5vw 0vw;
+  margin-top: 2rem;
   width: 23.125vw;
   color: #ffffff;
   background-color: #046b82;
 }
 
 /* Form switch */
-.loginCont #signupAcc {
+.signupCont .alreadyAcc {
   color: #a7a3a3;
   font-size: 1.0625rem;
   font-weight: 500;
   text-align: center;
   letter-spacing: -0.01063rem;
-  margin-top: 3vw;
+  margin: 3vw 0vw;
 }
-
-.signup {
+.login {
   color: #046b82;
   font-weight: 600;
   text-decoration: none;
 }
 
-/*Logo section*/
-.logoCont {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  width: 48vw;
-  padding-top: 10vh;
-}
-
-.shortlogoCont {
-  display: none;
-}
-
-/*Image*/
-.tourSet {
-  position: absolute;
-  left: 34vw;
-  width: 50%;
-  height: auto;
-  bottom: 5vh;
-}
-
-/*media queries*/
+/* media queries */
 @media only screen and (max-width: 1000px) {
-  .loginForm {
+  .signupForm {
     width: 70%;
   }
-  .inputs, .input{
+  .inputs,
+  .input {
     width: 100%;
   }
-  .input input, .loginSubmit{
+  .input input,
+  .signupSubmit {
     width: 100%;
   }
   .tourSet {
@@ -159,41 +183,33 @@
     font-size: 1rem;
   }
   .mainCont {
-    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     height: 100vh;
   }
-
-  .loginCont {
+  .signupCont {
     justify-content: flex-start;
     width: 80%;
     border-radius: 0;
     height: auto;
-    border-end-start-radius: 2rem;
-    border-end-end-radius: 2rem;
+    border-radius: 2rem;
   }
-
-  .loginCont #signupAcc {
+  .signupCont #alreadyAcc {
     margin: 20px 0;
   }
-
-  .shortlogoCont {
-    display: flex;
-    background-color: rgba(255, 255, 255, 0.75);
-    width: 80%;
-    padding-top: 50px;
-    padding-left: 12%;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-  }
-
   .logoCont {
     display: none;
   }
-
-  .header div {
-    display: none;
+  .signupForm {
+    padding: 1.5rem 0rem;
+    align-items: center;
+  }
+  .header .text {
+    /* display: none; */
+    font-size: 1.75rem;
+  }
+  .or{
+    font-size: 1rem;
   }
 }
 
@@ -201,20 +217,9 @@
   .text {
     font-size: 1rem;
   }
-
-  .shortlogoCont {
-    width: 90%;
-    padding-left: 15%;
-  }
-
-  .loginCont {
+  .signupCont {
     width: 90%;
   }
-
-  .normaltext {
-    font-size: 0.9rem;
-  }
-
   .input input {
     font-size: 0.9rem;
   }

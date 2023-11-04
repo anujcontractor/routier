@@ -14,7 +14,7 @@ const Login = () => {
               <p className={styles.normaltext}>Enter your Account Details</p>
             </div>
 
-            <div className={styles.inputs}>
+             <div className={styles.inputs}>
               <div className={styles.input}>
                 <input type="email" placeholder="Email Address" />
               </div>

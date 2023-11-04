@@ -1,22 +1,34 @@
 import "./App.css";
-import Login from "./Components/LoginSignup/Login";
+import { useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+
 import Signup from "./Components/LoginSignup/Signup";
-import { BrowserRouter, Routes, Route} from "react-router-dom";
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import Login from "./Components/LoginSignup/Login";
+import Place from "./Components/PlaceSites/Place"
+import SiteInfo from "./Components/PlaceSites/SiteInfo";
+import Sites from "./Components/PlaceSites/Sites";
 
 function App() {
-  return (
 
-    <GoogleOAuthProvider clientId="169559215961-i0o7klhc5rhvsm81nctt95v7drpnenjj.apps.googleusercontent.com">
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-    </GoogleOAuthProvider>
+
+  const [currPage, setCurrPage] = useState("signup");
+  return (
+    
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/place" element={<Place />} />
+            <Route path="/todo" element={<Sites type = 'to do' />} />
+            <Route path="/hotels" element={<Sites type = 'hotels'/>} />
+            <Route path="/restaurants" element={<Sites type = 'restaurants'/>} />
+            <Route path="/siteinfo" element={<SiteInfo />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+   
   );
 }
 

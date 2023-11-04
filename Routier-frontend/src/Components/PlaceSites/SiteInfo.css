@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@500;600;700&display=swap');
+
+* {
+  font-family: "Poppins";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  padding: 0 8%;
+}
+
+section {
+  margin: 3rem 0;
+}
+
+
+/******siteHeader section css*****/
+.titleBar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+
+.buttons {
+
+  display: flex;
+  height: auto;
+  flex-wrap: wrap;
+
+}
+
+.button {
+  width: 220px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #046B82;
+  border-radius: 2rem;
+  margin: 5px;
+}
+
+.button a {
+
+  text-decoration: none;
+  text-align: center;
+  color: #6F6F6F;
+  vertical-align: middle;
+  font-size: 1.2rem;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #e9e9e9;
+}
+
+.button img {
+  margin: 10px;
+  width: 10%;
+}
+
+
+
+.siteHeader {
+  height: auto;
+  width: 100%;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0;
+}
+
+.siteHeader div {
+  display: flex;
+}
+
+.siteHeader div .button {
+  border: none;
+  margin: 0px;
+  padding: 0;
+  width: 230px;
+  justify-content: center;
+}
+
+.siteHeader a {
+  color: #046B82;
+  font-weight: 700;
+}
+
+.siteHeader h2 {
+  color: black;
+  font-weight: 800;
+}
+
+.siteHeader p {
+  font-size: 1rem;
+  color: #6F6F6F;
+  font-weight: 100;
+  display: flex;
+}
+
+.contact p {
+  display: flex;
+}
+
+.contact p span {
+  margin: 0 10px;
+}
+
+/*review section*/
+.reviewHeading {
+
+  display: flex;
+
+}
+
+.reviewHeading h2 {
+
+  font-weight: 800;
+  margin-right: 5px;
+}
+
+.reviewHeading span {
+
+  font-size: 0.9rem;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .siteHeader {
+    flex-direction: column;
+  }
+
+  .siteHeader .rbuttons {
+    flex-direction: column;
+  }
+
+  .siteHeader div .button {
+    justify-content: flex-start;
+  }
+}

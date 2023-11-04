@@ -1,20 +1,20 @@
 {
-  "name": "routier-login",
+  "name": "routier-login-new",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-oauth/google": "^0.11.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jwt-decode": "^3.1.0",
+    "create-react-app": "^5.0.1",
     "jsonwebtoken": "^9.0.2",
-    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-facebook-login": "^4.1.1",
-    "react-router-dom": "^6.16.0",
+    "react-photo-album": "^2.3.0",
+    "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
+    "react-simple-star-rating": "^5.1.7",
+    "swiper": "^11.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -40,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "Het Patel",
+  "license": "ISC"
 }
