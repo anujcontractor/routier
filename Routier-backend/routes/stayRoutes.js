@@ -1,7 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const StayController = require('../controllers/stayController')
+import express from 'express';
+import StayController from '../controller/stayController.js';
+const router = express.Router();
 
-router.get('./show', StayController.show)
+router.get('./show', StayController.show);
 
-module.exports = router
+export default router;

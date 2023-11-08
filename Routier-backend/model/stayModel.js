@@ -1,16 +1,50 @@
-const mongoose = require('mongoose');
-//const { float } = require('webidl-conversions');
-const Schema = mongoose.Schema;
+import mongoose from 'mongoose';
+const {Schema} = mongoose;
 
 const staySchema = new Schema({
-    name:{type: String},
-    address:{type: String},
-    description:{type: String},
-    rating:{type: Number},
-    propertyrulesandinfo:{type: String},
-    price:{type: Number},
-    nearbyplaces:{type: String}
-}, {timestamps: true})
+    name:{
+        type: String,
+        required: true
+    },
+    address:{
+        type: String,
+        required: true
+    },
+    email:{
+        type: String,
+        required: true
+    },
+    phone:{
+        type: String,
+        required: true
+    },
+    image:{
+        type: String,
+        required: true
+    },
+    description:{
+        type: String,
+        required: true
+    },
+    rating:{
+        type: Number,
+        required: true
+    },
+    propertyrulesandinfo:{
+        type: String,
+        required: true
+    },
+    price:{
+        type: Number,
+        required: true
+    },
+    nearbyplaces:{
+        type: String
+    },
+    reviews:{
+        type: String
+    }
+}, {timestamps: true});
 
-const Stay = mongoose.model('Stay', staySchema)
-module.exports = Stay
+const Stay = mongoose.model('Stay', staySchema);
+export default Stay;

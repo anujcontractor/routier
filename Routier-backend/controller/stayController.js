@@ -1,5 +1,5 @@
-const {response} = require('express')
-const Stay = require('../models/stayModel')
+import Stay from '../model/stayModel.js';
+//const {response} = require('express')
 
 //Search a particular stay
 const show = (req, res, next) => {
@@ -17,4 +17,4 @@ const show = (req, res, next) => {
     })
 }
 
-module.exports = {show}
+export default {show};
