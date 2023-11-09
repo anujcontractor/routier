@@ -58,46 +58,6 @@ button {
   color: #046b82;
 }
 
-/* Custom Login */
-.customlogin {
-  display: flex;
-  align-items: flex-end;
-  align-content: flex-end;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-.custombutton {
-  display: flex;
-  align-items: center;
-  border-radius: 11px;
-  border: 1px solid #b8b8b8;
-  background: rgba(255, 255, 255, 0.75);
-  width: 251px;
-  height: 36px;
-  color: #a7a3a3;
-  font-family: Poppins;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  cursor: pointer;
-}
-.custombutton img {
-  margin-right: 10px;
-}
-
-.or {
-  padding-top: 1.5rem;
-  align-self: center;
-  color: #6d6c6c;
-  font-family: 'Montserrat';
-  font-size: 27px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.54px;
-}
 .signupForm {
   display: flex;
   flex-direction: column;

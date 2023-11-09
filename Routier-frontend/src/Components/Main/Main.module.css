@@ -1,0 +1,380 @@
+@import url("https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Montserrat:wght@500;700;800&family=Poppins:wght@400;500;600;700&family=Roboto&display=swap");
+
+button {
+  cursor: pointer;
+}
+/* Navbar */
+.navbar {
+  position: absolute;
+  top: 0;
+  padding: 2rem 3rem;
+  width: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 12rem;
+}
+/* .navlinksCont{
+  display: flex;
+  flex-direction: row;
+} */
+.navlinksCont2 {
+  display: none;
+}
+.navlinksCont .reviews,
+.navlinksCont .alerts,
+.navlinksCont .trips,
+.navlinksCont .signin {
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  margin: 0vw 0.5vw;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: "Poppins";
+}
+.navlinksCont .signin {
+  background-color: #fff;
+  border-radius: 1.375rem;
+  color: #046b82;
+}
+.icons {
+  width: 1.1rem;
+  margin: 0rem 0.3rem;
+}
+.menuIcon,
+.closeIcon {
+  display: none;
+}
+
+/* Background */
+.bgImg {
+  width: stretch;
+  padding: 1rem;
+}
+.text {
+  position: absolute;
+  top: 15vw;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.text1,
+.text2,
+.text3 {
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+.text1 {
+  font-family: "Lily Script One";
+  font-size: 2.15vw;
+  font-weight: 200;
+  letter-spacing: 0.07rem;
+}
+.text2 {
+  font-family: "Montserrat";
+  font-size: 4.15vw;
+  font-weight: 800;
+  letter-spacing: 0.34rem;
+}
+.text3 {
+  font-family: "Montserrat";
+  font-size: 1.4vw;
+  font-weight: 500;
+}
+
+/* Search Box  */
+.searchCont {
+  position: absolute;
+  top: 40vw;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 80vw;
+  padding: 0.5rem;
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 3rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.searchTitle {
+  color: #046b82;
+  font-family: "Montserrat";
+  font-size: 4.5vw;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.searchBar {
+  border: 0.1rem solid #6f6f6f;
+  box-shadow: 1px 4px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 2.5rem;
+  width: 75%;
+  min-width: 15rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.searchIcon {
+  width: auto;
+  margin: 0rem 0.5rem;
+}
+.searchBar input {
+  border: none;
+  font-family: "Roboto";
+  font-weight: 400;
+  outline: none;
+  width: 100%;
+  color: #6f6f6f;
+  font-size: 1.2rem;
+}
+::placeholder {
+  color: #6f6f6f;
+  font-size: 1.2rem;
+}
+.searchBar button {
+  border: none;
+  border-radius: 2.5rem;
+  background: #046b82;
+  padding: 0.2rem 1.5rem;
+  color: #fff;
+  font-family: "Poppins";
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.02625rem;
+}
+.searchBtns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.searchBtn {
+  width: 15rem;
+  border-radius: 2.5rem;
+  border: 1px solid #046b82;
+  box-shadow: 1px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  outline: none;
+  background-color: transparent;
+  padding: 0.3rem 0rem;
+  margin: 1rem;
+  color: #6f6f6f;
+  font-family: "Poppins";
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.icons2 {
+  width: 1.1rem;
+  margin-left: 1rem;
+}
+
+/* Services */
+.servicesCont {
+  position: relative;
+  top: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text4 {
+  text-align: center;
+  color: #df6951;
+  font-family: "Poppins";
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.text5 {
+  text-align: center;
+  color: #425e6e;
+  font-family: 'Montserrat';
+  font-size: 3.125rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.services{
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.service{
+  width: 30%;
+}
+@media (max-width: 1420px) {
+  .searchBtn {
+    margin: 0.5rem 1rem;
+  }
+}
+@media (max-width: 1000px) {
+  .logo {
+    width: 10rem;
+  }
+  .navlinksCont .reviews,
+  .navlinksCont .alerts,
+  .navlinksCont .trips,
+  .navlinksCont .signin {
+    font-size: 1rem;
+  }
+  .icons {
+    width: 1rem;
+  }
+}
+@media (max-width: 800px) {
+  .text1 {
+    font-size: 1.75rem;
+  }
+  .text2 {
+    font-size: 1.75rem;
+  }
+  .text3 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 740px) {
+  .servicesCont {
+    top: 22rem;
+  }
+}
+@media (max-width: 700px) {
+  .bgImg {
+    padding: 0.5rem;
+  }
+  .searchTitle {
+    font-size: 2rem;
+  }
+  .logo {
+    width: 8rem;
+  }
+  .navlinksCont .reviews,
+  .navlinksCont .alerts,
+  .navlinksCont .trips,
+  .navlinksCont .signin {
+    font-size: 0.8rem;
+  }
+  .searchBar button {
+    padding: 0.1rem 1.4rem;
+    font-size: 1.1rem;
+  }
+  .icons {
+    width: 0.8rem;
+  }
+}
+@media (max-width: 600px) {
+  .navlinksCont,
+  .navlinksCont2 {
+    display: none;
+  }
+  .menuIcon,
+  .closeIcon {
+    display: block;
+    color: white;
+    width: 1.5rem;
+  }
+  .closeIcon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+  .navlinksCont2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: #046b82c1; */
+    background-color: rgba(103, 103, 103, 0.8);
+  }
+  .navlinksCont2 .reviews,
+  .navlinksCont2 .alerts,
+  .navlinksCont2 .trips,
+  .navlinksCont2 .signin {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Poppins";
+  }
+  .icons {
+    width: 1.15rem;
+    margin: 0rem 0.5rem;
+  }
+  .navbar {
+    padding: 0.5rem;
+  }
+  .bgCont {
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+  }
+  .navbar {
+    z-index: 1;
+  }
+  .bgImg {
+    padding: 0;
+    height: 90vh;
+    width: auto;
+    transform: translate(-35%, 0%);
+  }
+  .text {
+    top: 40vw;
+  }
+  .searchCont {
+    width: 90vw;
+    top: 80vw;
+    border-radius: 2rem;
+  }
+  .searchBar {
+    padding: 0.3rem;
+  }
+  .searchBar button {
+    padding: 0.1rem 1.2rem;
+    font-size: 1rem;
+  }
+  .servicesCont {
+    top: 15rem;
+  }
+  .services{
+    flex-direction: column;
+    align-items: center;
+  }
+  .service{
+    width: 50%;
+  }
+}
+@media (max-width: 450px) {
+  .searchCont {
+    top: 90vw;
+  }
+  .text1 {
+    font-size: 1.5rem;
+  }
+  .text2 {
+    font-size: 1.5rem;
+  }
+  .text3 {
+    font-size: 1rem;
+  }
+  .servicesCont {
+    top: 10rem;
+  }
+}

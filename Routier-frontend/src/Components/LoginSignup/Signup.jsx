@@ -1,23 +1,9 @@
 import styles from "./Signup.module.css";
-import {Link } from "react-router-dom";
 import tour_set from "../Assets/tour-set-signup.svg";
 import logo from "../Assets/logo_signup.svg";
-import { useState } from "react";
-import fb from "../Assets/fb.png";
-import googlebutton from "../Assets/google.png";
-// import { jwtDecode } from 'jwt-decode';
- 
+import {Link} from "react-router-dom";
+
 const Signup = () => {
-  const [user, setUser] = useState({});
-
-  //facebook login setup
-  const responseFacebook = (response) => {                           //success
-    
-  }
-  const handleLoginFailure = (error) => {                            //failure
-    console.log(error)
-  }
-
   return (
     <>
       <div className={styles.mainCont}>
@@ -29,7 +15,6 @@ const Signup = () => {
           <form method="post" className={styles.signupForm}>
             <div className={styles.header}>
               <div className={styles.text}>Create Account</div>
-              
             </div>
             <div className={styles.inputs}>
               <div className={styles.input}>
