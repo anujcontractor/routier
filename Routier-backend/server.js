@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { config } from 'dotenv';
+import stayRoutes from './routes/stayRoutes.js';
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import placeinfoRoutes from './routes/placeinfoRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/api/stay', stayRoutes);
 app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/placeinfo', placeinfoRoutes);
