@@ -19,6 +19,7 @@ import service3 from "../Assets/main/service3_main.png";
 
 // Dependencies
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const Main = () => {
   const handleMenuClick = () => {
@@ -36,6 +37,7 @@ const Main = () => {
         />
         ;
       </head>
+      {/* Navbar */}
       <nav className={styles.navbar}>
         <div className={styles.logoCont}>
           <img src={logo} className={styles.logo} alt="logo" />
@@ -72,15 +74,15 @@ const Main = () => {
             </span>
           </div>
           <Link className={styles.reviews}>
-            <img src={review} className={styles.icons} alt="reviews"/>
+            <img src={review} className={styles.icons} alt="reviews" />
             Reviews
           </Link>
           <Link className={styles.alerts}>
-            <img src={alert} className={styles.icons} alt="alerts"/>
+            <img src={alert} className={styles.icons} alt="alerts" />
             Alerts
           </Link>
           <Link className={styles.trips}>
-            <img src={trip} className={styles.icons} alt="trips"/>
+            <img src={trip} className={styles.icons} alt="trips" />
             Trips
           </Link>
           <Link to="/signup" className={styles.signin}>
@@ -96,34 +98,38 @@ const Main = () => {
           <p className={styles.text3}>Most trusted travel advise</p>
         </div>
       </div>
+      {/* Search Box */}
       <div className={styles.searchCont}>
         <div className={styles.searchTitle}>Where to?</div>
         <form className={styles.searchBar}>
-          <img src={search} className={styles.searchIcon} alt="search-icon"/>
+          <img src={search} className={styles.searchIcon} alt="search-icon" />
           <input type="text" placeholder="Places to go, Things to do, Hotels" />
           <button type="submit">Search</button>
         </form>
         <div className={styles.searchBtns}>
           <button className={styles.searchBtn}>
             Hotels
-            <img src={hotel} className={styles.icons2} alt="hotels"/>
+            <img src={hotel} className={styles.icons2} alt="hotels" />
           </button>
           <button className={styles.searchBtn}>
             Things to do
-            <img src={thing} className={styles.icons2} alt="things"/>
+            <img src={thing} className={styles.icons2} alt="things" />
           </button>
           <button className={styles.searchBtn}>
             Restaurants
-            <img src={restaurant} className={styles.icons2} alt="restaurants"/>
+            <img src={restaurant} className={styles.icons2} alt="restaurants" />
           </button>
           <button className={styles.searchBtn}>
             Travel stories
-            <img src={story} className={styles.icons2} alt="stories"/>
+            <img src={story} className={styles.icons2} alt="stories" />
           </button>
         </div>
       </div>
+      {/* Services */}
       <div className={styles.servicesCont}>
-        <p className={styles.text4}>TRAVEL WORLD, LIKE NEVER BEFORE WITH ROUTIER</p>
+        <p className={styles.text4}>
+          TRAVEL WORLD, LIKE NEVER BEFORE WITH ROUTIER
+        </p>
         <p className={styles.text5}>What we do?</p>
         <div className={styles.services}>
           <img src={service1} className={styles.service} />
@@ -131,6 +137,7 @@ const Main = () => {
           <img src={service3} className={styles.service} />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

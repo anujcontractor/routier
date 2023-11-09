@@ -211,10 +211,10 @@ button {
   margin: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .service{
-  width: 30%;
+  width: 25%;
 }
 @media (max-width: 1420px) {
   .searchBtn {
@@ -249,6 +249,9 @@ button {
 @media (max-width: 740px) {
   .servicesCont {
     top: 22rem;
+  }
+  .service{
+    width: 30%;
   }
 }
 @media (max-width: 700px) {
