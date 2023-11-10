@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-const {Schema} = mongoose;
+import mongoose from "mongoose";
+const { Schema } = mongoose;
 
 const placeSchema= new Schema({
     name :{
@@ -18,5 +18,5 @@ const placeSchema= new Schema({
     timestamps:true
 });
 
-const Place=mongoose.model('Place',placeSchema);
+const Place = mongoose.model("Place", placeSchema);
 export default Place;
