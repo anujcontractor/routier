@@ -5,8 +5,8 @@ import ThingToDo from '../model/todoModel.js';
 import PlaceInfo from '../model/placeinfoModel.js';
 import Stay from '../model/stayModel.js';
 
-class FavoritesController {
-  async addFavorite(req, res) {
+
+  const addFavorite = async(req, res) => {
     const { itemId, itemType } = req.body;
 
     try {
@@ -65,7 +65,7 @@ class FavoritesController {
     }
   }
 
-  async removeFavorite(req, res) {
+  const removeFavorite = async(req, res) => {
     const { itemId, itemType } = req.body;
 
     try {
@@ -92,7 +92,7 @@ class FavoritesController {
     }
   }
 
-  async getFavorites(req, res) {
+  const getFavorites = async(req, res) => {
     try {
       // Check if user exists
       const user = await User.findById(req.user._id);
@@ -109,6 +109,6 @@ class FavoritesController {
       res.status(500).json({ message: 'Internal server error' });
     }
   }
-}
 
-export default new FavoritesController();
+
+export { addFavorite, removeFavorite, getFavorites };
