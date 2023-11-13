@@ -214,7 +214,14 @@
     justify-items: center;
   }
 }
-
+@media (max-width: 450px){
+  .container {
+    margin-top: 15rem;
+  }
+  .footer {
+    margin-top: 5rem;
+  }
+}
 @media (max-width: 345px) {
   .footertextblock {
     max-width: 30vw;

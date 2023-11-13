@@ -17,12 +17,13 @@ button {
 .logo {
   width: 12rem;
 }
-/* .navlinksCont{
-  display: flex;
-  flex-direction: row;
-} */
 .navlinksCont2 {
   display: none;
+}
+.navlinksCont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .navlinksCont .reviews,
 .navlinksCont .alerts,
@@ -115,7 +116,7 @@ button {
   margin-bottom: 1rem;
 }
 .searchBar {
-  border: 0.1rem solid #6f6f6f;
+  border: 0.15rem solid #6f6f6f;
   box-shadow: 1px 4px 10px 0px rgba(0, 0, 0, 0.2);
   border-radius: 2.5rem;
   width: 75%;
@@ -202,19 +203,22 @@ button {
 .text5 {
   text-align: center;
   color: #425e6e;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 3.125rem;
   font-weight: 600;
   text-transform: capitalize;
 }
-.services{
+.services {
   margin: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.service{
+.service {
   width: 25%;
+}
+.serviceHome {
+  width: 18%;
 }
 @media (max-width: 1420px) {
   .searchBtn {
@@ -250,8 +254,11 @@ button {
   .servicesCont {
     top: 22rem;
   }
-  .service{
+  .service {
     width: 30%;
+  }
+  .serviceHome {
+    width: 20%;
   }
 }
 @media (max-width: 700px) {
@@ -305,7 +312,7 @@ button {
     width: 100vw;
     height: 100vh;
     /* background-color: #046b82c1; */
-    background-color: rgba(103, 103, 103, 0.8);
+    background-color: rgba(103, 103, 103, 0.85);
   }
   .navlinksCont2 .reviews,
   .navlinksCont2 .alerts,
@@ -316,10 +323,15 @@ button {
     font-size: 1.5rem;
     font-weight: 600;
     font-family: "Poppins";
+    display: flex;
+    align-items: center;
   }
   .icons {
     width: 1.15rem;
     margin: 0rem 0.5rem;
+  }
+  .profileIcon {
+    width: 5rem;
   }
   .navbar {
     padding: 0.5rem;
@@ -356,11 +368,12 @@ button {
   .servicesCont {
     top: 15rem;
   }
-  .services{
+  .services {
     flex-direction: column;
     align-items: center;
   }
-  .service{
+  .service,
+  .serviceHome {
     width: 50%;
   }
 }
