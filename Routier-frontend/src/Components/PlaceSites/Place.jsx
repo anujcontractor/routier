@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
 import PhotoAlbum from "react-photo-album";
+import PlaceContext from '../Context/PlaceContext';
+
 import './Place.css';
 import Slider from './Slider.jsx';
-
 import hotel_icon from "../Assets/hotel_icon.svg"
 import todo_icon from "../Assets/todo_icon.svg"
 import restaurant_icon from "../Assets/restaurant_icon.svg"
 import stories_ion from "../Assets/stories_icon.svg"
 import place_img from "../Assets/place.png"
+import Navbar from './Navbar.jsx';
 
 
-function Place(props) {
-
-  const [sites, setSites] = useState([]);
+function Place(props) { 
+  
+  // const context = useContext(PlaceContext);
+  // const { todo, hotels, restaurants } = context;
+  // const [sites, setSites] = useState([]);
 
   const fetchData = async () => {
     let url = "";
@@ -32,10 +36,15 @@ function Place(props) {
     { src: place_img, width: 1600, height: 900 },
   ];
 
+  
+  
+  
+
   return (
-
+    <>
+    <Navbar/>
     <div className="main">
-
+ 
       {/***** titlebar section ******/}
       <section className="titleBar">
         <div className="heading">
@@ -103,7 +112,7 @@ function Place(props) {
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, cupiditate?</p>
           </div>
           <div className="sliderData">
-            <Slider sites={sites} />
+            <Slider sites={props} />
           </div>
 
         </div>
@@ -114,7 +123,7 @@ function Place(props) {
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, cupiditate?</p>
           </div>
           <div className="sliderData">
-            <Slider sites={sites} />
+            <Slider sites={props} />
           </div>
 
         </div>
@@ -125,13 +134,14 @@ function Place(props) {
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, cupiditate?</p>
           </div>
           <div className="sliderData">
-            <Slider sites={sites} />
+            <Slider sites={props} />
           </div>
 
         </div>
       </section>
 
     </div>
+    </>
   )
 }
 

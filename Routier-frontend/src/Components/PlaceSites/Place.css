@@ -22,12 +22,14 @@ section {
   flex-direction: column;
   width: 100%;
   flex-wrap: wrap;
+  margin-top: 5rem;
 }
 
 .heading {
   height: auto;
   width: 100%;
 }
+
 .heading p {
   font-size: 2.5rem;
   font-weight: 800;
@@ -82,10 +84,10 @@ section {
   color: #E37C67;
 }
 
-.images{
+.images {
 
   margin-top: 1rem;
-  
+
 }
 
 /******about section css*****/
@@ -121,7 +123,7 @@ section {
 
   display: flex;
   width: 100%;
-  margin-top: 50px;
+
 }
 
 .sliderHeader p:nth-child(1) {
@@ -161,7 +163,7 @@ section {
   .main {
     padding: 0 1.5rem;
   }
- 
+
   section {
     margin: 3rem auto;
   }
@@ -169,6 +171,6 @@ section {
   .heading p {
     font-size: 2.2rem;
   }
-  
+
 
 }

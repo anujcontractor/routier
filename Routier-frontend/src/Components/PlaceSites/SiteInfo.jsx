@@ -2,6 +2,7 @@ import React from 'react'
 import {Link } from "react-router-dom";
 import PhotoAlbum from "react-photo-album";
 import Review from './Review';
+import Navbar from './Navbar';
 import './SiteInfo.css'
 
 import hotel_icon from "../Assets/hotel_icon.svg"
@@ -29,6 +30,8 @@ function SiteInfo(props) {
   ];
 
   return (
+    <>
+    <Navbar/>
     <div className="main">
 
       {/***** titlebar section ******/}
@@ -118,6 +121,7 @@ function SiteInfo(props) {
       </section>
 
     </div>
+    </>
   )
 }
 

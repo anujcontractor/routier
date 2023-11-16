@@ -7,6 +7,7 @@ import todo_icon from "../Assets/todo_icon.svg"
 import restaurant_icon from "../Assets/restaurant_icon.svg"
 import stories_ion from "../Assets/stories_icon.svg"
 import place_img from "../Assets/place.png"
+import Navbar from './Navbar';
 
 
 function Sites(props) {
@@ -119,6 +120,9 @@ function Sites(props) {
     ]
     const {type} = props;
     return (
+
+        <>
+        <Navbar/>
         <div className="main">
 
             {/***** titlebar section ******/}
@@ -172,6 +176,7 @@ function Sites(props) {
                 ))}
             </section>
         </div>
+        </>
     )
 }
 
