@@ -1,6 +1,21 @@
 import Stay from '../model/stayModel.js';
 //const {response} = require('express')
 
+//show the list of stay
+const index = (req, res, next) => {
+    Stay.find()
+      .then((response) => {
+        res.json({
+          response,
+        });
+      })
+      .catch((error) => {
+        res.json({
+          message: "An error occured!",
+        });
+      });
+  };
+
 //Search a particular stay
 const show = (req, res, next) => {
     let stayID = req.body.StayID
@@ -17,4 +32,32 @@ const show = (req, res, next) => {
     })
 }
 
-export default {show};
+//store a stay
+const store = (req, res, next) => {
+    let stay = new Stay({
+        name: req.body.name,
+        address: req.body.address,
+        email: req.body.email,
+        phone: req.body.phone,
+        image: req.body.image,
+        description: req.body.description,
+        rating: req.body.rating,
+        propertyrulesandinfo: req.body.propertyrulesandinfo,
+        price: req.body.price,
+        nearbyplaces: req.body.nearbyplaces,
+        reviews: req.body.reviews
+    })
+    stay.save()
+    .then(response => {
+        res.json({
+            message: 'Stay added successfully!'
+        })
+    })
+    .catch(error => {
+        res.json({
+            message: 'An error occured!'
+        })
+    })
+}
+
+export default {index, show, store};
