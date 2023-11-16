@@ -49,11 +49,19 @@ const registerUser = expressAsyncHandler(async (req, res) => {
 });
 
 const getUserProfile = expressAsyncHandler(async (req, res) => {
+    const user = req.user;
+
+    res.status(200).json(user);
     res.json("Profile");
 });
 
 const logoutUser = expressAsyncHandler(async (req, res) => {
-    res.json("Logged Out");
+    res.cookie('jwt', '', {
+        httpOnly: true,
+        expires: new Date(0),
+    })
+
+    res.status(200).send({ message: "User logged out" });
 });
 
 export { authUser, registerUser, getUserProfile, logoutUser };
