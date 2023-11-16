@@ -9,6 +9,7 @@ import userRoutes from './routes/userRoutes.js';
 import connectDB from './config/db.js';
 import reviewRoutes from './routes/reviewRoutes.js';
 import favouriteRoutes from './routes/favouriteRoutes.js'
+import todoRoutes from './routes/todoRoutes.js';
 
 config();
 const PORT = process.env.PORT || 8000;
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/stay', stayRoutes);
 app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/todo',todoRoutes)
 app.use('/api/placeinfo', placeinfoRoutes);
 app.use('/reviews', reviewRoutes);
 app.use('/api/favourites', favouriteRoutes);
