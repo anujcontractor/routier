@@ -1,5 +1,7 @@
 import Stay from '../model/stayModel.js';
 //const {response} = require('express')
+import expressAsyncHandler from "express-async-handler";
+
 
 //show the list of stay
 const index = (req, res, next) => {
@@ -33,8 +35,8 @@ const show = (req, res, next) => {
 }
 
 //store a stay
-const store = (req, res, next) => {
-    let stay = new Stay({
+const register = expressAsyncHandler(async (req, res) => {
+    const stay = new Stay({
         name: req.body.name,
         address: req.body.address,
         email: req.body.email,
@@ -48,16 +50,15 @@ const store = (req, res, next) => {
         reviews: req.body.reviews
     })
     stay.save()
-    .then(response => {
+    if(stay) {
         res.json({
             message: 'Stay added successfully!'
         })
-    })
-    .catch(error => {
+    } else {
         res.json({
             message: 'An error occured!'
         })
-    })
-}
+    }
+});
 
-export default {index, show, store};
+export default {index, show, register};

@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.get('/', StayController.index);
 router.get('/show', StayController.show);
-router.get('/store', StayController.store);
+router.post('/store', StayController.register);
 
 export default router;
