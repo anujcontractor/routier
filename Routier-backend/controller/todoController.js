@@ -1,36 +1,108 @@
-import todo from '../model/todoModel.js'
+import Todo from "../model/todoModel.js";
 
+// index all todos
+const index = (req, res, next) => {
+  Todo.find()
+    .then((response) => {
+      res.json({
+        response,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: "An error occurred!",
+      });
+    });
+};
 
-const byid=(req,res,next)=>{
-       todo.find()
-       .then(response=>{
-           res.json({
-               message: 'This is working'
-           })
-       })
-       .catch(error=>{
-           res.json({
-               message:'An error occured!'
-           })
-       })
-   }
+// show single todo
+const show = (req, res, next) => {
+  let todoID = req.body.todoID;
+  Todo.findById(todoID)
+    .then((response) => {
+      res.json({
+        response,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: "An error occurred!",
+      });
+    });
+};
 
-   // show single thing to do
-   const showbyid=(req,res,next)=>{
-       let todoID=req.body.todoID;
-       todo.findById(todoID)
-       .then(response=>{
-           res.json({
-               response
-           })
-       })
-       .catch(error=>{
-           res.json({
-               message:'An error occured!'
-           })
-       })
-   }
+// store new todo
+const store = (req, res, next) => {
+  let todo = new Todo({
+    name: req.body.name,
+    location: req.body.location,
+    time2visit: req.body.time2visit,
+    price: req.body.price,
+    image: req.body.image,
+    description: req.body.description,
+    website: req.body.website,
+    rating: req.body.rating,
+  });
+  todo
+    .save()
+    .then((response) => {
+      res.json({
+        message: "Todo added successfully!",
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: "An error occurred!",
+      });
+    });
+};
 
+// update existing todo
+const update = (req, res, next) => {
+  let todoID = req.body.todoID;
+  let updateData = {
+    name: req.body.name,
+    location: req.body.location,
+    time2visit: req.body.time2visit,
+    price: req.body.price,
+    image: req.body.image,
+    description: req.body.description,
+    website: req.body.website,
+    rating: req.body.rating,
+  };
+  Todo.findByIdAndUpdate(todoID, { $set: updateData })
+    .then(() => {
+      res.json({
+        message: "Todo updated successfully!",
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: "An error occurred!",
+      });
+    });
+};
+
+// destroy a todo
+const destroy = (req, res, next) => {
+  let todoID = req.body.todoID;
+  Todo.findByIdAndRemove(todoID)
+    .then(() => {
+      res.json({
+        message: "Todo deleted successfully!",
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: "An error occurred!",
+      });
+    });
+};
 
 export default {
-   byid,showbyid};
+  index,
+  show,
+  store,
+  update,
+  destroy,
+};
