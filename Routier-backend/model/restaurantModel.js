@@ -10,7 +10,7 @@ const restaurantSchema=new Schema({
         required:true
     },
     location: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: "Place",
         required: true,
       },
