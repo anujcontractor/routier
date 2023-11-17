@@ -9,6 +9,11 @@ const restaurantSchema=new Schema({
         type:String,
         required:true
     },
+    location: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Place",
+        required: true,
+      },
     phone:{
         type:String,
         required:true

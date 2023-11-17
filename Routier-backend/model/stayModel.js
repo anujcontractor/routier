@@ -10,6 +10,11 @@ const staySchema = new Schema({
         type: String,
         required: true
     },
+    location: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Place",
+        required: true,
+      },
     email:{
         type: String,
         required: true
@@ -41,9 +46,12 @@ const staySchema = new Schema({
     nearbyplaces:{
         type: String
     },
-    reviews:{
-        type: String
-    }
+    reviews: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Review",
+        },
+      ],
 }, {timestamps: true});
 
 const Stay = mongoose.model('Stay', staySchema);
