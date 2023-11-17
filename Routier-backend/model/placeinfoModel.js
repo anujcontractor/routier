@@ -14,6 +14,10 @@ const placeSchema= new Schema({
         type:Array,
         required:true
     },
+    tags: {
+        type: [String], 
+        default: [],    
+    },
 },{
     timestamps:true
 });
