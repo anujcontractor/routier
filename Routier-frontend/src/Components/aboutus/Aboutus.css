@@ -1,0 +1,289 @@
+
+
+
+.header {
+    display: flex;
+    min-height: 7.84vw;
+    width: auto;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90vw;
+    
+    margin-left: 6.5vw;
+    margin-right: 6.5vw;
+}
+
+.headerlogo {
+    display: flex;
+    width: 4vw;
+    height: auto;
+}
+
+.redirecttext {
+    color: #B8B8B8;
+    font-family: Poppins;
+    font-size: 1.5vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.titlepart {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5vw;
+
+    color: #046B82;
+    font-family: Montserrat;
+    font-size: 2.8125vw;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.21094vw;
+}
+
+.imagesection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height:21.625vw;
+
+    background-image: url('../Assets/aboutus/background.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.presenting {
+    margin-top: 5.25vw;
+
+    color: #FFF;
+    font-family: Lily Script One;
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.07vw;
+}
+
+.aboutustext {
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 4vw;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.34vw;
+}
+
+.togglebarwrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.togglebar {
+    display: flex;
+    margin-top: -3.5vw;
+    justify-content: space-between;
+    min-width: 67.625vw;
+    min-height: 6.9375vw;
+
+    border-radius: 1.875rem;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.ButtonWhenSelectedA {
+    background-color: #FFF;
+    border: none;
+    margin-left: 9vw;
+
+    color: #046B82;
+    font-family: Poppins;
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: underline;
+}
+
+.ButtonWhenNotSelectedA {
+    background-color: #FFF;
+    border: none;
+    margin-left: 9vw;
+
+    color: #046B82;
+    font-family: Poppins;
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.ButtonWhenSelectedB {
+    background-color: #FFF;
+    border: none;
+    margin-right: 9vw;
+
+    color: #046B82;
+    font-family: Poppins;
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: underline;
+}
+
+.ButtonWhenNotSelectedB {
+    background-color: #FFF;
+    border: none;
+    margin-right: 9vw;
+
+    color: #046B82;
+    font-family: Poppins;
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.title{
+    color: #046B82;
+    font-family: Poppins;
+    font-size: 2.5vmax;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.aboutuspart{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-top: 7.62vw;
+}
+
+.aboutuspart .aboutustext{
+    
+    width: 70.5vw;
+    margin-top: 1.87vw;
+    
+    color: #000;
+    font-family: Poppins;
+    font-size: 1.5vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1px; 
+}
+
+.ourteam {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 7.62vh;
+}
+
+.profilespart{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2.4vw;
+
+    max-width: 80vw;
+    justify-content: center;
+    margin-top: 2.5vw;
+}
+
+.profilecard {
+    display: flex;
+    flex-direction: column;
+    width: 17.1875vw;
+    height: 21.25vw;
+    flex-shrink: 0;
+
+    padding: 2vw;
+
+    align-items: center;
+
+    border-radius: 2.25vw;
+    border: 1px solid #DDD;
+}
+
+.profilecard .nametext {
+    margin-top: 1.5vw;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 1.3vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.profilecard .idtext {
+    color: #939393;
+    font-family: Poppins;
+    font-size: 1.5vw;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.profilecard .profilepic {
+    display: flex;
+    width: 11vw;
+    height: 11vw;
+}
+
+.footerforaboutus {
+    margin-top: -10vh;
+}
+
+
+@media (max-width:780px) {
+
+    .aboutuspart .aboutustext {
+        font-size: 2.5vw;
+    }
+
+    .profilecard {
+        width: 24.1875vw;
+        height: 28.25vw;
+        padding: 3vw;
+    }
+
+    .profilecard .nametext {
+        margin-top: 1.5vw;
+    
+        color: #000;
+        font-family: Poppins;
+        font-size: 1.8vw;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    
+    .profilecard .idtext {
+        color: #939393;
+        font-family: Poppins;
+        font-size: 2vw;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    
+    .profilecard .profilepic {
+        display: flex;
+        width: 14vw;
+        height: 14vw;
+    }
+
+    .profilespart{
+        justify-content: center;
+    }
+    
+}

@@ -10,6 +10,7 @@ import x from "../Assets/main/x.png";
 import yt from "../Assets/main/yt.png";
 import insta from "../Assets/main/insta.png";
 import newsletterpic from "../Assets/main/newsletterpic.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -18,9 +19,9 @@ const Footer = () => {
         <div className={styles2.leftpart}>
           <img src={logoimg} alt="logo" className={styles2.logo}></img>
           <div className={styles2.text6}>Want to know about,Routier?</div>
-          <button className={styles2.pillbutton} onClick={""}>
+          <Link className={styles2.pillbutton} to="/aboutus">
             About us
-          </button>
+          </Link>
         </div>
         <div>
           <img src={tourists} alt="tourists" className={styles2.tourists}></img>
