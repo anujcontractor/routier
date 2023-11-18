@@ -8,7 +8,7 @@ const todoSchema = new Schema(
       required: true,
     },
     location: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Place",
       required: true,
     },
