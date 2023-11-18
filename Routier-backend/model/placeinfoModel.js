@@ -18,6 +18,22 @@ const placeSchema= new Schema({
         type: [String], 
         default: [],    
     },
+    restaurants:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Restaurant',
+    }],
+    stays:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Stay',
+    }],
+    todos:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Todo',
+    }],
+    reviews:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review',
+    }],
 },{
     timestamps:true
 });
