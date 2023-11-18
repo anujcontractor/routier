@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { baseUrl } from "../../../shared";
+import { baseUrl } from "../../shared.js";
 
 const SearchComponent = () => {
   const [allData, setAllData] = useState([]);
@@ -14,12 +14,16 @@ const SearchComponent = () => {
   const fetchData = async () => {
     try {
       // Replace the following line with your actual data fetching logic
-      const response = await fetch(`${baseUrl}/api/placeinfo`);
+      const baseurl = baseUrl;
+      const url = baseurl + "/api/placeinfo";
+      const response = await fetch(url);
       const data = await response.json();
-
+      console.log(data);
+      
       setAllData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
+      // console.log(data);
     }
   };
 

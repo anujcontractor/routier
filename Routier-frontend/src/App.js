@@ -8,6 +8,7 @@ import Place from "./Components/PlaceSites/Place"
 import SiteInfo from "./Components/PlaceSites/SiteInfo";
 import Sites from "./Components/PlaceSites/Sites";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import SearchComponent from "./Components/Main/SearchComponent";
 // import Review from "./Components/SE-Review/Review";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
-          
+          <Route path="/search" element={<SearchComponent />} />  
           <Route path="/place" element={<Place />} />
           <Route path="/todo" element={<Sites type='to do' />} />
           <Route path="/hotels" element={<Sites type='hotels' />} />
