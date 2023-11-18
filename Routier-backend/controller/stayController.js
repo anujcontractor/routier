@@ -39,6 +39,7 @@ const register = expressAsyncHandler(async (req, res) => {
     const stay = new Stay({
         name: req.body.name,
         address: req.body.address,
+        location: req.body.location,
         email: req.body.email,
         phone: req.body.phone,
         image: req.body.image,
