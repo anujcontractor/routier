@@ -16,7 +16,7 @@ const index = (req, res, next) => {
 
 // show single restaurant
 const show = (req, res, next) => {
-  let restaurantID = req.body.restaurantID;
+  let restaurantID = req.params.id;
   Restaurant.findById(restaurantID)
     .then((response) => {
       res.json({
@@ -30,41 +30,37 @@ const show = (req, res, next) => {
     });
 };
 
-const store = (req, res, next) => {
-  let restaurant = new Restaurant({
-    name: req.body.name,
-    phone: req.body.phone,
-    email: req.body.email,
-    cusine: req.body.cusine,
-    rating: req.body.rating,
-    price: req.body.price,
-    image: req.body.image,
-    description: req.body.description,
-    veg: req.body.veg,
-    nonveg: req.body.nonveg,
-    type: req.body.type,
-    time: req.body.time,
-    website: req.body.website,
-    menu: req.body.menu,
-    reviews: req.body.reviews,
-  });
-  if (req.file) {
-    restaurant.image = req.file.path;
-  }
-  restaurant
-    .save()
-    .then((response) => {
-      res.json({
-        message: "Restaurant added successfully!",
-      });
-    })
-    .catch((error) => {
-      res.json({
-        message: "An error occured!",
-      });
-    });
-};
-
+// const store=(req,res,next)=>{
+//   let restaurant = new Restaurant({
+//     name: req.body.name,
+//     phone: req.body.phone,
+//     email: req.body.email,
+//     cusine: req.body.cusine,
+//     rating: req.body.rating,
+//     price: req.body.price,
+//     image: req.body.image,
+//     description: req.body.description,
+//     veg: req.body.veg,
+//     nonveg: req.body.nonveg,
+//     type: req.body.type,
+//     time: req.body.time,
+//     website: req.body.website,
+//     menu: req.body.menu,
+//     reviews: req.body.reviews,
+//   });
+//   restaurant
+//     .save()
+//     .then((response) => {
+//       res.json({
+//         message: "Restaurant added successfully!",
+//       });
+//     })
+//     .catch((error) => {
+//       res.json({
+//         message: "An error occured!",
+//       });
+//     });
+// }
 const update = (req, res, next) => {
   let restaurantID = req.body.restaurantID;
   let updateData = {
@@ -111,7 +107,16 @@ const destroy = (req, res, next) => {
       });
     });
 };
+const store = async (req, res) => {
+  const restaurantData = req.body;
 
+  try {
+    const newRestaurant = await Restaurant.create(restaurantData);
+    res.status(201).json(newRestaurant);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 export default {
   index,
   show,
