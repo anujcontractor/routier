@@ -61,5 +61,7 @@ router.get("/placeinfoRoutes", async (req, res) => {
 
 router.get('/', placeinfoController.show);
 router.get('/:id', placeinfoController.showbyid);
+router.post('/add', placeinfoController.addPlace);
+router.delete('/:id', placeinfoController.deletePlace);
 
 export default router;
