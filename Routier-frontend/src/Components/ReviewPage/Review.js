@@ -1,8 +1,8 @@
 import Dropdown from './Dropdown';
 import { Textinput1, Textinput2, Textinput3 } from './textinput';
 import {Rating} from "react-simple-star-rating";
-import IMG from "./assets/reviewplaceholder.jpg";
-import IMG2 from "./assets/addphotoicon.png";
+import IMG from "./Assets/reviewplaceholder.jpg";
+import IMG2 from "./Assets/addphotoicon.png";
 import "./Review.module.css";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
