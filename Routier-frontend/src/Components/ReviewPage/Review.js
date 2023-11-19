@@ -1,9 +1,9 @@
 import Dropdown from './Dropdown';
 import { Textinput1, Textinput2, Textinput3 } from './textinput';
 import {Rating} from "react-simple-star-rating";
-import IMG from "./Assets/reviewplaceholder.jpg";
-import IMG2 from "./Assets/addphotoicon.png";
-import "./Review.module.css";
+import IMG from "../Assets/reviewplaceholder.jpg";
+import IMG2 from "../Assets/addphotoicon.png";
+import  "./Review.css";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 const colors = {
@@ -24,13 +24,13 @@ function Review() {
       
       
 
-      <div className=' maintitle'>
+      <div className='maintitle'>
         Tell us, how’s your visit?
       </div>
 
       
         
-        <div style={styles.texts} className='title2'>How would you rate this place?</div>
+        <div style={styles1.texts} className='title2'>How would you rate this place?</div>
 
 
         <div >
@@ -57,13 +57,13 @@ function Review() {
         
       
 
-        <div style={styles.texts} className='titel3'>When did you go?</div>
+        <div style={styles1.texts} className='title3'>When did you go?</div>
           
         <div className='main_dropdown '>
               <Dropdown/>
         </div>
 
-        <div style={styles.texts} className='title4'>Whom did you go with?</div>
+        <div style={styles1.texts} className='title4'>Whom did you go with?</div>
               
           <div className='main_text1  '>
               <Textinput1 />
@@ -80,29 +80,29 @@ function Review() {
 
         </div>
 
-        <div style={styles.texts} className='title5 '>Title a Review</div>
+        <div style={styles1.texts} className='title5 '>Title a Review</div>
 
         <div className='main_text2 ]' >
             <Textinput2 />
         </div>
 
-        <div style={styles.texts} className='title6 '>Write a review</div>
+        <div style={styles1.texts} className='title6 '>Write a review</div>
 
         <div className='main_text3 '>
               <Textinput3 />    
         </div>  
 
-        <div style={styles.texts} className='title7  '>Add some photos</div>
+        <div style={styles1.texts} className='title7  '>Add some photos</div>
         
           
         <label className='photoupload ' >
-          <div className='photuploadstyle'  >
+          <div className='photouploadstyle'  >
 
-              <img src={IMG2} alt=''  />
+            <img src={IMG2} alt='' className='imageclass' /> 
+              
+            <p> Click to add photos </p>
 
-              <p > Click to add photos </p>
-
-              <input id="image" type="file" name="image"  style={{display: 'none'}} width={874} height={192}
+            <input id="image" type="file" name="image"  style={{display: 'none'}} width={874} height={192}
               
               />
           </div>
@@ -114,7 +114,7 @@ function Review() {
     
           <button className='submitbutton' >
     
-              Submit Your Review
+            <span className='buttontext'> Submit Review </span> 
     
           </button>
     
@@ -129,7 +129,7 @@ function Review() {
 }
 
 
-const styles ={
+const styles1 ={
 
   texts: {
     display: "flex",

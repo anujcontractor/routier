@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+.textarea1 {
+    width: 19rem;
+    height: 2.8125rem;  
+}
 
 .text1{
     width: 19rem;
+    height: 2.8125rem;
+    flex-shrink: 0;
     font-family: "Poppins";
 }
 

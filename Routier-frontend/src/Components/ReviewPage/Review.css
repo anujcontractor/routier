@@ -20,7 +20,7 @@
 
 .rating{
     margin-left: 7.75rem;
-    padding-right: 1.5rem;
+    margin-right: 1.5rem;
     margin-top: 1rem;
 
 }
@@ -39,7 +39,7 @@
     position: absolute;
     transform: translate(58.19rem, 0);
     margin-bottom: 0;
-    padding-bottom: 1.63rem;
+
 }
 
 
@@ -69,17 +69,19 @@
 
 .location_display h1 {
     color: black;
+    justify-content: end;
     font-family: "Poppins";
     font-size: 1.125rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.375rem;
-    padding-bottom: 0.44rem;
+    margin-bottom: 0.44rem;
+
 }
 
 .location_display h2{
     color: #A5A5A5;
     font-family: "Poppins";
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1.125rem;
     line-height: 1.375rem;
 }
@@ -117,26 +119,27 @@
     margin-left: 8.56rem;
     margin-bottom: 5.06rem;
     cursor: pointer;
+    background-color: #ECECEC;
+    border-radius: 0.625rem;
 }
 
 .photouploadstyle {
     display: block;
-    background-color: #ECECEC;
     width: 54.0625rem;
     height: 12rem;
+    background-color: #ECECEC;
     border-radius: 0.625rem;
 }
-
-.photouploadstyle img {
-    position: absolute;
-    transform: translateX(26.06rem), translateY(3.06rem);
-    width: 8rem;
-    height: 8rem;
+.imageclass{
+    display: block;
+    transform: translate(26rem, 3rem);
+    width: 32px;
+    height: 32px;
 }
 
-.photouploadstyle p {
-    position: absolute;
-    transform: translateY(5.06rem), translateX(20.94rem);
+.photoupload p {
+    display: block;
+    transform: translate(20.94rem, 5.06rem);
     color: black;
     font-family: "Poppins";
     font-weight: 500;
@@ -154,11 +157,17 @@
 .submitbutton {
     display: flex;
     width: 38.75rem;
-    height: 12rem;
+    height: 3rem;
     background-color: #046B82;
     font-family: "Poppins";
+    font-size: 1.3125rem;
+    font-style: normal;
+    font-weight: 700; 
+    line-height: normal;
+    letter-spacing: 0.02625rem; 
     color: white;
     justify-content: center;
     align-items: center;
     border-radius: 2.5rem;
+    border-style: none;
 }

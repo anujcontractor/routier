@@ -10,6 +10,7 @@ import Sites from "./Components/PlaceSites/Sites";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import SearchComponent from "./Components/Main/SearchComponent";
 import Profile from "./Components/Profile/Profile";
+import Review from "./Components/ReviewPage/Review"
 // import Review from "./Components/SE-Review/Review";
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
           <Route path="/siteinfo" element={<SiteInfo />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/profile" element={<Profile />} />
-          {/* <Route path="/givereview" element={<Review />} /> */}
+          <Route path="/givereview" element={<Review />} /> 
         </Routes>
       </BrowserRouter>
     </div>

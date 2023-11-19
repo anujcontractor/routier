@@ -1,4 +1,4 @@
-import "./Dropdown.module.css";
+import "./Dropdown.css";
 
 function Dropdown() {
   return (

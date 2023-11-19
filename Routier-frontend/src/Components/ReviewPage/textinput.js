@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "./Textinput.module.css";
+import "./Textinput.css";
   
 const Textinput1 = () => {
 
@@ -7,7 +7,7 @@ const Textinput1 = () => {
 
   return (
     <div>
-        <form>
+        <form  className='textarea1'>
             <label></label>
             <input style={style1.box} className='text1 '
             placeholder='Solo,Family,Friends etc.'
@@ -44,7 +44,7 @@ const Textinput3 = () => {
         <form>
             <label></label>
             <textarea className='text3'
-            required placeholder='This Spot great for a Casual Night out.' 
+            required placeholder='This Spot is great for a Casual Night out.' 
             value={text3} onChange={(g) => setText3(g.target.value)} />
         </form>
     </div>
