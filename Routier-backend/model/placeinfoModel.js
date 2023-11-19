@@ -50,6 +50,20 @@ const placeSchema = new Schema(
     timestamps: true,
   }
 );
+// Add a restaurant to the place
+placeSchema.methods.addRestaurant = function (restaurantId) {
+  this.restaurants.push(restaurantId);
+};
+
+// Add a todo to the place
+placeSchema.methods.addTodo = function (todoId) {
+  this.todos.push(todoId);
+};
+
+// Add a stay to the place
+placeSchema.methods.addStay = function (stayId) {
+  this.stays.push(stayId);
+};
 
 const Place = mongoose.model("Place", placeSchema);
 export default Place;

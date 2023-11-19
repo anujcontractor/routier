@@ -63,5 +63,8 @@ router.get('/', placeinfoController.show);
 router.get('/:id', placeinfoController.showbyid);
 router.post('/add', placeinfoController.addPlace);
 router.delete('/:id', placeinfoController.deletePlace);
+router.post('/:id/addRestaurant', placeinfoController.addRestaurantToPlace);
+router.post('/:id/addStay', placeinfoController.addStayToPlace);
+router.post('/:id/addTodo', placeinfoController.addTodoToPlace);
 
 export default router;

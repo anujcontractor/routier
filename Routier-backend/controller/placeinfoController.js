@@ -75,5 +75,89 @@ const deletePlace = (req, res, next) => {
     });
 };
 
+const addRestaurantToPlace = (req, res, next) => {
+  const placeID = req.params.id;
+  const restaurantIDs = req.body.restaurantIDs;
 
-export default {show,showbyid,addPlace,deletePlace};
+  Place.findById(placeID)
+    .then((place) => {
+      if (!place) {
+        return res.status(404).json({
+          message: 'Place not found!',
+        });
+      }
+
+      place.restaurants = place.restaurants.concat(restaurantIDs);
+      return place.save();
+
+    })
+    .then((updatedPlace) => {
+      res.json({
+        updatedPlace,
+        message: 'Restaurant added to place successfully!',
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: 'An error occurred!',
+      });
+    });
+};
+
+const addTodoToPlace = (req, res, next) => {
+  const placeID = req.params.id;
+  const todoIDs = req.body.todoIDs;
+  Place.findById(placeID)
+    .then((place) => {
+      if (!place) {
+        return res.status(404).json({
+          message: 'Place not found!',
+        });
+      }
+
+      place.todos = place.todos.concat(todoIDs);
+      return place.save();
+
+    })
+    .then((updatedPlace) => {
+      res.json({
+        updatedPlace,
+        message: 'Todo added to place successfully!',
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: 'An error occurred!',
+      });
+    });
+};
+
+const addStayToPlace = (req, res, next) => {
+  const placeID = req.params.id;
+  const stayIDs = req.body.stayIDs;
+  Place.findById(placeID)
+    .then((place) => {
+      if (!place) {
+        return res.status(404).json({
+          message: 'Place not found!',
+        });
+      }
+
+      place.stays = place.stays.concat(stayIDs);
+      return place.save();
+
+    })
+    .then((updatedPlace) => {
+      res.json({
+        updatedPlace,
+        message: 'Restaurant added to place successfully!',
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: 'An error occurred!',
+      });
+    });
+};
+
+export default {show,showbyid,addPlace,deletePlace,addRestaurantToPlace,addTodoToPlace,addStayToPlace};
