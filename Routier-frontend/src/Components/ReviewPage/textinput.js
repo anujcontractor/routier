@@ -9,7 +9,7 @@ const Textinput1 = () => {
     <div>
         <form>
             <label></label>
-            <input style={style1.box} className='text1'
+            <input style={style1.box} className='text1 '
             placeholder='Solo,Family,Friends etc.'
             required  value={text} onChange={(e) => setText(e.target.value)} />
         </form>
@@ -44,7 +44,8 @@ const Textinput3 = () => {
         <form>
             <label></label>
             <textarea className='text3'
-            required placeholder='This Spot great for a Casual Night out.' value={text3} onChange={(g) => setText3(g.target.value)} />
+            required placeholder='This Spot great for a Casual Night out.' 
+            value={text3} onChange={(g) => setText3(g.target.value)} />
         </form>
     </div>
   )
