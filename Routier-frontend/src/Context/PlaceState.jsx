@@ -3,13 +3,31 @@ import { useState } from "react";
 
 const PlaceState = (props) => {
 
-    const host = "http://localhost:6000";
-
+    const host = "https://routier-production.up.railway.app";
+ 
     const [place, setPlace] = useState([]);/*main states*/
     const [todo, setTodo] = useState([]);
     const [hotels, setHotels] = useState([]);
     const [restaurants, setRestaurants] = useState([]);
     const [siteinfo, setSiteinfo] = useState([]);
+
+    const [allData, setAllData] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+  
+    const fetchData = async () => {
+        try {
+          const response = await fetch('https://routier-production.up.railway.app/api/placeinfo');
+          // console.log(response)
+          const data = await response.json();
+          // console.log(data);
+    
+          setAllData(data.response);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          // console.log(data);
+        }
+      };
 
     /*get the place*/
     const getPlace = async () => {
@@ -30,19 +48,20 @@ const PlaceState = (props) => {
     }
 
     /*get the to do sites*/
-    const getToDo = async (placeid) => {
+    const getTodo = async (placeid) => {
 
-        const response = await fetch(`${host}/todo/${placeid}`, {
+        const response = await fetch(`${host}/api/todo`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem('token')
             },
         });
-
+    
         const json = await response.json();
         // console.log(json);
-        setTodo(json);
+       setTodo(json.response);
+        //console.log(restaurants)
 
         //response
         //{siteid, Image, site_name, site_description, site_rating} of all site(to do sites only)
@@ -53,39 +72,37 @@ const PlaceState = (props) => {
     /*get hotels sites*/
     const getHotels = async (placeid) => {
 
-        const response = await fetch(`${host}/hotels/${placeid}`, {
+        const response = await fetch(`${host}/api/stay`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem('token')
             },
         });
-
+    
         const json = await response.json();
         // console.log(json);
-        setHotels(json);
-
+       setHotels(json.response);
+        //console.log(restaurants)
         //response
         //{siteid, Image, site_name, site_description, site_rating} of all site(hotels only)
 
     }
 
     /*get Restaurants sites*/
-    const getRestaurants = async (placeid) => {
-
-        const response = await fetch(`${host}/restaurants/${placeid}`, {
+    const getRestaurants = async () => {
+        const response = await fetch(`${host}/api/restaurants/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem('token')
             },
         });
-
+    
         const json = await response.json();
         // console.log(json);
-        setRestaurants(json);
-        //response
-        //{siteid, Image, site_name, site_description, site_rating} of all site(restaurants only)
+       setRestaurants(json.response);
+        //console.log(restaurants)
     }
 
 
@@ -132,10 +149,7 @@ const PlaceState = (props) => {
     }
 
     return (
-        <PlaceContext.Provider value={{
-            place, todo, hotels, restaurants, siteinfo,
-            setPlace, setTodo, setHotels, setRestaurants, setSiteinfo
-        }}>
+        <PlaceContext.Provider value={{restaurants, hotels, todo, getRestaurants, getHotels, getTodo, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm}}>
             {props.children}
         </PlaceContext.Provider>
     )

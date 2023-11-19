@@ -1,4 +1,5 @@
 // Style sheet
+import React, { useContext, useEffect, useState} from 'react'
 import styles from "./Main.module.css";
 import "../../App.css";
 
@@ -20,10 +21,24 @@ import service6 from "../Assets/home/service6_home.png";
 import service7 from "../Assets/home/service7_home.png";
 
 // Dependencies
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
+import SearchComponent from './SearchComponent';
 
 const Home = () => {
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+
+    if (localStorage.getItem('token'))
+      console.log("auth-token")
+    else {
+      console.log("login-required")
+      navigate('/signup');
+    }
+  }, []);
+
   const handleMenuClick = () => {
     document.getElementById("navlinksCont2").style.display = "flex";
   };
@@ -57,7 +72,7 @@ const Home = () => {
             Trips
           </Link>
           <Link to="/profile" className={styles.profileCont}>
-            <img src={profile} className={styles.profileIcon}/>
+            <img src={profile} className={styles.profileIcon} />
           </Link>
         </div>
         <div className={styles.menuIcon}>
@@ -75,7 +90,7 @@ const Home = () => {
             </span>
           </div>
           <Link to="/profile" className={styles.profileCont}>
-            <img src={profile} className={styles.profileIcon}/>
+            <img src={profile} className={styles.profileIcon} />
           </Link>
           <Link className={styles.reviews}>
             <img src={review} className={styles.icons} alt="reviews" />
@@ -102,24 +117,26 @@ const Home = () => {
       {/* Search Box */}
       <div className={styles.searchCont}>
         <div className={styles.searchTitle}>Where to?</div>
-        <form className={styles.searchBar}>
-          <img src={search} className={styles.searchIcon} alt="search-icon" />
-          <input type="text" placeholder="Places to go, Things to do, Hotels" />
-          <button type="submit">Search</button>
-        </form>
+        <SearchComponent/>
         <div className={styles.searchBtns}>
+          <Link to = '/hotels'>
           <button className={styles.searchBtn}>
             Hotels
             <img src={hotel} className={styles.icons2} alt="hotels" />
           </button>
+          </Link>
+          <Link to = '/todo'>
           <button className={styles.searchBtn}>
             Things to do
             <img src={thing} className={styles.icons2} alt="things" />
           </button>
+          </Link>
+          <Link to = '/restaurants'>
           <button className={styles.searchBtn}>
             Restaurants
             <img src={restaurant} className={styles.icons2} alt="restaurants" />
           </button>
+          </Link>
           <button className={styles.searchBtn}>
             Travel stories
             <img src={story} className={styles.icons2} alt="stories" />
