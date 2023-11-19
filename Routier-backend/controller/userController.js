@@ -8,11 +8,13 @@ const authUser = expressAsyncHandler(async (req, res) => {
     const user = await User.findOne({email});
 
     if(user && await user.matchPasswords(password)){
-        generateToken(res, user._id);
+        const token = generateToken(res, user._id);
         res.status(201).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
+            user,
+            token,
+            // _id: user._id,
+            // name: user.name,
+            // email: user.email,
         });
     }else{
         res.status(401);
@@ -36,11 +38,13 @@ const registerUser = expressAsyncHandler(async (req, res) => {
     });
 
     if(newUser){
-        generateToken(res, newUser._id);
+        const token = generateToken(res, newUser._id);
         res.status(201).json({
-            _id: newUser._id,
-            name: newUser.name,
-            email: newUser.email,
+            newUser,
+            token,
+            // _id: newUser._id,
+            // name: newUser.name,
+            // email: newUser.email,
         });
     }else{
         res.status(400);
