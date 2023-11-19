@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+.maintitle{
+    display: flex;
+    color: #046b82;
+    font-family: Poppins;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    line-height: 3.42rem;
+    padding-top: 10.19rem;
+    padding-bottom: 4.69rem;
+}
+
+.title2{
+    padding-bottom: 1rem;
+}
+
+.rating{
+    margin-left: 7.75rem;
+    padding-right: 1.5rem;
+    margin-top: 1rem;
+
+}
+
+.rating_text{
+    display: inline-block;
+    vertical-align: middle;
+    font-family: "Poppins";
+    font-size: 1.5rem;
+    line-height: 0.875rem;
+    font-weight: 400;
+    color: #8C9091;
+}
+
+.image1{
+    position: absolute;
+    transform: translate(58.19rem, 0);
+    margin-bottom: 0;
+    padding-bottom: 1.63rem;
+}
+
+
+.title3{
+    padding-top: 3.56rem;
+    padding-bottom: 1.69rem;
+}
+
+.main_dropdown{
+    padding-left: 8.56rem;
+    padding-bottom: 3.56rem;
+}
+
+.title4{
+    padding-bottom: 0.75rem;
+}
+
+.main_text1{
+    padding-left: 8.56rem;
+    padding-right: 8.56rem;
+}
+
+.location_display{
+    margin-left: 58.5rem;
+    padding-bottom: 0.37rem;
+}
+
+.location_display h1 {
+    color: black;
+    font-family: "Poppins";
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    padding-bottom: 0.44rem;
+}
+
+.location_display h2{
+    color: #A5A5A5;
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+}
+
+.title5 {
+    padding-bottom: 0.62rem;
+}
+
+.main_text2{
+    padding-left: 8.56rem;
+    padding-right: 8.56rem;
+    padding-bottom: 4.56rem;
+}
+
+.title6 {
+    padding-bottom: 1.06rem;
+}
+
+.main_text3 {
+    padding-left: 8.56rem;
+    padding-right: 8.56rem;
+    padding-bottom: 5.06rem;
+}
+
+.title7 {
+    padding-bottom: 1.06rem;
+    padding-left: 8rem;
+}
+
+
+.photoupload {
+    display: block;
+    width: 54.0625rem;
+    height: 12rem;
+    margin-left: 8.56rem;
+    margin-bottom: 5.06rem;
+    cursor: pointer;
+}
+
+.photouploadstyle {
+    display: block;
+    background-color: #ECECEC;
+    width: 54.0625rem;
+    height: 12rem;
+    border-radius: 0.625rem;
+}
+
+.photouploadstyle img {
+    position: absolute;
+    transform: translateX(26.06rem), translateY(3.06rem);
+    width: 8rem;
+    height: 8rem;
+}
+
+.photouploadstyle p {
+    position: absolute;
+    transform: translateY(5.06rem), translateX(20.94rem);
+    color: black;
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 0;
+}
+
+.button_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 4.5rem;
+}
+
+.submitbutton {
+    display: flex;
+    width: 38.75rem;
+    height: 12rem;
+    background-color: #046B82;
+    font-family: "Poppins";
+    color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2.5rem;
+}
