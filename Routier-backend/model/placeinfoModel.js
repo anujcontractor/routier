@@ -36,7 +36,7 @@ const placeSchema = new Schema(
     todos: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Todo",
+        ref: "ToDo",
       },
     ],
     reviews: [
