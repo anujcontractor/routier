@@ -29,6 +29,12 @@ function SiteInfo(props) {
     { src: place_img, width: 1600, height: 900 },
   ];
 
+  const placeDetails = {
+    name: "[place_name]",
+    image: {place_img}
+  };
+
+
   return (
     <>
     <Navbar/>
@@ -81,7 +87,10 @@ function SiteInfo(props) {
           <div className='rbuttons'>
             <div className="button">
               <img src={edit_icon} alt="icon" />
-              <Link to="/">Review</Link>
+              <Link to={{
+              pathname: "/givereview",
+              state: { placeDetails }
+            }}>Review</Link>
 
             </div>
 

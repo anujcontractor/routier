@@ -27,7 +27,7 @@
 
 .rating_text{
     display: inline-block;
-    vertical-align: middle;
+    align-items: center;
     font-family: "Poppins";
     font-size: 1.5rem;
     line-height: 0.875rem;

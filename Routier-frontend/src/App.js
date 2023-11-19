@@ -10,8 +10,7 @@ import Sites from "./Components/PlaceSites/Sites";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import SearchComponent from "./Components/Main/SearchComponent";
 import Profile from "./Components/Profile/Profile";
-import Review from "./Components/ReviewPage/Review"
-// import Review from "./Components/SE-Review/Review";
+import Review from "./Components/ReviewPage/Review";
 
 function App() {
   return (

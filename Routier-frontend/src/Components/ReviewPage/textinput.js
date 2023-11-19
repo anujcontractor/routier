@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
 import "./Textinput.css";
   
-const Textinput1 = () => {
+const Textinput1 = ({ onVisitedWithChange }) => {
 
   const [text, setText] = useState('');
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+    onVisitedWithChange(e.target.value);
+  };
+
 
   return (
     <div>
@@ -11,16 +17,22 @@ const Textinput1 = () => {
             <label></label>
             <input style={style1.box} className='text1 '
             placeholder='Solo,Family,Friends etc.'
-            required  value={text} onChange={(e) => setText(e.target.value)} />
+            required  value={text} onChange={(e) => handleChange(e)} />
         </form>
     </div>
   )
 }
 
 
-const Textinput2 = () => {
+const Textinput2 = ({ onTitleChange }) => {
 
   const [text2, setText2] = useState('');
+
+  const handleChange = (e) => {
+    setText2(e.target.value);
+    onTitleChange(e.target.value);
+  };
+
 
   return (
     <div>
@@ -28,24 +40,28 @@ const Textinput2 = () => {
             <label></label>
             <input style={style1.box} className='text2'
             placeholder='Title'
-            required  value={text2} onChange={(f) => setText2(f.target.value)} />
+            required  value={text2} onChange={(f) => handleChange(f)} />
         </form>
     </div>
   )
 }
 
 
-const Textinput3 = () => {
+const Textinput3  = ({ onReviewTextChange }) =>{
 
   const [text3, setText3] = useState('');
+
+  const handleChange = (e) => {
+    setText3(e.target.value);
+    onReviewTextChange(e.target.value);
+  };
 
   return (
     <div>
         <form>
-            <label></label>
             <textarea className='text3'
             required placeholder='This Spot is great for a Casual Night out.' 
-            value={text3} onChange={(g) => setText3(g.target.value)} />
+            value={text3} onChange={(g) => handleChange(g)} />
         </form>
     </div>
   )
