@@ -2,6 +2,9 @@ import Place from "../model/placeinfoModel.js";
 
 const show = (req, res, next) => {
     Place.find()
+    .populate('stays')
+    .populate('todos')
+    .populate('restaurants')
     .then((response) => {
       res.json({
         response,
