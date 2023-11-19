@@ -17,6 +17,9 @@ const show = (req, res, next) => {
 const showbyid = (req, res, next) => {
   let placeID = req.params.id; // Use req.params.id to get the place ID from the URL parameters
   Place.findById(placeID)
+    .populate('stays')
+    .populate('todos')
+    .populate('restaurants')
     .then(response => {
       if (response) {
         res.json({

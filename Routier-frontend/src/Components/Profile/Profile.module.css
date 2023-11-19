@@ -1,0 +1,366 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@600&display=swap");
+
+button {
+  cursor: pointer;
+}
+::-webkit-scrollbar {
+  width: 0rem;
+}
+/* Navbar */
+.navbar {
+  /* border: solid 0.1rem black; */
+  padding: 2rem 3rem;
+  width: stretch;
+  height: 12vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 12rem;
+}
+/* .navlinksCont2 {
+  display: none;
+} */
+.navlinksCont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.navlinksCont .alerts,
+.navlinksCont .trips {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  margin: 0vw 0.5vw;
+  color: #046b82;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: "Poppins";
+}
+.icons {
+  width: 1.1rem;
+  margin: 0rem 0.3rem;
+}
+.menuIcon,
+.closeIcon {
+  display: none;
+}
+
+.mainCont {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Personal info */
+.personalCont {
+  /* border: solid 0.1rem black; */
+  border-right: solid 0.1rem #046b82;
+  width: 35vw;
+  height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem;
+}
+.avatar {
+  width: 60%;
+  margin-bottom: 1rem;
+}
+.nametxt {
+  color: #425e6e;
+  font-family: "Montserrat";
+  font-size: 2.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.21094rem;
+}
+.emailtxt {
+  color: #907b74;
+  font-family: "Montserrat";
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.1125rem;
+}
+.options {
+  color: #046b82;
+  font-family: "Montserrat";
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.1125rem;
+  margin-top: 1rem;
+  width: 13.625rem;
+  height: 2.8125rem;
+  background-color: #fff;
+  border: solid 1px #046b82;
+  border-radius: 2rem;
+  filter: drop-shadow(1px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.tripsOption {
+  background-color: #d9d9d9;
+}
+
+/* Profile */
+.profileCont {
+  /* border: solid 0.1rem black; */
+  display: flex;
+  flex-direction: column;
+  width: 65vw;
+  height: 88vh;
+  padding: 0.5rem;
+}
+.reviewCont,
+.favCont {
+  display: none;
+}
+.profileTitle {
+  color: #74b6c2;
+  font-family: "Montserrat";
+  font-size: 3.375rem;
+  font-weight: 700;
+  letter-spacing: -0.25313rem;
+}
+.tripsTitle {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.expCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  height: 100%;
+}
+.expBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  height: 5rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 4px 7px 15px 0px rgba(0, 0, 0, 0.25);
+}
+.expTitle {
+  color: #000;
+  font-family: "Poppins";
+  font-size: 1.875rem;
+  font-weight: 600;
+  letter-spacing: 0.0375rem;
+  margin-right: 5rem;
+}
+.favBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  height: 10rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  border: solid 0.1rem #b5b5b5;
+  overflow: hidden;
+}
+.favImg {
+  height: 100%;
+  border-radius: 1.75rem;
+}
+.favcontent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 75%;
+  height: 100%;
+}
+.favHead {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.favTitle {
+  color: #060606;
+  font-family: "Poppins";
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.1125rem;
+}
+.removeFav {
+  color: #bcbcbc;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: "Poppins";
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: -0.06563rem;
+  text-decoration-line: underline;
+}
+.favRating {
+  width: fit-content;
+}
+.favDesc {
+  color: #000;
+  font-family: "Poppins";
+  font-size: 0.9375rem;
+  font-weight: 400;
+  margin-top: 0.2rem;
+}
+.reviewTitle {
+  color: #000;
+  font-family: "Poppins";
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.reviewDesc {
+  color: #333;
+  font-family: "Poppins";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+}
+.stars {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.stars img {
+  width: 1.75rem;
+  padding: 0rem 0.1rem;
+}
+
+@media (max-width: 1000px) {
+  .logo {
+    width: 10rem;
+  }
+  .navlinksCont .alerts,
+  .navlinksCont .trips {
+    font-size: 1rem;
+  }
+  .icons {
+    width: 1rem;
+  }
+}
+@media (max-width: 800px) {
+  .profileTitle {
+    font-size: 2.5rem;
+  }
+  .expTitle {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 700px) {
+  .logo {
+    width: 8rem;
+  }
+  .mainCont {
+    flex-direction: column;
+  }
+  .personalCont,
+  .profileCont {
+    width: 100vw;
+    height: auto;
+    padding: 1rem;
+  }
+  .personalCont {
+    border: none;
+  }
+  .profileCont {
+    margin-top: 20vh;
+  }
+  .avatar {
+    width: 40%;
+  }
+}
+@media (max-width: 500px) {
+  .menuIcon,
+  .closeIcon {
+    display: block;
+    color: #046b82;
+    width: 1.5rem;
+  }
+  .closeIcon {
+    color: #fff;
+  }
+  .closeIcon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+  .navlinksCont2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(103, 103, 103, 0.85);
+  }
+  .navlinksCont,
+  .navlinksCont2 {
+    display: none;
+  }
+  .navlinksCont2 .alerts,
+  .navlinksCont2 .trips {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Poppins";
+    display: flex;
+    align-items: center;
+  }
+  .icons {
+    width: 1.15rem;
+    margin: 0rem 0.5rem;
+  }
+  .profileIcon {
+    width: 10rem;
+  }
+  .navbar {
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 400px) {
+  .avatar {
+    width: 50%;
+  }
+  .options {
+    width: 12rem;
+  }
+  .profileCont {
+    padding: 0rem;
+  }
+  .tripsTitle {
+    padding: 1rem;
+  }
+  .profileTitle {
+    font-size: 2rem;
+  }
+  .expBox {
+    width: 90%;
+  }
+}
+@media (min-width: 500px) {
+  .navlinksCont2 {
+    display: none;
+  }
+}
