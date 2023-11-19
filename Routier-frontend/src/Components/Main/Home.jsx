@@ -37,7 +37,6 @@ const Home = () => {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
-        ;
       </head>
       {/* Navbar */}
       <nav className={styles.navbar}>
@@ -57,7 +56,7 @@ const Home = () => {
             <img src={trip} className={styles.icons} />
             Trips
           </Link>
-          <Link className={styles.profileCont}>
+          <Link to="/profile" className={styles.profileCont}>
             <img src={profile} className={styles.profileIcon}/>
           </Link>
         </div>
@@ -75,7 +74,7 @@ const Home = () => {
               close
             </span>
           </div>
-          <Link className={styles.profileCont}>
+          <Link to="/profile" className={styles.profileCont}>
             <img src={profile} className={styles.profileIcon}/>
           </Link>
           <Link className={styles.reviews}>
