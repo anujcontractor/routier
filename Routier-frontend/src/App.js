@@ -51,7 +51,7 @@ function App() {
           <Route path="/siteinfo" element={<SiteInfo />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/profile" element={<Profile />} />
-          {/* <Route path="/givereview" element={<Review />} /> */}
+          <Route path="/givereview" element={<Review />} />
         </Routes>
       </BrowserRouter>
       </PlaceState>

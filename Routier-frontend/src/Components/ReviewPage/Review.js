@@ -26,7 +26,7 @@ function Review(props) {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "auth-token": localStorage.getItem('token')
+            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NTU5ZDE4NzljN2Q5MjdhZDhiYjBmMGMiLCJpYXQiOjE3MDA0MTk2NjMsImV4cCI6MTcwMzAxMTY2M30.sMJH7suISpBrXEmyQOgQq8JKLOu23NRFsbNPa0aJBm0"
         },
     });
 
@@ -52,13 +52,13 @@ function Review(props) {
   /* for uploading data*/
   const handleSubmit = async () => {
 
-    console.log(localStorage.getItem('token'));
+    console.log("this is token " + localStorage.getItem('token'));
     try {
       const response = await fetch( "https://routier-production.up.railway.app/reviews/submit", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          "auth-token" : localStorage.getItem('token'),
+          "auth-token" : localStorage.getItem(`token`),
         },
         body: JSON.stringify(reviewData),
       });

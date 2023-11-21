@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from "./Signup.module.css";
-import tour_set from "../Assets/tour-set-signup.svg";
+import tour_set from "../Assets/tour-set-signup.png";
 import logo from "../Assets/logo_signup.svg";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -29,7 +29,7 @@ const Signup = (props) => {
     });
 
 
-    console.log(response.status);
+    console.log(response);
     if (response.status === 201) {
 
       const json = await response.json();
