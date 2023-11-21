@@ -18,17 +18,42 @@ import service2 from "../Assets/main/service2_main.png";
 import service3 from "../Assets/main/service3_main.png";
 
 // Dependencies
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
 import Footer from "./Footer";
 
-const Main = () => {
+
+const Main = (props) => {
+
+  let navigate = useNavigate();
+
+
+  useEffect(() => {
+
+    if (localStorage.getItem('token'))
+      navigate('/home')
+  }, []);
+
+
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    props.createNotification('warning', 'Login required')
+
+
+  }
+
   const handleMenuClick = () => {
     document.getElementById("navlinksCont2").style.display = "flex";
   };
   const handleCloseClick = () => {
     document.getElementById("navlinksCont2").style.display = "none";
   };
+
+
   return (
+
     <>
       <head>
         <link
@@ -42,21 +67,27 @@ const Main = () => {
           <img src={logo} className={styles.logo} alt="logo" />
         </div>
         <div className={styles.navlinksCont}>
-          <Link className={styles.reviews}>
+          <Link className={styles.reviews} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={review} className={styles.icons} />
             Reviews
           </Link>
-          <Link className={styles.alerts}>
+          <Link className={styles.alerts} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={alert} className={styles.icons} />
             Alerts
           </Link>
-          <Link className={styles.trips}>
+          <Link className={styles.trips} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={trip} className={styles.icons} />
             Trips
           </Link>
           <Link to="/signup" className={styles.signin}>
             Sign In
           </Link>
+
+
+          <Link to="/login" className={styles.signin} >
+            Login
+          </Link>
+
         </div>
         <div className={styles.menuIcon}>
           <span onClick={handleMenuClick} className="material-symbols-outlined">
@@ -72,20 +103,23 @@ const Main = () => {
               close
             </span>
           </div>
-          <Link className={styles.reviews}>
+          <Link className={styles.reviews} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={review} className={styles.icons} alt="reviews" />
             Reviews
           </Link>
-          <Link className={styles.alerts}>
+          <Link className={styles.alerts} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={alert} className={styles.icons} alt="alerts" />
             Alerts
           </Link>
-          <Link className={styles.trips}>
+          <Link className={styles.trips} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={trip} className={styles.icons} alt="trips" />
             Trips
           </Link>
-          <Link to="/signup" className={styles.signin}>
-            Sign In
+          <Link to="/signup" className={styles.signin} >
+            Sign up
+          </Link>
+          <Link to="/login" className={styles.signin}>
+            Login
           </Link>
         </div>
       </nav>
@@ -103,24 +137,20 @@ const Main = () => {
         <form className={styles.searchBar}>
           <img src={search} className={styles.searchIcon} alt="search-icon" />
           <input type="text" placeholder="Places to go, Things to do, Hotels" />
-          <button type="submit">Search</button>
+          <button type="submit" onClick={handleSubmit}>Search</button>
         </form>
         <div className={styles.searchBtns}>
-          <button className={styles.searchBtn}>
+          <button className={styles.searchBtn} onClick={() => props.createNotification('warning', 'Login required')}>
             Hotels
             <img src={hotel} className={styles.icons2} alt="hotels" />
           </button>
-          <button className={styles.searchBtn}>
+          <button className={styles.searchBtn} onClick={() => props.createNotification('warning', 'Login required')}>
             Things to do
             <img src={thing} className={styles.icons2} alt="things" />
           </button>
-          <button className={styles.searchBtn}>
+          <button className={styles.searchBtn} onClick={() => props.createNotification('warning', 'Login required')}>
             Restaurants
             <img src={restaurant} className={styles.icons2} alt="restaurants" />
-          </button>
-          <button className={styles.searchBtn}>
-            Travel stories
-            <img src={story} className={styles.icons2} alt="stories" />
           </button>
         </div>
       </div>

@@ -23,7 +23,7 @@ function Card(props) {
     }
 
 
-    const { name, description, img, rating } = props;
+    const { id, name, description, img, rating } = props;
 
     return (
         <div className="card">
@@ -32,17 +32,17 @@ function Card(props) {
                     <img src={like_icon} alt="" />
                     <img src={like_icon_red} alt="" />
                 </span>
-                <Link to={'/siteinfo'}><img src={img} alt="image" /></Link>
+                <Link to={`/siteinfo/${id}`}><img src={img} alt="image" /></Link>
 
             </div>
 
             <div className="cardData">
-                <h3 className="name">[site_name]</h3>
+                <h3 className="name">{name}</h3>
                 <p className='rating'>{/* set initial value */}
                     <Rating initialValue={rating} size='20px' readonly />
 
                 </p>
-                <p className="description">[site_description]</p>
+                <p className="description">{description.slice(0, 70)}...</p>
             </div>
         </div>
     )

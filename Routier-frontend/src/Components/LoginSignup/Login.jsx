@@ -18,6 +18,8 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(credentials.email, credentials.password)
+
+    props.setProgress(20);
     const response = await fetch(`https://routier-production.up.railway.app/api/users/login`, {
       method: "POST",
       headers: {
@@ -25,23 +27,25 @@ const Login = (props) => {
       },
       body: JSON.stringify({ email: credentials.email, password: credentials.password })
     });
-    console.log(response.status);
-    if (response.status === 401) {
-      
-      props.showAlert(`Unauthorized: Please check your credentials.`, "danger");
-      console.log("Unauthorized: Please check your credentials.");
 
-    } else if (response.ok) {
+    props.setProgress(70);
+    console.log(response.status);
+    
+    if (response.ok) {
       const json = await response.json();
       localStorage.setItem('token', json.authtoken);
-      props.showAlert("Logged in successfully", "success");
+      props.createNotification('success', 'Logged in successfully')
       navigate('/home');
-      console.log(json);
+      // console.log(json);
 
+    } else if (response.status === 401 ) {
+      props.createNotification('warning', `Unauthorized: Please check your credentials.`)
+      // console.log("Unauthorized: Please check your credentials.");
     } else {
-      props.showAlert(`Error: ${response.status} - ${response.statusText}`, "danger");
-      console.log(`Error: ${response.status} - ${response.statusText}`);
+      props.createNotification('warning', `Error: ${response.status} - ${response.statusText}`)
+      // console.log(`Error: ${response.status} - ${response.statusText}`);
     }
+    props.setProgress(100);
   }
 
   return (

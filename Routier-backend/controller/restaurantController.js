@@ -1,4 +1,5 @@
 import Restaurant from "../model/restaurantModel.js";
+import Place from "../model/placeinfoModel.js";
 
 const index = (req, res, next) => {
   Restaurant.find()
@@ -112,8 +113,21 @@ const store = async (req, res) => {
 
   try {
     const newRestaurant = await Restaurant.create(restaurantData);
-    res.status(201).json(newRestaurant);
-  } catch (error) {
+    // Find the corresponding place and update the restaurants array
+    const placeID = restaurantData.location;
+    const place = await Place.findById(placeID);
+
+    if (place) {
+      // Add the new restaurant ID to the restaurants array
+      place.restaurants.push(newRestaurant._id);
+      
+      // Save the updated place
+      await place.save();
+   
+  } 
+  res.status(201).json(newRestaurant);
+  }
+  catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
