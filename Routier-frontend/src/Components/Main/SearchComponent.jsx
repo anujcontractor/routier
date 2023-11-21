@@ -5,7 +5,7 @@ import styles from "./Main.module.css";
 import PlaceContext from '../../Context/PlaceContext';
 import { Link } from 'react-router-dom';
 
-const SearchComponent = () => {
+const SearchComponent = (props) => {
 
   const context = useContext(PlaceContext);
   const { fetchData, setSearchTerm, setSearchResults, allData, searchTerm, searchResults } = context;
@@ -38,8 +38,9 @@ const SearchComponent = () => {
   };
 
   const handleSubmit = ()=>{
-      
-      
+      props.setProgress(30);
+      props.setProgress(100);
+
   }
 
   return (

@@ -1,5 +1,5 @@
 // Style sheet
-import React, { useContext, useEffect, useState} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from "./Main.module.css";
 import "../../App.css";
 
@@ -25,7 +25,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
 import SearchComponent from './SearchComponent';
 
-const Home = () => {
+const Home = (props) => {
 
   let navigate = useNavigate();
 
@@ -35,9 +35,40 @@ const Home = () => {
       console.log("auth-token")
     else {
       console.log("login-required")
-      navigate('/signup');
+      navigate('/');
     }
   }, []);
+
+  const handleLogout = async () => {
+
+    props.setProgress(20);
+    const response = await fetch(`https://routier-production.up.railway.app/api/users/logout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+    });
+
+    props.setProgress(70);
+    console.log(response.status);
+
+    if (response.status === 200) {
+
+      const json = await response.json();
+      localStorage.removeItem('token');
+      props.createNotification('success', 'Logged out successfully');
+      navigate('/');
+
+    }
+    else {
+
+      props.createNotification('warning', `Error: ${response.status} - ${response.statusText}`)
+
+    }
+    props.setProgress(100);
+  
+  }
 
   const handleMenuClick = () => {
     document.getElementById("navlinksCont2").style.display = "flex";
@@ -71,9 +102,13 @@ const Home = () => {
             <img src={trip} className={styles.icons} />
             Trips
           </Link>
+          <Link to="/" className={styles.signin} onClick={handleLogout}>
+            Log out
+          </Link>
           <Link to="/profile" className={styles.profileCont}>
             <img src={profile} className={styles.profileIcon} />
           </Link>
+          
         </div>
         <div className={styles.menuIcon}>
           <span onClick={handleMenuClick} className="material-symbols-outlined">
@@ -104,6 +139,9 @@ const Home = () => {
             <img src={trip} className={styles.icons} alt="trips" />
             Trips
           </Link>
+          <Link to="/" className={styles.signin} onClick={handleLogout}>
+            Log out
+          </Link>
         </div>
       </nav>
       <div className={styles.bgCont}>
@@ -117,30 +155,26 @@ const Home = () => {
       {/* Search Box */}
       <div className={styles.searchCont}>
         <div className={styles.searchTitle}>Where to?</div>
-        <SearchComponent/>
+        <SearchComponent setProgress={props.setProgress}/>
         <div className={styles.searchBtns}>
-          <Link to = '/hotels'>
-          <button className={styles.searchBtn}>
-            Hotels
-            <img src={hotel} className={styles.icons2} alt="hotels" />
-          </button>
+          <Link to='/hotels'>
+            <button className={styles.searchBtn}>
+              Hotels
+              <img src={hotel} className={styles.icons2} alt="hotels" />
+            </button>
           </Link>
-          <Link to = '/todo'>
-          <button className={styles.searchBtn}>
-            Things to do
-            <img src={thing} className={styles.icons2} alt="things" />
-          </button>
+          <Link to='/todo'>
+            <button className={styles.searchBtn}>
+              Things to do
+              <img src={thing} className={styles.icons2} alt="things" />
+            </button>
           </Link>
-          <Link to = '/restaurants'>
-          <button className={styles.searchBtn}>
-            Restaurants
-            <img src={restaurant} className={styles.icons2} alt="restaurants" />
-          </button>
+          <Link to='/restaurants'>
+            <button className={styles.searchBtn}>
+              Restaurants
+              <img src={restaurant} className={styles.icons2} alt="restaurants" />
+            </button>
           </Link>
-          <button className={styles.searchBtn}>
-            Travel stories
-            <img src={story} className={styles.icons2} alt="stories" />
-          </button>
         </div>
       </div>
       {/* Services */}

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import './Sites.css'
 import Card from './Card'
 import hotel_icon from "../Assets/hotel_icon.svg"
@@ -15,8 +15,17 @@ function Sites(props) {
     const context = useContext(PlaceContext);
     const { restaurants, getRestaurants, hotels, getHotels, todo, getTodo } = context;
     const [sites, setSites] = useState([]);
-
+    let navigate = useNavigate();
     useEffect(() => {
+
+        if (localStorage.getItem('token'))
+            console.log("auth-token")
+        else {
+            console.log("login-required")
+            navigate('/');
+        }
+
+        
         if (props.type === 'restaurants') {
             getRestaurants();
         } else if (props.type === 'hotels') {
@@ -24,8 +33,10 @@ function Sites(props) {
         } else if (props.type === 'todo') {
             getTodo();
         }
+        
+
     }, [props.type]);
-    
+
     useEffect(() => {
         if (props.type === 'restaurants') {
             console.log(restaurants);
@@ -38,7 +49,7 @@ function Sites(props) {
             setSites(todo);
         }
     }, [restaurants, hotels, todo]);
-    
+
     const { type } = props;
     return (
 

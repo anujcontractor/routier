@@ -16,10 +16,18 @@ const Signup = (props) => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { name, email, password } = credentials;
-    console.log(name, email, password);
 
+    e.preventDefault();
+    const { name, email, password, cpassword } = credentials;
+
+    if(cpassword!=password)
+    {
+        props.createNotification('warning', 'Invalid credentials');
+        return;
+    }
+
+    console.log(name, email, password);
+    props.setProgress(20);
     const response = await fetch(`https://routier-production.up.railway.app/api/users/register`, {
       method: "POST",
       headers: {
@@ -28,25 +36,21 @@ const Signup = (props) => {
       body: JSON.stringify({ name, email, password })
     });
 
-
+    props.setProgress(70);
     console.log(response.status);
     if (response.status === 201) {
 
       const json = await response.json();
       localStorage.setItem('token', json.authtoken);
+      props.createNotification('success', 'Account created successfully')
       navigate('/home');
-      props.showAlert("Account created successfully", "success");
-      console.log("Account created successfully")
 
     } else if (response.status === 400) {
-      
-      props.showAlert(`Invalid User`, "danger");
-      console.log("Invalid User");
-
+      props.createNotification('warning', 'Invalid User')
     } else {
-      props.showAlert(`Error: ${response.status} - ${response.statusText}`, "danger");
-      console.log(`Error: ${response.status} - ${response.statusText}`);
+      props.createNotification('warning', `Error: ${response.status} - ${response.statusText}`)
     }
+    props.setProgress(100);
   }
 
   return (
@@ -64,19 +68,19 @@ const Signup = (props) => {
             <div className={styles.inputs}>
               <div className={styles.input}>
                 <label htmlFor="name" className="form-label"></label>
-                <input type="text" placeholder="Full Name" id="name" name="name" onChange={onChange} />
+                <input type="text" placeholder="Full Name" id="name" name="name" onChange={onChange} required/>
               </div>
               <div className={styles.input}>
                 <label htmlFor="email" className="form-label"></label>
-                <input type="email" placeholder="Email Address" id="email" name="email" onChange={onChange} />
+                <input type="email" placeholder="Email Address" id="email" name="email" onChange={onChange} required/>
               </div>
               <div className={styles.input}>
                 <label htmlFor="password" className="form-label"></label>
-                <input type="password" placeholder="Password" id="password" name="password" onChange={onChange} />
+                <input type="password" placeholder="Password" id="password" name="password" onChange={onChange} required/>
               </div>
               <div className={styles.input}>
                 <label htmlFor="cpassword" className="form-label"></label>
-                <input type="password" placeholder="Repeat Password" id="cpassword" name="cpassword" onChange={onChange} />
+                <input type="password" placeholder="Repeat Password" id="cpassword" name="cpassword" onChange={onChange} required/>
               </div>
             </div>
             <button className={styles.signupSubmit} type="submit">

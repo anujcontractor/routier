@@ -16,17 +16,21 @@ const PlaceState = (props) => {
     const [searchResults, setSearchResults] = useState([]);
   
     const fetchData = async () => {
+
+     
         try {
           const response = await fetch('https://routier-production.up.railway.app/api/placeinfo');
           // console.log(response)
           const data = await response.json();
           // console.log(data);
-    
           setAllData(data.response);
+
         } catch (error) {
-          console.error("Error fetching data:", error);
+        //   console.error("Error fetching data:", error);
+          props.createNotification('warning', error)
           // console.log(data);
         }
+
       };
 
     /*get the place*/
@@ -49,7 +53,8 @@ const PlaceState = (props) => {
 
     /*get the to do sites*/
     const getTodo = async (placeid) => {
-
+        
+        props.setProgress(30);
         const response = await fetch(`${host}/api/todo`, {
             method: "GET",
             headers: {
@@ -57,10 +62,12 @@ const PlaceState = (props) => {
                 "auth-token": localStorage.getItem('token')
             },
         });
-    
+ 
         const json = await response.json();
         // console.log(json);
        setTodo(json.response);
+       props.setProgress(100);
+
         //console.log(restaurants)
 
         //response
@@ -71,6 +78,8 @@ const PlaceState = (props) => {
 
     /*get hotels sites*/
     const getHotels = async (placeid) => {
+        
+        props.setProgress(30);
 
         const response = await fetch(`${host}/api/stay`, {
             method: "GET",
@@ -79,10 +88,11 @@ const PlaceState = (props) => {
                 "auth-token": localStorage.getItem('token')
             },
         });
-    
         const json = await response.json();
         // console.log(json);
        setHotels(json.response);
+       props.setProgress(100);
+
         //console.log(restaurants)
         //response
         //{siteid, Image, site_name, site_description, site_rating} of all site(hotels only)
@@ -91,6 +101,9 @@ const PlaceState = (props) => {
 
     /*get Restaurants sites*/
     const getRestaurants = async () => {
+
+        props.setProgress(30);
+
         const response = await fetch(`${host}/api/restaurants/`, {
             method: "GET",
             headers: {
@@ -98,10 +111,11 @@ const PlaceState = (props) => {
                 "auth-token": localStorage.getItem('token')
             },
         });
-    
         const json = await response.json();
         // console.log(json);
        setRestaurants(json.response);
+       props.setProgress(100);
+
         //console.log(restaurants)
     }
 
