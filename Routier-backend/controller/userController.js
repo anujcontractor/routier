@@ -53,10 +53,11 @@ const registerUser = expressAsyncHandler(async (req, res) => {
 });
 
 const getUserProfile = expressAsyncHandler(async (req, res) => {
-    const user = req.user;
+    const user = await User.findById(req.user._id);
+
+    await user.populate("reviews");
 
     res.status(200).json(user);
-    res.json("Profile");
 });
 
 const logoutUser = expressAsyncHandler(async (req, res) => {
