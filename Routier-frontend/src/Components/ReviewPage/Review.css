@@ -10,16 +10,38 @@
     align-items: center;
     font-size: 3rem;
     line-height: 3.42rem;
-    padding-top: 10.19rem;
-    padding-bottom: 4.69rem;
+    margin-top: 6vh;
+    margin-bottom: 10vh;
 }
 
-.title2{
-    padding-bottom: 1rem;
+.reviewheader{
+    /* border: solid 0.1rem black; */
+    padding: 2rem 3rem;
+    width: stretch;
+    height: 12vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius:0 0 2.9375vw 2.9375vw;
+    background: #E8F5F9;
+  }
+
+.texts {
+    display: flex;
+    flex-direction: column;
+    color: #74B6C2;
+    font-size: 2rem;
+    line-height: 2.28rem;
+    margin-left: 6vw;
+    font-family: Poppins;
+    font-weight: 600;
+    margin-bottom: 7vh;
 }
+
 
 .rating{
-    margin-left: 7.75rem;
     margin-right: 1.5rem;
     margin-top: 1rem;
 
@@ -28,7 +50,8 @@
 .rating_text{
     display: inline-block;
     align-items: center;
-    font-family: "Poppins";
+    justify-self: center;
+    font-family: Poppins;
     font-size: 1.5rem;
     line-height: 0.875rem;
     font-weight: 400;
@@ -37,21 +60,29 @@
 
 .image1{
     position: absolute;
-    transform: translate(58.19rem, 0);
+    transform: translate(55.19rem, 0);
+    width: 15rem;
+    height: 12rem;
     margin-bottom: 0;
 
 }
 
+.dropdown {
+    width: 100%; /* Take up the full width of the container */
+    max-width: 200px; /* Set a maximum width if needed */
+    height: 2.8125rem;
+    border-radius: 1.40625rem; /* Adjusted for a smoother look */
+    border: 1px solid #046B82;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem; /* Add padding to the dropdown for better spacing */
+    box-sizing: border-box; /* Include padding and border in the total width and height */
+}
 
 .title3{
     padding-top: 3.56rem;
     padding-bottom: 1.69rem;
 }
 
-.main_dropdown{
-    padding-left: 8.56rem;
-    padding-bottom: 3.56rem;
-}
 
 .title4{
     padding-bottom: 0.75rem;
@@ -63,14 +94,13 @@
 }
 
 .location_display{
-    margin-left: 58.5rem;
-    padding-bottom: 0.37rem;
+    margin-left: 55.5rem;
 }
 
 .location_display h1 {
     color: black;
     justify-content: end;
-    font-family: "Poppins";
+    font-family: Poppins;
     font-size: 1.125rem;
     font-weight: 500;
     line-height: 1.375rem;
@@ -80,7 +110,7 @@
 
 .location_display h2{
     color: #A5A5A5;
-    font-family: "Poppins";
+    font-family: Poppins;
     font-weight: 500;
     font-size: 1.125rem;
     line-height: 1.375rem;
@@ -116,7 +146,6 @@
     display: block;
     width: 54.0625rem;
     height: 12rem;
-    margin-left: 8.56rem;
     margin-bottom: 5.06rem;
     cursor: pointer;
     background-color: #ECECEC;
@@ -149,8 +178,6 @@
 
 .button_container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding-bottom: 4.5rem;
 }
 
@@ -166,6 +193,7 @@
     line-height: normal;
     letter-spacing: 0.02625rem; 
     color: white;
+    justify-self: left;
     justify-content: center;
     align-items: center;
     border-radius: 2.5rem;

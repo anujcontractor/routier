@@ -9,6 +9,7 @@ import newsletterpic from '../Assets/newsletterpic.png';
 import headerlogo from '../Assets/aboutus/headerlogo.png';
 import profile from '../Assets/aboutus/profile.png';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const AboutUssection = () => {
     return (
@@ -183,9 +184,9 @@ function Aboutus() {
 
           <div className={styles2.footertextblockcover}>
               <div className={styles2.footertextblock}>
-                <div className={styles2.footertexttitle}>About us</div>
-                <div className={styles2.footernormaltext}>What is Routier?</div>
-                <div className={styles2.footernormaltext}>How it works?</div>
+                <div className={styles2.footertexttitle} >About us</div>
+                <Link className={styles2.footernormaltext} to="/aboutus">What is Routier?</Link>
+                <Link className={styles2.footernormaltext} to="/aboutus">How it works?</Link>
               </div>
 
               <div className={styles2.footertextblock}>
@@ -197,7 +198,7 @@ function Aboutus() {
 
               <div className={styles2.footertextblock}>
                 <div className={styles2.footertexttitle}>Contact us</div>
-                <div className={styles2.footernormaltext}>Our Story</div>
+                <Link className={styles2.footernormaltext} to="/aboutus">Our Story</Link>
                 <div className={styles2.footernormaltext}>Work with us</div>
                 <div className={styles2.footernormaltext}>Want to be Collaborator?</div>
               </div>

@@ -52,8 +52,8 @@ const Footer = () => {
           <div className={styles2.footertextblockcover}>
             <div className={styles2.footertextblock}>
               <div className={styles2.footertexttitle}>About us</div>
-              <div className={styles2.footernormaltext}>What is Routier?</div>
-              <div className={styles2.footernormaltext}>How it works?</div>
+              <Link className={styles2.footernormaltext} to="/aboutus">What is Routier?</Link>
+              <Link className={styles2.footernormaltext} to="/aboutus">How it works?</Link>
             </div>
 
             <div className={styles2.footertextblock}>
@@ -67,7 +67,7 @@ const Footer = () => {
 
             <div className={styles2.footertextblock}>
               <div className={styles2.footertexttitle}>Contact us</div>
-              <div className={styles2.footernormaltext}>Our Story</div>
+              <Link className={styles2.footernormaltext} to="/aboutus">Our Story</Link>
               <div className={styles2.footernormaltext}>Work with us</div>
               <div className={styles2.footernormaltext}>
                 Want to be Collaborator?

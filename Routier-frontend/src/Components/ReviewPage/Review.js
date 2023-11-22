@@ -6,6 +6,13 @@ import IMG from "../Assets/reviewplaceholder.jpg";
 import IMG2 from "../Assets/addphotoicon.png";
 import  "./Review.css";
 import { useState } from 'react';
+import {useParams , Link } from 'react-router-dom';
+import styles from '../Profile/Profile.module.css';
+import avatar from "../Assets/profile/avatar_profile.png";
+import logo from "../Assets/profile/logo_profile.svg";
+import profileHome from "../Assets/home/profile_home.svg";
+import fav from "../Assets/profile/fav_profile.png";
+import review from "../Assets/profile/review_profile.png";
 
 const colors = {
   Starcolor: "#f29d38",
@@ -17,30 +24,12 @@ const colors = {
 
 function Review(props) {
 
-  const id = '65587ece7a0f4855933365ab';
-  const [place , setPlace] = useState();
-
-  const getdetails = async () => {
-
-    const response = await fetch(`https://routier-production.up.railway.app/api/placeinfo/:${id}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NTU5ZDE4NzljN2Q5MjdhZDhiYjBmMGMiLCJpYXQiOjE3MDA0MTk2NjMsImV4cCI6MTcwMzAxMTY2M30.sMJH7suISpBrXEmyQOgQq8JKLOu23NRFsbNPa0aJBm0"
-        },
-    });
-
-    const json = await response.json();
-    // console.log(json);
-    setPlace(json);
-    //response
-    //placeid, Image array, place_name, place_description
-}
+  const { id } = useParams();
 
   /* object containing all review data */
   const [reviewData, setReviewData] = useState({
-    placeType:"opa restraunt" ,
-    location: 'dubai',
+    placeType:"restaurant",
+    location: id,
     starRating: 0,
     visitDate: '',
     visitedWith: [],
@@ -51,14 +40,14 @@ function Review(props) {
 
   /* for uploading data*/
   const handleSubmit = async () => {
-
-    console.log("this is token " + localStorage.getItem('token'));
     try {
+      console.log(reviewData);
+
       const response = await fetch( "https://routier-production.up.railway.app/reviews/submit", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          "auth-token" : localStorage.getItem(`token`),
+          'auth-token': localStorage.getItem(`token`),
         },
         body: JSON.stringify(reviewData),
       });
@@ -162,14 +151,65 @@ function Review(props) {
     console.log(reviewData.photos);
   };
 
+
+  /* for navbar */
+  const handleMenuClick = () => {
+    document.getElementById("navlinksCont2").style.display = "flex";
+  };
+  const handleCloseClick = () => {
+    document.getElementById("navlinksCont2").style.display = "none";
+  };
+
   return (
     <div>
+
+      {/* Navbar */}
+      <nav className="reviewheader">
+        <div className={styles.logoCont}>
+          <img src={logo} className={styles.logo} alt="logo" />
+        </div>
+        <div className={styles.navlinksCont}>
+          <Link to="/home" className={styles.alerts}>
+            Home
+          </Link>
+          <Link to="/aboutus" className={styles.trips}>
+            About Us
+          </Link>
+          <Link to="/profile" className={styles.profileIconCont}>
+            <img src={profileHome} className={styles.profileIcon} />
+          </Link>
+        </div>
+        <div className={styles.menuIcon}>
+          <span onClick={handleMenuClick} className="material-symbols-outlined">
+            menu
+          </span>
+        </div>
+        <div className={styles.navlinksCont2} id="navlinksCont2">
+          <div className={styles.closeIcon}>
+            <span
+              onClick={handleCloseClick}
+              className="material-symbols-outlined"
+            >
+              close
+            </span>
+          </div>
+          <Link to="/profile" className={styles.profileIconCont}>
+            <img src={profileHome} className={styles.profileIcon} />
+          </Link>
+          <Link to="/home" className={styles.alerts}>
+            Home
+          </Link>
+          <Link to="/aboutus" className={styles.trips}>
+            About Us
+          </Link>
+        </div>
+      </nav>
 
       <div className='maintitle'>
         Tell us, how's your visit?
       </div>
        
-        <div style={styles1.texts} className='title2'>How would you rate this place?</div>
+      <div className='texts'>How would you rate this place?
         <div >          
               <Rating
                 className='rating'
@@ -180,30 +220,27 @@ function Review(props) {
                 {ratingText} 
               </div>          
         </div>
+      </div>
+
+      <div>
+        <img src={IMG} alt='' className='image1 '/>
+      </div>
 
 
-        <div>
-          <img src={IMG} alt='' className='image1 '/>
-        </div>
-
-
-        <div style={styles1.texts} className='title3'>When did you go?</div>
-        <div className='main_dropdown '>
-          <div className='dropdown'>
-            <div>
+      <div className="texts" >When did you go?
             <input
               type="date"
               id="datePicker"
-              onClick={handleDateChange}
-            />
-          </div>
-          </div>
-        </div>
+              className='dropdown'
+              onChange={handleDateChange}
+            ></input>
+      </div>
 
-        <div style={styles1.texts} className='title4'>Whom did you go with?</div>
+        <div className='texts'>Whom did you go with?
               
-          <div className='main_text1  '>
+          <div>
               <Textinput1  onVisitedWithChange={handleVisitedWithChange} />
+          </div>
           </div>
 
         <div className='location_display '>
@@ -211,18 +248,18 @@ function Review(props) {
           <h2 >Location</h2>
         </div>
 
-        <div style={styles1.texts} className='title5 '>Title a Review</div>
-        <div className='main_text2 ]' >
+        <div className='texts'>Title a Review
+        <div >
             <Textinput2 onTitleChange={handleTitleChange}  />
-        </div>
+        </div></div>
 
-        <div style={styles1.texts} className='title6 '>Write a review</div>
-        <div className='main_text3 '>
+        <div className='texts'>Write a review
+        <div>
             <Textinput3 onReviewTextChange={handleReviewTextChange}  />    
         </div>
+        </div>
 
-
-        <div style={styles1.texts} className='title7  '>Add some photos</div>
+        <div className='texts'>Add some photos
         <label className='photoupload ' >
           <div className='photouploadstyle'>
             <img src={IMG2} alt='' className='imageclass' /> 
@@ -238,17 +275,14 @@ function Review(props) {
               onChange={handlePhotosChange}
               />
           </div>
-        </label>
-            
-          
+        </label> 
 
         <div className='button_container '>
           <button className='submitbutton' onClick={handleSubmit}>
             <span className='buttontext'> Submit Review </span> 
           </button>
-    
         </div>
-        
+        </div> 
 
     </div>
     
@@ -259,20 +293,6 @@ function Review(props) {
 
 
 const styles1 ={
-
-  texts: {
-    display: "flex",
-    flexDirection: "column",
-    color: "#74B6C2",
-    fontSize: "2rem",
-    lineHeight: "2.28rem",
-    paddingRight: "7.75rem",
-    paddingLeft: "8rem",
-    fontFamliy: "Poppins",
-    fontWeight: "600",
-  },
-
-
 
   container: {
     display: "flex",
