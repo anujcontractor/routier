@@ -19,7 +19,7 @@ const index = (req, res, next) => {
 
 // show single todo
 const show = (req, res, next) => {
-  let todoID = req.params.todoID;
+  let todoID = req.params.id;
   Todo.findById(todoID)
     .populate("location")
     .populate("reviews")
