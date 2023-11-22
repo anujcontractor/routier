@@ -69,9 +69,8 @@ const submitReview = expressAsyncHandler(async (req, res) => {
           await place.save();
           break;
         default:
-          break;
+          return res.status(400).json({ message: "Invalid placeType" });
       }
-
     }
     res.status(201).json({ message: "Review submitted successfully" });
   } catch (error) {
