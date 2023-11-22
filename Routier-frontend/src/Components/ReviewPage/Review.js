@@ -26,7 +26,7 @@ function Review(props) {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NTU5ZDE4NzljN2Q5MjdhZDhiYjBmMGMiLCJpYXQiOjE3MDA0MTk2NjMsImV4cCI6MTcwMzAxMTY2M30.sMJH7suISpBrXEmyQOgQq8JKLOu23NRFsbNPa0aJBm0"
+            "auth-token": localStorage.getItem('token'),
         },
     });
 

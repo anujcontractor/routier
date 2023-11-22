@@ -33,7 +33,8 @@ const Login = (props) => {
     
     if (response.ok) {
       const json = await response.json();
-      localStorage.setItem('token', json.authtoken);
+      // console.log(json);
+      localStorage.setItem('token', json.token);
       props.createNotification('success', 'Logged in successfully')
       navigate('/home');
       // console.log(json);

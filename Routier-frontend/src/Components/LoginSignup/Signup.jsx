@@ -41,7 +41,7 @@ const Signup = (props) => {
     if (response.status === 201) {
 
       const json = await response.json();
-      localStorage.setItem('token', json.authtoken);
+      localStorage.setItem('token', json.token);
       props.createNotification('success', 'Account created successfully')
       navigate('/home');
 
