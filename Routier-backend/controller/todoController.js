@@ -3,6 +3,8 @@ import Todo from "../model/todoModel.js";
 // index all todos
 const index = (req, res, next) => {
   Todo.find()
+    .populate("location")
+    .populate("reviews")
     .then((response) => {
       res.json({
         response,
@@ -19,6 +21,8 @@ const index = (req, res, next) => {
 const show = (req, res, next) => {
   let todoID = req.body.todoID;
   Todo.findById(todoID)
+    .populate("location")
+    .populate("reviews")
     .then((response) => {
       res.json({
         response,

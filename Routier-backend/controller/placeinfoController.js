@@ -5,6 +5,7 @@ const show = (req, res, next) => {
     .populate('stays')
     .populate('todos')
     .populate('restaurants')
+    .populate('reviews')
     .then((response) => {
       res.json({
         response,
@@ -23,6 +24,7 @@ const showbyid = (req, res, next) => {
     .populate('stays')
     .populate('todos')
     .populate('restaurants')
+    .populate('reviews')
     .then(response => {
       if (response) {
         res.json({

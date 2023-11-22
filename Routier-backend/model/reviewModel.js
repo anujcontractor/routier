@@ -6,7 +6,11 @@ const reviewSchema = new mongoose.Schema({
     ref: "User",
   },
   placeType: String,
-  location: String,
+  location: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Place",
+    required: true,
+  },
   starRating: Number,
   visitDate: Date,
   visitedWith: [String],
