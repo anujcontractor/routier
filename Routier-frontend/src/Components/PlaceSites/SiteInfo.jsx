@@ -111,7 +111,9 @@ function SiteInfo(props) {
             <div className='rbuttons'>
               <div className="button">
                 <img src={edit_icon} alt="icon" />
-                <Link to="/">Review</Link>
+                <Link to={`/givereview/${id}?placeName=${encodeURIComponent(site.name)}&placeImage=${encodeURIComponent(site.image[0])}`}>
+                Review
+                </Link>
 
               </div>
 

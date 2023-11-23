@@ -6,13 +6,10 @@ import IMG from "../Assets/reviewplaceholder.jpg";
 import IMG2 from "../Assets/addphotoicon.png";
 import  "./Review.css";
 import { useState } from 'react';
-import {useParams , Link } from 'react-router-dom';
+import {useParams , Link , useLocation} from 'react-router-dom';
 import styles from '../Profile/Profile.module.css';
-import avatar from "../Assets/profile/avatar_profile.png";
 import logo from "../Assets/profile/logo_profile.svg";
 import profileHome from "../Assets/home/profile_home.svg";
-import fav from "../Assets/profile/fav_profile.png";
-import review from "../Assets/profile/review_profile.png";
 
 const colors = {
   Starcolor: "#f29d38",
@@ -25,10 +22,14 @@ const colors = {
 function Review(props) {
 
   const { id } = useParams();
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
 
+  const placeName = params.get('placeName');
+  const placeImage = params.get('placeImage');
   /* object containing all review data */
   const [reviewData, setReviewData] = useState({
-    placeType:"restaurant",
+    placeType: "restaurant",
     location: id,
     starRating: 0,
     visitDate: '',
@@ -223,7 +224,7 @@ function Review(props) {
       </div>
 
       <div>
-        <img src={IMG} alt='' className='image1 '/>
+        <img src={placeImage} alt='' className='image1 '/>
       </div>
 
 
@@ -244,7 +245,7 @@ function Review(props) {
           </div>
 
         <div className='location_display '>
-          <h1 >Opa Restaurant</h1>
+          <h1 >{placeName}</h1>
           <h2 >Location</h2>
         </div>
 

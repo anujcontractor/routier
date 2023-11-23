@@ -21,7 +21,7 @@ const index = (req, res, next) => {
 
 //Search a particular stay
 const show = (req, res, next) => {
-  let stayID = req.params.StayID;
+  let stayID = req.params.id;
   Stay.findById(stayID)
     .populate("location")
     .populate("reviews")
