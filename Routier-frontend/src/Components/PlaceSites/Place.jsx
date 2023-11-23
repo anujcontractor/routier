@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect, navigate } from 'react'
+import { Link, useParams } from "react-router-dom";
 import PhotoAlbum from "react-photo-album";
 import PlaceContext from '../../Context/PlaceContext.jsx';
 
@@ -16,10 +16,30 @@ import Navbar from './Navbar.jsx';
 function Place(props) {
 
   const context = useContext(PlaceContext);
-  const { searchResults } = context;
-  const [sites, setSites] = useState([]);
+  const { getPlaceById, place} = context;
+  const { placeid } = useParams();
 
-  const place = searchResults[0];
+ 
+
+
+  useEffect(() => {
+
+    if (localStorage.getItem('token')) {
+      // console.log("auth-token");
+    } else {
+      // console.log("login-required");
+      props.createNotification('warning','Login required')
+      navigate('/');
+    }
+
+    getPlaceById(placeid);
+  }, []);
+
+  useEffect(() => {
+
+    
+ }, [place]);
+
   // console.log(place.restaurants)
   // const fetchData = async () => {
   //   let url = "";
@@ -29,7 +49,7 @@ function Place(props) {
   // };
 
 
-  const photos = place.images.map((imgLink) => ({
+  const photos = place?.images?.map((imgLink) => ({
     src: imgLink,
     width: 800, // Set the width as needed
     height: 800, // Set the height as needed
@@ -49,28 +69,28 @@ function Place(props) {
 
           <div className="buttons">
 
-            <Link to="/place">
+            <Link to={`/place/${placeid}`}>
               <div className="button">
                 {place.name}
                 <img src={stories_ion} alt="icon" />
               </div>
             </Link>
 
-            <Link to="/hotels">
+            <Link to={placeid ? `/place/${placeid}/hotels`: '/hotels'}>
               <div className="button">
                 Hotels
                 <img src={hotel_icon} alt="icon" />
               </div>
             </Link>
 
-            <Link to="/todo">
+            <Link to={placeid ? `/place/${placeid}/todos`: '/todos'}>
               <div className="button">
                 Things to do
                 <img src={todo_icon} alt="icon" />
               </div>
             </Link>
 
-            <Link to="/restaurants">
+            <Link to={placeid ? `/place/${placeid}/restaurants`: '/restaurants'}>
               <div className="button">
                 Restaurants
                 <img src={restaurant_icon} alt="icon" />
@@ -107,7 +127,7 @@ function Place(props) {
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, cupiditate?</p>
             </div>
             <div className="sliderData">
-              <Slider sites={place.todos} />
+              <Slider sites={place.todos} placeid={placeid} type = {'todos'}/>
             </div>
 
           </div>
@@ -118,7 +138,7 @@ function Place(props) {
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, cupiditate?</p>
             </div>
             <div className="sliderData">
-              <Slider sites={place.stays} />
+              <Slider sites={place.stays} placeid={placeid} type = {'hotels'}/>
             </div>
 
           </div>
@@ -129,7 +149,7 @@ function Place(props) {
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, cupiditate?</p>
             </div>
             <div className="sliderData">
-              <Slider sites={place.restaurants} />
+              <Slider sites={place.restaurants} placeid={placeid} type = {'restaurants'}/>
             </div>
 
           </div>

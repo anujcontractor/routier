@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect, navigate } from 'react'
 import { Link, useParams } from "react-router-dom";
 import PhotoAlbum from "react-photo-album";
 import Review from './Review';
@@ -20,38 +20,43 @@ function SiteInfo(props) {
 
   // const [reviews] = props;
   const context = useContext(PlaceContext);
-  const { restaurants, hotels, todo, } = context;
-  const { id } = useParams();
+  const { place, site,  setSite, getHotelById, getRestaurantById, getTodoById } = context;
+  const { placeid, siteid } = useParams();
+  console.log(siteid);
 
-  console.log(restaurants);
+  useEffect(() => {
+     
+    setSite([]);
+    if (localStorage.getItem('token')) {
+      // console.log("auth-token");
+    } else {
+      // console.log("login-required");
+      props.createNotification('warning','Login required')
+      navigate('/');
+    }
 
-  let site = restaurants.find((place) => place._id === id);
+    if (props.type === 'restaurants') {
+      getRestaurantById(siteid);
+    } else if (props.type === 'hotels') {
+      getHotelById(siteid);
+    } else if (props.type === 'todos') {
+      getTodoById(siteid);
+    }
 
-  if (!site) {
-    site = hotels.find((place) => place._id === id);
+  }, [placeid, siteid, props.type]);
 
-  }
+  useEffect(() => {
+    
+  }, [site]);
 
-  if (!site) {
-    site = todo.find((place) => place._id === id);
-
-  }
-  console.log(site);
-  // const photos = [
-
-  //   { src: {site.image[0]? site.image}, width: 800, height: 600 },
-  //   { src: place_img, width: 1600, height: 900 },
-  //   { src: place_img, width: 800, height: 600 },
-  //   { src: place_img, width: 1600, height: 900 },
-  //   { src: place_img, width: 800, height: 600 },
-  //   { src: place_img, width: 1600, height: 900 },
-  // ];
-  const photos = site.image.map((imgLink) => ({
+  const photos = site?.image?.map((imgLink) => ({
     src: imgLink,
     width: 500, // Set the width as needed
     height: 500, // Set the height as needed
   }));
 
+
+  // console.log(site);
   return (
     <>
       <Navbar />
@@ -62,28 +67,30 @@ function SiteInfo(props) {
 
           <div className="buttons">
 
-            <Link to="/place">
-              <div className="button">
-                Place
-                <img src={stories_ion} alt="icon" />
-              </div>
-            </Link>
+            {placeid !== undefined ? (
+              <Link to={`/place/${placeid}`}>
+                <div className="button">
+                  {place.name}
+                  <img src={stories_ion} alt="icon" />
+                </div>
+              </Link>
+            ) : null}
 
-            <Link to="/hotels">
+            <Link to={placeid !== undefined ? `/place/${placeid}/hotels` : '/hotels'}>
               <div className="button">
                 Hotels
                 <img src={hotel_icon} alt="icon" />
               </div>
             </Link>
 
-            <Link to="/todo">
+            <Link to={placeid !== undefined ? `/place/${placeid}/todos` : '/todos'}>
               <div className="button">
                 Things to do
                 <img src={todo_icon} alt="icon" />
               </div>
             </Link>
 
-            <Link to="/restaurants">
+            <Link to={placeid !== undefined ? `/place/${placeid}/restaurants` : '/restaurants'}>
               <div className="button">
                 Restaurants
                 <img src={restaurant_icon} alt="icon" />
@@ -99,7 +106,7 @@ function SiteInfo(props) {
         <section className="imgs">
 
           <div className="siteHeader">
-            <h2 className="titletext">{site.name}</h2>
+            <h2 className="titletext">{site?.name}</h2>
 
             <div className='rbuttons'>
               <div className="button">
@@ -118,10 +125,10 @@ function SiteInfo(props) {
 
           <div className="contact">
             <p>
-              <img src={location} alt="" /><span>{site.address}</span>
+              <img src={location} alt="" /><span>{site?.address}</span>
             </p>
             <p>
-              <img src={call} alt="" /><span>{site.phone}</span>
+              <img src={call} alt="" /><span>{site?.phone}</span>
             </p>
           </div>
 
@@ -136,11 +143,12 @@ function SiteInfo(props) {
 
         return <Review/>
     })} */}
-
+{/* 
           <Review />
           <Review />
           <Review />
-          <Review />
+          <Review /> */}
+          <div>No reviews yet</div>
         </section>
 
       </div>

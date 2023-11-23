@@ -20,13 +20,24 @@ const Signup = (props) => {
     e.preventDefault();
     const { name, email, password, cpassword } = credentials;
 
-    if(cpassword!=password)
-    {
-        props.createNotification('warning', 'Invalid credentials');
-        return;
+    if (cpassword != password) {
+      props.createNotification('warning', 'Invalid credentials');
+      return;
     }
 
-    console.log(name, email, password);
+    if(name.length<3)
+    {
+      props.createNotification('warning', 'Your name length must be greater than 3');
+      return;
+    }
+
+    if(password.length<5)
+    {
+      props.createNotification('warning', 'password length atleast 5');
+      return;
+    }
+
+    // console.log(name, email, password);
     props.setProgress(20);
     const response = await fetch(`https://routier-production.up.railway.app/api/users/register`, {
       method: "POST",
@@ -37,15 +48,14 @@ const Signup = (props) => {
     });
 
     props.setProgress(70);
-    console.log(response.status);
+    // console.log(response.status);
     if (response.status === 201) {
 
       const signupdata = await response.json();
       localStorage.setItem('token', signupdata.token);
-      console.log(signupdata.token);
+      // console.log(signupdata.token);
       props.createNotification('success', 'Account created successfully')
       navigate('/home');
-
     } else if (response.status === 400) {
       props.createNotification('warning', 'Invalid User')
     } else {
@@ -69,19 +79,19 @@ const Signup = (props) => {
             <div className={styles.inputs}>
               <div className={styles.input}>
                 <label htmlFor="name" className="form-label"></label>
-                <input type="text" placeholder="Full Name" id="name" name="name" onChange={onChange} required/>
+                <input type="text" placeholder="Full Name" id="name" name="name" onChange={onChange} required />
               </div>
               <div className={styles.input}>
                 <label htmlFor="email" className="form-label"></label>
-                <input type="email" placeholder="Email Address" id="email" name="email" onChange={onChange} required/>
+                <input type="email" placeholder="Email Address" id="email" name="email" onChange={onChange} required />
               </div>
               <div className={styles.input}>
                 <label htmlFor="password" className="form-label"></label>
-                <input type="password" placeholder="Password" id="password" name="password" onChange={onChange} required/>
+                <input type="password" placeholder="Password" id="password" name="password" onChange={onChange} required />
               </div>
               <div className={styles.input}>
                 <label htmlFor="cpassword" className="form-label"></label>
-                <input type="password" placeholder="Repeat Password" id="cpassword" name="cpassword" onChange={onChange} required/>
+                <input type="password" placeholder="Repeat Password" id="cpassword" name="cpassword" onChange={onChange} required />
               </div>
             </div>
             <button className={styles.signupSubmit} type="submit">

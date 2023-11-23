@@ -18,7 +18,11 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(credentials.email, credentials.password)
-
+    if(credentials.password.length<5)
+    {
+      props.createNotification('warning', 'password length atleast 5');
+      return;
+    }
     props.setProgress(20);
     const response = await fetch(`https://routier-production.up.railway.app/api/users/login`, {
       method: "POST",
@@ -29,12 +33,12 @@ const Login = (props) => {
     });
 
     props.setProgress(70);
-    console.log(response.status);
+    // console.log(response.status);
     
     if (response.ok) {
       const loginData = await response.json();
       localStorage.setItem('token', loginData.token);
-      console.log(loginData.token);
+      // console.log(loginData.token);
       props.createNotification('success', 'Logged in successfully')
       navigate('/home');
       // console.log(json);
@@ -70,7 +74,7 @@ const Login = (props) => {
               </div>
             </div>
 
-            <a href="/">Forget Password?</a>
+           <div></div>
             <button className={styles.loginSubmit} type="submit">
               Login
             </button>

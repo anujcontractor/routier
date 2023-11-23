@@ -32,7 +32,7 @@ const Main = (props) => {
 
     if (localStorage.getItem('token'))
       navigate('/home')
-  }, []);
+  }, [navigate]);
 
 
 
@@ -83,11 +83,6 @@ const Main = (props) => {
             Sign In
           </Link>
 
-
-          <Link to="/login" className={styles.signin} >
-            Login
-          </Link>
-
         </div>
         <div className={styles.menuIcon}>
           <span onClick={handleMenuClick} className="material-symbols-outlined">
@@ -118,9 +113,6 @@ const Main = (props) => {
           <Link to="/signup" className={styles.signin} >
             Sign up
           </Link>
-          <Link to="/login" className={styles.signin}>
-            Login
-          </Link>
         </div>
       </nav>
       <div className={styles.bgCont}>
@@ -136,7 +128,7 @@ const Main = (props) => {
         <div className={styles.searchTitle}>Where to?</div>
         <form className={styles.searchBar}>
           <img src={search} className={styles.searchIcon} alt="search-icon" />
-          <input type="text" placeholder="Places to go, Things to do, Hotels" />
+          <input type="text" placeholder="Search Places to go..." />
           <button type="submit" onClick={handleSubmit}>Search</button>
         </form>
         <div className={styles.searchBtns}>

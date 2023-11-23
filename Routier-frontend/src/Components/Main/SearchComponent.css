@@ -1,0 +1,44 @@
+#searchForm{
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.search-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+  }
+  
+  .search-result-item {
+    position: relative;
+    z-index: 1;
+    width: 200px;
+  }
+  
+  .search-result-link {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    background-color: rgba(173, 216, 230, 0.8); /* Light Blue with transparency */
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  
+    position: relative;
+    z-index: 2;
+  }
+  
+  p {
+    margin: 10px 0;
+  }
+  

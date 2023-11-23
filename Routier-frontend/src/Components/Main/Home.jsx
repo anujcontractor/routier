@@ -30,14 +30,14 @@ const Home = (props) => {
   let navigate = useNavigate();
 
   useEffect(() => {
-
-    if (localStorage.getItem('token'))
-      console.log("auth-token")
-    else {
-      console.log("login-required")
+    if (localStorage.getItem('token')) {
+      // console.log("auth-token");
+    } else {
+      // console.log("login-required");
+      props.createNotification('warning','Login required')
       navigate('/');
     }
-  }, []);
+  }, [navigate]); 
 
   const handleLogout = async () => {
 
@@ -51,7 +51,7 @@ const Home = (props) => {
     });
 
     props.setProgress(70);
-    console.log(response.status);
+    // console.log(response.status);
 
     if (response.status === 200) {
 
@@ -67,7 +67,7 @@ const Home = (props) => {
 
     }
     props.setProgress(100);
-  
+
   }
 
   const handleMenuClick = () => {
@@ -108,7 +108,7 @@ const Home = (props) => {
           <Link to="/profile" className={styles.profileCont}>
             <img src={profile} className={styles.profileIcon} />
           </Link>
-          
+
         </div>
         <div className={styles.menuIcon}>
           <span onClick={handleMenuClick} className="material-symbols-outlined">
@@ -155,15 +155,16 @@ const Home = (props) => {
       {/* Search Box */}
       <div className={styles.searchCont}>
         <div className={styles.searchTitle}>Where to?</div>
-        <SearchComponent setProgress={props.setProgress}/>
+        < SearchComponent setProgress={props.setProgress} />
+
         <div className={styles.searchBtns}>
-          <Link to='/hotels'>
+          <Link to={`/hotels`}>
             <button className={styles.searchBtn}>
               Hotels
               <img src={hotel} className={styles.icons2} alt="hotels" />
             </button>
           </Link>
-          <Link to='/todo'>
+          <Link to='/todos'>
             <button className={styles.searchBtn}>
               Things to do
               <img src={thing} className={styles.icons2} alt="things" />
