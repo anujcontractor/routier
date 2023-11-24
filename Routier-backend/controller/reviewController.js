@@ -67,6 +67,10 @@ const submitReview = expressAsyncHandler(async (req, res) => {
           const place = await Place.findById(location);
           place.reviews.push(review._id);
           await place.save();
+          if (starRating >= 3) {
+            req.user.prefferedplaces.push(place._id);
+            await req.user.save();
+          }
           break;
         default:
           return res.status(400).json({ message: "Invalid placeType" });
