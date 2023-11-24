@@ -24,12 +24,13 @@ function Review(props) {
   const { id } = useParams();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
+  const locationtype = params.get("type");
 
   const placeName = params.get('placeName');
   const placeImage = params.get('placeImage');
   /* object containing all review data */
   const [reviewData, setReviewData] = useState({
-    placeType: "restaurant",
+    placeType: locationtype,
     location: id,
     starRating: 0,
     visitDate: '',
