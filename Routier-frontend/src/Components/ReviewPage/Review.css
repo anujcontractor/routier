@@ -8,17 +8,29 @@
     font-weight: 700;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
-    line-height: 3.42rem;
-    margin-top: 6vh;
-    margin-bottom: 10vh;
+    font-size: 3vw;
+    line-height: 3.42vw;
+    margin-top: 6vw;
+    margin-bottom: 10vw;
+}
+
+.mainblock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.formbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .reviewheader{
     /* border: solid 0.1rem black; */
     padding: 2rem 3rem;
     width: stretch;
-    height: 12vh;
+    height: 4.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -32,8 +44,8 @@
     display: flex;
     flex-direction: column;
     color: #74B6C2;
-    font-size: 2rem;
-    line-height: 2.28rem;
+    font-size: 2vw;
+    line-height: 2.28vw;
     margin-left: 6vw;
     font-family: Poppins;
     font-weight: 600;
@@ -41,10 +53,33 @@
 }
 
 
-.rating{
-    margin-right: 1.5rem;
-    margin-top: 1rem;
+.reviewblockediting {
+    display: flex;
+    flex-direction: column;
+    color: #74B6C2;
+    font-size: 2vw;
+    line-height: 2.28vw;
+    margin-left: 6vw;
+    font-family: Poppins;
+    font-weight: 600;
+    margin-bottom: 7vh;
+    margin-top: 5vw;
+}
 
+.insidetexts {
+    margin-bottom: 5vw;
+}
+
+.image_block {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15vw;
+    margin-top: 5vw;
+}
+
+.rating{
+    margin-right: 1.5vw;
+    margin-top: 1vw;
 }
 
 .rating_text{
@@ -59,23 +94,21 @@
 }
 
 .image1{
-    position: absolute;
-    transform: translate(55.19rem, 0);
-    width: 15rem;
-    height: 12rem;
+    width: 21vw;
+    height: 18vw;
     margin-bottom: 0;
-
+    flex-shrink: 0;
 }
 
 .dropdown {
     width: 100%; /* Take up the full width of the container */
-    max-width: 200px; /* Set a maximum width if needed */
-    height: 2.8125rem;
-    border-radius: 1.40625rem; /* Adjusted for a smoother look */
+    max-width: 15vw; /* Set a maximum width if needed */
+    border-radius: 1.40625vw; /* Adjusted for a smoother look */
     border: 1px solid #046B82;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem; /* Add padding to the dropdown for better spacing */
+    padding: 0.5vw; /* Add padding to the dropdown for better spacing */
     box-sizing: border-box; /* Include padding and border in the total width and height */
+    margin-top: 2vw;
 }
 
 .title3{
@@ -93,9 +126,7 @@
     padding-right: 8.56rem;
 }
 
-.location_display{
-    margin-left: 55.5rem;
-}
+
 
 .location_display h1 {
     color: black;
@@ -144,50 +175,52 @@
 
 .photoupload {
     display: block;
-    width: 54.0625rem;
-    height: 12rem;
-    margin-bottom: 5.06rem;
+    width: 54.0625vw;
+    height: 12vh;
+    margin-bottom: 5.06vh;
     cursor: pointer;
     background-color: #ECECEC;
     border-radius: 0.625rem;
+    margin-top: 2vw;
 }
 
 .photouploadstyle {
     display: block;
-    width: 54.0625rem;
-    height: 12rem;
+    width: 54.0625vw;
+    height: 12vw;
     background-color: #ECECEC;
     border-radius: 0.625rem;
 }
 .imageclass{
     display: block;
-    transform: translate(26rem, 3rem);
-    width: 32px;
-    height: 32px;
+    transform: translate(26vw, 3vw);
+    width: 5vw;
+    height: 5vw;
 }
 
 .photoupload p {
     display: block;
-    transform: translate(20.94rem, 5.06rem);
+    transform: translate(20.94vw, 3.506vw);
     color: black;
     font-family: "Poppins";
     font-weight: 500;
-    font-size: 1.25rem;
+    font-size: 1.25vw;
     line-height: 0;
 }
 
 .button_container {
     display: flex;
-    padding-bottom: 4.5rem;
+    margin-top: 5vw;
+    padding-bottom: 4.5vw;
 }
 
 .submitbutton {
     display: flex;
-    width: 38.75rem;
-    height: 3rem;
+    width: 38.75vw;
+    height: 4vw;
     background-color: #046B82;
     font-family: "Poppins";
-    font-size: 1.3125rem;
+    font-size: 1.3125vw;
     font-style: normal;
     font-weight: 700; 
     line-height: normal;
@@ -198,4 +231,84 @@
     align-items: center;
     border-radius: 2.5rem;
     border-style: none;
+}
+
+
+
+@media (max-width: 700px) {
+
+    .reviewheader {
+        height: 2.5rem;
+    }
+
+    .maintitle{
+        display: flex;
+        font-size: 5vw;
+        line-height: 3.42vw;
+        margin-top: 6vw;
+        margin-bottom: 10vw;
+    }
+
+    .formbox {
+        margin-top: 4vw;
+    }
+
+    .mainblock {
+        flex-direction: column;
+    }
+    .image_block {
+        order: -1;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .location_display {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image1{
+        width: 55vw;
+        height: 52vw;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .ratingblock {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rating_text{
+        font-size: 1.2rem;
+        line-height: 0.875rem;
+    }
+
+    .texts {
+        display: flex;
+        flex-direction: column;
+        color: #74B6C2;
+        font-size: 4vw;
+        line-height: 2.28vw;
+        margin-left: 6vw;
+        font-family: Poppins;
+        font-weight: 600;
+    }
+
+    .reviewblockediting {
+        display: flex;
+        flex-direction: column;
+        color: #74B6C2;
+        font-size: 4vw;
+        line-height: 2.28vw;
+        margin-left: 6vw;
+        font-family: Poppins;
+        font-weight: 600;
+    }
+
+    .dropdown {
+        padding-top: 1.5vw;
+        width: 100%; /* Take up the full width of the container */
+        max-width: 25vw; /* Set a maximum width if needed */
+    }
 }

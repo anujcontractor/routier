@@ -25,9 +25,10 @@ function Review(props) {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const locationtype = params.get("type");
-
   const placeName = params.get('placeName');
   const placeImage = params.get('placeImage');
+
+
   /* object containing all review data */
   const [reviewData, setReviewData] = useState({
     placeType: locationtype,
@@ -212,80 +213,86 @@ function Review(props) {
         Tell us, how's your visit?
       </div>
        
-      <div className='texts'>How would you rate this place?
-        <div >          
-              <Rating
-                className='rating'
-                SVGstyle={ { 'display':'inline' } }
-                onClick={handleRating}/>
-                
-              <div className='rating_text'>
-                {ratingText} 
-              </div>          
-        </div>
-      </div>
-
-      <div>
-        <img src={placeImage} alt='' className='image1 '/>
-      </div>
-
-
-      <div className="texts" >When did you go?
-            <input
-              type="date"
-              id="datePicker"
-              className='dropdown'
-              onChange={handleDateChange}
-            ></input>
-      </div>
-
-        <div className='texts'>Whom did you go with?
-              
-          <div>
-              <Textinput1  onVisitedWithChange={handleVisitedWithChange} />
-          </div>
+      <div className='mainblock'>
+          
+          <div className='formbox'> 
+          <div className='texts'>How would you rate this place?
+            <div className='ratingblock' >          
+                  <Rating
+                    className='rating'
+                    SVGstyle={ { 'display':'inline' } }
+                    onClick={handleRating}/>
+                    
+                  <div className='rating_text'>
+                    {ratingText} 
+                  </div>          
+            </div>
           </div>
 
-        <div className='location_display '>
-          <h1 >{placeName}</h1>
-          <h2 >Location</h2>
-        </div>
-
-        <div className='texts'>Title a Review
-        <div >
-            <Textinput2 onTitleChange={handleTitleChange}  />
-        </div></div>
-
-        <div className='texts'>Write a review
-        <div>
-            <Textinput3 onReviewTextChange={handleReviewTextChange}  />    
-        </div>
-        </div>
-
-        <div className='texts'>Add some photos
-        <label className='photoupload ' >
-          <div className='photouploadstyle'>
-            <img src={IMG2} alt='' className='imageclass' /> 
-            <p> Click to add photos </p>
-            <input 
-              id="image" 
-              type="file" 
-              name="image"  
-              style={{display: 'none'}} 
-              width={874} 
-              height={192}
-              multiple
-              onChange={handlePhotosChange}
-              />
+          <div className="texts" >When did you go?
+                <input
+                  type="date"
+                  id="datePicker"
+                  className='dropdown'
+                  onChange={handleDateChange}
+                ></input>
           </div>
-        </label> 
 
-        <div className='button_container '>
-          <button className='submitbutton' onClick={handleSubmit}>
-            <span className='buttontext'> Submit Review </span> 
-          </button>
+            <div className="texts">Whom did you go with?
+              <div>
+                  <Textinput1  onVisitedWithChange={handleVisitedWithChange} />
+              </div>
+            </div>
+
+          
+            <div  className='reviewblockediting'>Title a Review
+            <div >
+                <Textinput2 onTitleChange={handleTitleChange}  />
+            </div></div>
+
+            <div className='texts'>Write a review
+            <div>
+                <Textinput3 onReviewTextChange={handleReviewTextChange}  />    
+            </div>
+            </div>
+
+            <div className='texts'>Add some photos
+            <label className='photoupload ' >
+              <div className='photouploadstyle'>
+                <img src={IMG2} alt='' className='imageclass' /> 
+                <p> Click to add photos </p>
+                <input 
+                  id="image" 
+                  type="file" 
+                  name="image"  
+                  style={{display: 'none'}} 
+                  width={874} 
+                  height={192}
+                  multiple
+                  onChange={handlePhotosChange}
+                  />
+              </div>
+            </label> 
+
+            <div className='button_container '>
+              <button className='submitbutton' onClick={handleSubmit}>
+                <span className='buttontext'> Submit Review </span> 
+              </button>
+            </div>
+            </div> 
+            </div>
+
+            <div className='image_block'>
+            <div>
+              <img src={placeImage} alt='' className='image1'/>
+            </div>
+
+            <div className='location_display '>
+              <h1 >{placeName}</h1>
+              <h2 >Location</h2>
+            </div>
+          </div>
         </div>
-        </div> 
 
     </div>
     

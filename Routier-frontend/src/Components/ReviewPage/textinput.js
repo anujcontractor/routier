@@ -82,7 +82,7 @@ const style1={
       borderColor: "#8C9091",
       borderWidth: "1px",
       borderRadius: "0.625rem",
-      height: "2.8125rem"
+      height: "4vw"
     }
 
 }

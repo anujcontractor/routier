@@ -186,22 +186,9 @@ function Aboutus() {
               <div className={styles2.footertextblock}>
                 <div className={styles2.footertexttitle} >About us</div>
                 <Link className={styles2.footernormaltext} to="/aboutus">What is Routier?</Link>
-                <Link className={styles2.footernormaltext} to="/aboutus">How it works?</Link>
+                <Link className={styles2.footernormaltext} to="/aboutus">Our Team</Link>
               </div>
 
-              <div className={styles2.footertextblock}>
-                <div className={styles2.footertexttitle}>Travel Blogs</div>
-                <div className={styles2.footernormaltext}>Bali Travel Guide</div>
-                <div className={styles2.footernormaltext}>Sri Lanks Travel Guide</div>
-                <div className={styles2.footernormaltext}>Peru Travel Guide</div>
-              </div>
-
-              <div className={styles2.footertextblock}>
-                <div className={styles2.footertexttitle}>Contact us</div>
-                <Link className={styles2.footernormaltext} to="/aboutus">Our Story</Link>
-                <div className={styles2.footernormaltext}>Work with us</div>
-                <div className={styles2.footernormaltext}>Want to be Collaborator?</div>
-              </div>
             </div>
         </div>
       </div>
