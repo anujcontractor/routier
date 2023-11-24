@@ -43,12 +43,13 @@ function Review(props) {
   const handleSubmit = async () => {
     try {
       console.log(reviewData);
+      console.log(`Bearer ${localStorage.getItem(`token`)}`)
 
       const response = await fetch( "https://routier-production.up.railway.app/reviews/submit", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'auth-token': localStorage.getItem(`token`),
+          Authorization: `Bearer ${localStorage.getItem(`token`)}`,
         },
         body: JSON.stringify(reviewData),
       });
