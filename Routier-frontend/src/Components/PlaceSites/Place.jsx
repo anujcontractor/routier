@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect, navigate } from 'react'
-import { Link, useParams } from "react-router-dom";
+import React, { useContext, useState, useEffect } from 'react'
+import { Link, useParams, useNavigate } from "react-router-dom";
 import PhotoAlbum from "react-photo-album";
 import PlaceContext from '../../Context/PlaceContext.jsx';
 
@@ -18,6 +18,7 @@ function Place(props) {
   const context = useContext(PlaceContext);
   const { getPlaceById, place} = context;
   const { placeid } = useParams();
+  const navigate = useNavigate();
 
  
 

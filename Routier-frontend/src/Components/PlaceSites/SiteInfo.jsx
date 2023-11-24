@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect, navigate } from 'react'
-import { Link, useParams } from "react-router-dom";
+import React, { useContext, useState, useEffect } from 'react'
+import { Link, useParams, useNavigate } from "react-router-dom";
 import PhotoAlbum from "react-photo-album";
 import Review from './Review';
 import Navbar from './Navbar';
@@ -22,6 +22,7 @@ function SiteInfo(props) {
   const context = useContext(PlaceContext);
   const { place, site,  setSite, getHotelById, getRestaurantById, getTodoById } = context;
   const { placeid, siteid } = useParams();
+  const navigate = useNavigate();
   console.log(siteid);
 
   useEffect(() => {
