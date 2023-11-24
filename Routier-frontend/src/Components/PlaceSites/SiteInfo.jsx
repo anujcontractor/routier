@@ -22,7 +22,7 @@ function SiteInfo(props) {
   const context = useContext(PlaceContext);
   const { place, site,  setSite, getHotelById, getRestaurantById, getTodoById } = context;
   const { placeid, siteid } = useParams();
-  const navigate = useNavigate();
+  let navigate = useNavigate();
   console.log(siteid);
 
   useEffect(() => {

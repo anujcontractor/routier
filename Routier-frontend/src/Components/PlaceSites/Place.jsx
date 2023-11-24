@@ -18,7 +18,7 @@ function Place(props) {
   const context = useContext(PlaceContext);
   const { getPlaceById, place} = context;
   const { placeid } = useParams();
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
  
 
