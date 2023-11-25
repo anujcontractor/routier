@@ -139,7 +139,7 @@
 .footertexttitle {
   color: var(--Blackish-Green, #121);
   font-family: Poppins;
-  font-size: 1.2vmax;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -149,7 +149,7 @@
 .footernormaltext {
   color: var(--Blackish-Green, #121);
   font-family: Poppins;
-  font-size: 1vmax;
+  font-size: 1.2rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -207,10 +207,12 @@
   }
   .footertextblockcover {
     flex-wrap: wrap;
+    width: 100%;
   }
 
   .footertextblock {
-    max-width: 30vw;
+    /* max-width: 30vw; */
+    width: 100%;
     justify-items: center;
   }
 }
@@ -220,6 +222,19 @@
   }
   .footer {
     margin-top: 5rem;
+  }
+
+  .footerlogoblock {
+    flex-direction: column;
+    gap: 5vw;
+    width: auto;
+  }
+  .footertexttitle{
+    font-size: 1.5rem;
+  }
+
+  .footernormaltext{
+    font-size: 1rem;
   }
 }
 @media (max-width: 345px) {

@@ -67,8 +67,9 @@
     font-size: 1rem;
     font-weight: 600;
     height: 60px;
-    margin-top: 2px;
-    margin-bottom: auto;
+    margin-top: 4px;
+    margin-bottom: 0;
+    /* margin-bottom: auto; */
 }
 
 .cardData .description {
@@ -76,6 +77,12 @@
     font-weight: 100;
     color: rgb(91, 91, 91);
     font-size: 0.85rem;
+    
+}
+
+.cardData .starrating {
+
+    margin: 0;
 }
 
 /**For mobile view**/
@@ -92,5 +99,8 @@
         top: 10px;
         right: 10px;
     }
-
+   
+    .cardData {
+        padding: 0 10px;
+    }
 }

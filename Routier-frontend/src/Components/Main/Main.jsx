@@ -16,6 +16,9 @@ import story from "../Assets/main/stories_main.svg";
 import service1 from "../Assets/main/service1_main.png";
 import service2 from "../Assets/main/service2_main.png";
 import service3 from "../Assets/main/service3_main.png";
+import close from '../Assets/close.svg'
+import toggle from '../Assets/toggle_btn.svg'
+import menu_white from '../Assets/menu_white.svg'
 
 // Dependencies
 import { Link, useNavigate } from 'react-router-dom';
@@ -44,11 +47,14 @@ const Main = (props) => {
 
   }
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const handleMenuClick = () => {
-    document.getElementById("navlinksCont2").style.display = "flex";
+    setIsMenuOpen(true);
   };
+
   const handleCloseClick = () => {
-    document.getElementById("navlinksCont2").style.display = "none";
+    setIsMenuOpen(false);
   };
 
 
@@ -67,53 +73,55 @@ const Main = (props) => {
           <img src={logo} className={styles.logo} alt="logo" />
         </div>
         <div className={styles.navlinksCont}>
-          <Link className={styles.reviews} onClick={() => props.createNotification('warning', 'Login required')}>
+          <Link to='profile' className={styles.reviews} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={review} className={styles.icons} />
             Reviews
           </Link>
-          <Link className={styles.alerts} onClick={() => props.createNotification('warning', 'Login required')}>
+          {/* <Link className={styles.alerts} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={alert} className={styles.icons} />
             Alerts
-          </Link>
-          <Link className={styles.trips} onClick={() => props.createNotification('warning', 'Login required')}>
+          </Link> */}
+          <Link to='/profile' className={styles.trips} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={trip} className={styles.icons} />
-            Trips
+            Favorites
           </Link>
-          <Link to="/signup" className={styles.signin}>
-            Sign In
+          <Link to="/login" className={styles.signin}>
+            Login
           </Link>
 
         </div>
+
         <div className={styles.menuIcon}>
           <span onClick={handleMenuClick} className="material-symbols-outlined">
-            menu
+             {isMenuOpen ? null : <img src={menu_white} alt="Toggle" />}
           </span>
         </div>
-        <div className={styles.navlinksCont2} id="navlinksCont2">
+
+        {isMenuOpen && (  <div className={styles.navlinksCont2} id="navlinksCont2">
           <div className={styles.closeIcon}>
             <span
               onClick={handleCloseClick}
               className="material-symbols-outlined"
             >
-              close
+               <img src={close} alt="" />
             </span>
           </div>
-          <Link className={styles.reviews} onClick={() => props.createNotification('warning', 'Login required')}>
+          <Link to='/profile' className={styles.reviews} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={review} className={styles.icons} alt="reviews" />
             Reviews
           </Link>
-          <Link className={styles.alerts} onClick={() => props.createNotification('warning', 'Login required')}>
+          {/* <Link className={styles.alerts} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={alert} className={styles.icons} alt="alerts" />
             Alerts
-          </Link>
-          <Link className={styles.trips} onClick={() => props.createNotification('warning', 'Login required')}>
+          </Link> */}
+          <Link to='/profile' className={styles.trips} onClick={() => props.createNotification('warning', 'Login required')}>
             <img src={trip} className={styles.icons} alt="trips" />
-            Trips
+            Favorites
           </Link>
-          <Link to="/signup" className={styles.signin} >
-            Sign up
+          <Link to="/login" className={styles.signin} >
+            Login
           </Link>
-        </div>
+        </div>)}
       </nav>
       <div className={styles.bgCont}>
         <img src={bg} className={styles.bgImg} alt="background" />

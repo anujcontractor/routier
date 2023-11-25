@@ -8,19 +8,21 @@ import alert from "../Assets/alert.svg";
 import trip from "../Assets/fav_icon.svg";
 import profile from "../Assets/profile.svg";
 import toggle from '../Assets/toggle_btn.svg'
-
+import close from '../Assets/close.svg'
 import review_toggle from "../Assets/main/reviews_main.svg";
 import alert_toggle from "../Assets/main/alerts_main.svg";
 import trip_toggle from "../Assets/main/trips_main.svg";
 
 function Navbar() {
 
-    const handleMenuClick = () => {
-        document.getElementById("navlinksCont2").style.display = "flex";
-    };
-    const handleCloseClick = () => {
-        document.getElementById("navlinksCont2").style.display = "none";
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const handleMenuClick = () => {
+      setIsMenuOpen(true);
+    };
+  
+    const handleCloseClick = () => {
+      setIsMenuOpen(false);
     };
 
     return (
@@ -52,18 +54,18 @@ function Navbar() {
 
                 <div className='menuIcon'>
                     <span onClick={handleMenuClick} className="material-symbols-outlined">
-                        <img src={toggle} alt="" />
+                    {isMenuOpen ? null : <img src={toggle} alt="Toggle" />}
                     </span>
                 </div>
 
 
-                <div className='navlinksCont2' id="navlinksCont2">
+                {isMenuOpen && (<div className='navlinksCont2' id="navlinksCont2">
                     <div className='closeIcon'>
                         <span
                             onClick={handleCloseClick}
                             className="material-symbols-outlined"
                         >
-                            close
+                            <img src={close} alt="" />
                         </span>
                     </div>
                     <Link className='profileCont'>
@@ -81,7 +83,7 @@ function Navbar() {
                         <img src={trip_toggle} className='icons' alt="trips" />
                         Trips
                     </Link>
-                </div>
+                </div>)}
             </nav>
         </>
     )

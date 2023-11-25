@@ -11,7 +11,6 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import SearchComponent from "./Components/Main/SearchComponent";
 import Profile from "./Components/Profile/Profile";
 import React, { useState } from 'react'
-import Alert from "./Components/Alert";
 import PlaceState from "./Context/PlaceState";
 import Review from "./Components/ReviewPage/Review";
 import { NotificationContainer, NotificationManager } from 'react-notifications';
@@ -54,7 +53,6 @@ function App() {
       <BrowserRouter>
         <PlaceState createNotification={createNotification} setProgress={setProgress}>
 
-          <Alert alert={alert} />
           <Routes>
             <Route path="/" element={<Main createNotification={createNotification} setProgress={setProgress} />} />
             <Route path="/login" element={<Login createNotification={createNotification} setProgress={setProgress} />} />

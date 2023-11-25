@@ -7,11 +7,11 @@ import like_icon from '../Assets/like_icon.svg'
 import like_icon_red from '../Assets/like_icon_red.svg'
 
 function Card(props) {
-    
+
     // console.log(props.type)
     const { siteid, name, description, img, rating, type, placeid } = props;
     const context = useContext(PlaceContext);
-    const {addfavourites} = context;
+    const { addfavourites } = context;
     const [ratingValue, setRatingValue] = useState(0)
     const [favorited, setFavorited] = useState(false);
 
@@ -23,16 +23,20 @@ function Card(props) {
         // Set the initial value
         // setRating(0)
     }
-    
- 
+    let sitetype;
+    if (type === 'todos') {
+        sitetype = 'thingToDo';
+    } else if (type === 'restaurants') {
+        sitetype = 'restaurant';
+    } else if (type === 'hotels') {
+        sitetype = 'stay';
+    }
 
     const handleFav = () => {
-        
-           addfavourites();
-        
 
+        addfavourites(siteid, sitetype);
     }
-   
+
     return (
         <div className="card">
             <div className="cardImage">

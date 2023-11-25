@@ -3,6 +3,7 @@ import tour_set from "../Assets/tour_set_login.svg";
 import logo from "../Assets/logo_login.svg";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from 'react'
+import { baseUrl } from "../../shared";
 
 const Login = (props) => {
 
@@ -24,7 +25,7 @@ const Login = (props) => {
       return;
     }
     props.setProgress(20);
-    const response = await fetch(`https://routier-production.up.railway.app/api/users/login`, {
+    const response = await fetch(`${baseUrl}/api/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

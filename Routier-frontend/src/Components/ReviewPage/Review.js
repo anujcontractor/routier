@@ -10,6 +10,7 @@ import {useParams , Link , useLocation , useNavigate} from 'react-router-dom';
 import styles from '../Profile/Profile.module.css';
 import logo from "../Assets/profile/logo_profile.svg";
 import profileHome from "../Assets/home/profile_home.svg";
+import { baseUrl } from '../../shared';
 
 const colors = {
   Starcolor: "#f29d38",
@@ -73,7 +74,7 @@ function Review(props) {
       console.log(reviewData);
       console.log(`Bearer ${localStorage.getItem(`token`)}`);
 
-      const response = await fetch( "https://routier-production.up.railway.app/reviews/submit", {
+      const response = await fetch( `${baseUrl}/reviews/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,3 +1,7 @@
+.cont{
+  width: 100%;
+}
+
 #searchForm{
     
     width: 100%;
@@ -11,12 +15,16 @@
     padding: 0;
     margin: 0;
     position: absolute;
+    width: 59%;
   }
   
   .search-result-item {
     position: relative;
-    z-index: 1;
-    width: 200px;
+    width: 100%;
+  }
+
+  .form-label input{
+    font-size: 1.5rem;
   }
   
   .search-result-link {
@@ -35,10 +43,19 @@
     }
   
     position: relative;
-    z-index: 2;
+    z-index:1 ;
   }
   
   p {
     margin: 10px 0;
+  }
+  
+
+  @media (max-width: 450px) {
+  
+    .search-results {
+     
+      width: 95%;
+    }
   }
   

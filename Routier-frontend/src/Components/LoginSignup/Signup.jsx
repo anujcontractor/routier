@@ -3,6 +3,7 @@ import styles from "./Signup.module.css";
 import tour_set from "../Assets/tour-set-signup.png";
 import logo from "../Assets/logo_signup.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { baseUrl } from '../../shared';
 
 const Signup = (props) => {
 
@@ -39,7 +40,7 @@ const Signup = (props) => {
 
     // console.log(name, email, password);
     props.setProgress(20);
-    const response = await fetch(`https://routier-production.up.railway.app/api/users/register`, {
+    const response = await fetch(`${baseUrl}/api/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +54,7 @@ const Signup = (props) => {
 
       const signupdata = await response.json();
       localStorage.setItem('token', signupdata.token);
-      // console.log(signupdata.token);
+      console.log(signupdata);
       props.createNotification('success', 'Account created successfully')
       navigate('/home');
     } else if (response.status === 400) {
