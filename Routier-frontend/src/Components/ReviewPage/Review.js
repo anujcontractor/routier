@@ -5,7 +5,7 @@ import {Rating} from "react-simple-star-rating";
 import IMG from "../Assets/reviewplaceholder.jpg";
 import IMG2 from "../Assets/addphotoicon.png";
 import  "./Review.css";
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import {useParams , Link , useLocation} from 'react-router-dom';
 import styles from '../Profile/Profile.module.css';
 import logo from "../Assets/profile/logo_profile.svg";
@@ -28,10 +28,9 @@ function Review(props) {
   const placeName = params.get('placeName');
   const placeImage = params.get('placeImage');
 
-
   /* object containing all review data */
   const [reviewData, setReviewData] = useState({
-    placeType: locationtype,
+    placeType: "place",
     location: id,
     starRating: 0,
     visitDate: '',
@@ -41,11 +40,36 @@ function Review(props) {
     photos: [],
   });
 
+  useEffect(() => {
+    console.log("Updated reviewData:", reviewData);
+  }, [reviewData]);
+
   /* for uploading data*/
   const handleSubmit = async () => {
     try {
+
+      const mapLocationType = (type) => {
+        switch (type) {
+          case 'hotels':
+            return 'stay';
+          case 'todos':
+            return 'todo';
+          case 'restaurants':
+            return 'restaurant'; 
+
+          default:
+            return 'place'; // Default value
+        } 
+      };
+
+      const mappedPlaceType = mapLocationType(locationtype);
+      setReviewData((prevData) => ({
+        ...prevData,
+        placeType: mappedPlaceType,
+      }));
+
       console.log(reviewData);
-      console.log(`Bearer ${localStorage.getItem(`token`)}`)
+      console.log(`Bearer ${localStorage.getItem(`token`)}`);
 
       const response = await fetch( "https://routier-production.up.railway.app/reviews/submit", {
         method: 'POST',
@@ -129,8 +153,6 @@ function Review(props) {
       ...prevData,
       title: value,
     }));
-
-    console.log( value);
   };
 
   /* for handling review text */
@@ -151,8 +173,6 @@ function Review(props) {
       ...prevData,
       photos: Array.from(selectedPhotos).map((photo) => URL.createObjectURL(photo)),
     }));
-
-    console.log(reviewData.photos);
   };
 
 
