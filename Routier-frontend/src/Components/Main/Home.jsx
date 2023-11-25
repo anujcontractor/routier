@@ -1,4 +1,5 @@
 // Style sheet
+import React, { useContext, useEffect, useState } from 'react'
 import styles from "./Main.module.css";
 import "../../App.css";
 
@@ -20,10 +21,55 @@ import service6 from "../Assets/home/service6_home.png";
 import service7 from "../Assets/home/service7_home.png";
 
 // Dependencies
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
+import SearchComponent from './SearchComponent';
 
-const Home = () => {
+const Home = (props) => {
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      // console.log("auth-token");
+    } else {
+      // console.log("login-required");
+      props.createNotification('warning','Login required')
+      navigate('/');
+    }
+  }, [navigate]); 
+
+  const handleLogout = async () => {
+
+    props.setProgress(20);
+    const response = await fetch(`https://routier-production.up.railway.app/api/users/logout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+    });
+
+    props.setProgress(70);
+    // console.log(response.status);
+
+    if (response.status === 200) {
+
+      const json = await response.json();
+      localStorage.removeItem('token');
+      props.createNotification('success', 'Logged out successfully');
+      navigate('/');
+
+    }
+    else {
+
+      props.createNotification('warning', `Error: ${response.status} - ${response.statusText}`)
+
+    }
+    props.setProgress(100);
+
+  }
+
   const handleMenuClick = () => {
     document.getElementById("navlinksCont2").style.display = "flex";
   };
@@ -56,9 +102,13 @@ const Home = () => {
             <img src={trip} className={styles.icons} />
             Trips
           </Link>
-          <Link to="/profile" className={styles.profileCont}>
-            <img src={profile} className={styles.profileIcon}/>
+          <Link to="/" className={styles.signin} onClick={handleLogout}>
+            Log out
           </Link>
+          <Link to="/profile" className={styles.profileCont}>
+            <img src={profile} className={styles.profileIcon} />
+          </Link>
+
         </div>
         <div className={styles.menuIcon}>
           <span onClick={handleMenuClick} className="material-symbols-outlined">
@@ -75,7 +125,7 @@ const Home = () => {
             </span>
           </div>
           <Link to="/profile" className={styles.profileCont}>
-            <img src={profile} className={styles.profileIcon}/>
+            <img src={profile} className={styles.profileIcon} />
           </Link>
           <Link className={styles.reviews}>
             <img src={review} className={styles.icons} alt="reviews" />
@@ -88,6 +138,9 @@ const Home = () => {
           <Link className={styles.trips}>
             <img src={trip} className={styles.icons} alt="trips" />
             Trips
+          </Link>
+          <Link to="/" className={styles.signin} onClick={handleLogout}>
+            Log out
           </Link>
         </div>
       </nav>
@@ -102,28 +155,27 @@ const Home = () => {
       {/* Search Box */}
       <div className={styles.searchCont}>
         <div className={styles.searchTitle}>Where to?</div>
-        <form className={styles.searchBar}>
-          <img src={search} className={styles.searchIcon} alt="search-icon" />
-          <input type="text" placeholder="Places to go, Things to do, Hotels" />
-          <button type="submit">Search</button>
-        </form>
+        < SearchComponent setProgress={props.setProgress} />
+
         <div className={styles.searchBtns}>
-          <button className={styles.searchBtn}>
-            Hotels
-            <img src={hotel} className={styles.icons2} alt="hotels" />
-          </button>
-          <button className={styles.searchBtn}>
-            Things to do
-            <img src={thing} className={styles.icons2} alt="things" />
-          </button>
-          <button className={styles.searchBtn}>
-            Restaurants
-            <img src={restaurant} className={styles.icons2} alt="restaurants" />
-          </button>
-          <button className={styles.searchBtn}>
-            Travel stories
-            <img src={story} className={styles.icons2} alt="stories" />
-          </button>
+          <Link to={`/hotels`}>
+            <button className={styles.searchBtn}>
+              Hotels
+              <img src={hotel} className={styles.icons2} alt="hotels" />
+            </button>
+          </Link>
+          <Link to='/todos'>
+            <button className={styles.searchBtn}>
+              Things to do
+              <img src={thing} className={styles.icons2} alt="things" />
+            </button>
+          </Link>
+          <Link to='/restaurants'>
+            <button className={styles.searchBtn}>
+              Restaurants
+              <img src={restaurant} className={styles.icons2} alt="restaurants" />
+            </button>
+          </Link>
         </div>
       </div>
       {/* Services */}

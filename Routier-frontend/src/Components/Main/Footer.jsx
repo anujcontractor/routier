@@ -10,9 +10,16 @@ import x from "../Assets/main/x.png";
 import yt from "../Assets/main/yt.png";
 import insta from "../Assets/main/insta.png";
 import newsletterpic from "../Assets/main/newsletterpic.png";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleAboutUsClick = () => {
+    window.scrollTo(0, 0); // Scroll to the top
+    navigate.push('/aboutus'); // Navigate to the About Us page
+  };
+
   return (
     <>
       <div className={styles2.container}>
@@ -52,27 +59,10 @@ const Footer = () => {
           <div className={styles2.footertextblockcover}>
             <div className={styles2.footertextblock}>
               <div className={styles2.footertexttitle}>About us</div>
-              <div className={styles2.footernormaltext}>What is Routier?</div>
-              <div className={styles2.footernormaltext}>How it works?</div>
+              <Link onClick={handleAboutUsClick} className={styles2.footernormaltext} to="/aboutus">What is Routier?</Link>
+              <Link onClick={handleAboutUsClick} className={styles2.footernormaltext} to="/aboutus">Our Team</Link>
             </div>
 
-            <div className={styles2.footertextblock}>
-              <div className={styles2.footertexttitle}>Travel Blogs</div>
-              <div className={styles2.footernormaltext}>Bali Travel Guide</div>
-              <div className={styles2.footernormaltext}>
-                Sri Lanks Travel Guide
-              </div>
-              <div className={styles2.footernormaltext}>Peru Travel Guide</div>
-            </div>
-
-            <div className={styles2.footertextblock}>
-              <div className={styles2.footertexttitle}>Contact us</div>
-              <div className={styles2.footernormaltext}>Our Story</div>
-              <div className={styles2.footernormaltext}>Work with us</div>
-              <div className={styles2.footernormaltext}>
-                Want to be Collaborator?
-              </div>
-            </div>
           </div>
         </div>
       </div>

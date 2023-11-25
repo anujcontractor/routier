@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+
+.dropdown {
+    display: flex; 
+    position: relative; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    border-radius: 0.5rem;    
+}
+
+.dropdown-btn{
+    padding: 1.5rem;
+    align-items: center; 
+    border-radius: 2.5rem;
+    border: 1px solid #046B82;
+    box-shadow: 1px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: "Poppins";
+    font-size: 1.25rem;
+    color: #8C9091;
+    line-height: 1.5px; 
+    font-weight: 500;
+    width: 8.875rem;
+    height: 2.8125rem;
+    flex-shrink: 0;
+}
+

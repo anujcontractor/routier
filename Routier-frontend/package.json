@@ -10,10 +10,13 @@
     "jsonwebtoken": "^9.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-notifications": "^1.7.4",
     "react-photo-album": "^2.3.0",
     "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
     "react-simple-star-rating": "^5.1.7",
+    "react-top-loading-bar": "^2.3.1",
+    "reactstrap": "^9.2.1",
     "swiper": "^11.0.3",
     "web-vitals": "^2.1.4"
   },

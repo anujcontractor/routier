@@ -1,31 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from 'react'
 import { baseUrl } from "../../shared.js";
+import search from "../Assets/main/search_main.svg";
+import styles from "./Main.module.css";
+import PlaceContext from '../../Context/PlaceContext';
+import { Link } from 'react-router-dom';
+import './SearchComponent.css'
 
-const SearchComponent = () => {
-  const [allData, setAllData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+const SearchComponent = (props) => {
+
+  const context = useContext(PlaceContext);
+  const { fetchData, setSearchTerm, setSearchResults, allData, searchTerm, searchResults } = context;
 
   useEffect(() => {
     // Fetch all data when the component mounts
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      // Replace the following line with your actual data fetching logic
-      const baseurl = baseUrl;
-      const url = baseurl + "/api/placeinfo";
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-      
-      setAllData(data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      // console.log(data);
-    }
-  };
+  useEffect(() => {
+
+    // console.log(allData);
+
+
+  }, [allData]);
+
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -37,26 +34,58 @@ const SearchComponent = () => {
     );
 
     setSearchResults(results);
+    console.log(searchResults)
   };
 
+  const handleSubmit = () => {
+    props.setProgress(30);
+    props.setProgress(100);
+
+  }
+
+  useEffect(() => {
+    const handleDocumentClick = () => {
+      setSearchResults([]);
+    };
+
+    // Attach click event listener to the document
+    document.addEventListener('click', handleDocumentClick);
+
+    // Cleanup: Remove the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, []); // Empty dependency array ensures the effect runs only once on mount
+
   return (
-    <div>
-      <h2>Place Search</h2>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
+    <div className='searchCont' >
+      <form className={styles.searchBar} onSubmit={handleSubmit} id="searchForm">
+        <img src={search} className={styles.searchIcon} alt="search-icon" />
+        <label htmlFor="text" className="form-label"></label>
+        <input
+          type="text"
+          placeholder="Search Places to go..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <Link to={`/place/${searchResults[0]?._id}`}>
+          <button type="submit">Search</button>
+        </Link>
+      </form>
+
 
       {searchResults.length > 0 ? (
-        <ul>
+        <ul className="search-results">
           {searchResults.map((result) => (
-            <li key={result._id}>{result.name}</li>
+            <li key={result._id} className="search-result-item">
+              <Link to={`/place/${result._id}`} className="search-result-link">
+                {result.name}
+              </Link>
+            </li>
           ))}
         </ul>
       ) : (
-        <p>No data found</p>
+        null
       )}
     </div>
   );

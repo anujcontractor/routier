@@ -44,7 +44,7 @@ function Navbar() {
                         <img src={trip} className='icons' />
                         Trips
                     </Link>
-                    <Link className='profileCont'>
+                    <Link to='/profile' className='profileCont'>
                         <img src={profile} className='profileIcon' />
                     </Link>
                 </div>

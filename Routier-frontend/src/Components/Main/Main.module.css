@@ -119,13 +119,16 @@ button {
   border: 0.15rem solid #6f6f6f;
   box-shadow: 1px 4px 10px 0px rgba(0, 0, 0, 0.2);
   border-radius: 2.5rem;
-  width: 75%;
+  width: 50%;
   min-width: 15rem;
   padding: 0.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
+
+
 .searchIcon {
   width: auto;
   margin: 0rem 0.5rem;

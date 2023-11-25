@@ -1,7 +1,10 @@
 import Restaurant from "../model/restaurantModel.js";
+import Place from "../model/placeinfoModel.js";
 
 const index = (req, res, next) => {
   Restaurant.find()
+    .populate("location")
+    .populate("reviews")
     .then((response) => {
       res.json({
         response,
@@ -18,6 +21,8 @@ const index = (req, res, next) => {
 const show = (req, res, next) => {
   let restaurantID = req.params.id;
   Restaurant.findById(restaurantID)
+    .populate("location")
+    .populate("reviews")
     .then((response) => {
       res.json({
         response,
@@ -112,6 +117,17 @@ const store = async (req, res) => {
 
   try {
     const newRestaurant = await Restaurant.create(restaurantData);
+    // Find the corresponding place and update the restaurants array
+    const placeID = restaurantData.location;
+    const place = await Place.findById(placeID);
+
+    if (place) {
+      // Add the new restaurant ID to the restaurants array
+      place.restaurants.push(newRestaurant._id);
+
+      // Save the updated place
+      await place.save();
+    }
     res.status(201).json(newRestaurant);
   } catch (error) {
     res.status(400).json({ message: error.message });
