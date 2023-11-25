@@ -210,6 +210,7 @@
 
 .button_container {
     display: flex;
+    flex-direction: column;
     margin-top: 5vw;
     padding-bottom: 4.5vw;
 }
@@ -233,6 +234,25 @@
     border-style: none;
 }
 
+
+.gohomebutton {
+    display: flex;
+    width: 18.75vw;
+    height: 4vw;
+    background-color: #046B82;
+    font-family: "Poppins";
+    font-size: 1.3125vw;
+    font-style: normal;
+    font-weight: 700; 
+    line-height: normal;
+    letter-spacing: 0.02625rem; 
+    color: white;
+    justify-self: left;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2.5rem;
+    border-style: none;
+}
 
 
 @media (max-width: 700px) {
