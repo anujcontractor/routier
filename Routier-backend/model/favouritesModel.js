@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 const favoritesSchema = new Schema({
   userId: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
@@ -38,7 +38,8 @@ const favoritesSchema = new Schema({
   }],
 });
 
-export default model('Favorites', favoritesSchema);
+const fav = mongoose.model('Favorites', favoritesSchema)
+export default fav;
 
 
 

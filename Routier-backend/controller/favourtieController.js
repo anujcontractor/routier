@@ -7,11 +7,11 @@ import Stay from '../model/stayModel.js';
 
 
   const addFavorite = async(req, res) => {
-    const { user_id, itemId, itemType } = req.body;
+    const { itemId, itemType } = req.body;
 
     try {
       // Check if user exists
-      const user = await User.findById(user_id);
+      const user = await User.findById(req.user._id);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
@@ -41,7 +41,7 @@ import Stay from '../model/stayModel.js';
 
       // Check if item already exists in favorites
       const favorite = await Favorites.findOne({
-        userId: user_id,
+        userId: req.user._id,
         itemId,
         itemType,
       });
@@ -51,7 +51,7 @@ import Stay from '../model/stayModel.js';
 
       // Create new favorite
       const newFavorite = new Favorites({
-        userId: user_id,
+        userId: req.user._id,
         itemId,
         itemType,
       });
@@ -70,15 +70,14 @@ import Stay from '../model/stayModel.js';
 
     try {
       // Check if user exists
-      const user_id = req.params.id;
-      const user = await User.findById(user_id);
+      const user = await User.findById(req.user._id);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
 
       // Check if item exists in favorites
       const favorite = await Favorites.findOneAndDelete({
-        userId: user_id,
+        userId: req.user._id,
         itemId,
         itemType,
       });
@@ -96,14 +95,13 @@ import Stay from '../model/stayModel.js';
   const getFavorites = async(req, res) => {
     try {
       // Check if user exists
-      const user_id = req.params.id;
-      const user = await User.findById(user_id);
+      const user = await User.findById(req.user._id);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
 
       // Get favorites
-      const favorites = await Favorites.find({ userId: user_id });
+      const favorites = await Favorites.find({ userId: req.user._id });
 
       res.json({ favorites });
     } catch (error) {
