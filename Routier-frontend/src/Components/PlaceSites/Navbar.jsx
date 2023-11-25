@@ -34,17 +34,21 @@ function Navbar() {
                     </Link>
                 </div>
                 <div className='navlinksCont'>
-                    <Link className='reviews'>
+                    <Link to='/profile' className='reviews'>
                         <img src={review} className='icons' />
                         Reviews
                     </Link>
-                    <Link className='alerts'>
+                    {/* <Link className='alerts'>
                         <img src={alert} className='icons' />
                         Alerts
-                    </Link>
-                    <Link className='trips'>
+                    </Link> */}
+                    <Link to='/profile' className='trips'>
                         <img src={trip} className='icons' />
-                        Trips
+                        Favorites
+                    </Link>
+                        
+                    <Link to='/aboutus' className='trips'>
+                        About us
                     </Link>
                     <Link to='/profile' className='profileCont'>
                         <img src={profile} className='profileIcon' />
@@ -68,20 +72,20 @@ function Navbar() {
                             <img src={close} alt="" />
                         </span>
                     </div>
-                    <Link className='profileCont'>
+                    <Link to='/profile' className='profileCont'>
                         <img src={profile} className='profileIcon' />
                     </Link>
-                    <Link className='reviews'>
+                    <Link to='/profile' className='reviews'>
                         <img src={review_toggle} className='icons' alt="reviews" />
                         Reviews
                     </Link>
-                    <Link className='alerts'>
+                    {/* <Link className='alerts'>
                         <img src={alert_toggle} className='icons' alt="alerts" />
                         Alerts
-                    </Link>
-                    <Link className='trips'>
+                    </Link> */}
+                    <Link to='/profile' className='trips'>
                         <img src={trip_toggle} className='icons' alt="trips" />
-                        Trips
+                        Favorites
                     </Link>
                 </div>)}
             </nav>

@@ -15,15 +15,26 @@ import location from '../Assets/location.svg'
 import call from '../Assets/call.svg'
 import fav_icon from '../Assets/fav_icon.svg'
 import edit_icon from '../Assets/edit_icon.svg'
+import email from '../Assets/email.svg'
 
 function SiteInfo(props) {
 
   // const [reviews] = props;
   const context = useContext(PlaceContext);
-  const { place, site,  setSite, getHotelById, getRestaurantById, getTodoById } = context;
+  const { place, site,  setSite, getHotelById, getRestaurantById, getTodoById, addfavourites } = context;
   const { placeid, siteid } = useParams();
   let navigate = useNavigate();
-  console.log(siteid);
+  // console.log(siteid);
+  
+
+  let sitetype;
+    if (props.type === 'todos') {
+        sitetype = 'thingToDo';
+    } else if (props.type === 'restaurants') {
+        sitetype = 'restaurant';
+    } else if (props.type === 'hotels') {
+        sitetype = 'stay';
+    }
 
   useEffect(() => {
      
@@ -49,6 +60,11 @@ function SiteInfo(props) {
   useEffect(() => {
     
   }, [site]);
+
+  const handleFav = () => {
+
+    addfavourites(siteid, sitetype);
+}
 
   const photos = site?.image?.map((imgLink) => ({
     src: imgLink,
@@ -116,29 +132,35 @@ function SiteInfo(props) {
                 </Link>
               </div>
 
-              <div className="button">
+              <div className="button" onClick={handleFav}>
                 <img src={fav_icon} alt="icon" />
-                <Link to="/">Add to favorites</Link>
+                <Link>Add to favorites</Link>
 
               </div>
             </div>
           </div>
 
           <div className="contact">
+
+            {site?.time && (<p>{site.time}</p>)}
             <p>
-              <img src={location} alt="" /><span>{site?.address}</span>
+              <img src={location} alt="" /><span>{site?.address? site.address: 'Not available'}</span>
             </p>
             <p>
-              <img src={call} alt="" /><span>{site?.phone}</span>
+              <img src={call} alt="" /><span>{site?.phone? site.phone: 'Not available'}</span>
             </p>
+
+            <p><img src={email} alt="" id='email'/><span>{site?.email? site.email: 'Not available'}</span></p>
+            
           </div>
 
           <PhotoAlbum layout="rows" photos={photos} />
+          <p>{site?.description}</p>
         </section>
 
         {/********* review section ********/}
         <section className='reviews'>
-          <div className="reviewHeading"><h2>Reviews</h2><span>(124)</span></div>
+          <div className="reviewHeading"><h2>Reviews</h2><span>(0)</span></div>
 
           {/* {reviews.map(()=>{
 
