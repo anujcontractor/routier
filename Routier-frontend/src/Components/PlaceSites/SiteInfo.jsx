@@ -55,7 +55,7 @@ function SiteInfo(props) {
     width: 500, // Set the width as needed
     height: 500, // Set the height as needed
   }));
-  // console.log(site);
+  console.log(site);
 
   return (
     <>
