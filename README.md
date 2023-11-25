@@ -35,24 +35,13 @@ better our recommendations will become.
 
 ----------------------------------
 
-# Requirements  
-You will need to have the following installed on your computer:
-
-- A GitHub account
-- Git
-- A text editor
-- A web browser
+# Requirements
 
 
 # Installation Guide  
-Clone the repository to your local computer.  
-     
-     $ git clone https://github.com/anujcontractor/routier.git
-
-Change your current directory to the directory of the project repository.
-
-     $ cd <project directory>  
-
+## Front-end  
+## Back-end  
+For Backend, you will need Node.js, Expressjs, MongodB, installed in your environement.  
 ### Node
 - #### Node installation on Windows
 
@@ -63,7 +52,7 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
 
   You can install nodejs and npm easily with apt install, just run the following commands.
 
-      $ sudo apt install nodejs  
+      $ sudo apt install nodejs
       $ sudo apt install npm
 
 - #### Other Operating Systems
@@ -72,40 +61,33 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
 If the installation was successful, you should be able to run the following command.
 
     $ node --version
+    v18.17.1
+
     $ npm --version
-    
+    9.6.7
 
 If you need to update `npm`, you can make it using `npm`! Cool right? After running the following command, just open again the command line and be happy.
 
     $ npm install npm -g
 
-## Front-end  
-In a separate terminal window, navigate to the frontend directory within the cloned project:
+###
 
-    $ cd Routier-frontend  
+### ExpressJS installation
+
+    $ npm install express
     
-To install the frontend dependencies run the following command
+ You can find more information about the installation on the [official Express website](https://expressjs.com/en/starter/installing.html)
 
-    $ npm install
+### MongodB
 
-## Back-end  
-To run the backend server we need to install all the dependencies. To do so, we need to navigate to the root folder.
+    $ npm install mongodb
 
-    $ cd ..
-    $ npm install 
+ You can find more information about the installation on the [official MongodB website](https://www.mongodb.com/languages/javascript/mongodb-and-npm-tutorial)
 
 # Design  
 [UI/UX design file](https://www.figma.com/file/7TcXpzmYLJZ0K9aL2BaTMU?type=design)
 # Implementation  
 # Testing  
-
-Once both the backend and frontend servers are running, you can test the application by opening a web browser and navigating to the following URL:
-
-    http://localhost:<frontend-port>  
-    
-Replace <frontend-port> with the actual port number of the React frontend server.
-
-
 # Deployment  
 # Contributors
 [Anuj Contractor](https://github.com/anujcontractor)  
