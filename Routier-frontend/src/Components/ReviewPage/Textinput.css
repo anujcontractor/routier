@@ -11,7 +11,7 @@
     flex-shrink: 0;
     font-family: "Poppins";
     font-size: 1.75vw;
-    
+    padding-left: 2vw;
 }
 
 
@@ -21,16 +21,16 @@
     font-size: 1.35vw;
     font-weight: 500;
     font-family: "Poppins";
-    padding-left: 1.5vw;
 }
 
 .text2{
     width: 32.312vw;
     font-family: "Poppins";
+    padding-left: 1.5vw;
 }
 
 .text2::placeholder{
-    padding-left: 1.5vw;
+    
     text-align: left;
     color: #8C9091;
     font-size: 1.75vw;
@@ -50,6 +50,7 @@
     resize: none;
     font-family: "Poppins";
     margin-top: 2vw;
+    padding-left: 1.5vw;
 }
 
 .text3::placeholder{
@@ -57,5 +58,5 @@
     font-size: 1.25vw;
     font-weight: 500; 
     font-family: "Poppins"; 
-    padding-left: 1.5vw;
+    
 }

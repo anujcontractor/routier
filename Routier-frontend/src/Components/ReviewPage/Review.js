@@ -6,7 +6,7 @@ import IMG from "../Assets/reviewplaceholder.jpg";
 import IMG2 from "../Assets/addphotoicon.png";
 import  "./Review.css";
 import { useState , useEffect } from 'react';
-import {useParams , Link , useLocation} from 'react-router-dom';
+import {useParams , Link , useLocation , useNavigate} from 'react-router-dom';
 import styles from '../Profile/Profile.module.css';
 import logo from "../Assets/profile/logo_profile.svg";
 import profileHome from "../Assets/home/profile_home.svg";
@@ -27,6 +27,8 @@ function Review(props) {
   const locationtype = params.get("type");
   const placeName = params.get('placeName');
   const placeImage = params.get('placeImage');
+  const navigate = useNavigate();
+  const [submissionStatus, setSubmissionStatus] = useState(null);
 
   /* object containing all review data */
   const [reviewData, setReviewData] = useState({
@@ -86,8 +88,10 @@ function Review(props) {
 
       const responseData = await response.json();
       console.log('Review submitted successfully:', responseData);
+      setSubmissionStatus('success');
     } catch (error) {
       console.error('Error submitting review:', error.message);
+      setSubmissionStatus('error');
     }
   };
 
@@ -183,6 +187,12 @@ function Review(props) {
   const handleCloseClick = () => {
     document.getElementById("navlinksCont2").style.display = "none";
   };
+
+  /* for handling submit response */
+  useEffect(() => {
+    if (submissionStatus === 'success' || submissionStatus === 'error') {
+    }
+  }, [submissionStatus]);
 
   return (
     <div>
@@ -296,9 +306,25 @@ function Review(props) {
 
             <div className='button_container '>
               <button className='submitbutton' onClick={handleSubmit}>
-                <span className='buttontext'> Submit Review </span> 
+                  <span className='buttontext'> Submit Review </span>
               </button>
-            </div>
+              <div>
+                {submissionStatus === 'success' && 
+                (
+                  <div>
+                    <p>Review submitted successfully.</p>
+                    <Link className='gohomebutton' to="/">Go Home</Link>
+                  </div>
+                  )}
+                {submissionStatus === 'error' && (
+                  <div>
+                    <p>Error Submitting. Kindly Try again Later</p>
+                    <Link className='gohomebutton' to="/">Go Home</Link>
+                  </div>
+                  )}
+              </div>
+      </div>
+
             </div> 
             </div>
 
