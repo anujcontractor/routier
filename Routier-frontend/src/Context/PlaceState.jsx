@@ -1,6 +1,7 @@
 import PlaceContext from "./PlaceContext";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import { baseUrl } from "../shared";
 
 
 const PlaceState = (props) => {
@@ -23,7 +24,7 @@ const PlaceState = (props) => {
 
     props.setProgress(30);
     try {
-      const response = await fetch('https://routier-production.up.railway.app/api/placeinfo');
+      const response = await fetch(`${baseUrl}/api/placeinfo`);
       if (!response.ok) {
         // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Failed to fetch place: ${response.status}`);
@@ -48,7 +49,7 @@ const PlaceState = (props) => {
 
     props.setProgress(30);
     try {
-      const response = await fetch(`https://routier-production.up.railway.app/api/placeinfo/${placeid}`, {
+      const response = await fetch(`${baseUrl}/api/placeinfo/${placeid}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +79,7 @@ const PlaceState = (props) => {
 
 
     try {
-      const response = await fetch(`${host}/api/todo`, {
+      const response = await fetch(`${baseUrl}/api/todo`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -109,7 +110,7 @@ const PlaceState = (props) => {
 
 
     try {
-      const response = await fetch(`${host}/api/stay`, {
+      const response = await fetch(`${baseUrl}/api/stay`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -140,7 +141,7 @@ const PlaceState = (props) => {
 
     try {
 
-      const response = await fetch(`${host}/api/restaurants/`, {
+      const response = await fetch(`${baseUrl}/api/restaurants/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -193,7 +194,7 @@ const PlaceState = (props) => {
         throw new Error('Authentication token not found');
 
 
-      const response = await fetch(`https://routier-production.up.railway.app/api/restaurants/${siteid}`, {
+      const response = await fetch(`${baseUrl}/api/restaurants/${siteid}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -233,7 +234,7 @@ const PlaceState = (props) => {
         throw new Error('Authentication token not found');
       }
 
-      const response = await fetch(`https://routier-production.up.railway.app/api/todo/${siteid}`, {
+      const response = await fetch(`${baseUrl}/api/todo/${siteid}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -274,7 +275,7 @@ const PlaceState = (props) => {
         throw new Error('Authentication token not found');
       }
 
-      const response = await fetch(`https://routier-production.up.railway.app/api/stay/${siteid}`, {
+      const response = await fetch(`${baseUrl}/api/stay/${siteid}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -308,7 +309,7 @@ const PlaceState = (props) => {
 
      try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`https://routier-production.up.railway.app/api/favourites/add`, {
+      const response = await fetch(`${baseUrl}/api/favourites/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

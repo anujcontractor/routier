@@ -58,7 +58,7 @@ const SearchComponent = (props) => {
   }, []); // Empty dependency array ensures the effect runs only once on mount
 
   return (
-    <div className='searchCont' >
+   <div className="">
       <form className={styles.searchBar} onSubmit={handleSubmit} id="searchForm">
         <img src={search} className={styles.searchIcon} alt="search-icon" />
         <label htmlFor="text" className="form-label"></label>

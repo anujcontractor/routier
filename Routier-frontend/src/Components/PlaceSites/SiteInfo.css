@@ -112,6 +112,9 @@ section {
   margin: 0 10px;
 }
 
+#email{
+ width: 25px;
+}
 /*review section*/
 .reviewHeading {
 

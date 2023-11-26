@@ -32,9 +32,11 @@ function Place(props) {
       props.createNotification('warning','Login required')
       navigate('/');
     }
-
-    getPlaceById(placeid);
-  }, []);
+    
+    if(placeid)
+        getPlaceById(placeid);
+   
+  }, [placeid, navigate]);
 
   useEffect(() => {
 
@@ -64,7 +66,7 @@ function Place(props) {
         {/***** titlebar section ******/}
         <section className="titleBar">
           <div className="heading">
-            <p className="titletext">Explore <span className="placename">{place.name}</span></p>
+            <p className="titletext">Explore <span className="placename">{place?.name}</span></p>
           </div>
 
 
@@ -72,7 +74,7 @@ function Place(props) {
 
             <Link to={`/place/${placeid}`}>
               <div className="button">
-                {place.name}
+                {place?.name}
                 <img src={stories_ion} alt="icon" />
               </div>
             </Link>
@@ -111,14 +113,14 @@ function Place(props) {
 
         {/******** about section ************/}
         <section className="about">
-          <h2 className="titletext">About {place.name}</h2>
-          <p>{place.description}</p>
+          <h2 className="titletext">About {place?.name}</h2>
+          <p>{place?.description}</p>
         </section>
 
 
         {/********* Places section **********/}
         <section className="placesCont">
-          <h2 className="titletext">Essential {place.name}</h2>
+          <h2 className="titletext">Essential {place?.name}</h2>
 
 
 

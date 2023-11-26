@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from "./Main.module.css";
 import "../../App.css";
+import { baseUrl } from '../../shared';
 
 // Images
 import logo from "../Assets/main/logo_main.svg";
@@ -15,10 +16,16 @@ import hotel from "../Assets/main/hotels_main.svg";
 import thing from "../Assets/main/things_main.svg";
 import restaurant from "../Assets/main/restaurants_main.svg";
 import story from "../Assets/main/stories_main.svg";
+import service1 from "../Assets/main/service1_main.png";
+import service2 from "../Assets/main/service2_main.png";
+import service3 from "../Assets/main/service3_main.png";
 import service4 from "../Assets/home/service4_home.png";
 import service5 from "../Assets/home/service5_home.png";
 import service6 from "../Assets/home/service6_home.png";
 import service7 from "../Assets/home/service7_home.png";
+import close from '../Assets/close.svg'
+import toggle from '../Assets/toggle_btn.svg'
+import menu_white from '../Assets/menu_white.svg'
 
 // Dependencies
 import { Link, useNavigate } from 'react-router-dom';
@@ -34,15 +41,15 @@ const Home = (props) => {
       // console.log("auth-token");
     } else {
       // console.log("login-required");
-      props.createNotification('warning','Login required')
+      props.createNotification('warning', 'Login required')
       navigate('/');
     }
-  }, [navigate]); 
+  }, [navigate]);
 
   const handleLogout = async () => {
 
     props.setProgress(20);
-    const response = await fetch(`https://routier-production.up.railway.app/api/users/logout`, {
+    const response = await fetch(`${baseUrl}/api/users/logout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,12 +77,16 @@ const Home = (props) => {
 
   }
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const handleMenuClick = () => {
-    document.getElementById("navlinksCont2").style.display = "flex";
+    setIsMenuOpen(true);
   };
+
   const handleCloseClick = () => {
-    document.getElementById("navlinksCont2").style.display = "none";
+    setIsMenuOpen(false);
   };
+
   return (
     <>
       <head>
@@ -90,59 +101,61 @@ const Home = (props) => {
           <img src={logo} className={styles.logo} alt="logo" />
         </div>
         <div className={styles.navlinksCont}>
-          <Link className={styles.reviews}>
+          <Link to='/profile' className={styles.reviews}>
             <img src={review} className={styles.icons} />
             Reviews
           </Link>
-          <Link className={styles.alerts}>
-            <img src={alert} className={styles.icons} />
-            Alerts
-          </Link>
-          <Link className={styles.trips}>
+          
+          <Link to='/profile' className={styles.trips}>
             <img src={trip} className={styles.icons} />
-            Trips
+            Favorites
           </Link>
           <Link to="/" className={styles.signin} onClick={handleLogout}>
-            Log out
+            Log out 
           </Link>
+          &nbsp; &nbsp;
           <Link to="/profile" className={styles.profileCont}>
             <img src={profile} className={styles.profileIcon} />
           </Link>
 
         </div>
+
+
         <div className={styles.menuIcon}>
           <span onClick={handleMenuClick} className="material-symbols-outlined">
-            menu
+             {isMenuOpen ? null : <img src={menu_white} alt="Toggle" />}
           </span>
         </div>
-        <div className={styles.navlinksCont2} id="navlinksCont2">
+
+
+      {isMenuOpen && (<div className={styles.navlinksCont2} id="navlinksCont2">
           <div className={styles.closeIcon}>
             <span
               onClick={handleCloseClick}
               className="material-symbols-outlined"
             >
-              close
+              <img src={close} alt="" />
             </span>
           </div>
           <Link to="/profile" className={styles.profileCont}>
             <img src={profile} className={styles.profileIcon} />
           </Link>
-          <Link className={styles.reviews}>
+          <Link to='/profile' className={styles.reviews}>
             <img src={review} className={styles.icons} alt="reviews" />
             Reviews
           </Link>
-          <Link className={styles.alerts}>
+          {/* <Link className={styles.alerts}>
             <img src={alert} className={styles.icons} alt="alerts" />
             Alerts
-          </Link>
-          <Link className={styles.trips}>
+          </Link> */}
+          <Link to='/profile' className={styles.trips}>
             <img src={trip} className={styles.icons} alt="trips" />
-            Trips
+            Favorites
           </Link>
-          <Link to="/" className={styles.signin} onClick={handleLogout}>
+          <Link to="/profile" className={styles.signin} onClick={handleLogout}>
             Log out
           </Link>
-        </div>
+        </div>)}
       </nav>
       <div className={styles.bgCont}>
         <img src={bg} className={styles.bgImg} alt="background" />
@@ -155,7 +168,8 @@ const Home = (props) => {
       {/* Search Box */}
       <div className={styles.searchCont}>
         <div className={styles.searchTitle}>Where to?</div>
-        < SearchComponent setProgress={props.setProgress} />
+        <div className={styles.searchContt}>< SearchComponent setProgress={props.setProgress} /></div>
+        
 
         <div className={styles.searchBtns}>
           <Link to={`/hotels`}>
@@ -185,10 +199,9 @@ const Home = (props) => {
         </p>
         <p className={styles.text5}>What we do?</p>
         <div className={styles.services}>
-          <img src={service4} className={styles.serviceHome} />
-          <img src={service5} className={styles.serviceHome} />
-          <img src={service6} className={styles.serviceHome} />
-          <img src={service7} className={styles.serviceHome} />
+          <img src={service1} className={styles.service} />
+          <img src={service2} className={styles.service} />
+          <img src={service3} className={styles.service} />
         </div>
       </div>
       <Footer />
