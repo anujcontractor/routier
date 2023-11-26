@@ -169,6 +169,7 @@ button {
   padding: 1rem;
   border-radius: 1.5rem;
   border: solid 0.1rem #b5b5b5;
+  background-color: transparent;
   overflow: hidden;
 }
 .favImg {
@@ -194,6 +195,7 @@ button {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.1125rem;
+  margin: 0;
 }
 .removeFav {
   color: #bcbcbc;
@@ -214,6 +216,7 @@ button {
   font-family: "Poppins";
   font-size: 0.9375rem;
   font-weight: 400;
+  margin: 0;
   margin-top: 0.2rem;
 }
 .reviewTitle {
@@ -221,6 +224,7 @@ button {
   font-family: "Poppins";
   font-size: 1.25rem;
   font-weight: 500;
+  margin: 0;
 }
 .reviewDesc {
   color: #333;
@@ -228,6 +232,7 @@ button {
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
+  margin: 0;
 }
 .stars {
   display: flex;
@@ -242,7 +247,16 @@ button {
   width: 1.75rem;
   padding: 0rem 0.1rem;
 }
-
+@media (max-width: 1250px) {
+  .favcontent {
+    width: 70%;
+  }
+}
+@media (max-width: 1050px) {
+  .favcontent {
+    width: 65%;
+  }
+}
 @media (max-width: 1000px) {
   .logo {
     width: 10rem;
@@ -255,12 +269,23 @@ button {
     width: 1rem;
   }
 }
+@media (max-width: 900px) {
+  .reviewDesc{
+    font-size: 0.75rem;
+  }
+  .favcontent {
+    width: 60%;
+  }
+}
 @media (max-width: 800px) {
   .profileTitle {
     font-size: 2.5rem;
   }
   .expTitle {
     font-size: 1.5rem;
+  }
+  .favImg {
+    height: 87%;
   }
 }
 @media (max-width: 700px) {
@@ -284,6 +309,14 @@ button {
   }
   .avatar {
     width: 40%;
+  }
+  .favImg {
+    height: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .favImg {
+    height: 90%;
   }
 }
 @media (max-width: 500px) {
@@ -338,6 +371,12 @@ button {
   .navbar {
     padding: 0.5rem;
   }
+  .reviewDesc{
+    font-size: 0.65rem;
+  }
+  .favImg {
+    height: 70%;
+  }
 }
 @media (max-width: 400px) {
   .avatar {
@@ -357,6 +396,15 @@ button {
   }
   .expBox {
     width: 90%;
+  }
+  .reviewTitle{
+    font-size: 1rem;
+  }
+  .reviewDesc{
+    font-size: 0.6rem;
+  }
+  .favImg {
+    height: 65%;
   }
 }
 @media (min-width: 500px) {

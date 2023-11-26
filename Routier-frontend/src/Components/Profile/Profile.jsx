@@ -9,16 +9,51 @@ import fav from "../Assets/profile/fav_profile.png";
 import review from "../Assets/profile/review_profile.png";
 
 // Dependencies
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import DisplayRating from "./DisplayRating";
 
-const Profile = () => {
+const Profile = (props) => {
+  let navigate = useNavigate();
   const [userName, setUserName] = useState("name");
   const [userEmail, setUserEmail] = useState("abc@gmail.com");
   const [userTrips, setUserTrips] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const [userFavs, setUserFavs] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      // console.log("auth-token");
+      const fetchReviews = async () => {
+        const res = await fetch("http://localhost:8000/api/favourites", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const data = await res.json();
+        setUserReviews(data.favoriteDetails);
+      };
+      fetchReviews();
+      const fetchFavs = async () => {
+        const res = await fetch("http://localhost:8000/api/favourites", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const data = await res.json();
+        setUserFavs(data.favoriteDetails);
+      };
+      fetchFavs();
+    } else {
+      // console.log("login-required");
+      props.createNotification("warning", "Login required");
+      navigate("/");
+    }
+  }, [navigate]);
 
   const handleMenuClick = () => {
     document.getElementById("navlinksCont2").style.display = "flex";
@@ -85,6 +120,7 @@ const Profile = () => {
             menu
           </span>
         </div>
+
         <div className={styles.navlinksCont2} id="navlinksCont2">
           <div className={styles.closeIcon}>
             <span
@@ -139,9 +175,9 @@ const Profile = () => {
               return (
                 <div className={styles.expBox}>
                   <p className={styles.expTitle}>{trip.title}</p>
-                  <p>
+                  <div>
                     <DisplayRating rate={trip.rating} />
-                  </p>
+                  </div>
                 </div>
               );
             })}
@@ -149,9 +185,9 @@ const Profile = () => {
             {/* Remove this */}
             <div className={styles.expBox}>
               <p className={styles.expTitle}>test</p>
-              <p>
+              <div>
                 <DisplayRating rate={3} />
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -169,17 +205,17 @@ const Profile = () => {
                 <div className={styles.favBox}>
                   <div className={styles.favcontent}>
                     <div className={styles.favRating}>
-                      <DisplayRating rate={Review.rating} />
+                      <DisplayRating rate={Review.starRating} />
                     </div>
                     <p className={styles.reviewTitle}>{Review.title}</p>
-                    <p className={styles.reviewDesc}>
-                      {Review.desc}
-                    </p>
+                    <p className={styles.reviewDesc}>{Review.reviewText}</p>
                   </div>
                   <img src={Review.img} className={styles.favImg} />
                 </div>
               );
             })}
+
+            {/* Remove this */}
             <div className={styles.favBox}>
               <div className={styles.favcontent}>
                 <div className={styles.favRating}>
