@@ -11,7 +11,7 @@
     flex-shrink: 0;
     font-family: "Poppins";
     font-size: 1.75vw;
-    padding-left: 2vw;
+    padding-left: 1vw;
 }
 
 
@@ -26,7 +26,7 @@
 .text2{
     width: 32.312vw;
     font-family: "Poppins";
-    padding-left: 1.5vw;
+    padding-left: 1vw;
 }
 
 .text2::placeholder{
@@ -48,9 +48,10 @@
     height: 20.4375vw;
     flex-shrink: 0; 
     resize: none;
+    font-size: 1.5vw;
     font-family: "Poppins";
     margin-top: 2vw;
-    padding-left: 1.5vw;
+    padding-left: 1vw;
 }
 
 .text3::placeholder{

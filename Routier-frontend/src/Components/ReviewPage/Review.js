@@ -76,7 +76,7 @@ function Review(props) {
 
       //check if visited with is empty
       if (!reviewData.title.trim()) {
-        setuploaderror("kindly, enter title to this review.");
+        setuploaderror("kindly, enter visited with to this review.");
         setSubmissionStatus('error');
         return;
       }     
@@ -123,6 +123,7 @@ function Review(props) {
     } catch (error) {
       console.error('Error submitting review:', error.message);
       setSubmissionStatus('error');
+      setuploaderror("kindly, try again later");
     }
   };
 
@@ -212,22 +213,23 @@ function Review(props) {
         ...Array.from(selectedPhotos).map((photo) => URL.createObjectURL(photo)),
       ],
     }));
-    setphotosuploaded(selectedPhotos.length > 0);
+    setphotosuploaded(reviewData.photos.length + selectedPhotos.length > 0);
   };
 
   const handleDeletePhoto = (index) => {
-    const newPhotos = [...reviewData.photos];
-    newPhotos.splice(index, 1);
-
-    setReviewData((prevData) => ({
-      ...prevData,
-      photos: newPhotos,
-    }));
-
-    // Check if the new photos array is not empty
-    setphotosuploaded(newPhotos.length > 0);
+    setReviewData((prevData) => {
+      const newPhotos = [...prevData.photos];
+      newPhotos.splice(index, 1);
+  
+      // Check if the updated photos array is empty
+      setphotosuploaded(reviewData.photos.length - 1 > 0);
+  
+      return {
+        ...prevData,
+        photos: newPhotos,
+      };
+    });
   };
-
 
   /* for navbar */
   const handleMenuClick = () => {
