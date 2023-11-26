@@ -29,6 +29,12 @@ const userSchema = mongoose.Schema(
         ref: "Place",
       },
     ],
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Favorites",
+      },
+    ],
   },
   {
     timestamps: true,

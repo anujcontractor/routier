@@ -57,6 +57,8 @@ import Stay from '../model/stayModel.js';
       });
 
       await newFavorite.save();
+      req.user.favorites.push(newFavorite._id);
+      await req.user.save();
 
       res.json({ message: 'Favorite added successfully' });
     } catch (error) {
