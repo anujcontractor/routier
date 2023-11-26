@@ -1,12 +1,12 @@
 import Dropdown from './Dropdown';
 import './Dropdown.css';
 import { Textinput1, Textinput2, Textinput3 } from './textinput';
-import {Rating} from "react-simple-star-rating";
+import { Rating } from "react-simple-star-rating";
 import IMG from "../Assets/reviewplaceholder.jpg";
 import IMG2 from "../Assets/addphotoicon.png";
-import  "./Review.css";
-import { useState , useEffect } from 'react';
-import {useParams , Link , useLocation , useNavigate} from 'react-router-dom';
+import "./Review.css";
+import { useState, useEffect } from 'react';
+import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from '../Profile/Profile.module.css';
 import logo from "../Assets/profile/logo_profile.svg";
 import profileHome from "../Assets/home/profile_home.svg";
@@ -31,7 +31,8 @@ function Review(props) {
   const navigate = useNavigate();
   const [submissionStatus, setSubmissionStatus] = useState(null);
   const [photosuploaded, setphotosuploaded] = useState(false);
-  const [upploaderror , setuploaderror] = useState("try again later.");
+  const [upploaderror, setuploaderror] = useState("try again later.");
+  const { createNotification, setProgress } = props;
 
   /* object containing all review data */
   const [reviewData, setReviewData] = useState({
@@ -46,7 +47,9 @@ function Review(props) {
   });
 
   useEffect(() => {
+    setProgress(30)
     console.log("Updated reviewData:", reviewData);
+    setProgress(100);
   }, [reviewData]);
 
   /* for uploading data*/
@@ -55,31 +58,31 @@ function Review(props) {
 
       /* checking if stars are given or not */
       if (reviewData.starRating === 0) {
-        setuploaderror("please, give rating to place.");
-        setSubmissionStatus('error');
+        createNotification('warning', 'please, give rating to place');
+        // setSubmissionStatus('error');
         return;
       }
-  
+
       // Check if date is selected
       if (!reviewData.visitDate) {
-        setuploaderror("kindly, provide the date you visited this place.");
-        setSubmissionStatus('error');
+        createNotification('warning', "kindly, provide the date you visited this place");
+        // setSubmissionStatus('error');
         return;
       }
-  
+
       // Check if review title is provided
       if (!reviewData.title.trim()) {
-        setuploaderror("kindly, enter title to this review.");
-        setSubmissionStatus('error');
+        createNotification('warning', "kindly, enter title to this review");
+        // setSubmissionStatus('error');
         return;
       }
 
       //check if visited with is empty
       if (!reviewData.title.trim()) {
-        setuploaderror("kindly, enter visited with to this review.");
-        setSubmissionStatus('error');
+        createNotification('warning', "kindly, enter visited with to this review");
+        // setSubmissionStatus('error');
         return;
-      }     
+      }
 
       const mapLocationType = (type) => {
         switch (type) {
@@ -88,11 +91,11 @@ function Review(props) {
           case 'todos':
             return 'todo';
           case 'restaurants':
-            return 'restaurant'; 
+            return 'restaurant';
 
           default:
             return 'place'; // Default value
-        } 
+        }
       };
 
       const mappedPlaceType = mapLocationType(locationtype);
@@ -104,7 +107,8 @@ function Review(props) {
       console.log(reviewData);
       console.log(`Bearer ${localStorage.getItem(`token`)}`);
 
-      const response = await fetch( `${baseUrl}/reviews/submit`, {
+      setProgress(30);
+      const response = await fetch(`${baseUrl}/reviews/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -113,17 +117,29 @@ function Review(props) {
         body: JSON.stringify(reviewData),
       });
 
+      if (response.status === 201) {
+        const responseData = await response.json();
+        if (responseData) {
+          createNotification('success', 'Review submitted successfully');
+          navigate('/');
+        }
+      }
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        createNotification('warning', `HTTP error! Status: ${response.status}`)
+        // throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const responseData = await response.json();
-      console.log('Review submitted successfully:', responseData);
+
+      // console.log('Review submitted successfully:', responseData);
       setSubmissionStatus('success');
+
     } catch (error) {
       console.error('Error submitting review:', error.message);
       setSubmissionStatus('error');
-      setuploaderror("kindly, try again later");
+      createNotification('warning', 'kindly, try again later')
+      // setuploaderror("kindly, try again later");
+    } finally {
+      setProgress(100);
     }
   };
 
@@ -169,7 +185,7 @@ function Review(props) {
     }));
   };
 
-  /* for handling visited with */ 
+  /* for handling visited with */
   const [visitedWith, setVisitedWith] = useState([]);
 
   const handleVisitedWithChange = (value) => {
@@ -205,7 +221,7 @@ function Review(props) {
   /* for handling photo upload section */
   const handlePhotosChange = (event) => {
     const selectedPhotos = event.target.files;
-    
+
     setReviewData((prevData) => ({
       ...prevData,
       photos: [
@@ -220,10 +236,10 @@ function Review(props) {
     setReviewData((prevData) => {
       const newPhotos = [...prevData.photos];
       newPhotos.splice(index, 1);
-  
+
       // Check if the updated photos array is empty
       setphotosuploaded(reviewData.photos.length - 1 > 0);
-  
+
       return {
         ...prevData,
         photos: newPhotos,
@@ -293,51 +309,51 @@ function Review(props) {
       <div className='maintitle'>
         Tell us, how's your visit?
       </div>
-       
+
       <div className='mainblock'>
-          
-          <div className='formbox'> 
+
+        <div className='formbox'>
           <div className='texts'>How would you rate this place?
-            <div className='ratingblock' >          
-                  <Rating
-                    className='rating'
-                    SVGstyle={ { 'display':'inline' } }
-                    onClick={handleRating}/>
-                    
-                  <div className='rating_text'>
-                    {ratingText} 
-                  </div>          
+            <div className='ratingblock' >
+              <Rating
+                className='rating'
+                SVGstyle={{ 'display': 'inline' }}
+                onClick={handleRating} />
+
+              <div className='rating_text'>
+                {ratingText}
+              </div>
             </div>
           </div>
 
           <div className="texts" >When did you go?
-                <input
-                  type="date"
-                  id="datePicker"
-                  className='dropdown'
-                  onChange={handleDateChange}
-                ></input>
+            <input
+              type="date"
+              id="datePicker"
+              className='dropdown'
+              onChange={handleDateChange}
+            ></input>
           </div>
 
-            <div className="texts">Whom did you go with?
-              <div>
-                  <Textinput1  onVisitedWithChange={handleVisitedWithChange} />
-              </div>
+          <div className="texts">Whom did you go with?
+            <div>
+              <Textinput1 onVisitedWithChange={handleVisitedWithChange} />
             </div>
+          </div>
 
-          
-            <div  className='reviewblockediting'>Title a Review
+
+          <div className='reviewblockediting'>Title a Review
             <div >
-                <Textinput2 onTitleChange={handleTitleChange}  />
+              <Textinput2 onTitleChange={handleTitleChange} required/>
             </div></div>
 
-            <div className='texts'>Write a review
+          <div className='texts'>Write a review
             <div>
-                <Textinput3 onReviewTextChange={handleReviewTextChange}  />    
+              <Textinput3 onReviewTextChange={handleReviewTextChange} required/>
             </div>
-            </div>
+          </div>
 
-            <div className='texts'>Add some photos
+          <div className='texts'>Add some photos
             <label className='photoupload'>
               <div className='photouploadstyle'>
                 <input
@@ -358,15 +374,15 @@ function Review(props) {
                   </>
                 ) : (
                   <div className="uploadedphotos">
-                  {reviewData.photos.map((photo, index) => (
-                    <div key={index} className='uploaded-photo-container'>
-                      <img src={photo} alt={`Uploaded Photo ${index}`} className='uploaded-photo' />
-                      <button onClick={() => handleDeletePhoto(index)} className='delete-photo-button'>
-                        Delete
-                      </button>
-                    </div>
-                  ))}
-                </div>
+                    {reviewData.photos.map((photo, index) => (
+                      <div key={index} className='uploaded-photo-container'>
+                        <img src={photo} alt={`Uploaded Photo ${index}`} className='uploaded-photo' />
+                        <button onClick={() => handleDeletePhoto(index)} className='delete-photo-button'>
+                          Delete
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             </label>
@@ -375,55 +391,55 @@ function Review(props) {
 
             <div className='button_container '>
               <button className='submitbutton' onClick={handleSubmit}>
-                  <span className='buttontext'> Submit Review </span>
+                <span className='buttontext'> Submit Review </span>
               </button>
-              <div>
-                {submissionStatus === 'success' && 
-                (
-                  <div>
-                    <p>Review submitted successfully.</p>
-                    <Link className='gohomebutton' to="/">Go Home</Link>
-                  </div>
+              {/* <div>
+                {submissionStatus === 'success' &&
+                  (
+                    <div>
+                      <p>Review submitted successfully.</p>
+                      <Link className='gohomebutton' to="/">Go Home</Link>
+                    </div>
                   )}
                 {submissionStatus === 'error' && (
                   <div>
                     <p>Error Submitting.</p>
                     <p>{upploaderror}</p>
-                    <Link className='gohomebutton' to="/">Go Home</Link>
+                    <Link className='gohomebutton'>Go Home</Link>
                   </div>
-                  )}
-              </div>
-      </div>
-
-            </div> 
+                )}
+              </div> */}
             </div>
 
-            <div className='image_block'>
-            <div>
-              <img src={placeImage} alt='' className='image1'/>
-            </div>
-
-            <div className='location_display '>
-              <h1 >{placeName}</h1>
-              <h2 >Location</h2>
-            </div>
           </div>
         </div>
 
+        <div className='image_block'>
+          <div>
+            <img src={placeImage} alt='' className='image1' />
+          </div>
+
+          <div className='location_display '>
+            <h1 >{placeName}</h1>
+            <h2 >Location</h2>
+          </div>
+        </div>
+      </div>
+
     </div>
-    
-        
+
+
 
   );
 }
 
 
-const styles1 ={
+const styles1 = {
 
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",  
+    alignItems: "center",
   },
 
   stars: {

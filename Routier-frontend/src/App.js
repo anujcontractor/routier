@@ -7,15 +7,17 @@ import Aboutus from "./Components/aboutus/Aboutus";
 import Place from "./Components/PlaceSites/Place";
 import SiteInfo from "./Components/PlaceSites/SiteInfo";
 import Sites from "./Components/PlaceSites/Sites";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import SearchComponent from "./Components/Main/SearchComponent";
 import Profile from "./Components/Profile/Profile";
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PlaceState from "./Context/PlaceState";
 import Review from "./Components/ReviewPage/Review";
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import LoadingBar from 'react-top-loading-bar'
+import ScrollToTop from './Components/ScrollToTop';
+
 
 function App() {
 
@@ -50,7 +52,9 @@ function App() {
         height={3}
         progress={progress}
       />
+
       <BrowserRouter>
+        <ScrollToTop />
         <PlaceState createNotification={createNotification} setProgress={setProgress}>
 
           <Routes>
@@ -68,9 +72,9 @@ function App() {
             <Route path="/place/:placeid/restaurants" element={<Sites type="restaurants" createNotification={createNotification} setProgress={setProgress} />} />
 
 
-            <Route path="/hotels/siteinfo/:siteid" element={<SiteInfo  type="hotels" createNotification={createNotification} setProgress={setProgress} />} />
-            <Route path="/todos/siteinfo/:siteid" element={<SiteInfo  type="todos" createNotification={createNotification} setProgress={setProgress} />} />
-            <Route path="/restaurants/siteinfo/:siteid" element={<SiteInfo  type="restaurants" createNotification={createNotification} setProgress={setProgress} />} />
+            <Route path="/hotels/siteinfo/:siteid" element={<SiteInfo type="hotels" createNotification={createNotification} setProgress={setProgress} />} />
+            <Route path="/todos/siteinfo/:siteid" element={<SiteInfo type="todos" createNotification={createNotification} setProgress={setProgress} />} />
+            <Route path="/restaurants/siteinfo/:siteid" element={<SiteInfo type="restaurants" createNotification={createNotification} setProgress={setProgress} />} />
             <Route path="/place/:placeid/todos/siteinfo/:siteid" element={<SiteInfo type="todos" createNotification={createNotification} setProgress={setProgress} />} />
             <Route path="/place/:placeid/hotels/siteinfo/:siteid" element={<SiteInfo type="hotels" createNotification={createNotification} setProgress={setProgress} />} />
             <Route path="/place/:placeid/restaurants/siteinfo/:siteid" element={<SiteInfo type="restaurants" createNotification={createNotification} setProgress={setProgress} />} />
