@@ -29,6 +29,8 @@ function Review(props) {
   const placeImage = params.get('placeImage');
   const navigate = useNavigate();
   const [submissionStatus, setSubmissionStatus] = useState(null);
+  const [photosuploaded, setphotosuploaded] = useState(false);
+  const [upploaderror , setuploaderror] = useState("try again later.");
 
   /* object containing all review data */
   const [reviewData, setReviewData] = useState({
@@ -49,6 +51,34 @@ function Review(props) {
   /* for uploading data*/
   const handleSubmit = async () => {
     try {
+
+      /* checking if stars are given or not */
+      if (reviewData.starRating === 0) {
+        setuploaderror("please, give rating to place.");
+        setSubmissionStatus('error');
+        return;
+      }
+  
+      // Check if date is selected
+      if (!reviewData.visitDate) {
+        setuploaderror("kindly, provide the date you visited this place.");
+        setSubmissionStatus('error');
+        return;
+      }
+  
+      // Check if review title is provided
+      if (!reviewData.title.trim()) {
+        setuploaderror("kindly, enter title to this review.");
+        setSubmissionStatus('error');
+        return;
+      }
+
+      //check if visited with is empty
+      if (!reviewData.title.trim()) {
+        setuploaderror("kindly, enter title to this review.");
+        setSubmissionStatus('error');
+        return;
+      }     
 
       const mapLocationType = (type) => {
         switch (type) {
@@ -173,10 +203,28 @@ function Review(props) {
   /* for handling photo upload section */
   const handlePhotosChange = (event) => {
     const selectedPhotos = event.target.files;
+    
     setReviewData((prevData) => ({
       ...prevData,
-      photos: Array.from(selectedPhotos).map((photo) => URL.createObjectURL(photo)),
+      photos: [
+        ...prevData.photos,
+        ...Array.from(selectedPhotos).map((photo) => URL.createObjectURL(photo)),
+      ],
     }));
+    setphotosuploaded(selectedPhotos.length > 0);
+  };
+
+  const handleDeletePhoto = (index) => {
+    const newPhotos = [...reviewData.photos];
+    newPhotos.splice(index, 1);
+
+    setReviewData((prevData) => ({
+      ...prevData,
+      photos: newPhotos,
+    }));
+
+    // Check if the new photos array is not empty
+    setphotosuploaded(newPhotos.length > 0);
   };
 
 
@@ -287,22 +335,40 @@ function Review(props) {
             </div>
 
             <div className='texts'>Add some photos
-            <label className='photoupload ' >
+            <label className='photoupload'>
               <div className='photouploadstyle'>
-                <img src={IMG2} alt='' className='imageclass' /> 
-                <p> Click to add photos </p>
-                <input 
-                  id="image" 
-                  type="file" 
-                  name="image"  
-                  style={{display: 'none'}} 
-                  width={874} 
+                <input
+                  id="image"
+                  type="file"
+                  name="image"
+                  style={{ display: 'none' }}
+                  width={874}
                   height={192}
                   multiple
                   onChange={handlePhotosChange}
-                  />
+                />
+
+                {!photosuploaded ? (
+                  <>
+                    <img src={IMG2} alt='' className='imageclass' />
+                    <p> Click to add photos </p>
+                  </>
+                ) : (
+                  <div className="uploadedphotos">
+                  {reviewData.photos.map((photo, index) => (
+                    <div key={index} className='uploaded-photo-container'>
+                      <img src={photo} alt={`Uploaded Photo ${index}`} className='uploaded-photo' />
+                      <button onClick={() => handleDeletePhoto(index)} className='delete-photo-button'>
+                        Delete
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                )}
               </div>
-            </label> 
+            </label>
+
+
 
             <div className='button_container '>
               <button className='submitbutton' onClick={handleSubmit}>
@@ -318,7 +384,8 @@ function Review(props) {
                   )}
                 {submissionStatus === 'error' && (
                   <div>
-                    <p>Error Submitting. Kindly Try again Later</p>
+                    <p>Error Submitting.</p>
+                    <p>{upploaderror}</p>
                     <Link className='gohomebutton' to="/">Go Home</Link>
                   </div>
                   )}

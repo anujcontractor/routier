@@ -47,12 +47,14 @@ const Footer = () => {
               alt="logo"
               className={styles2.footerlogopic}
             ></img>
-            <div className={styles2.footerroutier}>Routier</div>
-            <div className={styles2.icons}>
-              <img src={fb} alt="fb"></img>
-              <img src={x} alt="x"></img>
-              <img src={yt} alt="yt"></img>
-              <img src={insta} alt="insta"></img>
+            <div className={styles2.footerroutier}>
+              <div>Routier</div>
+              <div className={styles2.icons}>
+                <img src={fb} alt="fb"></img>
+                <img src={x} alt="x"></img>
+                <img src={yt} alt="yt"></img>
+                <img src={insta} alt="insta"></img>
+              </div>
             </div>
           </div>
 

@@ -93,6 +93,8 @@
 }
 
 .footerroutier {
+  display: flex;
+  flex-direction: column;
   color: #046b82;
   font-family: Montserrat;
   font-size: 2.8125rem;
@@ -115,7 +117,6 @@
 }
 
 .icons {
-  margin-top: 0.94vw;
   display: flex;
   align-items: flex-start;
   gap: 1.0625vh;
@@ -212,7 +213,9 @@
   .footertextblock {
     max-width: 30vw;
     justify-items: center;
+    
   }
+
 }
 @media (max-width: 450px){
   .container {
