@@ -19,6 +19,7 @@ const PlaceState = (props) => {
   const [allData, setAllData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [favourites, setFavourites] = useState([]);
 
   const fetchData = async () => {
 
@@ -303,27 +304,33 @@ const PlaceState = (props) => {
 
   }
 
-  const addfavourites = async (siteid, type) => {
-    
+  const addFavourites = async (siteid, type) => {
+
     props.setProgress(30);
 
-     try {
-      const token = localStorage.getItem('token');
+    try {
       const response = await fetch(`${baseUrl}/api/favourites/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token
+          Authorization: `Bearer ${localStorage.getItem(`token`)}`,
         },
 
         body: JSON.stringify({ itemId: siteid, itemType: type }),
       });
-       
-      if (!response.ok) {
-        props.createNotification('warning', `Failed to add. Status: ${response.status}`);
+
+      // console.log(response);
+      if (response.ok) {
+        props.createNotification('success', `Favorite added successfully`);
+      } else if (response.status == 404) {
+        props.createNotification('warning', `Site not found. Status: ${response.status}`);
+      } else if (response.status == 400) {
+        props.createNotification('warning', `Already in favorites`);
+      } else {
+        props.createNotification('warning', `Internal server error. Status: ${response.status}`);
       }
       // console.log(response)
-      const data = await response.json();
+      // const data = await response.json();
       // console.log(data);
 
     } finally {
@@ -331,6 +338,107 @@ const PlaceState = (props) => {
     }
 
   }
+
+
+  const deleteFavourites = async (siteid, type) => {
+
+    props.setProgress(30);
+
+    try {
+      const response = await fetch(`${baseUrl}/api/favourites/delete`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem(`token`)}`,
+        },
+
+        body: JSON.stringify({ itemId: siteid, itemType: type }),
+      });
+
+      // console.log(response);
+      if (response.ok) {
+        props.createNotification('success', `Favorite removed successfully`);
+      } else if (response.status == 404) {
+        props.createNotification('warning', `Site not found in favorites. Status: ${response.status}`);
+      } else {
+        props.createNotification('warning', `Internal server error. Status: ${response.status}`);
+      }
+      // console.log(response)
+      // const data = await response.json();
+      // console.log(data);
+
+    } finally {
+      props.setProgress(100);
+    }
+
+  }
+
+
+  const getFavourites = async () => {
+
+    // props.setProgress(30);
+
+    try {
+      const response = await fetch(`${baseUrl}/api/favourites`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem(`token`)}`,
+        },
+
+        // body: JSON.stringify({ itemId: siteid, itemType: type }),
+      });
+
+      // console.log(response);
+      if (response.ok) {
+        // props.createNotification('success', `Favorite removed successfully`);
+      } else if (response.status == 404) {
+        console.log('user not found');
+      } else {
+        console.log('Internal server error');
+      }
+      const data = await response.json();
+
+      if (data.favoriteDetails)
+        setFavourites(data.favoriteDetails);
+
+    } finally {
+      // props.setProgress(100);
+    }
+
+  }
+
+
+
+  // const addfavourites = async (siteid, type) => {
+  //   try {
+
+
+
+  //     // console.log(reviewData);
+  //     console.log(`Bearer ${localStorage.getItem(`token`)}`);
+
+  //     const response = await fetch( `${baseUrl}/api/favourites/add`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         Authorization: `Bearer ${localStorage.getItem(`token`)}`,
+  //       },
+  //       body: JSON.stringify({ itemId: siteid, itemType: type }),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! Status: ${response.status}`);
+  //     }
+
+  //     const responseData = await response.json();
+  //     console.log('Review submitted successfully:', responseData);
+  //     // setSubmissionStatus('success');
+  //   } catch (error) {
+  //     console.error('Error submitting review:', error.message);
+  //     // setSubmissionStatus('error');
+  //   }
+  // };
 
   /*submit review on perticular site*/
   const giveRiew = async (review) => {
@@ -356,7 +464,7 @@ const PlaceState = (props) => {
   }
 
   return (
-    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addfavourites }}>
+    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites }}>
       {props.children}
     </PlaceContext.Provider>
   )

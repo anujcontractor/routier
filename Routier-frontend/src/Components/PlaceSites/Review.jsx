@@ -3,7 +3,10 @@ import { Rating } from 'react-simple-star-rating'
 import './Review.css'
 import user_photo from '../Assets/user_photo.png'
 
-function Review() {
+function Review(props) {
+
+    const { title, description, rating, date } = props;
+
     return (
         <div className='review'>
             <div className="userPhoto">
@@ -13,18 +16,16 @@ function Review() {
             <div className="reviewText">
                 <p className='reviewRating'>
                     {/* set initial value */}
-                    <Rating initialValue={3} size='20px' readonly />
+                    <Rating initialValue={rating} size='20px' readonly />
                 </p>
                 <p className="reviewTitle">
-                    [review_title]
+                    {title}
                 </p>
                 <p className='reviewDescription'>
-                    [review_description]
-                    All the team, specially Murad, were very kind and profesional. I will repeat the experiencia for sure.
-                    All the team, specially Murad, were very kind and profesional. I will repeat the experiencia for sure.
+                    {description}
                 </p>
 
-                <p className='date'>Date of visit: [date]</p>
+                <p className='date'>Date of visit: {date.slice(0,10)}</p>
             </div>
 
         </div>

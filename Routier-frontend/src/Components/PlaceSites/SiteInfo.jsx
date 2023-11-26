@@ -5,6 +5,7 @@ import Review from './Review';
 import Navbar from './Navbar';
 import './SiteInfo.css'
 import PlaceContext from '../../Context/PlaceContext';
+import { Rating } from 'react-simple-star-rating'
 
 import hotel_icon from "../Assets/hotel_icon.svg"
 import todo_icon from "../Assets/todo_icon.svg"
@@ -16,34 +17,35 @@ import call from '../Assets/call.svg'
 import fav_icon from '../Assets/fav_icon.svg'
 import edit_icon from '../Assets/edit_icon.svg'
 import email from '../Assets/email.svg'
+import website from '../Assets/website.svg'
 
 function SiteInfo(props) {
 
   // const [reviews] = props;
   const context = useContext(PlaceContext);
-  const { place, site,  setSite, getHotelById, getRestaurantById, getTodoById, addfavourites } = context;
+  const { place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, getFavourites, favourites, deleteFavourites } = context;
   const { placeid, siteid } = useParams();
   let navigate = useNavigate();
   // console.log(siteid);
-  
+
 
   let sitetype;
-    if (props.type === 'todos') {
-        sitetype = 'thingToDo';
-    } else if (props.type === 'restaurants') {
-        sitetype = 'restaurant';
-    } else if (props.type === 'hotels') {
-        sitetype = 'stay';
-    }
+  if (props.type === 'todos') {
+    sitetype = 'todo';
+  } else if (props.type === 'restaurants') {
+    sitetype = 'restaurant';
+  } else if (props.type === 'hotels') {
+    sitetype = 'stay';
+  }
 
   useEffect(() => {
-     
+
     setSite([]);
     if (localStorage.getItem('token')) {
       // console.log("auth-token");
     } else {
       // console.log("login-required");
-      props.createNotification('warning','Login required')
+      props.createNotification('warning', 'Login required')
       navigate('/');
     }
 
@@ -58,13 +60,20 @@ function SiteInfo(props) {
   }, [placeid, siteid, props.type]);
 
   useEffect(() => {
-    
+
   }, [site]);
 
-  const handleFav = () => {
+  const addFav = () => {
 
-    addfavourites(siteid, sitetype);
-}
+    addFavourites(siteid, sitetype)
+
+  }
+
+  const removeFav = () => {
+
+    deleteFavourites(siteid, sitetype)
+
+  }
 
   const photos = site?.image?.map((imgLink) => ({
     src: imgLink,
@@ -122,36 +131,49 @@ function SiteInfo(props) {
         <section className="imgs">
 
           <div className="siteHeader">
-            <h2 className="titletext">{site?.name}</h2>
+            <h2 className="titletext" id='veg'>{site?.name} </h2>
 
             <div className='rbuttons'>
               <div className="button">
                 <img src={edit_icon} alt="icon" />
                 <Link to={`/givereview/${siteid}?placeName=${encodeURIComponent(site?.name)}&placeImage=${encodeURIComponent(site?.image?.[0])}&type=${props.type}`}>
-                Review
+                  Review
                 </Link>
               </div>
 
-              <div className="button" onClick={handleFav}>
+              <div className="button" onClick={addFav}>
                 <img src={fav_icon} alt="icon" />
-                <Link>Add to favorites</Link>
+                <Link>add to Fav</Link>
 
               </div>
+
+              {/* <div className="button" onClick={removeFav}>
+                <img src={fav_icon} alt="icon" />
+                <Link>remove from Fav</Link>
+
+              </div> */}
             </div>
           </div>
 
           <div className="contact">
 
+            {props.type === 'restaurants' &&
+              (<p>&bull;{site.veg === true ? 'Veg' : null}&nbsp;&nbsp;&nbsp; &bull;{site.nonveg === true ? 'NonVeg' : null}</p>)}
+            <Rating initialValue={site?.rating} size='30px' readonly />
+
+
             {site?.time && (<p>{site.time}</p>)}
             <p>
-              <img src={location} alt="" /><span>{site?.address? site.address: 'Not available'}</span>
+              <img src={location} alt="" /><span>{site?.address ? site.address : 'Not available'}</span>
             </p>
             <p>
-              <img src={call} alt="" /><span>{site?.phone? site.phone: 'Not available'}</span>
+              <img src={call} alt="" /><span>{site?.phone ? site.phone : 'Not available'}</span>
             </p>
 
-            <p><img src={email} alt="" id='email'/><span>{site?.email? site.email: 'Not available'}</span></p>
-            
+            <p><img src={email} alt="" id='email' /><span>{site?.email ? site.email : 'Not available'}</span></p>
+
+            {site.website && (<p><img src={website} alt="" id='email' /><span>{site.website}</span></p>)}
+
           </div>
 
           <PhotoAlbum layout="rows" photos={photos} />
@@ -160,18 +182,25 @@ function SiteInfo(props) {
 
         {/********* review section ********/}
         <section className='reviews'>
-          <div className="reviewHeading"><h2>Reviews</h2><span>(0)</span></div>
+          <div className="reviewHeading"><h2>Reviews</h2><span>({site?.reviews?.length})</span></div>
+          {site?.reviews?.length !== 0 ? (
+            site?.reviews?.map((review, index) => (
+              <Review key={index} title={review.title} description={review.reviewText} rating={review.starRating} date={review.visitDate} />
+            ))
+          ) : (
+            <div>No reviews yet</div>
+          )}
 
-          {/* {reviews.map(()=>{
+          {/* {site?.reviews?.map((review, index) => {
 
-        return <Review/>
-    })} */}
-{/* 
+            return <Review title={review.title} description={review.reviewText} rating={review.starRating} date={review.visitDate} />
+          })} */}
+          {/* 
           <Review />
           <Review />
           <Review />
           <Review /> */}
-          <div>No reviews yet</div>
+          {/* <div>No reviews yet</div> */}
         </section>
 
       </div>

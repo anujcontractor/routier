@@ -14,7 +14,7 @@ function Sites(props) {
 
     const { placeid } = useParams();
     const context = useContext(PlaceContext);
-    const { restaurants, getRestaurants, hotels, getHotels, todos, getTodos, getPlaceById, place } = context;
+    const { restaurants, getRestaurants, hotels, getHotels, todos, getTodos, getPlaceById, place, getFavourites, favourites } = context;
     let navigate = useNavigate();
 
     // console.log(placeid);
@@ -24,10 +24,10 @@ function Sites(props) {
         if (localStorage.getItem('token')) {
             // console.log("auth-token");
         } else {
-            props.createNotification('warning','Login required')
+            props.createNotification('warning', 'Login required')
             navigate('/');
         }
-
+        getFavourites();
         if (placeid === undefined) {
 
 
@@ -68,11 +68,31 @@ function Sites(props) {
             }
         }
     }, [restaurants, hotels, todos, place]);
+    
+    const [isFavoritedMap, setIsFavoritedMap] = useState({});
 
+    useEffect(() => {
+        if (sites) {
+            const newIsFavoritedMap = {};
+            sites.forEach(site => {
+                const isFavorited = isSiteidExist(site._id);
+                newIsFavoritedMap[site._id] = isFavorited;
+            });
+            setIsFavoritedMap(newIsFavoritedMap);
+        }
 
-
-
-
+        console.log(isFavoritedMap)
+    }, [sites]);
+    
+    const isSiteidExist = (site_id)=> {
+        // console.log(favourites)
+        for (let i = 0; i < favourites.length; i++) {
+            if (favourites[i].favoriteId === site_id) {
+              return true; // Siteid found in the array
+            }
+          }
+          return false; // Siteid not found in the array
+    }
     const { type } = props;
     return (
 
@@ -130,10 +150,24 @@ function Sites(props) {
                 </section>
                 {/******** sites section ************/}
                 <section className="sites">
-                    {sites?.map((site, index) => (
-                        <Card siteid={site._id} type={props.type} name={site.name} description={site.description} img={site.image[0]} rating={site.rating} placeid={placeid} />
-                    ))}
+                    {sites?.map((site, index) => {
+                        
+                        return (
+                            <Card
+                                key={index}
+                                siteid={site._id}
+                                type={props.type}
+                                name={site.name}
+                                description={site.description}
+                                img={site.image[0]}
+                                rating={site.rating}
+                                placeid={placeid}
+                                fav = {isFavoritedMap[site._id]}
+                            />
+                        );
+                    })}
                 </section>
+
             </div>
         </>
     )

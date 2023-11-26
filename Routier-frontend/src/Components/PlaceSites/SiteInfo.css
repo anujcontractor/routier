@@ -64,7 +64,9 @@ section {
 }
 
 
-
+#veg{
+  display: flex;
+}
 .siteHeader {
   height: auto;
   width: 100%;
@@ -128,7 +130,7 @@ section {
   margin-right: 5px;
 }
 
-.reviewHeading span {
+ .reviewHeading span, #veg span {
 
   font-size: 0.9rem;
 }

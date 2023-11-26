@@ -31,11 +31,12 @@ import menu_white from '../Assets/menu_white.svg'
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
 import SearchComponent from './SearchComponent';
-
+import PlaceContext from '../../Context/PlaceContext';
 const Home = (props) => {
 
   let navigate = useNavigate();
-
+  const context = useContext(PlaceContext);
+  const { getFavourites, favourites } = context;
   useEffect(() => {
     if (localStorage.getItem('token')) {
       // console.log("auth-token");
@@ -44,6 +45,8 @@ const Home = (props) => {
       props.createNotification('warning', 'Login required')
       navigate('/');
     }
+
+    getFavourites();
   }, [navigate]);
 
   const handleLogout = async () => {
