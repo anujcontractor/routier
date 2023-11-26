@@ -8,42 +8,15 @@ const favoritesSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  places: [{
-    name :{
-        type:String,
-        required:true
-    },
-    addedDate: {
-      type: Date,
-      default: Date.now,
-    },
-  }],
-  restaurants: [{
-    name: {
-      type: String,
-      required: true,
-    },
-    addedDate: {
-      type: Date,
-      default: Date.now,
-    },
-  }],
-  thingsToDo: [{
-    name: {
-      type: String,
-      required: true,
-    },
-    addedDate: {
-      type: Date,
-      default: Date.now,
-    },
-  }],
+  itemId : {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  itemType: {
+    type: String,
+    required: true,
+  }
 });
 
 const fav = mongoose.model('Favorites', favoritesSchema)
 export default fav;
-
-
-
-
-

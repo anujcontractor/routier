@@ -22,10 +22,10 @@ import Stay from '../model/stayModel.js';
         case 'restaurant':
           item = await Restaurant.findById(itemId);
           break;
-        case 'thingToDo':
+        case 'todo':
           item = await ThingToDo.findById(itemId);
           break;
-        case 'placeInfo':
+        case 'place':
           item = await PlaceInfo.findById(itemId);
           break;
         case 'stay':
@@ -92,7 +92,7 @@ import Stay from '../model/stayModel.js';
     }
   }
 
-  const getFavorites = async(req, res) => {
+  /*const getFavorites = async(req, res) => {
     try {
       // Check if user exists
       const user = await User.findById(req.user._id);
@@ -108,6 +108,53 @@ import Stay from '../model/stayModel.js';
       console.error(error);
       res.status(500).json({ message: 'Internal server error' });
     }
+  }*/
+  const getFavorites = async(req, res) => {
+    try {
+      // Check if user exists
+      const user = await User.findById(req.user._id);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      const favorites = await Favorites.find({ userId: req.user._id });
+      const favoriteDetails = [];
+  
+      for (const favorite of favorites) {
+        const itemDetails = await getItemDetails(favorite.itemId, favorite.itemType);
+        favoriteDetails.push({
+          favoriteId: favorite._id,
+          itemDetails,
+        });
+      }
+  
+      res.json({favoriteDetails});
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Error fetching favorites');
+    }
+  }
+  
+  async function getItemDetails(itemId, itemType) {
+    let itemDetails;
+    switch (itemType) {
+      case 'restaurant':
+        itemDetails = await Restaurant.findById(itemId);
+        break;
+      case 'todo':
+        itemDetails = await ThingToDo.findById(itemId);
+        break;
+      case 'place':
+        itemDetails = await PlaceInfo.findById(itemId);
+        break;
+      case 'stay':
+        itemDetails = await Stay.findById(itemId);
+        break;
+      default:
+        throw new Error(`Invalid item type: ${itemType}`);
+    }
+  
+    return itemDetails;
   }
 
 
