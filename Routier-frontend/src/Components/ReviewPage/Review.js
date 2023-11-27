@@ -11,6 +11,7 @@ import styles from '../Profile/Profile.module.css';
 import logo from "../Assets/profile/logo_profile.svg";
 import profileHome from "../Assets/home/profile_home.svg";
 import { baseUrl } from '../../shared';
+import FooterSmall from '../Main/FooterSmall';
 
 const colors = {
   Starcolor: "#f29d38",
@@ -425,7 +426,7 @@ function Review(props) {
           </div>
         </div>
       </div>
-
+      <FooterSmall/>
     </div>
 
 

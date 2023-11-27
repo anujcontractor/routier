@@ -84,10 +84,10 @@ section {
   color: #E37C67;
 }
 
-.images {
+.titleBar .images {
 
   margin-top: 1rem;
-
+  width: 100% ;
 }
 
 /******about section css*****/

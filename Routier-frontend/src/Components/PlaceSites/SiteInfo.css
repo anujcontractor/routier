@@ -17,6 +17,16 @@ section {
 
 
 /******siteHeader section css*****/
+
+.imgs {
+  display: flex;
+  flex-direction: column;
+}
+
+.images {
+  width: 80%;
+}
+
 .titleBar {
   display: flex;
   flex-direction: column;
@@ -64,9 +74,10 @@ section {
 }
 
 
-#veg{
+#veg {
   display: flex;
 }
+
 .siteHeader {
   height: auto;
   width: 100%;
@@ -107,16 +118,22 @@ section {
 }
 
 .contact p {
-  display: flex;
+  display: flex; 
 }
 
 .contact p span {
   margin: 0 10px;
+  display: flex;
 }
 
-#email{
- width: 25px;
+#email {
+  width: 25px;
 }
+
+#description {
+  padding: 1rem 0;
+}
+
 /*review section*/
 .reviewHeading {
 
@@ -130,7 +147,8 @@ section {
   margin-right: 5px;
 }
 
- .reviewHeading span, #veg span {
+.reviewHeading span,
+#veg span {
 
   font-size: 0.9rem;
 }
@@ -148,4 +166,19 @@ section {
   .siteHeader div .button {
     justify-content: flex-start;
   }
+
+  .images {
+    width: 100%;
+  }
+
+
+}
+
+@media only screen and (max-width: 400px) {
+
+  .d_info{
+    font-size: 0.7rem;
+  }
+
+  
 }

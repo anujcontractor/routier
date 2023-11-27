@@ -9,6 +9,7 @@ import stories_ion from "../Assets/stories_icon.svg"
 import place_img from "../Assets/place.png"
 import Navbar from './Navbar';
 import PlaceContext from '../../Context/PlaceContext';
+import FooterSmall from '../Main/FooterSmall';
 
 function Sites(props) {
 
@@ -169,6 +170,7 @@ function Sites(props) {
                 </section>
 
             </div>
+            <FooterSmall />
         </>
     )
 }

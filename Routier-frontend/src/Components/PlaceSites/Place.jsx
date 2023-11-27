@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from "react-router-dom";
 import PhotoAlbum from "react-photo-album";
 import PlaceContext from '../../Context/PlaceContext.jsx';
-
+import FooterSmall from '../Main/FooterSmall.jsx';
 import './Place.css';
 import Slider from './Slider.jsx';
 import hotel_icon from "../Assets/hotel_icon.svg"
@@ -57,7 +57,6 @@ function Place(props) {
     width: 800, // Set the width as needed
     height: 800, // Set the height as needed
   }));
-
   return (
     <>
       <Navbar />
@@ -127,7 +126,7 @@ function Place(props) {
           <div className="slider">
             <div className="sliderHeader">
               <p>Do</p>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, cupiditate?</p>
+              <p>Places to see, ways to wander, and signature experiences that define Dubai.</p>
             </div>
             <div className="sliderData">
               <Slider sites={place.todos} placeid={placeid} type = {'todos'}/>
@@ -138,7 +137,7 @@ function Place(props) {
           <div className="slider">
             <div className="sliderHeader">
               <p>Stay</p>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, cupiditate?</p>
+              <p>A mix of the charming, lavish, and modern.</p>
             </div>
             <div className="sliderData">
               <Slider sites={place.stays} placeid={placeid} type = {'hotels'}/>
@@ -149,7 +148,7 @@ function Place(props) {
           <div className="slider">
             <div className="sliderHeader">
               <p>Eat</p>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, cupiditate?</p>
+              <p>Quintessential Dubai restaurants, bars, and beyond.</p>
             </div>
             <div className="sliderData">
               <Slider sites={place.restaurants} placeid={placeid} type = {'restaurants'}/>
@@ -157,8 +156,11 @@ function Place(props) {
 
           </div>
         </section>
-
+        
       </div>
+      <FooterSmall />
+
+      
     </>
   )
 }

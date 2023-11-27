@@ -18,6 +18,7 @@ import fav_icon from '../Assets/fav_icon.svg'
 import edit_icon from '../Assets/edit_icon.svg'
 import email from '../Assets/email.svg'
 import website from '../Assets/website.svg'
+import FooterSmall from '../Main/FooterSmall';
 
 function SiteInfo(props) {
 
@@ -77,10 +78,11 @@ function SiteInfo(props) {
 
   const photos = site?.image?.map((imgLink) => ({
     src: imgLink,
-    width: 500, // Set the width as needed
-    height: 500, // Set the height as needed
+    width: 200, // Set the width as needed
+    height: 200, // Set the height as needed
   }));
-  console.log(site);
+  console.log(photos)
+
 
   return (
     <>
@@ -137,7 +139,7 @@ function SiteInfo(props) {
               <div className="button">
                 <img src={edit_icon} alt="icon" />
                 <Link to={`/givereview/${siteid}?placeName=${encodeURIComponent(site?.name)}&placeImage=${encodeURIComponent(site?.image?.[0])}&type=${props.type}`}>
-                 Review
+                  Review
                 </Link>
               </div>
 
@@ -158,7 +160,7 @@ function SiteInfo(props) {
           <div className="contact">
 
             {props.type === 'restaurants' &&
-              (<p>&bull;{site.veg === true ? 'Veg' : null}&nbsp;&nbsp;&nbsp; &bull;{site.nonveg === true ? 'NonVeg' : null}</p>)}
+              (<p>{site.veg === true ? <>&bull;Veg</> : null}&nbsp;&nbsp;&nbsp; {site.nonveg === true ? <>&bull;Nonveg</> : null}</p>)}
             <Rating initialValue={site?.rating} size='30px' readonly />
 
 
@@ -170,14 +172,17 @@ function SiteInfo(props) {
               <img src={call} alt="" /><span>{site?.phone ? site.phone : 'Not available'}</span>
             </p>
 
-            <p><img src={email} alt="" id='email' /><span>{site?.email ? site.email : 'Not available'}</span></p>
+            <p className='d_info'>
+              <img src={email} alt="" id='email' /><span>{site?.email ? site.email : 'Not available'}</span>
+            </p>
 
-            {site.website && (<p><img src={website} alt="" id='email' /><span>{site.website}</span></p>)}
+            {site.website && (<p className='d_info'><img src={website} alt="" id='email' /><span>{site.website}</span></p>)}
 
           </div>
 
-          <PhotoAlbum layout="rows" photos={photos} />
-          <p>{site?.description}</p>
+          <div className="images"><PhotoAlbum layout="rows" photos={photos} /></div>
+
+          <div id='description'>{site?.description}</div>
         </section>
 
         {/********* review section ********/}
@@ -204,6 +209,7 @@ function SiteInfo(props) {
         </section>
 
       </div>
+      <FooterSmall/>
     </>
   )
 }
