@@ -62,6 +62,10 @@ const Profile = (props) => {
   };
 
   const removeFromFav = async (itemId, itemType, user) => {
+    const userFavs2 = userFavs.filter((Fav) => {
+      return Fav.itemDetails._id != itemId;
+    });
+    setUserFavs(userFavs2);
     const req = await fetch("http://localhost:8000/api/favourites/delete", {
       method: "DELETE",
       headers: {
@@ -74,11 +78,6 @@ const Profile = (props) => {
         itemType: itemType,
       }),
     });
-
-    const userFavs2 = userFavs.filter((Fav) => {
-      return Fav.itemDetails._id != itemId;
-    });
-    setUserFavs(userFavs2);
   };
 
   const getTrips = () => {
