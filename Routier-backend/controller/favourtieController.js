@@ -127,6 +127,7 @@ import Stay from '../model/stayModel.js';
         favoriteDetails.push({
           favoriteId: favorite._id,
           itemDetails,
+          itemtype: favorite.itemType,
         });
       }
   
