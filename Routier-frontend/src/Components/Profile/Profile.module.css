@@ -145,6 +145,7 @@ button {
   align-items: center;
   width: 95%;
   height: 5rem;
+  min-height: 5rem;
   margin-top: 1rem;
   padding: 1rem;
   border-radius: 1.5rem;
@@ -165,8 +166,9 @@ button {
   align-items: center;
   width: 95%;
   height: 10rem;
+  min-height: 10rem;
   margin-top: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 1.5rem;
   border: solid 0.1rem #b5b5b5;
   background-color: transparent;
@@ -174,13 +176,23 @@ button {
 }
 .favImg {
   height: 100%;
-  border-radius: 1.75rem;
+  width: 100%;
+  /* height: auto;
+  width: 100%; */
+}
+.imgBox {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1.25rem;
 }
 .favcontent {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  width: 75%;
+  width: 73%;
   height: 100%;
 }
 .favHead {
@@ -207,6 +219,7 @@ button {
   font-weight: 400;
   letter-spacing: -0.06563rem;
   text-decoration-line: underline;
+  cursor: pointer;
 }
 .favRating {
   width: fit-content;
@@ -234,6 +247,11 @@ button {
   font-weight: 400;
   margin: 0;
 }
+.expTitle,
+.reviewTitle,
+.favTitle {
+  cursor: pointer;
+}
 .stars {
   display: flex;
   flex-direction: row;
@@ -252,11 +270,6 @@ button {
     width: 70%;
   }
 }
-@media (max-width: 1050px) {
-  .favcontent {
-    width: 65%;
-  }
-}
 @media (max-width: 1000px) {
   .logo {
     width: 10rem;
@@ -270,11 +283,8 @@ button {
   }
 }
 @media (max-width: 900px) {
-  .reviewDesc{
+  .reviewDesc {
     font-size: 0.75rem;
-  }
-  .favcontent {
-    width: 60%;
   }
 }
 @media (max-width: 800px) {
@@ -283,9 +293,6 @@ button {
   }
   .expTitle {
     font-size: 1.5rem;
-  }
-  .favImg {
-    height: 87%;
   }
 }
 @media (max-width: 700px) {
@@ -312,11 +319,7 @@ button {
   }
   .favImg {
     height: 100%;
-  }
-}
-@media (max-width: 600px) {
-  .favImg {
-    height: 90%;
+    width: 100%;
   }
 }
 @media (max-width: 500px) {
@@ -371,11 +374,14 @@ button {
   .navbar {
     padding: 0.5rem;
   }
-  .reviewDesc{
+  .reviewDesc {
     font-size: 0.65rem;
   }
-  .favImg {
-    height: 70%;
+  .favTitle {
+    font-size: 1.25rem;
+  }
+  .favDesc {
+    font-size: 0.8rem;
   }
 }
 @media (max-width: 400px) {
@@ -397,10 +403,10 @@ button {
   .expBox {
     width: 90%;
   }
-  .reviewTitle{
+  .reviewTitle {
     font-size: 1rem;
   }
-  .reviewDesc{
+  .reviewDesc {
     font-size: 0.6rem;
   }
   .favImg {

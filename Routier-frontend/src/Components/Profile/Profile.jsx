@@ -15,8 +15,7 @@ import DisplayRating from "./DisplayRating";
 
 const Profile = (props) => {
   let navigate = useNavigate();
-  const [userName, setUserName] = useState("name");
-  const [userEmail, setUserEmail] = useState("abc@gmail.com");
+  const [user, setUser] = useState();
   const [userTrips, setUserTrips] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const [userFavs, setUserFavs] = useState([]);
@@ -24,8 +23,8 @@ const Profile = (props) => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       // console.log("auth-token");
-      const fetchReviews = async () => {
-        const res = await fetch("http://localhost:8000/api/favourites", {
+      const fetchUserProfile = async () => {
+        const res = await fetch("http://localhost:8000/api/users/profile", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -33,9 +32,9 @@ const Profile = (props) => {
           },
         });
         const data = await res.json();
-        setUserReviews(data.favoriteDetails);
+        setUser(data);
       };
-      fetchReviews();
+      fetchUserProfile();
       const fetchFavs = async () => {
         const res = await fetch("http://localhost:8000/api/favourites", {
           method: "GET",
@@ -62,8 +61,23 @@ const Profile = (props) => {
     document.getElementById("navlinksCont2").style.display = "none";
   };
 
-  const removeFromFav = () => {
-    const userFavs2 = userFavs.filter();
+  const removeFromFav = async (itemId, itemType, user) => {
+    const req = await fetch("http://localhost:8000/api/favourites/delete", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      user: user,
+      body: JSON.stringify({
+        itemId: itemId,
+        itemType: itemType,
+      }),
+    });
+
+    const userFavs2 = userFavs.filter((Fav) => {
+      return Fav.itemDetails._id != itemId;
+    });
     setUserFavs(userFavs2);
   };
 
@@ -98,12 +112,15 @@ const Profile = (props) => {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
+        {/* https://stackoverflow.com/questions/50829728/how-to-use-material-ui-icons-in-react */}
       </head>
       {/* Navbar */}
       <nav className={styles.navbar}>
-        <div className={styles.logoCont}>
-          <img src={logo} className={styles.logo} alt="logo" />
-        </div>
+        <Link to="/home">
+          <div className={styles.logoCont}>
+            <img src={logo} className={styles.logo} alt="logo" />
+          </div>
+        </Link>
         <div className={styles.navlinksCont}>
           <Link to="/home" className={styles.alerts}>
             Home
@@ -145,8 +162,10 @@ const Profile = (props) => {
         {/* Personal info */}
         <div className={styles.personalCont}>
           <img src={avatar} className={styles.avatar} />
-          <p className={styles.nametxt}>{userName}</p>
-          <p className={styles.emailtxt}>{userEmail}</p>
+          <p className={styles.nametxt}>{user ? user.name : "name"}</p>
+          <p className={styles.emailtxt}>
+            {user ? user.email : "abc@gmail.com"}
+          </p>
           <button
             className={`${styles.options} ${styles.tripsOption}`}
             id="trips"
@@ -170,7 +189,7 @@ const Profile = (props) => {
             <p className={styles.profileTitle}>Places</p>
             <p className={styles.profileTitle}>Experience</p>
           </div>
-          <div className={styles.expCont}>
+          <div className={styles.expCont} id="expCont">
             {userTrips.map((trip) => {
               return (
                 <div className={styles.expBox}>
@@ -242,43 +261,39 @@ const Profile = (props) => {
             {userFavs.map((Fav) => {
               return (
                 <div className={styles.favBox}>
-                  <img src={Fav.img} className={styles.favImg} />
+                  <div className={styles.imgBox}>
+                    <img
+                      src={Fav.itemDetails.image[0]}
+                      className={styles.favImg}
+                    />
+                  </div>
                   <div className={styles.favcontent}>
                     <div className={styles.favHead}>
-                      <p className={styles.favTitle}>{Fav.title}</p>
+                      <Link
+                        to={`/${Fav.itemtype}s/siteinfo/${Fav.itemDetails._id}`}
+                        className={styles.favTitle}
+                      >
+                        {Fav.itemDetails.name}
+                      </Link>
                       <button
                         className={styles.removeFav}
-                        onClick={removeFromFav}
+                        onClick={() =>
+                          removeFromFav(Fav.itemDetails._id, Fav.itemtype, user)
+                        }
                       >
                         Remove from Favorite
                       </button>
                     </div>
                     <div className={styles.favRating}>
-                      <DisplayRating rate={Fav.rating} />
+                      <DisplayRating rate={Fav.itemDetails.rating} />
                     </div>
-                    <p className={styles.favDesc}>{Fav.desc}</p>
+                    <p className={styles.favDesc}>
+                      {Fav.itemDetails.description}
+                    </p>
                   </div>
                 </div>
               );
             })}
-            <div className={styles.favBox}>
-              <img src={fav} className={styles.favImg} />
-              <div className={styles.favcontent}>
-                <div className={styles.favHead}>
-                  <p className={styles.favTitle}>test</p>
-                  <button className={styles.removeFav} onClick={removeFromFav}>
-                    Remove from Favorite
-                  </button>
-                </div>
-                <div className={styles.favRating}>
-                  <DisplayRating rate={5} />
-                </div>
-                <p className={styles.favDesc}>
-                  Khaleej Al Arabi Street Aloft Abu Dhabi Hotel, Abu Dhabi
-                  United Arab Emirates
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </main>
