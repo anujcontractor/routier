@@ -44,6 +44,8 @@ const store = (req, res, next) => {
     price: req.body.price,
     image: req.body.image,
     description: req.body.description,
+    address: req.body.address,
+    phone : req.body.phone,
     website: req.body.website,
     rating: req.body.rating,
   });
@@ -71,6 +73,8 @@ const update = (req, res, next) => {
     price: req.body.price,
     image: req.body.image,
     description: req.body.description,
+    address: req.body.address,
+    phone : req.body.phone,
     website: req.body.website,
     rating: req.body.rating,
   };
