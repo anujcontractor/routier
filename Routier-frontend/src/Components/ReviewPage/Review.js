@@ -85,25 +85,7 @@ function Review(props) {
         return;
       }
 
-      const mapLocationType = (type) => {
-        switch (type) {
-          case 'hotels':
-            return 'stay';
-          case 'todos':
-            return 'todo';
-          case 'restaurants':
-            return 'restaurant';
 
-          default:
-            return 'place'; // Default value
-        }
-      };
-
-      const mappedPlaceType = mapLocationType(locationtype);
-      setReviewData((prevData) => ({
-        ...prevData,
-        placeType: mappedPlaceType,
-      }));
 
       console.log(reviewData);
       console.log(`Bearer ${localStorage.getItem(`token`)}`);
@@ -212,6 +194,26 @@ function Review(props) {
   const [reviewText, setReviewText] = useState('');
   const handleReviewTextChange = (value) => {
     setReviewText(value);
+
+    const mapLocationType = (type) => {
+      switch (type) {
+        case 'hotels':
+          return 'stay';
+        case 'todos':
+          return 'todo';
+        case 'restaurants':
+          return 'restaurant'; 
+
+        default:
+          return 'place'; // Default value
+      } 
+    };
+
+    const mappedPlaceType = mapLocationType(locationtype);
+    setReviewData((prevData) => ({
+      ...prevData,
+      placeType: mappedPlaceType,
+    }));
 
     setReviewData((prevData) => ({
       ...prevData,
