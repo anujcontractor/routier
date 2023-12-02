@@ -52,16 +52,28 @@ const submitReview = expressAsyncHandler(async (req, res) => {
           const stay = await Stay.findById(location);
           stay.reviews.push(review._id);
           await stay.save();
+          if (starRating >= 3) {
+            req.user.prefferedStay.push(stay._id);
+            await req.user.save();
+          }
           break;
         case "todo":
           const todo = await ToDo.findById(location);
           todo.reviews.push(review._id);
           await todo.save();
+          if (starRating >= 3) {
+            req.user.prefferedTodo.push(todo._id);
+            await req.user.save();
+          }
           break;
         case "restaurant":
           const restaurant = await Restaurant.findById(location);
           restaurant.reviews.push(review._id);
           await restaurant.save();
+          if (starRating >= 3) {
+            req.user.prefferedRestaurant.push(restaurant._id);
+            await req.user.save();
+          }
           break;
         case "place":
           const place = await Place.findById(location);
