@@ -89,4 +89,4 @@ const register = expressAsyncHandler(async (req, res) => {
   }
 });
 
-export default { index, show, register };
+export default { index, show, register, updateTags };
