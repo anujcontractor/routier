@@ -37,6 +37,30 @@ const show = (req, res, next) => {
     });
 };
 
+//need to check if this works or not
+export const updateTags = async (req, res) => {
+  const { stayId } = req.params;
+  const { tags } = req.body;
+
+  try {
+    const updatedStay = await Stay.findByIdAndUpdate(
+      stayId,
+      { tags },
+      { new: true }
+    );
+
+    if (!updatedStay) {
+      return res.status(404).json({ message: "Stay not found" });
+    }
+
+    return res.status(200).json(updatedStay);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+
 //store a stay
 const register = expressAsyncHandler(async (req, res) => {
   const stay = new Stay({
