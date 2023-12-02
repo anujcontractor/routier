@@ -153,6 +153,14 @@ section {
   font-size: 0.9rem;
 }
 
+#r2{
+  font-weight: 100;
+  color: rgb(91, 91, 91);
+  font-size: 1.2rem;
+  
+  background-color: aqua;
+}
+
 @media only screen and (max-width: 800px) {
 
   .siteHeader {

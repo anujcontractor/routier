@@ -39,7 +39,7 @@ const show = (req, res, next) => {
 
 //need to check if this works or not
 export const updateTags = async (req, res) => {
-  const { stayId } = req.params;
+  const { stayId } = req.body;
   const { tags } = req.body;
 
   try {
@@ -89,4 +89,4 @@ const register = expressAsyncHandler(async (req, res) => {
   }
 });
 
-export default { index, show, register };
+export default { index, show, register, updateTags };

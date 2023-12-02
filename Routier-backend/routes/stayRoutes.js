@@ -5,5 +5,6 @@ const router = express.Router();
 router.get('/', StayController.index);
 router.get('/:id', StayController.show);
 router.post('/store', StayController.register);
+router.post('/updateTags', StayController.updateTags);
 
 export default router;

@@ -16,28 +16,65 @@ const Signup = (props) => {
     // console.log(credentials);
   }
 
+
+  const checkConstraints = () => {
+
+    const { name, password, cpassword } = credentials;
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/;
+
+    if (cpassword != password) {
+      props.createNotification('warning', 'Invalid credentials');
+      return false;
+    }
+
+    if (name.length < 5) {
+      props.createNotification('warning', 'Your name length must be at least 5');
+      return false;
+    }
+
+    if (name.length > 30) {
+      props.createNotification('warning', "Your name length can't be greater than 30");
+      return false;
+    }
+    
+    if (!/^[a-zA-Z\s]+$/.test(name)) {
+      props.createNotification('warning', 'Name should contain only alphabets and spaces');
+      return false;
+    }
+
+    if (name.trim().length === 0) {
+
+      props.createNotification('warning', 'Name cannot contain only spaces');
+      return false;
+    }
+    
+    if (password.length < 8) {
+      props.createNotification('warning', 'Password must have at least 8 characters');
+      return false;
+    }
+
+    if (password.length > 30) {
+      props.createNotification('warning', "Password length can't be greater than 30");
+      return false;
+    }
+
+    if (!passwordRegex.test(password)) {
+      props.createNotification('warning', 'Password must have at least one capital-small letter, special character, number');
+      return false;
+    }
+
+    return true;
+
+  }
+
   const handleSubmit = async (e) => {
 
     e.preventDefault();
     const { name, email, password, cpassword } = credentials;
 
-    if (cpassword != password) {
-      props.createNotification('warning', 'Invalid credentials');
+    if (!checkConstraints())
       return;
-    }
-
-    if(name.length<3)
-    {
-      props.createNotification('warning', 'Your name length must be greater than 3');
-      return;
-    }
-
-    if(password.length<5)
-    {
-      props.createNotification('warning', 'password length atleast 5');
-      return;
-    }
-
     // console.log(name, email, password);
     props.setProgress(20);
     const response = await fetch(`${baseUrl}/api/users/register`, {

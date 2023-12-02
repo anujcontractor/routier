@@ -16,12 +16,12 @@ import Navbar from './Navbar.jsx';
 function Place(props) {
 
   const context = useContext(PlaceContext);
-  const { getPlaceById, place} = context;
+  const { getPlaceById, place, prefferedRestaurant, prefferedStay, prefferedTodo } = context;
+  const [sortedhotels, setSortedhotels] = useState([]);
+  const [sortedrestaurants, setSortedrestaurants] = useState([]);
+  const [sortedtodos, setSortedtodos] = useState([]);
   const { placeid } = useParams();
   let navigate = useNavigate();
-
- 
-
 
   useEffect(() => {
 
@@ -29,28 +29,79 @@ function Place(props) {
       // console.log("auth-token");
     } else {
       // console.log("login-required");
-      props.createNotification('warning','Login required')
+      props.createNotification('warning', 'Login required')
       navigate('/');
     }
-    
-    if(placeid)
-        getPlaceById(placeid);
-   
+
+    if (placeid)
+      getPlaceById(placeid);
+
   }, [placeid, navigate]);
 
   useEffect(() => {
 
-    
- }, [place]);
 
-  // console.log(place.restaurants)
-  // const fetchData = async () => {
-  //   let url = "";
-  //   let data = await fetch(url);//Will return the promise
-  //   let parseddata = await data.json();
-  //   console.log(data);
-  // };
+  }, [place]);
 
+
+  const compareByMatchingTags = (a, b, preferedtags) => {
+
+    const matchingTagsA = a.tags.filter(tag => preferedtags?.includes(tag));
+    const matchingTagsB = b.tags.filter(tag => preferedtags?.includes(tag));
+    const tagsComparison = matchingTagsB.length - matchingTagsA.length;
+
+    //If the matching tags are the same, compare by rating
+    if (tagsComparison === 0) {
+      const ratingComparison = b.rating - a.rating;
+      return ratingComparison;
+
+    }
+    return matchingTagsB.length - matchingTagsA.length;
+  };
+
+
+  const compareByVeg = (a, b) => {
+
+    let preferenceA = 0, preferenceB = 0;
+
+
+    if (prefferedRestaurant?.includes('veg')) {
+      preferenceA = a.veg;
+      preferenceB = b.veg;
+    } else if (prefferedRestaurant?.includes('nonveg')) {
+      preferenceA = a.nonveg;
+      preferenceB = b.nonveg;
+    }
+  
+    if (preferenceA === preferenceB) {
+      const ratingComparison = b.rating - a.rating;
+      return ratingComparison;
+
+    }
+
+    return preferenceB - preferenceA;
+  };
+
+
+  useEffect(() => {
+
+    if (place?.stays?.length !== 0 && place?.restaurants?.length !== 0 && place?.todos?.length !== 0) {
+      const sortedhotelsCopy = place?.stays ? [...place.stays] : [];
+      const sortedrestaurantsCopy = place?.restaurants ? [...place.restaurants] : [];
+      const sortedtodosCopy = place?.todos ? [...place.todos] : [];
+
+
+      console.log(sortedhotelsCopy);
+      sortedhotelsCopy.sort((a, b) => compareByMatchingTags(a, b, prefferedStay));
+      sortedtodosCopy.sort((a, b) => compareByMatchingTags(a, b, prefferedTodo));
+      sortedrestaurantsCopy.sort(compareByVeg);
+
+      setSortedhotels(sortedhotelsCopy);
+      setSortedtodos(sortedtodosCopy);
+      setSortedrestaurants(sortedrestaurantsCopy);
+    }
+
+  }, [place, prefferedRestaurant, prefferedStay, prefferedTodo]);
 
   const photos = place?.images?.map((imgLink) => ({
     src: imgLink,
@@ -78,21 +129,21 @@ function Place(props) {
               </div>
             </Link>
 
-            <Link to={placeid ? `/place/${placeid}/hotels`: '/hotels'}>
+            <Link to={placeid ? `/place/${placeid}/hotels` : '/hotels'}>
               <div className="button">
                 Hotels
                 <img src={hotel_icon} alt="icon" />
               </div>
             </Link>
 
-            <Link to={placeid ? `/place/${placeid}/todos`: '/todos'}>
+            <Link to={placeid ? `/place/${placeid}/todos` : '/todos'}>
               <div className="button">
                 Things to do
                 <img src={todo_icon} alt="icon" />
               </div>
             </Link>
 
-            <Link to={placeid ? `/place/${placeid}/restaurants`: '/restaurants'}>
+            <Link to={placeid ? `/place/${placeid}/restaurants` : '/restaurants'}>
               <div className="button">
                 Restaurants
                 <img src={restaurant_icon} alt="icon" />
@@ -129,7 +180,7 @@ function Place(props) {
               <p>Places to see, ways to wander, and signature experiences that define Dubai.</p>
             </div>
             <div className="sliderData">
-              <Slider sites={place.todos} placeid={placeid} type = {'todos'}/>
+              <Slider sites={sortedtodos} placeid={placeid} type={'todos'} />
             </div>
 
           </div>
@@ -140,7 +191,7 @@ function Place(props) {
               <p>A mix of the charming, lavish, and modern.</p>
             </div>
             <div className="sliderData">
-              <Slider sites={place.stays} placeid={placeid} type = {'hotels'}/>
+              <Slider sites={sortedhotels} placeid={placeid} type={'hotels'} />
             </div>
 
           </div>
@@ -151,16 +202,16 @@ function Place(props) {
               <p>Quintessential Dubai restaurants, bars, and beyond.</p>
             </div>
             <div className="sliderData">
-              <Slider sites={place.restaurants} placeid={placeid} type = {'restaurants'}/>
+              <Slider sites={sortedrestaurants} placeid={placeid} type={'restaurants'} />
             </div>
 
           </div>
         </section>
-        
+
       </div>
       <FooterSmall />
 
-      
+
     </>
   )
 }
