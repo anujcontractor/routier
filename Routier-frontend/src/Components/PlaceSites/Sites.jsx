@@ -15,7 +15,7 @@ function Sites(props) {
 
     const { placeid } = useParams();
     const context = useContext(PlaceContext);
-    const { restaurants, getRestaurants, hotels, getHotels, todos, getTodos, getPlaceById, place, getFavourites, favourites } = context;
+    const { restaurants, getRestaurants, hotels, getHotels, todos, getTodos, getPlaceById, place, getFavourites, favourites,tags } = context;
     let navigate = useNavigate();
 
     // console.log(placeid);
@@ -72,18 +72,18 @@ function Sites(props) {
     
     const [isFavoritedMap, setIsFavoritedMap] = useState({});
 
-    useEffect(() => {
-        if (sites) {
-            const newIsFavoritedMap = {};
-            sites.forEach(site => {
-                const isFavorited = isSiteidExist(site._id);
-                newIsFavoritedMap[site._id] = isFavorited;
-            });
-            setIsFavoritedMap(newIsFavoritedMap);
-        }
+    // useEffect(() => {
+    //     if (sites) {
+    //         const newIsFavoritedMap = {};
+    //         sites.forEach(site => {
+    //             const isFavorited = isSiteidExist(site._id);
+    //             newIsFavoritedMap[site._id] = isFavorited;
+    //         });
+    //         setIsFavoritedMap(newIsFavoritedMap);
+    //     }
 
-        console.log(isFavoritedMap)
-    }, [sites]);
+    //     console.log(isFavoritedMap)
+    // }, [sites]);
     
     const isSiteidExist = (site_id)=> {
         // console.log(favourites)

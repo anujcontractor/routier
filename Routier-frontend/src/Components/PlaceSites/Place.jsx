@@ -51,7 +51,7 @@ function Place(props) {
   //   console.log(data);
   // };
 
-
+  console.log(place);
   const photos = place?.images?.map((imgLink) => ({
     src: imgLink,
     width: 800, // Set the width as needed

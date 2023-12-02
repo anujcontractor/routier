@@ -20,6 +20,7 @@ const PlaceState = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [favourites, setFavourites] = useState([]);
+  const [tags, setTags] = useState([]);
 
   const fetchData = async () => {
 
@@ -304,6 +305,53 @@ const PlaceState = (props) => {
 
   }
 
+
+
+  const getUserProfile = async () => {
+
+    // props.setProgress(30);
+
+    try {
+
+      const authToken = localStorage.getItem('token');
+      if (!authToken) {
+        throw new Error('Authentication token not found');
+      }
+
+      const response = await fetch(`${baseUrl}/api/users/profile`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem(`token`)}`,
+        },
+      });
+
+      if (!response.ok) {
+        props.createNotification('warning', `Failed to fetch Profile. Status: ${response.status}`);
+        navigate('/');
+      }
+
+      const data = await response.json();
+      setTags(["Cultural",
+        "Nature",
+        "Art",
+        "Peace",
+        "Family",
+        "Temples"])
+      console.log(data);
+      // if (data.response)
+      // setSite(data.response);
+      // else {
+      //   props.createNotification('warning', `Failed to fetch hotel`);
+      //   navigate('/');
+      // }
+
+    } finally {
+      // props.setProgress(100);
+    }
+
+  }
+
   const addFavourites = async (siteid, type) => {
 
     props.setProgress(30);
@@ -464,7 +512,7 @@ const PlaceState = (props) => {
   }
 
   return (
-    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites }}>
+    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites, getUserProfile, tags, setTags }}>
       {props.children}
     </PlaceContext.Provider>
   )
