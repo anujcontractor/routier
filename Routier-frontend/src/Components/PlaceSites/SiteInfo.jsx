@@ -162,7 +162,9 @@ function SiteInfo(props) {
 
             {props.type === 'restaurants' &&
               (<p>{site.veg === true ? <>&bull;Veg</> : null}&nbsp;&nbsp;&nbsp; {site.nonveg === true ? <>&bull;Nonveg</> : null}</p>)}
-            <Rating initialValue={site?.rating} size='30px' readonly />
+            <p>Rating: {site?.rating}</p>
+            <Rating initialValue={site?.rating} size='30px' readonly allowFraction />
+
 
 
             {site?.time && (<p>{site.time}</p>)}
@@ -210,7 +212,7 @@ function SiteInfo(props) {
         </section>
 
       </div>
-      <FooterSmall/>
+      <FooterSmall />
     </>
   )
 }

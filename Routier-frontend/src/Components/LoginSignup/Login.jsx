@@ -67,7 +67,7 @@ const Login = (props) => {
             <div className={styles.inputs}>
               <div className={styles.input}>
                 <label htmlFor="email" className="form-label"></label>
-                <input type="email" placeholder="Email Address" id="email" name='email' value={credentials?.email} onChange={onChange} aria-describedby="emailHelp" required />
+                <input type="email" placeholder="Email Address" id="email1" name='email' value={credentials?.email} onChange={onChange} aria-describedby="emailHelp" required />
               </div>
               <div className={styles.input}>
                 <label htmlFor="password" className="form-label" required></label>

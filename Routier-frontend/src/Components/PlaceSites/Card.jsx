@@ -52,7 +52,8 @@ function Card(props) {
             <div className="cardData">
                 <h3 className="name">{name}</h3>
                 <p className='starrating'>{/* set initial value */}
-                    <Rating initialValue={rating} size='20px' readonly />
+                    <Rating initialValue={rating} size='20px' readonly allowFraction/> 
+                    <p id='r1'>{rating}</p>
                 </p>
                 <p className="description">{description.slice(0, 70)}...</p>
             </div>

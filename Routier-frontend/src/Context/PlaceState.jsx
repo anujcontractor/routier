@@ -20,7 +20,10 @@ const PlaceState = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [favourites, setFavourites] = useState([]);
-  const [tags, setTags] = useState([]);
+
+  const [prefferedTodo, setPrefferedTodo] = useState([]);
+  const [prefferedStay, setPrefferedStay] = useState([]);
+  const [prefferedRestaurant, setPrefferedRestaurant] = useState([]);
 
   const fetchData = async () => {
 
@@ -327,17 +330,22 @@ const PlaceState = (props) => {
       });
 
       if (!response.ok) {
-        props.createNotification('warning', `Failed to fetch Profile. Status: ${response.status}`);
-        navigate('/');
+        // props.createNotification('warning', `Failed to fetch Profile. Status: ${response.status}`);
+        // navigate('/');
       }
 
       const data = await response.json();
-      setTags(["Cultural",
-        "Nature",
-        "Art",
-        "Peace",
-        "Family",
-        "Temples"])
+      setPrefferedTodo(data.prefferedTodo);
+      setPrefferedRestaurant(data.prefferedRestaurant);
+      setPrefferedStay(data.setPrefferedStay);
+
+      // setPreferedtags(["Cultural",
+      //   "Nature",
+      //   "Art",
+      //   "Peace",
+      //   "Family",
+      //   "Temples",
+      // "veg"])
       console.log(data);
       // if (data.response)
       // setSite(data.response);
@@ -512,7 +520,7 @@ const PlaceState = (props) => {
   }
 
   return (
-    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites, getUserProfile, tags, setTags }}>
+    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites, getUserProfile, prefferedRestaurant, prefferedStay, prefferedTodo }}>
       {props.children}
     </PlaceContext.Provider>
   )
