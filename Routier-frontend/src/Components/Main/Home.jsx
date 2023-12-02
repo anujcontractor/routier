@@ -36,8 +36,8 @@ const Home = (props) => {
 
   let navigate = useNavigate();
   const context = useContext(PlaceContext);
-  const { getFavourites, favourites, getUserProfile } = context;
-  
+  const { getFavourites, favourites, getUserProfile, tags } = context;
+
   useEffect(() => {
     if (localStorage.getItem('token')) {
       // console.log("auth-token");

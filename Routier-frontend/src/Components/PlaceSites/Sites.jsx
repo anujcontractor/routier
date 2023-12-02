@@ -77,6 +77,14 @@ function Sites(props) {
 
         const matchingTagsA = a.tags.filter(tag => preferedtags?.includes(tag));
         const matchingTagsB = b.tags.filter(tag => preferedtags?.includes(tag));
+        const tagsComparison = matchingTagsB.length - matchingTagsA.length;
+
+        //If the matching tags are the same, compare by rating
+        if (tagsComparison === 0) {
+            const ratingComparison = b.rating - a.rating;
+            return ratingComparison;
+
+        }
         return matchingTagsB.length - matchingTagsA.length;
     };
     const compareByVeg = (a, b) => {
@@ -91,7 +99,12 @@ function Sites(props) {
             preferenceA = a.nonveg;
             preferenceB = b.nonveg;
         }
-        // console.log("Hi")
+        if (preferenceA === preferenceB) {
+            const ratingComparison = b.rating - a.rating;
+            return ratingComparison;
+
+        }
+
         return preferenceB - preferenceA;
     };
     useEffect(() => {

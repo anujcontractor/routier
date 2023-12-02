@@ -48,6 +48,14 @@ function Place(props) {
 
     const matchingTagsA = a.tags.filter(tag => preferedtags?.includes(tag));
     const matchingTagsB = b.tags.filter(tag => preferedtags?.includes(tag));
+    const tagsComparison = matchingTagsB.length - matchingTagsA.length;
+
+    //If the matching tags are the same, compare by rating
+    if (tagsComparison === 0) {
+      const ratingComparison = b.rating - a.rating;
+      return ratingComparison;
+
+    }
     return matchingTagsB.length - matchingTagsA.length;
   };
 
@@ -63,6 +71,12 @@ function Place(props) {
     } else if (prefferedRestaurant?.includes('nonveg')) {
       preferenceA = a.nonveg;
       preferenceB = b.nonveg;
+    }
+  
+    if (preferenceA === preferenceB) {
+      const ratingComparison = b.rating - a.rating;
+      return ratingComparison;
+
     }
 
     return preferenceB - preferenceA;

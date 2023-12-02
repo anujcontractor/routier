@@ -55,7 +55,7 @@ function Card(props) {
                     <Rating initialValue={rating} size='20px' readonly allowFraction/> 
                     <p id='r1'>{rating}</p>
                 </p>
-                <p className="description">{description.slice(0, 70)}...</p>
+                <p className="description">{description.slice(0, 65)}...</p>
             </div>
         </div>
     )

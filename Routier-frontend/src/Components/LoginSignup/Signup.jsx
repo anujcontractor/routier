@@ -42,7 +42,7 @@ const Signup = (props) => {
       props.createNotification('warning', 'Name should contain only alphabets and spaces');
       return false;
     }
-    
+
     if (name.trim().length === 0) {
 
       props.createNotification('warning', 'Name cannot contain only spaces');
@@ -54,8 +54,8 @@ const Signup = (props) => {
       return false;
     }
 
-    if (name.length > 50) {
-      props.createNotification('warning', "Password length can't be greater than 50");
+    if (password.length > 30) {
+      props.createNotification('warning', "Password length can't be greater than 30");
       return false;
     }
 
