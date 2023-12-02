@@ -51,6 +51,10 @@ const todoSchema = new Schema(
         ref: "Review",
       },
     ],
+    tags: {
+      type: [String],
+      default: [],
+    },
   },
   { timestamps: true }
 );
