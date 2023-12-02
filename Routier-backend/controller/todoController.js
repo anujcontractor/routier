@@ -48,6 +48,7 @@ const store = (req, res, next) => {
     phone : req.body.phone,
     website: req.body.website,
     rating: req.body.rating,
+    tags : req.body.tags,
   });
   todo
     .save()
@@ -77,6 +78,7 @@ const update = (req, res, next) => {
     phone : req.body.phone,
     website: req.body.website,
     rating: req.body.rating,
+    tags : req.body.tags,
   };
   Todo.findByIdAndUpdate(todoID, { $set: updateData })
     .then(() => {
