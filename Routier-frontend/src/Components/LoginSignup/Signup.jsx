@@ -84,7 +84,7 @@ const Signup = (props) => {
               </div>
               <div className={styles.input}>
                 <label htmlFor="email" className="form-label"></label>
-                <input type="email" placeholder="Email Address" id="email" name="email" onChange={onChange} required />
+                <input type="email" placeholder="Email Address" id="email1" name="email" onChange={onChange} required />
               </div>
               <div className={styles.input}>
                 <label htmlFor="password" className="form-label"></label>
