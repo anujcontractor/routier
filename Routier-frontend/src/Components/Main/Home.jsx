@@ -36,7 +36,8 @@ const Home = (props) => {
 
   let navigate = useNavigate();
   const context = useContext(PlaceContext);
-  const { getFavourites, favourites } = context;
+  const { getFavourites, favourites, getUserProfile } = context;
+  
   useEffect(() => {
     if (localStorage.getItem('token')) {
       // console.log("auth-token");
@@ -45,8 +46,9 @@ const Home = (props) => {
       props.createNotification('warning', 'Login required')
       navigate('/');
     }
-
-    getFavourites();
+    
+    // getFavourites();
+    getUserProfile();
   }, [navigate]);
 
   const handleLogout = async () => {

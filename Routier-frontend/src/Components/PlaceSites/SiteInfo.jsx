@@ -20,6 +20,7 @@ import email from '../Assets/email.svg'
 import website from '../Assets/website.svg'
 import FooterSmall from '../Main/FooterSmall';
 
+
 function SiteInfo(props) {
 
   // const [reviews] = props;

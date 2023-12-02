@@ -2,6 +2,7 @@ import React from 'react'
 import { Rating } from 'react-simple-star-rating'
 import './Review.css'
 import user_photo from '../Assets/user_photo.png'
+import profile from '../Assets/aboutus/profile.png';
 
 function Review(props) {
 
@@ -10,7 +11,7 @@ function Review(props) {
     return (
         <div className='review'>
             <div className="userPhoto">
-               <img src={user_photo} alt="user_photo" />
+               <img src={profile} alt="user_photo" />
             </div>
 
             <div className="reviewText">

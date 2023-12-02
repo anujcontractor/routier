@@ -19,9 +19,9 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(credentials.email, credentials.password)
-    if(credentials.password.length<5)
+    if(credentials.password.length<8)
     {
-      props.createNotification('warning', 'password length atleast 5');
+      props.createNotification('warning', 'password length must be at least 8');
       return;
     }
     props.setProgress(20);
