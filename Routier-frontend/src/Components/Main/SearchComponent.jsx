@@ -33,8 +33,14 @@ const SearchComponent = (props) => {
       // Check if the name or any tag includes the search term
       const nameMatch = item.name.toLowerCase().includes(term.toLowerCase());
       const tagMatch = item.tags.some((tag) => tag.toLowerCase().includes(term.toLowerCase()));
+      const restaurantMatch = item.restaurants.some((restaurant) =>
+        restaurant.name.toLowerCase().includes(term.toLowerCase())
+      );
+      const todoMatch = item.todos.some((todo) => todo.name.toLowerCase().includes(term.toLowerCase()));
+      const stayMatch = item.stays.some((stay) => stay.name.toLowerCase().includes(term.toLowerCase()));
   
-      return nameMatch || tagMatch;
+      return nameMatch || tagMatch || restaurantMatch || todoMatch || stayMatch;
+      //return nameMatch || tagMatch;
     });
   
     setSearchResults(results);
