@@ -53,6 +53,11 @@ const userSchema = mongoose.Schema(
         ref: "Favorites",
       },
     ],
+    preferredPlacesTags: [],
+    preferredTodoTags: [],
+    preferredStayTags: [],
+    preferredRestaurantTags: [],
+
   },
   {
     timestamps: true,

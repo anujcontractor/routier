@@ -10,10 +10,50 @@ const authUser = expressAsyncHandler(async (req, res) => {
   if (user && (await user.matchPasswords(password))) {
     const token = generateToken(res, user._id);
     await user.populate("reviews");
-    await user.populate("prefferedplaces");
-    await user.populate("prefferedTodo");
-    await user.populate("prefferedStay");
-    await user.populate("prefferedRestaurant");
+    const preferredPlacesTags = [];
+    const preferredTodoTags = [];
+    const preferredStayTags = [];
+    const preferredRestaurantTags = [];
+
+    // Function to add tags to the respective arrays
+    const addTags = (tagsArray, targetArray) => {
+      if (tagsArray && tagsArray.length > 0) {
+        tagsArray.forEach((tag) => {
+          targetArray.push(tag);
+        });
+      }
+    };
+
+    // Populate and add tags to the respective arrays
+    await user.populate("prefferedplaces", "tags");
+    addTags(
+      user.prefferedplaces.map((item) => item.tags).flat(),
+      preferredPlacesTags
+    );
+
+    await user.populate("prefferedTodo", "tags");
+    addTags(
+      user.prefferedTodo.map((item) => item.tags).flat(),
+      preferredTodoTags
+    );
+
+    await user.populate("prefferedStay", "tags");
+    addTags(
+      user.prefferedStay.map((item) => item.tags).flat(),
+      preferredStayTags
+    );
+
+    await user.populate("prefferedRestaurant", "tags");
+    addTags(
+      user.prefferedRestaurant.map((item) => item.tags).flat(),
+      preferredRestaurantTags
+    );
+
+    // Add the arrays to the user object
+    user.preferredPlacesTags = preferredPlacesTags;
+    user.preferredTodoTags = preferredTodoTags;
+    user.preferredStayTags = preferredStayTags;
+    user.preferredRestaurantTags = preferredRestaurantTags;
     await user.populate("favorites");
     res.status(201).json({
       user,
@@ -62,13 +102,55 @@ const getUserProfile = expressAsyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   await user.populate("reviews");
-  await user.populate("prefferedplaces");
-  await user.populate("prefferedTodo");
-  await user.populate("prefferedStay");
-  await user.populate("prefferedRestaurant");
+  const preferredPlacesTags = [];
+  const preferredTodoTags = [];
+  const preferredStayTags = [];
+  const preferredRestaurantTags = [];
+
+  // Function to add tags to the respective arrays
+  const addTags = (tagsArray, targetArray) => {
+    if (tagsArray && tagsArray.length > 0) {
+      tagsArray.forEach((tag) => {
+        targetArray.push(tag);
+      });
+    }
+  };
+
+  // Populate and add tags to the respective arrays
+  await user.populate("prefferedplaces", "tags");
+  addTags(
+    user.prefferedplaces.map((item) => item.tags).flat(),
+    preferredPlacesTags
+  );
+
+  await user.populate("prefferedTodo", "tags");
+  addTags(
+    user.prefferedTodo.map((item) => item.tags).flat(),
+    preferredTodoTags
+  );
+
+  await user.populate("prefferedStay", "tags");
+  addTags(
+    user.prefferedStay.map((item) => item.tags).flat(),
+    preferredStayTags
+  );
+
+  await user.populate("prefferedRestaurant", "tags");
+  addTags(
+    user.prefferedRestaurant.map((item) => item.tags).flat(),
+    preferredRestaurantTags
+  );
+
+  // Add the arrays to the user object
+  user.preferredPlacesTags = preferredPlacesTags;
+  user.preferredTodoTags = preferredTodoTags;
+  user.preferredStayTags = preferredStayTags;
+  user.preferredRestaurantTags = preferredRestaurantTags;
   await user.populate("favorites");
 
-  res.status(200).json(user);
+  res.status(200).json({
+    user,
+  });
 });
 
 const logoutUser = expressAsyncHandler(async (req, res) => {
