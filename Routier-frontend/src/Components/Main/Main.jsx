@@ -73,7 +73,7 @@ const Main = (props) => {
           <img src={logo} className={styles.logo} alt="logo" />
         </div>
         <div className={styles.navlinksCont}>
-          <Link to='profile' className={styles.reviews} onClick={() => props.createNotification('warning', 'Login required')}>
+          <Link to='profile' className={styles.reviews} onClick={(e) => {e.preventDefault(); props.createNotification('warning', 'Login required')}}>
             <img src={review} className={styles.icons} />
             Reviews
           </Link>
@@ -81,7 +81,7 @@ const Main = (props) => {
             <img src={alert} className={styles.icons} />
             Alerts
           </Link> */}
-          <Link to='/profile' className={styles.trips} onClick={() => props.createNotification('warning', 'Login required')}>
+          <Link to='/profile' className={styles.trips} onClick={(e) => {e.preventDefault(); props.createNotification('warning', 'Login required')}}>
             <img src={trip} className={styles.icons} />
             Favorites
           </Link>
