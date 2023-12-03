@@ -5,8 +5,6 @@ import styles from "./Profile.module.css";
 import avatar from "../Assets/profile/avatar_profile.png";
 import logo from "../Assets/profile/logo_profile.svg";
 import profileHome from "../Assets/home/profile_home.svg";
-import fav from "../Assets/profile/fav_profile.png";
-import review from "../Assets/profile/review_profile.png";
 import { baseUrl } from "../../shared";
 
 // Dependencies
@@ -19,10 +17,8 @@ const Profile = (props) => {
   const [user, setUser] = useState();
   const [userReviews, setUserReviews] = useState([]);
   const [userFavs, setUserFavs] = useState([]);
-  const hehe = { name: "Mann", visitDate: "2023-12-03T00:00:00.000Z" };
 
   useEffect(() => {
-
     if (localStorage.getItem("token")) {
       // console.log("auth-token");
       const fetchUserProfile = async () => {
@@ -37,7 +33,6 @@ const Profile = (props) => {
         setUser(data.user);
         setUserReviews(data.user.reviews);
       };
-
       fetchUserProfile();
 
       const fetchFavs = async () => {
@@ -50,29 +45,27 @@ const Profile = (props) => {
         });
 
         if (res.status == 404) {
-          console.log('user not found');
+          console.log("user not found");
         } else {
-          console.log('Internal server error');
+          console.log("Internal server error");
         }
         const data = await res.json();
         setUserFavs(data.favoriteDetails);
       };
-
-
       fetchFavs();
     } else {
       // console.log("login-required");
       props.createNotification("warning", "Login required");
       navigate("/");
     }
-
   }, [navigate]);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleMenuClick = () => {
-    document.getElementById("navlinksCont2").style.display = "flex";
+    setIsMenuOpen(true);
   };
   const handleCloseClick = () => {
-    document.getElementById("navlinksCont2").style.display = "none";
+    setIsMenuOpen(false);
   };
 
   const removeFromFav = async (itemId, itemType, user) => {
@@ -96,17 +89,33 @@ const Profile = (props) => {
     });
 
     if (req.ok) {
-      props.createNotification('success', `Favorite removed successfully`);
+      props.createNotification("success", `Favorite removed successfully`);
     } else if (req.status == 404) {
-      props.createNotification('warning', `Site not found in favorites. Status: ${req.status}`);
+      props.createNotification(
+        "warning",
+        `Site not found in favorites. Status: ${req.status}`
+      );
     } else {
-      props.createNotification('warning', `Internal server error. Status: ${req.status}`);
+      props.createNotification(
+        "warning",
+        `Internal server error. Status: ${req.status}`
+      );
     }
 
     props.setProgress(100);
-
   };
-
+  const mapLocationType = (type) => {
+    switch (type) {
+      case "stay":
+        return "hotels";
+      case "todo":
+        return "todos";
+      case "restaurant":
+        return "restaurants";
+      default:
+        return "place"; // Default value
+    }
+  };
   const getTrips = () => {
     document.getElementById("reviewCont").style.display = "none";
     document.getElementById("favCont").style.display = "none";
@@ -154,7 +163,11 @@ const Profile = (props) => {
             About Us
           </Link>
           <Link to="/profile" className={styles.profileIconCont}>
-            <img src={profileHome} className={styles.profileIcon} />
+            <img
+              src={profileHome}
+              className={styles.profileIcon}
+              alt="profile-icon"
+            />
           </Link>
         </div>
         <div className={styles.menuIcon}>
@@ -163,30 +176,36 @@ const Profile = (props) => {
           </span>
         </div>
 
-        <div className={styles.navlinksCont2} id="navlinksCont2">
-          <div className={styles.closeIcon}>
-            <span
-              onClick={handleCloseClick}
-              className="material-symbols-outlined"
-            >
-              close
-            </span>
+        {isMenuOpen && (
+          <div className={styles.navlinksCont2} id="navlinksCont2">
+            <div className={styles.closeIcon}>
+              <span
+                onClick={handleCloseClick}
+                className="material-symbols-outlined"
+              >
+                close
+              </span>
+            </div>
+            <Link to="/profile" className={styles.profileIconCont}>
+              <img
+                src={profileHome}
+                className={styles.profileIcon}
+                alt="profile-icon"
+              />
+            </Link>
+            <Link to="/home" className={styles.alerts}>
+              Home
+            </Link>
+            <Link to="/aboutus" className={styles.trips}>
+              About Us
+            </Link>
           </div>
-          <Link to="/profile" className={styles.profileIconCont}>
-            <img src={profileHome} className={styles.profileIcon} />
-          </Link>
-          <Link to="/home" className={styles.alerts}>
-            Home
-          </Link>
-          <Link to="/aboutus" className={styles.trips}>
-            About Us
-          </Link>
-        </div>
+        )}
       </nav>
       <main className={styles.mainCont}>
         {/* Personal info */}
         <div className={styles.personalCont}>
-          <img src={avatar} className={styles.avatar} />
+          <img src={avatar} className={styles.avatar} alt="avatar" />
           <p className={styles.nametxt}>{user ? user.name : "name"}</p>
           <p className={styles.emailtxt}>
             {user ? user.email : "abc@gmail.com"}
@@ -217,22 +236,19 @@ const Profile = (props) => {
           <div className={styles.expCont} id="expCont">
             {userReviews.map((Review) => {
               return (
-                <div className={styles.expBox}>
+                <Link
+                  to={`/${mapLocationType(Review.placeType)}/siteinfo/${
+                    Review.location
+                  }`}
+                  className={styles.expBox}
+                >
                   <p className={styles.expTitle}>{Review.title}</p>
                   <div>
                     <DisplayRating rate={Review.starRating} />
                   </div>
-                </div>
+                </Link>
               );
             })}
-
-            {/* Remove this */}
-            <div className={styles.expBox}>
-              <p className={styles.expTitle}>test</p>
-              <div>
-                <DisplayRating rate={3} />
-              </div>
-            </div>
           </div>
         </div>
         {/* Reviews */}
@@ -247,8 +263,13 @@ const Profile = (props) => {
             {userReviews.map((Review) => {
               return (
                 <div className={styles.favBox}>
-                  <div className={styles.favcontent}>
-                    <div>
+                  <Link
+                    to={`/${mapLocationType(Review.placeType)}/siteinfo/${
+                      Review.location
+                    }`}
+                    className={`${styles.favcontent} ${styles.reviewcontent}`}
+                  >
+                    <div className={styles.reviewHead}>
                       <div className={styles.favRating}>
                         <DisplayRating rate={Review.starRating} />
                       </div>
@@ -258,9 +279,13 @@ const Profile = (props) => {
                     </div>
                     <p className={styles.reviewTitle}>{Review.title}</p>
                     <p className={styles.reviewDesc}>{Review.reviewText}</p>
-                  </div>
+                  </Link>
                   <div className={styles.imgBox}>
-                    <img src={Review.photos[0]} className={styles.favImg} />
+                    <img
+                      src={Review.photos[0]}
+                      className={styles.favImg}
+                      alt="review-image"
+                    />
                   </div>
                 </div>
               );
@@ -280,12 +305,19 @@ const Profile = (props) => {
                     <img
                       src={Fav.itemDetails.image[0]}
                       className={styles.favImg}
+                      alt="favorite-image"
                     />
                   </div>
                   <div className={styles.favcontent}>
                     <div className={styles.favHead}>
-                      {/* <Link to={`/${Fav.itemtype}s/siteinfo/${Fav.itemDetails._id}`}></Link> */}
-                      <p className={styles.favTitle}>{Fav.itemDetails.name}</p>
+                      <Link
+                        to={`/${mapLocationType(Fav.itemtype)}/siteinfo/${
+                          Fav.itemDetails._id
+                        }`}
+                        className={styles.favTitle}
+                      >
+                        {Fav.itemDetails.name}
+                      </Link>
                       <button
                         className={styles.removeFav}
                         onClick={() =>
