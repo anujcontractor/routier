@@ -11,7 +11,6 @@ const PlaceState = (props) => {
   const [todos, setTodos] = useState([]);
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
-  const [siteinfo, setSiteinfo] = useState([]);
   const [place, setPlace] = useState([]);
   const [site, setSite] = useState([]);
   const [allData, setAllData] = useState([]);
@@ -29,19 +28,15 @@ const PlaceState = (props) => {
     try {
       const response = await fetch(`${baseUrl}/api/placeinfo`);
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Failed to fetch place: ${response.status}`);
         navigate('/');
       }
-      // console.log(response)
+
       const data = await response.json();
-      // console.log(data);
       setAllData(data.response);
 
     } catch (error) {
-      //   console.error("Error fetching data:", error);
       props.createNotification('warning', error)
-      // console.log(data);
     } finally {
       props.setProgress(100);
     }
@@ -59,22 +54,18 @@ const PlaceState = (props) => {
           "auth-token": localStorage.getItem('token')
         }
       });
-      
-      if (response.status===404) {
-        // console.error(`Error fetching place: ${response.status}`);
+
+      if (response.status === 404) {
         props.createNotification('warning', `Place not found`);
         navigate('/');
       }
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Internal server error: ${response.status}`);
         navigate('/');
       }
 
       const data = await response.json();
-      // console.log(data);
       setPlace(data.response);
-      // console.log(place);
     } finally {
       props.setProgress(100);
     }
@@ -96,12 +87,10 @@ const PlaceState = (props) => {
       });
 
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Failed to fetch todos: ${response.status}`);
         navigate('/');
       }
       const json = await response.json();
-      // console.log(json);
       setTodos(json.response);
     } finally {
       props.setProgress(100);
@@ -125,12 +114,10 @@ const PlaceState = (props) => {
       });
 
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Failed to fetch hotels: ${response.status}`);
         navigate('/');
       }
       const json = await response.json();
-      // console.log(json);
       setHotels(json.response);
       props.setProgress(100);
     } finally {
@@ -156,13 +143,11 @@ const PlaceState = (props) => {
       });
 
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Failed to fetch restaurants: ${response.status}`);
         navigate('/');
       }
 
       const json = await response.json();
-      // console.log(json);
       setRestaurants(json.response);
       props.setProgress(100);
     } finally {
@@ -260,8 +245,8 @@ const PlaceState = (props) => {
       if (data.response)
         setSite(data.response);
       else {
-        // props.createNotification('warning', `Failed to fetch todo`);
-        // navigate('/');
+        props.createNotification('warning', `Failed to fetch todo`);
+        navigate('/');
       }
 
     } finally {
@@ -313,8 +298,6 @@ const PlaceState = (props) => {
 
   const getUserProfile = async () => {
 
-    // props.setProgress(30);
-
     try {
 
       const authToken = localStorage.getItem('token');
@@ -352,16 +335,8 @@ const PlaceState = (props) => {
       //   "Family",
       //   "Temples",
       // "veg"])
-      console.log(data);
-      // if (data.response)
-      // setSite(data.response);
-      // else {
-      //   props.createNotification('warning', `Failed to fetch hotel`);
-      //   navigate('/');
-      // }
-
     } finally {
-      // props.setProgress(100);
+      //
     }
 
   }
@@ -381,7 +356,6 @@ const PlaceState = (props) => {
         body: JSON.stringify({ itemId: siteid, itemType: type }),
       });
 
-      // console.log(response);
       if (response.ok) {
         props.createNotification('success', `Favorite added successfully`);
       } else if (response.status == 404) {
@@ -417,7 +391,6 @@ const PlaceState = (props) => {
         body: JSON.stringify({ itemId: siteid, itemType: type }),
       });
 
-      // console.log(response);
       if (response.ok) {
         props.createNotification('success', `Favorite removed successfully`);
       } else if (response.status == 404) {
@@ -435,10 +408,7 @@ const PlaceState = (props) => {
 
   }
 
-
   const getFavourites = async () => {
-
-    // props.setProgress(30);
 
     try {
       const response = await fetch(`${baseUrl}/api/favourites`, {
@@ -453,7 +423,7 @@ const PlaceState = (props) => {
 
       // console.log(response);
       if (response.ok) {
-        // props.createNotification('success', `Favorite removed successfully`);
+
       } else if (response.status == 404) {
         console.log('user not found');
       } else {
@@ -465,11 +435,10 @@ const PlaceState = (props) => {
         setFavourites(data.favoriteDetails);
 
     } finally {
-      // props.setProgress(100);
     }
 
   }
- 
+
 
   return (
     <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites, getUserProfile, prefferedRestaurant, prefferedStay, prefferedTodo, user }}>

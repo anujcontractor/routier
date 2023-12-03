@@ -43,7 +43,7 @@ const Login = (props) => {
     } else if (response.status === 401 ) {
       props.createNotification('warning', `Unauthorized: Invalid email or password`)
     } else {
-      props.createNotification('warning', `Error: ${response.status} - ${response.statusText}`)
+      props.createNotification('warning', `${response.status} - ${response.statusText} Internal server error`)
     }
     props.setProgress(100);
   }
