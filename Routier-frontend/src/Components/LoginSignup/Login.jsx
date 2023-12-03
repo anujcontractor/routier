@@ -1,5 +1,5 @@
 import styles from "./Login.module.css";
-import tour_set from "../Assets/tour_set_login.svg";
+import tour_set from "../Assets/tour_set_login1.svg";
 import logo from "../Assets/logo_login.svg";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from 'react'
