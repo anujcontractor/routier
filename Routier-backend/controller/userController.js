@@ -11,6 +11,9 @@ const authUser = expressAsyncHandler(async (req, res) => {
     const token = generateToken(res, user._id);
     await user.populate("reviews");
     await user.populate("prefferedplaces");
+    await user.populate("prefferedTodo");
+    await user.populate("prefferedStay");
+    await user.populate("prefferedRestaurant");
     await user.populate("favorites");
     res.status(201).json({
       user,
@@ -60,6 +63,9 @@ const getUserProfile = expressAsyncHandler(async (req, res) => {
 
   await user.populate("reviews");
   await user.populate("prefferedplaces");
+  await user.populate("prefferedTodo");
+  await user.populate("prefferedStay");
+  await user.populate("prefferedRestaurant");
   await user.populate("favorites");
 
   res.status(200).json(user);

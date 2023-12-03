@@ -60,9 +60,45 @@ import Stay from '../model/stayModel.js';
       req.user.favorites.push(newFavorite._id);
       await req.user.save();
 
+      if (newFavorite) {
+        switch (itemType) {
+          case "stay":
+            
+            if ( !req.user.prefferedStay.includes(itemId)) {
+              req.user.prefferedStay.push(itemId);
+              await req.user.save();
+            }
+            break;
+          case "todo":
+            
+            if ( !req.user.prefferedTodo.includes(itemId)) {
+              req.user.prefferedTodo.push(itemId);
+              await req.user.save();
+            }
+            break;
+          case "restaurant":
+            
+            if ( !req.user.prefferedRestaurant.includes(itemId)) {
+              req.user.prefferedRestaurant.push(itemId);
+              await req.user.save();
+            }
+            break;
+          case "place":
+            if ( !req.user.prefferedplaces.includes(itemId)) {
+              req.user.prefferedplaces.push(itemId);
+              await req.user.save();
+            }
+            break;
+          default:
+            return res.status(400).json({ message: "Invalid placeType" });
+        }
+  
+      }
+
       res.json({ message: 'Favorite added successfully' });
     } catch (error) {
       console.error(error);
+      // console.log(req.user);
       res.status(500).json({ message: 'Internal server error' });
     }
   }

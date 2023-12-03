@@ -52,7 +52,7 @@ const submitReview = expressAsyncHandler(async (req, res) => {
           const stay = await Stay.findById(location);
           stay.reviews.push(review._id);
           await stay.save();
-          if (starRating >= 3) {
+          if (starRating >= 3 && !req.user.prefferedStay.includes(stay._id)) {
             req.user.prefferedStay.push(stay._id);
             await req.user.save();
           }
@@ -61,7 +61,7 @@ const submitReview = expressAsyncHandler(async (req, res) => {
           const todo = await ToDo.findById(location);
           todo.reviews.push(review._id);
           await todo.save();
-          if (starRating >= 3) {
+          if (starRating >= 3 && !req.user.prefferedTodo.includes(todo._id)) {
             req.user.prefferedTodo.push(todo._id);
             await req.user.save();
           }
@@ -70,7 +70,7 @@ const submitReview = expressAsyncHandler(async (req, res) => {
           const restaurant = await Restaurant.findById(location);
           restaurant.reviews.push(review._id);
           await restaurant.save();
-          if (starRating >= 3) {
+          if (starRating >= 3 && !req.user.prefferedRestaurant.includes(restaurant._id)) {
             req.user.prefferedRestaurant.push(restaurant._id);
             await req.user.save();
           }
@@ -79,7 +79,7 @@ const submitReview = expressAsyncHandler(async (req, res) => {
           const place = await Place.findById(location);
           place.reviews.push(review._id);
           await place.save();
-          if (starRating >= 3) {
+          if (starRating >= 3 && !req.user.prefferedplaces.includes(place._id)) {
             req.user.prefferedplaces.push(place._id);
             await req.user.save();
           }
