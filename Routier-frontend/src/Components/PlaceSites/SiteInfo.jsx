@@ -77,6 +77,8 @@ function SiteInfo(props) {
 
   }
 
+  console.log(site?.reviews);
+
   const photos = site?.image?.map((imgLink) => ({
     src: imgLink,
     width: 200, // Set the width as needed

@@ -12,8 +12,8 @@ function Review(props) {
         <div className='review'>
             <div className="userPhoto">
                <img src={profile} alt="user_photo" />
-               <p>{username}</p>
-               <p>Provided reviews {reviewLen}</p>
+               <p>[username]</p>
+               <p>Provided reviews: </p>
                <p></p>
             </div>
 
