@@ -172,8 +172,8 @@ Link {
   margin-top: 1rem;
   padding: 0.75rem;
   border-radius: 1.5rem;
-  border: solid 0.1rem #b5b5b5;
-  background-color: transparent;
+  /* border: solid 0.1rem #b5b5b5; */
+  background-color: #f7f7f7;
   overflow: hidden;
 }
 .favImg {
@@ -261,6 +261,10 @@ Link {
   font-style: normal;
   font-weight: 400;
   margin: 0;
+}
+.emptyMsg{
+  justify-content: center;
+  margin-bottom: 3.5rem;
 }
 .stars {
   display: flex;

@@ -233,22 +233,30 @@ const Profile = (props) => {
             <p className={styles.profileTitle}>Places</p>
             <p className={styles.profileTitle}>Experience</p>
           </div>
-          <div className={styles.expCont} id="expCont">
-            {userReviews.map((Review) => {
-              return (
-                <Link
-                  to={`/${mapLocationType(Review.placeType)}/siteinfo/${
-                    Review.location
-                  }`}
-                  className={styles.expBox}
-                >
-                  <p className={styles.expTitle}>{Review.title}</p>
-                  <div>
-                    <DisplayRating rate={Review.starRating} />
-                  </div>
-                </Link>
-              );
-            })}
+          <div
+            className={`${styles.expCont} ${
+              userReviews[0] == null ? styles.emptyMsg : null
+            }`}
+          >
+            {userReviews.length == 0 ? (
+              <p className={styles.profileTitle}>No Trips yet...</p>
+            ) : (
+              userReviews.map((Review) => {
+                return (
+                  <Link
+                    to={`/${mapLocationType(Review.placeType)}/siteinfo/${
+                      Review.location
+                    }`}
+                    className={styles.expBox}
+                  >
+                    <p className={styles.expTitle}>{Review.title}</p>
+                    <div>
+                      <DisplayRating rate={Review.starRating} />
+                    </div>
+                  </Link>
+                );
+              })
+            )}
           </div>
         </div>
         {/* Reviews */}
@@ -259,37 +267,47 @@ const Profile = (props) => {
           <div className={styles.tripsTitle}>
             <p className={styles.profileTitle}>Reviews</p>
           </div>
-          <div className={styles.expCont}>
-            {userReviews.map((Review) => {
-              return (
-                <div className={styles.favBox}>
-                  <Link
-                    to={`/${mapLocationType(Review.placeType)}/siteinfo/${
-                      Review.location
-                    }`}
-                    className={`${styles.favcontent} ${styles.reviewcontent}`}
-                  >
-                    <div className={styles.reviewHead}>
-                      <div className={styles.favRating}>
-                        <DisplayRating rate={Review.starRating} />
+          <div
+            className={`${styles.expCont} ${
+              userReviews[0] == null ? styles.emptyMsg : null
+            }`}
+          >
+            {userReviews.length == 0 ? (
+              <p className={`${styles.profileTitle} ${styles.emptyMsg}`}>
+                No Reviews yet...
+              </p>
+            ) : (
+              userReviews.map((Review) => {
+                return (
+                  <div className={styles.favBox}>
+                    <Link
+                      to={`/${mapLocationType(Review.placeType)}/siteinfo/${
+                        Review.location
+                      }`}
+                      className={`${styles.favcontent} ${styles.reviewcontent}`}
+                    >
+                      <div className={styles.reviewHead}>
+                        <div className={styles.favRating}>
+                          <DisplayRating rate={Review.starRating} />
+                        </div>
+                        <p className={styles.reviewDate}>
+                          Reviewed on: {Review.visitDate.split("T")[0]}
+                        </p>
                       </div>
-                      <p className={styles.reviewDate}>
-                        Reviewed on: {Review.visitDate.split("T")[0]}
-                      </p>
+                      <p className={styles.reviewTitle}>{Review.title}</p>
+                      <p className={styles.reviewDesc}>{Review.reviewText}</p>
+                    </Link>
+                    <div className={styles.imgBox}>
+                      <img
+                        src={Review.photos[0]}
+                        className={styles.favImg}
+                        alt="review-image"
+                      />
                     </div>
-                    <p className={styles.reviewTitle}>{Review.title}</p>
-                    <p className={styles.reviewDesc}>{Review.reviewText}</p>
-                  </Link>
-                  <div className={styles.imgBox}>
-                    <img
-                      src={Review.photos[0]}
-                      className={styles.favImg}
-                      alt="review-image"
-                    />
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
         </div>
         {/* Favorites */}
@@ -297,46 +315,58 @@ const Profile = (props) => {
           <div className={styles.tripsTitle}>
             <p className={styles.profileTitle}>Favorites</p>
           </div>
-          <div className={styles.expCont}>
-            {userFavs.map((Fav) => {
-              return (
-                <div className={styles.favBox}>
-                  <div className={styles.imgBox}>
-                    <img
-                      src={Fav.itemDetails.image[0]}
-                      className={styles.favImg}
-                      alt="favorite-image"
-                    />
-                  </div>
-                  <div className={styles.favcontent}>
-                    <div className={styles.favHead}>
-                      <Link
-                        to={`/${mapLocationType(Fav.itemtype)}/siteinfo/${
-                          Fav.itemDetails._id
-                        }`}
-                        className={styles.favTitle}
-                      >
-                        {Fav.itemDetails.name}
-                      </Link>
-                      <button
-                        className={styles.removeFav}
-                        onClick={() =>
-                          removeFromFav(Fav.itemDetails._id, Fav.itemtype, user)
-                        }
-                      >
-                        Remove from Favorite
-                      </button>
+          <div
+            className={`${styles.expCont} ${
+              userFavs[0] == null ? styles.emptyMsg : null
+            }`}
+          >
+            {userFavs.length == 0 ? (
+              <p className={styles.profileTitle}>No Favorites yet...</p>
+            ) : (
+              userFavs.map((Fav) => {
+                return (
+                  <div className={styles.favBox}>
+                    <div className={styles.imgBox}>
+                      <img
+                        src={Fav.itemDetails.image[0]}
+                        className={styles.favImg}
+                        alt="favorite-image"
+                      />
                     </div>
-                    <div className={styles.favRating}>
-                      <DisplayRating rate={Fav.itemDetails.rating} />
+                    <div className={styles.favcontent}>
+                      <div className={styles.favHead}>
+                        <Link
+                          to={`/${mapLocationType(Fav.itemtype)}/siteinfo/${
+                            Fav.itemDetails._id
+                          }`}
+                          className={styles.favTitle}
+                        >
+                          {Fav.itemDetails.name}
+                        </Link>
+                        <button
+                          className={styles.removeFav}
+                          onClick={() =>
+                            removeFromFav(
+                              Fav.itemDetails._id,
+                              Fav.itemtype,
+                              user
+                            )
+                          }
+                        >
+                          Remove from Favorite
+                        </button>
+                      </div>
+                      <div className={styles.favRating}>
+                        <DisplayRating rate={Fav.itemDetails.rating} />
+                      </div>
+                      <p className={styles.favDesc}>
+                        {Fav.itemDetails.description}
+                      </p>
                     </div>
-                    <p className={styles.favDesc}>
-                      {Fav.itemDetails.description}
-                    </p>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
         </div>
       </main>
