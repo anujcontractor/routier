@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@600&display=swap");
 
-button {
+button, Link {
   cursor: pointer;
 }
 ::-webkit-scrollbar {
@@ -158,6 +158,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.0375rem;
   margin-right: 5rem;
+  margin: 0;
 }
 .favBox {
   display: flex;
@@ -259,11 +260,6 @@ button {
   font-style: normal;
   font-weight: 400;
   margin: 0;
-}
-.expTitle,
-.reviewTitle,
-.favTitle {
-  cursor: pointer;
 }
 .stars {
   display: flex;
