@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@600&display=swap");
 
-button, Link {
+button,
+Link {
   cursor: pointer;
 }
 ::-webkit-scrollbar {
@@ -367,8 +368,7 @@ button, Link {
     height: 100vh;
     background-color: rgba(103, 103, 103, 0.85);
   }
-  .navlinksCont,
-  .navlinksCont2 {
+  .navlinksCont {
     display: none;
   }
   .navlinksCont2 .alerts,

@@ -19,7 +19,6 @@ const Profile = (props) => {
   const [userFavs, setUserFavs] = useState([]);
 
   useEffect(() => {
-
     if (localStorage.getItem("token")) {
       // console.log("auth-token");
       const fetchUserProfile = async () => {
@@ -34,7 +33,6 @@ const Profile = (props) => {
         setUser(data.user);
         setUserReviews(data.user.reviews);
       };
-
       fetchUserProfile();
 
       const fetchFavs = async () => {
@@ -47,29 +45,27 @@ const Profile = (props) => {
         });
 
         if (res.status == 404) {
-          console.log('user not found');
+          console.log("user not found");
         } else {
-          console.log('Internal server error');
+          console.log("Internal server error");
         }
         const data = await res.json();
         setUserFavs(data.favoriteDetails);
       };
-
-
       fetchFavs();
     } else {
       // console.log("login-required");
       props.createNotification("warning", "Login required");
       navigate("/");
     }
-
   }, [navigate]);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleMenuClick = () => {
-    document.getElementById("navlinksCont2").style.display = "flex";
+    setIsMenuOpen(true);
   };
   const handleCloseClick = () => {
-    document.getElementById("navlinksCont2").style.display = "none";
+    setIsMenuOpen(false);
   };
 
   const removeFromFav = async (itemId, itemType, user) => {
@@ -93,15 +89,20 @@ const Profile = (props) => {
     });
 
     if (req.ok) {
-      props.createNotification('success', `Favorite removed successfully`);
+      props.createNotification("success", `Favorite removed successfully`);
     } else if (req.status == 404) {
-      props.createNotification('warning', `Site not found in favorites. Status: ${req.status}`);
+      props.createNotification(
+        "warning",
+        `Site not found in favorites. Status: ${req.status}`
+      );
     } else {
-      props.createNotification('warning', `Internal server error. Status: ${req.status}`);
+      props.createNotification(
+        "warning",
+        `Internal server error. Status: ${req.status}`
+      );
     }
 
     props.setProgress(100);
-
   };
   const mapLocationType = (type) => {
     switch (type) {
@@ -175,29 +176,31 @@ const Profile = (props) => {
           </span>
         </div>
 
-        <div className={styles.navlinksCont2} id="navlinksCont2">
-          <div className={styles.closeIcon}>
-            <span
-              onClick={handleCloseClick}
-              className="material-symbols-outlined"
-            >
-              close
-            </span>
+        {isMenuOpen && (
+          <div className={styles.navlinksCont2} id="navlinksCont2">
+            <div className={styles.closeIcon}>
+              <span
+                onClick={handleCloseClick}
+                className="material-symbols-outlined"
+              >
+                close
+              </span>
+            </div>
+            <Link to="/profile" className={styles.profileIconCont}>
+              <img
+                src={profileHome}
+                className={styles.profileIcon}
+                alt="profile-icon"
+              />
+            </Link>
+            <Link to="/home" className={styles.alerts}>
+              Home
+            </Link>
+            <Link to="/aboutus" className={styles.trips}>
+              About Us
+            </Link>
           </div>
-          <Link to="/profile" className={styles.profileIconCont}>
-            <img
-              src={profileHome}
-              className={styles.profileIcon}
-              alt="profile-icon"
-            />
-          </Link>
-          <Link to="/home" className={styles.alerts}>
-            Home
-          </Link>
-          <Link to="/aboutus" className={styles.trips}>
-            About Us
-          </Link>
-        </div>
+        )}
       </nav>
       <main className={styles.mainCont}>
         {/* Personal info */}
@@ -308,9 +311,9 @@ const Profile = (props) => {
                   <div className={styles.favcontent}>
                     <div className={styles.favHead}>
                       <Link
-                        to={`/${mapLocationType(
-                          Fav.itemDetails.itemtype
-                        )}/siteinfo/${Fav.itemDetails._id}`}
+                        to={`/${mapLocationType(Fav.itemtype)}/siteinfo/${
+                          Fav.itemDetails._id
+                        }`}
                         className={styles.favTitle}
                       >
                         {Fav.itemDetails.name}
