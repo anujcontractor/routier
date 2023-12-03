@@ -27,15 +27,20 @@ const SearchComponent = (props) => {
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
-
+  
     // Perform search in the fetched data
-    const results = allData.filter((item) =>
-      item.name.toLowerCase().includes(term.toLowerCase())
-    );
-
+    const results = allData.filter((item) => {
+      // Check if the name or any tag includes the search term
+      const nameMatch = item.name.toLowerCase().includes(term.toLowerCase());
+      const tagMatch = item.tags.some((tag) => tag.toLowerCase().includes(term.toLowerCase()));
+  
+      return nameMatch || tagMatch;
+    });
+  
     setSearchResults(results);
-    console.log(searchResults)
+    console.log(searchResults);
   };
+  
 
   const handleSubmit = () => {
     props.setProgress(30);
