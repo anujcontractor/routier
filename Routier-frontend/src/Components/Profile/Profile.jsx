@@ -17,9 +17,9 @@ import DisplayRating from "./DisplayRating";
 const Profile = (props) => {
   let navigate = useNavigate();
   const [user, setUser] = useState();
-  const [userTrips, setUserTrips] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const [userFavs, setUserFavs] = useState([]);
+  const hehe = { name: "Mann", visitDate: "2023-12-03T00:00:00.000Z" };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -33,7 +33,8 @@ const Profile = (props) => {
           },
         });
         const data = await res.json();
-        setUser(data);
+        setUser(data.user);
+        setUserReviews(data.user.reviews);
       };
       fetchUserProfile();
       const fetchFavs = async () => {
@@ -112,7 +113,6 @@ const Profile = (props) => {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
-        {/* https://stackoverflow.com/questions/50829728/how-to-use-material-ui-icons-in-react */}
       </head>
       {/* Navbar */}
       <nav className={styles.navbar}>
@@ -190,12 +190,12 @@ const Profile = (props) => {
             <p className={styles.profileTitle}>Experience</p>
           </div>
           <div className={styles.expCont} id="expCont">
-            {userTrips.map((trip) => {
+            {userReviews.map((Review) => {
               return (
                 <div className={styles.expBox}>
-                  <p className={styles.expTitle}>{trip.title}</p>
+                  <p className={styles.expTitle}>{Review.title}</p>
                   <div>
-                    <DisplayRating rate={trip.rating} />
+                    <DisplayRating rate={Review.starRating} />
                   </div>
                 </div>
               );
@@ -223,33 +223,23 @@ const Profile = (props) => {
               return (
                 <div className={styles.favBox}>
                   <div className={styles.favcontent}>
-                    <div className={styles.favRating}>
-                      <DisplayRating rate={Review.starRating} />
+                    <div>
+                      <div className={styles.favRating}>
+                        <DisplayRating rate={Review.starRating} />
+                      </div>
+                      <p className={styles.reviewDate}>
+                        Reviewed on: {Review.visitDate.split("T")[0]}
+                      </p>
                     </div>
                     <p className={styles.reviewTitle}>{Review.title}</p>
                     <p className={styles.reviewDesc}>{Review.reviewText}</p>
                   </div>
-                  <img src={Review.img} className={styles.favImg} />
+                  <div className={styles.imgBox}>
+                    <img src={Review.photos[0]} className={styles.favImg} />
+                  </div>
                 </div>
               );
             })}
-
-            {/* Remove this */}
-            <div className={styles.favBox}>
-              <div className={styles.favcontent}>
-                <div className={styles.favRating}>
-                  <DisplayRating rate={4} />
-                </div>
-                <p className={styles.reviewTitle}>test</p>
-                <p className={styles.reviewDesc}>
-                  All the team, specially Murad, were very kind and profesional.
-                  I will repeat the experiencia for sure. All the team,
-                  specially Murad, were very kind and profesional. I will repeat
-                  the experiencia for sure.
-                </p>
-              </div>
-              <img src={review} className={styles.favImg} />
-            </div>
           </div>
         </div>
         {/* Favorites */}
@@ -269,12 +259,8 @@ const Profile = (props) => {
                   </div>
                   <div className={styles.favcontent}>
                     <div className={styles.favHead}>
-                      <Link
-                        to={`/${Fav.itemtype}s/siteinfo/${Fav.itemDetails._id}`}
-                        className={styles.favTitle}
-                      >
-                        {Fav.itemDetails.name}
-                      </Link>
+                      {/* <Link to={`/${Fav.itemtype}s/siteinfo/${Fav.itemDetails._id}`}></Link> */}
+                      <p className={styles.favTitle}>{Fav.itemDetails.name}</p>
                       <button
                         className={styles.removeFav}
                         onClick={() =>

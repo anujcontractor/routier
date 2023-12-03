@@ -85,7 +85,7 @@ const OurTeamsection = () => {
                 <div className='profilecard'>
                     <img src={profile} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Aditya Makawana</div>
-                    <div className='idtext'>202101165</div>
+                    <div className='idtext'>202101112</div>
                 </div>
                 <div className='profilecard'>
                     <img src={profile} alt='profile' className='profilepic'></img>
