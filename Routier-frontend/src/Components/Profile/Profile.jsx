@@ -22,6 +22,7 @@ const Profile = (props) => {
   const hehe = { name: "Mann", visitDate: "2023-12-03T00:00:00.000Z" };
 
   useEffect(() => {
+
     if (localStorage.getItem("token")) {
       // console.log("auth-token");
       const fetchUserProfile = async () => {
@@ -36,7 +37,9 @@ const Profile = (props) => {
         setUser(data.user);
         setUserReviews(data.user.reviews);
       };
+
       fetchUserProfile();
+
       const fetchFavs = async () => {
         const res = await fetch(`${baseUrl}/api/favourites`, {
           method: "GET",
@@ -45,15 +48,24 @@ const Profile = (props) => {
             authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
+
+        if (res.status == 404) {
+          console.log('user not found');
+        } else {
+          console.log('Internal server error');
+        }
         const data = await res.json();
         setUserFavs(data.favoriteDetails);
       };
+
+
       fetchFavs();
     } else {
       // console.log("login-required");
       props.createNotification("warning", "Login required");
       navigate("/");
     }
+
   }, [navigate]);
 
   const handleMenuClick = () => {
@@ -68,6 +80,8 @@ const Profile = (props) => {
       return Fav.itemDetails._id != itemId;
     });
     setUserFavs(userFavs2);
+
+    props.setProgress(30);
     const req = await fetch(`${baseUrl}/api/favourites/delete`, {
       method: "DELETE",
       headers: {
@@ -80,6 +94,17 @@ const Profile = (props) => {
         itemType: itemType,
       }),
     });
+
+    if (req.ok) {
+      props.createNotification('success', `Favorite removed successfully`);
+    } else if (req.status == 404) {
+      props.createNotification('warning', `Site not found in favorites. Status: ${req.status}`);
+    } else {
+      props.createNotification('warning', `Internal server error. Status: ${req.status}`);
+    }
+
+    props.setProgress(100);
+
   };
 
   const getTrips = () => {
