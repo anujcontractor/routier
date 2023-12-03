@@ -13,6 +13,7 @@ import Restaurant from "../model/restaurantModel.js";
 const submitReview = expressAsyncHandler(async (req, res) => {
   try {
     const {
+      placeName,
       placeType,
       location,
       starRating,
@@ -28,6 +29,7 @@ const submitReview = expressAsyncHandler(async (req, res) => {
     // const place = await Place.findById(placeID);
     const review = new Review({
       user: req.user._id,
+      placeName,
       placeType,
       location,
       starRating,
@@ -38,6 +40,7 @@ const submitReview = expressAsyncHandler(async (req, res) => {
       photos,
     });
 
+    // await review.populate("location");
     await review.save();
     // const place = await Place.findById(location);
 
