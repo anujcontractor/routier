@@ -93,7 +93,7 @@ const Profile = (props) => {
     } else if (req.status == 404) {
       props.createNotification(
         "warning",
-        `Site not found in favorites. Status: ${req.status}`
+        `Site not found in favourites. Status: ${req.status}`
       );
     } else {
       props.createNotification(
@@ -116,29 +116,25 @@ const Profile = (props) => {
         return "place"; // Default value
     }
   };
-  const getTrips = () => {
-    document.getElementById("reviewCont").style.display = "none";
-    document.getElementById("favCont").style.display = "none";
-    document.getElementById("tripsCont").style.display = "flex";
-    document.getElementById("reviews").style.backgroundColor = "#fff";
-    document.getElementById("fav").style.backgroundColor = "#fff";
-    document.getElementById("trips").style.backgroundColor = "#d9d9d9";
-  };
-  const getReviews = () => {
-    document.getElementById("reviewCont").style.display = "flex";
-    document.getElementById("favCont").style.display = "none";
-    document.getElementById("tripsCont").style.display = "none";
-    document.getElementById("reviews").style.backgroundColor = "#d9d9d9";
-    document.getElementById("fav").style.backgroundColor = "#fff";
-    document.getElementById("trips").style.backgroundColor = "#fff";
-  };
-  const getFav = () => {
-    document.getElementById("reviewCont").style.display = "none";
-    document.getElementById("favCont").style.display = "flex";
-    document.getElementById("tripsCont").style.display = "none";
-    document.getElementById("reviews").style.backgroundColor = "#fff";
-    document.getElementById("fav").style.backgroundColor = "#d9d9d9";
-    document.getElementById("trips").style.backgroundColor = "#fff";
+
+  const reviewCont = document.getElementById("reviewCont");
+  const favCont = document.getElementById("favCont");
+  const tripsCont = document.getElementById("tripsCont");
+  const reviewBtn = document.getElementById("reviews");
+  const favBtn = document.getElementById("fav");
+  const tripsBtn = document.getElementById("trips");
+
+  const handleToggle = (isReview, isFav, isTrip) => {
+    reviewCont && (reviewCont.style.display = isReview ? "flex" : "none");
+    favCont && (favCont.style.display = isFav ? "flex" : "none");
+    tripsCont && (tripsCont.style.display = isTrip ? "flex" : "none");
+    reviewBtn &&
+      (reviewBtn.style.backgroundColor = isReview ? "#046b82" : "#fff");
+    favBtn && (favBtn.style.backgroundColor = isFav ? "#046b82" : "#fff");
+    tripsBtn && (tripsBtn.style.backgroundColor = isTrip ? "#046b82" : "#fff");
+    reviewBtn && (reviewBtn.style.color = isReview ? "#fff" : "#046b82");
+    favBtn && (favBtn.style.color = isFav ? "#fff" : "#046b82");
+    tripsBtn && (tripsBtn.style.color = isTrip ? "#fff" : "#046b82");
   };
   return (
     <>
@@ -213,15 +209,23 @@ const Profile = (props) => {
           <button
             className={`${styles.options} ${styles.tripsOption}`}
             id="trips"
-            onClick={getTrips}
+            onClick={() => handleToggle(false, false, true)}
           >
             Trips
           </button>
-          <button className={styles.options} id="reviews" onClick={getReviews}>
+          <button
+            className={styles.options}
+            id="reviews"
+            onClick={() => handleToggle(true, false, false)}
+          >
             Reviews
           </button>
-          <button className={styles.options} id="fav" onClick={getFav}>
-            Favorites
+          <button
+            className={styles.options}
+            id="fav"
+            onClick={() => handleToggle(false, true, false)}
+          >
+            Favourites
           </button>
         </div>
         {/* Trips */}
@@ -249,7 +253,7 @@ const Profile = (props) => {
                     }`}
                     className={styles.expBox}
                   >
-                    <p className={styles.expTitle}>{Review.title}</p>
+                    <p className={styles.expTitle}>{Review.placeName}</p>
                     <div>
                       <DisplayRating rate={Review.starRating} />
                     </div>
@@ -310,10 +314,10 @@ const Profile = (props) => {
             )}
           </div>
         </div>
-        {/* Favorites */}
+        {/* Favourites */}
         <div className={`${styles.profileCont} ${styles.favCont}`} id="favCont">
           <div className={styles.tripsTitle}>
-            <p className={styles.profileTitle}>Favorites</p>
+            <p className={styles.profileTitle}>Favourites</p>
           </div>
           <div
             className={`${styles.expCont} ${
@@ -321,7 +325,7 @@ const Profile = (props) => {
             }`}
           >
             {userFavs.length == 0 ? (
-              <p className={styles.profileTitle}>No Favorites yet...</p>
+              <p className={styles.profileTitle}>No Favourites yet...</p>
             ) : (
               userFavs.map((Fav) => {
                 return (

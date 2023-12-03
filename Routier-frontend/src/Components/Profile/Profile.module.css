@@ -101,7 +101,8 @@ Link {
   filter: drop-shadow(1px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .tripsOption {
-  background-color: #d9d9d9;
+  background-color: #046b82;
+  color: #fff;
 }
 
 /* Profile */
