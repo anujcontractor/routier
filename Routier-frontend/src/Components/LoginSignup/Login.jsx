@@ -18,7 +18,6 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(credentials.email, credentials.password)
     if(credentials.password.length<8)
     {
       props.createNotification('warning', 'password length must be at least 8');
@@ -34,22 +33,17 @@ const Login = (props) => {
     });
 
     props.setProgress(70);
-    // console.log(response.status);
     
     if (response.ok) {
       const loginData = await response.json();
       localStorage.setItem('token', loginData.token);
-      // console.log(loginData.token);
       props.createNotification('success', 'Logged in successfully')
       navigate('/home');
-      // console.log(json);
 
     } else if (response.status === 401 ) {
-      props.createNotification('warning', `Unauthorized: Please check your credentials.`)
-      // console.log("Unauthorized: Please check your credentials.");
+      props.createNotification('warning', `Unauthorized: Invalid email or password`)
     } else {
       props.createNotification('warning', `Error: ${response.status} - ${response.statusText}`)
-      // console.log(`Error: ${response.status} - ${response.statusText}`);
     }
     props.setProgress(100);
   }

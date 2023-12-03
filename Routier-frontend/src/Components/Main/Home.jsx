@@ -42,12 +42,10 @@ const Home = (props) => {
     if (localStorage.getItem('token')) {
       // console.log("auth-token");
     } else {
-      // console.log("login-required");
       props.createNotification('warning', 'Login required')
       navigate('/');
     }
     
-    // getFavourites();
     getUserProfile();
   }, [navigate]);
 
@@ -63,7 +61,6 @@ const Home = (props) => {
     });
 
     props.setProgress(70);
-    // console.log(response.status);
 
     if (response.status === 200) {
 

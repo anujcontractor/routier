@@ -10,20 +10,6 @@ import './Slider.css'
 
 function Slider(props) {
 
-  // console.log(props.placeid);
-
-  const [ratingValue, setRatingValue] = useState(0)
-
-  const handleRating = (rate) => {
-    setRatingValue(rate)
-  }
-
-  const handleReset = () => {
-    // Set the initial value
-    // setRating(0)
-  }
-
-
   return (
 
     <Swiper
@@ -46,26 +32,26 @@ function Slider(props) {
         },
       }}
       navigation={{ clickable: true }}
-      onSwiper={(swiper) => console.log(null)}
-      onSlideChange={() => console.log(null)}
+      onSwiper={(swiper) => console.log()}
+      onSlideChange={() => console.log()}
     >
 
 
       {/* iterate and display all site */}
       {/* pass its title, description, rating.. as props */}
-      
+
       {props.sites?.map((site, index) => (
 
         <SwiperSlide key={site.name}>
-          <Card siteid={site._id} type={props.type} name={site.name} description={site.description} img={site.image[0]} rating={site.rating} placeid={props.placeid}/>
+          <Card siteid={site._id} type={props.type} name={site.name} description={site.description} img={site.image[0]} rating={site.rating} placeid={props.placeid} />
         </SwiperSlide>
 
       ))}
 
 
       {/* if custom buttons needed  */}
-   
-            {/* <div class="swiper-button-next">
+
+      {/* <div class="swiper-button-next">
                <i class="ri-arrow-right-s-line"></i>
             </div>
             

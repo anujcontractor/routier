@@ -7,6 +7,7 @@ import logo from "../Assets/profile/logo_profile.svg";
 import profileHome from "../Assets/home/profile_home.svg";
 import fav from "../Assets/profile/fav_profile.png";
 import review from "../Assets/profile/review_profile.png";
+import { baseUrl } from "../../shared";
 
 // Dependencies
 import { Link, useNavigate } from "react-router-dom";
@@ -24,7 +25,7 @@ const Profile = (props) => {
     if (localStorage.getItem("token")) {
       // console.log("auth-token");
       const fetchUserProfile = async () => {
-        const res = await fetch("http://localhost:8000/api/users/profile", {
+        const res = await fetch(`${baseUrl}/api/users/profile`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -36,7 +37,7 @@ const Profile = (props) => {
       };
       fetchUserProfile();
       const fetchFavs = async () => {
-        const res = await fetch("http://localhost:8000/api/favourites", {
+        const res = await fetch(`${baseUrl}/api/favourites`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -66,7 +67,7 @@ const Profile = (props) => {
       return Fav.itemDetails._id != itemId;
     });
     setUserFavs(userFavs2);
-    const req = await fetch("http://localhost:8000/api/favourites/delete", {
+    const req = await fetch(`${baseUrl}/api/favourites/delete`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

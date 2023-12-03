@@ -18,60 +18,8 @@ function Sites(props) {
     const { restaurants, getRestaurants, hotels, getHotels, todos, getTodos, getPlaceById, place, getFavourites, favourites, prefferedRestaurant, prefferedStay, prefferedTodo } = context;
     let navigate = useNavigate();
 
-    // console.log(placeid);
     const [sites, setSites] = useState([]);
     const [sortedsites, setSortedsites] = useState([]);
-
-
-    useEffect(() => {
-
-        if (localStorage.getItem('token')) {
-            // console.log("auth-token");
-        } else {
-            props.createNotification('warning', 'Login required')
-            navigate('/');
-        }
-        getFavourites();
-        if (placeid === undefined) {
-
-
-            if (props.type === 'restaurants') {
-                // console.log("Hi");
-                getRestaurants();
-            } else if (props.type === 'hotels') {
-                getHotels();
-            } else if (props.type === 'todos') {
-                getTodos();
-            }
-        } else {
-            getPlaceById(placeid);
-        }
-    }, [placeid, props.type]);
-
-    useEffect(() => {
-        if (placeid === undefined) {
-            if (props.type === 'restaurants') {
-                // console.log(restaurants);
-                setSites(restaurants);
-            } else if (props.type === 'hotels') {
-                // console.log(hotels);
-                setSites(hotels);
-            } else if (props.type === 'todos') {
-                // console.log(todos);
-                setSites(todos);
-            }
-        } else {
-            // console.log(place);
-            setSites(place.restaurants);
-            if (props.type === 'restaurants') {
-                setSites(place.restaurants);
-            } else if (props.type === 'hotels') {
-                setSites(place.stays);
-            } else if (props.type === 'todos') {
-                setSites(place.todos);
-            }
-        }
-    }, [restaurants, hotels, todos, place]);
 
     const compareByMatchingTags = (a, b, preferedtags) => {
 
@@ -107,15 +55,65 @@ function Sites(props) {
 
         return preferenceB - preferenceA;
     };
+
+    useEffect(() => {
+
+        if (localStorage.getItem('token')) {
+
+        } else {
+            props.createNotification('warning', 'Login required')
+            navigate('/');
+        }
+        getFavourites();
+        if (placeid === undefined) {
+
+
+            if (props.type === 'restaurants') {
+
+                getRestaurants();
+            } else if (props.type === 'hotels') {
+                getHotels();
+            } else if (props.type === 'todos') {
+                getTodos();
+            }
+        } else {
+            getPlaceById(placeid);
+        }
+    }, [placeid, props.type]);
+
+    useEffect(() => {
+        if (placeid === undefined) {
+            if (props.type === 'restaurants') {
+
+                setSites(restaurants);
+            } else if (props.type === 'hotels') {
+
+                setSites(hotels);
+            } else if (props.type === 'todos') {
+
+                setSites(todos);
+            }
+        } else {
+
+            setSites(place.restaurants);
+            if (props.type === 'restaurants') {
+                setSites(place.restaurants);
+            } else if (props.type === 'hotels') {
+                setSites(place.stays);
+            } else if (props.type === 'todos') {
+                setSites(place.todos);
+            }
+        }
+    }, [restaurants, hotels, todos, place]);
+
+
     useEffect(() => {
 
         if (sites?.length !== 0) {
             const sortedSitesCopy = sites ? [...sites] : [];
 
             if (props.type === 'restaurants') {
-                if (prefferedRestaurant.includes('veg') && prefferedRestaurant.includes('nonveg'));//do nothing
-                else if (prefferedRestaurant.includes('veg') || prefferedRestaurant.includes('nonveg'))
-                    sortedSitesCopy.sort(compareByVeg);
+                sortedSitesCopy.sort(compareByVeg);
             }
 
             else if (props.type === 'todos')
@@ -123,7 +121,7 @@ function Sites(props) {
             else if (props.type === 'hotels')
                 sortedSitesCopy.sort((a, b) => compareByMatchingTags(a, b, prefferedStay));
             setSortedsites(sortedSitesCopy);
-            console.log(sortedSitesCopy);
+
         }
 
     }, [sites, prefferedRestaurant, prefferedStay, prefferedTodo]);
@@ -145,7 +143,7 @@ function Sites(props) {
     // }, [sites]);
 
     const isSiteidExist = (site_id) => {
-        // console.log(favourites)
+
         for (let i = 0; i < favourites.length; i++) {
             if (favourites[i].favoriteId === site_id) {
                 return true; // Siteid found in the array

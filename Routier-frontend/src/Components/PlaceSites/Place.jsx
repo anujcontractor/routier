@@ -23,26 +23,6 @@ function Place(props) {
   const { placeid } = useParams();
   let navigate = useNavigate();
 
-  useEffect(() => {
-
-    if (localStorage.getItem('token')) {
-      // console.log("auth-token");
-    } else {
-      // console.log("login-required");
-      props.createNotification('warning', 'Login required')
-      navigate('/');
-    }
-
-    if (placeid)
-      getPlaceById(placeid);
-
-  }, [placeid, navigate]);
-
-  useEffect(() => {
-
-
-  }, [place]);
-
 
   const compareByMatchingTags = (a, b, preferedtags) => {
 
@@ -72,7 +52,7 @@ function Place(props) {
       preferenceA = a.nonveg;
       preferenceB = b.nonveg;
     }
-  
+
     if (preferenceA === preferenceB) {
       const ratingComparison = b.rating - a.rating;
       return ratingComparison;
@@ -85,13 +65,38 @@ function Place(props) {
 
   useEffect(() => {
 
+    if (localStorage.getItem('token')) {
+      // console.log("auth-token");
+    } else {
+      // console.log("login-required");
+      props.createNotification('warning', 'Login required')
+      navigate('/');
+    }
+
+    if (placeid)
+      getPlaceById(placeid);
+
+  }, [placeid, navigate]);
+
+  useEffect(() => {
+
+
+  }, [place]);
+
+
+
+  useEffect(() => {
+    // console.log(prefferedStay);
+    // console.log(prefferedRestaurant);
+    // console.log(prefferedTodo)
+
     if (place?.stays?.length !== 0 && place?.restaurants?.length !== 0 && place?.todos?.length !== 0) {
       const sortedhotelsCopy = place?.stays ? [...place.stays] : [];
       const sortedrestaurantsCopy = place?.restaurants ? [...place.restaurants] : [];
       const sortedtodosCopy = place?.todos ? [...place.todos] : [];
 
 
-      console.log(sortedhotelsCopy);
+
       sortedhotelsCopy.sort((a, b) => compareByMatchingTags(a, b, prefferedStay));
       sortedtodosCopy.sort((a, b) => compareByMatchingTags(a, b, prefferedTodo));
       sortedrestaurantsCopy.sort(compareByVeg);

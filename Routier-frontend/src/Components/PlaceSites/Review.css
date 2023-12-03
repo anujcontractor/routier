@@ -19,20 +19,28 @@
     width: 20%;
     min-width: 150px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 10px;
+    
 }
-
+.userPhoto p{
+    padding: 0;
+    margin: 0;
+    font-size: 0.79rem;
+}
 .userPhoto img{
     border-radius: 50%;
     width: 80px;
+    margin-bottom: 4px;
 }
 
 .reviewText {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    width: 80%;
 }
 
 .reviewText p {

@@ -19,8 +19,6 @@ const colors = {
 };
 
 
-
-
 function Review(props) {
 
   const { id } = useParams();
@@ -108,7 +106,7 @@ function Review(props) {
         }
       }
       if (!response.ok) {
-        createNotification('warning', `HTTP error! Status: ${response.status}`)
+        createNotification('warning', `Internal server error! Status: ${response.status}`)
         // throw new Error(`HTTP error! Status: ${response.status}`);
       }
 

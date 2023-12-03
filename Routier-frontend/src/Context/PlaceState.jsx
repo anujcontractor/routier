@@ -7,9 +7,7 @@ import { baseUrl } from "../shared";
 const PlaceState = (props) => {
 
   let navigate = useNavigate();
-
-  const host = "https://routier-production.up.railway.app";
-
+  const [user, setUser] = useState({});
   const [todos, setTodos] = useState([]);
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
@@ -61,10 +59,15 @@ const PlaceState = (props) => {
           "auth-token": localStorage.getItem('token')
         }
       });
-
+      
+      if (response.status===404) {
+        // console.error(`Error fetching place: ${response.status}`);
+        props.createNotification('warning', `Place not found`);
+        navigate('/');
+      }
       if (!response.ok) {
         // console.error(`Error fetching place: ${response.status}`);
-        props.createNotification('warning', `Error fetching place: ${response.status}`);
+        props.createNotification('warning', `Internal server error: ${response.status}`);
         navigate('/');
       }
 
@@ -111,8 +114,6 @@ const PlaceState = (props) => {
   const getHotels = async (placeid) => {
 
     props.setProgress(30);
-
-
 
     try {
       const response = await fetch(`${baseUrl}/api/stay`, {
@@ -335,9 +336,14 @@ const PlaceState = (props) => {
       }
 
       const data = await response.json();
-      setPrefferedTodo(data.prefferedTodo);
-      setPrefferedRestaurant(data.prefferedRestaurant);
-      setPrefferedStay(data.setPrefferedStay);
+      setPrefferedTodo(data.user.preferredTodoTags);
+      setPrefferedRestaurant(data.user.prefferedRestaurant);
+      setPrefferedStay(data.user.preferredStayTags);
+      setUser(data.user);
+
+      console.log(prefferedStay);
+      console.log(prefferedRestaurant);
+      console.log(prefferedTodo)
 
       // setPreferedtags(["Cultural",
       //   "Nature",
@@ -463,64 +469,10 @@ const PlaceState = (props) => {
     }
 
   }
-
-
-
-  // const addfavourites = async (siteid, type) => {
-  //   try {
-
-
-
-  //     // console.log(reviewData);
-  //     console.log(`Bearer ${localStorage.getItem(`token`)}`);
-
-  //     const response = await fetch( `${baseUrl}/api/favourites/add`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Authorization: `Bearer ${localStorage.getItem(`token`)}`,
-  //       },
-  //       body: JSON.stringify({ itemId: siteid, itemType: type }),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! Status: ${response.status}`);
-  //     }
-
-  //     const responseData = await response.json();
-  //     console.log('Review submitted successfully:', responseData);
-  //     // setSubmissionStatus('success');
-  //   } catch (error) {
-  //     console.error('Error submitting review:', error.message);
-  //     // setSubmissionStatus('error');
-  //   }
-  // };
-
-  /*submit review on perticular site*/
-  const giveRiew = async (review) => {
-    const response = await fetch(`/givereview`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem('token'),
-
-      },
-      body: JSON.stringify({
-        starrating: review.rating, visitDate: review.date,
-        visitedWith: review.visitedWith, siteid: review.siteid, location: review.location,
-        siteType: review.sitetype, reviewTitle: review.title, reviewDescription: review.description, photos: review.photos
-      })//req parameters
-    });
-
-    //adding a new review in site stat
-    const newReview = await response.json();
-    const site = siteinfo.find(obj => obj.siteid === review.siteid);
-    site.reviews.push(newReview);
-    setSiteinfo(siteinfo.concat(site));
-  }
+ 
 
   return (
-    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites, getUserProfile, prefferedRestaurant, prefferedStay, prefferedTodo }}>
+    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites, getUserProfile, prefferedRestaurant, prefferedStay, prefferedTodo, user }}>
       {props.children}
     </PlaceContext.Provider>
   )

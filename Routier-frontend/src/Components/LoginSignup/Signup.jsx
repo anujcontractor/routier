@@ -13,7 +13,6 @@ const Signup = (props) => {
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    // console.log(credentials);
   }
 
 
@@ -37,7 +36,7 @@ const Signup = (props) => {
       props.createNotification('warning', "Your name length can't be greater than 30");
       return false;
     }
-    
+
     if (!/^[a-zA-Z\s]+$/.test(name)) {
       props.createNotification('warning', 'Name should contain only alphabets and spaces');
       return false;
@@ -48,7 +47,7 @@ const Signup = (props) => {
       props.createNotification('warning', 'Name cannot contain only spaces');
       return false;
     }
-    
+
     if (password.length < 8) {
       props.createNotification('warning', 'Password must have at least 8 characters');
       return false;
@@ -75,7 +74,6 @@ const Signup = (props) => {
 
     if (!checkConstraints())
       return;
-    // console.log(name, email, password);
     props.setProgress(20);
     const response = await fetch(`${baseUrl}/api/users/register`, {
       method: "POST",
@@ -86,7 +84,6 @@ const Signup = (props) => {
     });
 
     props.setProgress(70);
-    // console.log(response.status);
     if (response.status === 201) {
 
       const signupdata = await response.json();
