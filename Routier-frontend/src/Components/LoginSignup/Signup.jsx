@@ -91,10 +91,14 @@ const Signup = (props) => {
       console.log(signupdata);
       props.createNotification('success', 'Account created successfully')
       navigate('/home');
-    } else if (response.status === 400) {
+    } 
+    else if(response.status === 403){
+      props.createNotification('warning', 'User with this email already exists')
+    }
+    else if (response.status === 400) {
       props.createNotification('warning', 'Invalid User')
     } else {
-      props.createNotification('warning', `Error: ${response.status} - ${response.statusText}`)
+      props.createNotification('warning', `${response.status}- Internal server error`)
     }
     props.setProgress(100);
   }
