@@ -25,7 +25,7 @@ function Review(props) {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const locationtype = params.get("type");
-  const placeName = params.get('placeName');
+  const siteName = params.get('placeName');
   const placeImage = params.get('placeImage');
   const navigate = useNavigate();
   const [submissionStatus, setSubmissionStatus] = useState(null);
@@ -35,6 +35,7 @@ function Review(props) {
 
   /* object containing all review data */
   const [reviewData, setReviewData] = useState({
+    placeName: siteName,
     placeType: "place",
     location: id,
     starRating: 0,
@@ -421,7 +422,7 @@ function Review(props) {
           </div>
 
           <div className='location_display '>
-            <h1 >{placeName}</h1>
+            <h1 >{siteName}</h1>
             <h2 >Location</h2>
           </div>
         </div>
