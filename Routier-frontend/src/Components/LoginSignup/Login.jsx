@@ -1,5 +1,5 @@
 import styles from "./Login.module.css";
-import tour_set from "../Assets/tour_set_login.svg";
+import tour_set from "../Assets/tour_set_login1.svg";
 import logo from "../Assets/logo_login.svg";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from 'react'
@@ -18,7 +18,6 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(credentials.email, credentials.password)
     if(credentials.password.length<8)
     {
       props.createNotification('warning', 'password length must be at least 8');
@@ -34,22 +33,17 @@ const Login = (props) => {
     });
 
     props.setProgress(70);
-    // console.log(response.status);
     
     if (response.ok) {
       const loginData = await response.json();
       localStorage.setItem('token', loginData.token);
-      // console.log(loginData.token);
       props.createNotification('success', 'Logged in successfully')
       navigate('/home');
-      // console.log(json);
 
     } else if (response.status === 401 ) {
-      props.createNotification('warning', `Unauthorized: Please check your credentials.`)
-      // console.log("Unauthorized: Please check your credentials.");
+      props.createNotification('warning', `Unauthorized: Invalid email or password`)
     } else {
-      props.createNotification('warning', `Error: ${response.status} - ${response.statusText}`)
-      // console.log(`Error: ${response.status} - ${response.statusText}`);
+      props.createNotification('warning', `${response.status} - ${response.statusText} Internal server error`)
     }
     props.setProgress(100);
   }
@@ -67,7 +61,7 @@ const Login = (props) => {
             <div className={styles.inputs}>
               <div className={styles.input}>
                 <label htmlFor="email" className="form-label"></label>
-                <input type="email" placeholder="Email Address" id="email" name='email' value={credentials?.email} onChange={onChange} aria-describedby="emailHelp" required />
+                <input type="email" placeholder="Email Address" id="email1" name='email' value={credentials?.email} onChange={onChange} aria-describedby="emailHelp" required />
               </div>
               <div className={styles.input}>
                 <label htmlFor="password" className="form-label" required></label>

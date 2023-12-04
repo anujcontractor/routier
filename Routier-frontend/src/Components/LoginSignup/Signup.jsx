@@ -13,7 +13,6 @@ const Signup = (props) => {
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    // console.log(credentials);
   }
 
 
@@ -37,25 +36,25 @@ const Signup = (props) => {
       props.createNotification('warning', "Your name length can't be greater than 30");
       return false;
     }
-    
+
     if (!/^[a-zA-Z\s]+$/.test(name)) {
       props.createNotification('warning', 'Name should contain only alphabets and spaces');
       return false;
     }
-    
+
     if (name.trim().length === 0) {
 
       props.createNotification('warning', 'Name cannot contain only spaces');
       return false;
     }
-    
+
     if (password.length < 8) {
       props.createNotification('warning', 'Password must have at least 8 characters');
       return false;
     }
 
-    if (name.length > 50) {
-      props.createNotification('warning', "Password length can't be greater than 50");
+    if (password.length > 30) {
+      props.createNotification('warning', "Password length can't be greater than 30");
       return false;
     }
 
@@ -75,7 +74,6 @@ const Signup = (props) => {
 
     if (!checkConstraints())
       return;
-    // console.log(name, email, password);
     props.setProgress(20);
     const response = await fetch(`${baseUrl}/api/users/register`, {
       method: "POST",
@@ -86,7 +84,6 @@ const Signup = (props) => {
     });
 
     props.setProgress(70);
-    // console.log(response.status);
     if (response.status === 201) {
 
       const signupdata = await response.json();
@@ -94,10 +91,14 @@ const Signup = (props) => {
       console.log(signupdata);
       props.createNotification('success', 'Account created successfully')
       navigate('/home');
-    } else if (response.status === 400) {
+    } 
+    else if(response.status === 403){
+      props.createNotification('warning', 'User with this email already exists')
+    }
+    else if (response.status === 400) {
       props.createNotification('warning', 'Invalid User')
     } else {
-      props.createNotification('warning', `Error: ${response.status} - ${response.statusText}`)
+      props.createNotification('warning', `${response.status}- Internal server error`)
     }
     props.setProgress(100);
   }

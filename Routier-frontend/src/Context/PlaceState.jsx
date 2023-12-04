@@ -7,20 +7,20 @@ import { baseUrl } from "../shared";
 const PlaceState = (props) => {
 
   let navigate = useNavigate();
-
-  const host = "https://routier-production.up.railway.app";
-
+  const [user, setUser] = useState({});
   const [todos, setTodos] = useState([]);
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
-  const [siteinfo, setSiteinfo] = useState([]);
   const [place, setPlace] = useState([]);
   const [site, setSite] = useState([]);
   const [allData, setAllData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [favourites, setFavourites] = useState([]);
-  const [tags, setTags] = useState([]);
+
+  const [prefferedTodo, setPrefferedTodo] = useState([]);
+  const [prefferedStay, setPrefferedStay] = useState([]);
+  const [prefferedRestaurant, setPrefferedRestaurant] = useState([]);
 
   const fetchData = async () => {
 
@@ -28,19 +28,15 @@ const PlaceState = (props) => {
     try {
       const response = await fetch(`${baseUrl}/api/placeinfo`);
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Failed to fetch place: ${response.status}`);
         navigate('/');
       }
-      // console.log(response)
+
       const data = await response.json();
-      // console.log(data);
       setAllData(data.response);
 
     } catch (error) {
-      //   console.error("Error fetching data:", error);
       props.createNotification('warning', error)
-      // console.log(data);
     } finally {
       props.setProgress(100);
     }
@@ -59,16 +55,17 @@ const PlaceState = (props) => {
         }
       });
 
+      if (response.status === 404) {
+        props.createNotification('warning', `Place not found`);
+        navigate('/');
+      }
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
-        props.createNotification('warning', `Error fetching place: ${response.status}`);
+        props.createNotification('warning', `Internal server error: ${response.status}`);
         navigate('/');
       }
 
       const data = await response.json();
-      // console.log(data);
       setPlace(data.response);
-      // console.log(place);
     } finally {
       props.setProgress(100);
     }
@@ -90,12 +87,10 @@ const PlaceState = (props) => {
       });
 
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Failed to fetch todos: ${response.status}`);
         navigate('/');
       }
       const json = await response.json();
-      // console.log(json);
       setTodos(json.response);
     } finally {
       props.setProgress(100);
@@ -109,8 +104,6 @@ const PlaceState = (props) => {
 
     props.setProgress(30);
 
-
-
     try {
       const response = await fetch(`${baseUrl}/api/stay`, {
         method: "GET",
@@ -121,12 +114,10 @@ const PlaceState = (props) => {
       });
 
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Failed to fetch hotels: ${response.status}`);
         navigate('/');
       }
       const json = await response.json();
-      // console.log(json);
       setHotels(json.response);
       props.setProgress(100);
     } finally {
@@ -152,13 +143,11 @@ const PlaceState = (props) => {
       });
 
       if (!response.ok) {
-        // console.error(`Error fetching place: ${response.status}`);
         props.createNotification('warning', `Failed to fetch restaurants: ${response.status}`);
         navigate('/');
       }
 
       const json = await response.json();
-      // console.log(json);
       setRestaurants(json.response);
       props.setProgress(100);
     } finally {
@@ -256,8 +245,8 @@ const PlaceState = (props) => {
       if (data.response)
         setSite(data.response);
       else {
-        // props.createNotification('warning', `Failed to fetch todo`);
-        // navigate('/');
+        props.createNotification('warning', `Failed to fetch todo`);
+        navigate('/');
       }
 
     } finally {
@@ -309,8 +298,6 @@ const PlaceState = (props) => {
 
   const getUserProfile = async () => {
 
-    // props.setProgress(30);
-
     try {
 
       const authToken = localStorage.getItem('token');
@@ -327,27 +314,29 @@ const PlaceState = (props) => {
       });
 
       if (!response.ok) {
-        props.createNotification('warning', `Failed to fetch Profile. Status: ${response.status}`);
-        navigate('/');
+        // props.createNotification('warning', `Failed to fetch Profile. Status: ${response.status}`);
+        // navigate('/');
       }
 
       const data = await response.json();
-      setTags(["Cultural",
-        "Nature",
-        "Art",
-        "Peace",
-        "Family",
-        "Temples"])
-      console.log(data);
-      // if (data.response)
-      // setSite(data.response);
-      // else {
-      //   props.createNotification('warning', `Failed to fetch hotel`);
-      //   navigate('/');
-      // }
+      setPrefferedTodo(data.user.preferredTodoTags);
+      setPrefferedRestaurant(data.user.prefferedRestaurant);
+      setPrefferedStay(data.user.preferredStayTags);
+      setUser(data.user);
 
+      console.log(prefferedStay);
+      console.log(prefferedRestaurant);
+      console.log(prefferedTodo)
+
+      // setPreferedtags(["Cultural",
+      //   "Nature",
+      //   "Art",
+      //   "Peace",
+      //   "Family",
+      //   "Temples",
+      // "veg"])
     } finally {
-      // props.setProgress(100);
+      //
     }
 
   }
@@ -367,7 +356,6 @@ const PlaceState = (props) => {
         body: JSON.stringify({ itemId: siteid, itemType: type }),
       });
 
-      // console.log(response);
       if (response.ok) {
         props.createNotification('success', `Favorite added successfully`);
       } else if (response.status == 404) {
@@ -403,7 +391,6 @@ const PlaceState = (props) => {
         body: JSON.stringify({ itemId: siteid, itemType: type }),
       });
 
-      // console.log(response);
       if (response.ok) {
         props.createNotification('success', `Favorite removed successfully`);
       } else if (response.status == 404) {
@@ -421,10 +408,7 @@ const PlaceState = (props) => {
 
   }
 
-
   const getFavourites = async () => {
-
-    // props.setProgress(30);
 
     try {
       const response = await fetch(`${baseUrl}/api/favourites`, {
@@ -439,7 +423,7 @@ const PlaceState = (props) => {
 
       // console.log(response);
       if (response.ok) {
-        // props.createNotification('success', `Favorite removed successfully`);
+
       } else if (response.status == 404) {
         console.log('user not found');
       } else {
@@ -451,68 +435,13 @@ const PlaceState = (props) => {
         setFavourites(data.favoriteDetails);
 
     } finally {
-      // props.setProgress(100);
     }
 
   }
 
 
-
-  // const addfavourites = async (siteid, type) => {
-  //   try {
-
-
-
-  //     // console.log(reviewData);
-  //     console.log(`Bearer ${localStorage.getItem(`token`)}`);
-
-  //     const response = await fetch( `${baseUrl}/api/favourites/add`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Authorization: `Bearer ${localStorage.getItem(`token`)}`,
-  //       },
-  //       body: JSON.stringify({ itemId: siteid, itemType: type }),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! Status: ${response.status}`);
-  //     }
-
-  //     const responseData = await response.json();
-  //     console.log('Review submitted successfully:', responseData);
-  //     // setSubmissionStatus('success');
-  //   } catch (error) {
-  //     console.error('Error submitting review:', error.message);
-  //     // setSubmissionStatus('error');
-  //   }
-  // };
-
-  /*submit review on perticular site*/
-  const giveRiew = async (review) => {
-    const response = await fetch(`/givereview`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem('token'),
-
-      },
-      body: JSON.stringify({
-        starrating: review.rating, visitDate: review.date,
-        visitedWith: review.visitedWith, siteid: review.siteid, location: review.location,
-        siteType: review.sitetype, reviewTitle: review.title, reviewDescription: review.description, photos: review.photos
-      })//req parameters
-    });
-
-    //adding a new review in site stat
-    const newReview = await response.json();
-    const site = siteinfo.find(obj => obj.siteid === review.siteid);
-    site.reviews.push(newReview);
-    setSiteinfo(siteinfo.concat(site));
-  }
-
   return (
-    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites, getUserProfile, tags, setTags }}>
+    <PlaceContext.Provider value={{ restaurants, hotels, todos, getRestaurants, getHotels, getTodos, fetchData, allData, searchResults, searchTerm, setAllData, setSearchResults, setSearchTerm, getPlaceById, place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, deleteFavourites, getFavourites, favourites, getUserProfile, prefferedRestaurant, prefferedStay, prefferedTodo, user }}>
       {props.children}
     </PlaceContext.Provider>
   )

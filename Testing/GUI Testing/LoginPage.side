@@ -1,0 +1,401 @@
+{
+  "id": "984bece3-57ee-47a0-83c1-e6a56bf90e40",
+  "version": "2.0",
+  "name": "LoginPage",
+  "url": "https://routier.vercel.app/login",
+  "tests": [{
+    "id": "17801dce-a2c8-4f34-889c-210a7a58780e",
+    "name": "Text-Fields",
+    "commands": [{
+      "id": "a8d2c540-da9a-4d20-b30d-3140b14e71ce",
+      "comment": "",
+      "command": "open",
+      "target": "https://routier.vercel.app/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7e025a5f-fd48-4e72-a0b9-54919757ecc6",
+      "comment": "",
+      "command": "click",
+      "target": "id=email1",
+      "targets": [
+        ["id=email1", "id"],
+        ["name=email", "name"],
+        ["css=#email1", "css:finder"],
+        ["xpath=//input[@id='email1']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2012aa1-0147-4999-b950-9ab86d21e762",
+      "comment": "",
+      "command": "type",
+      "target": "id=email1",
+      "targets": [
+        ["id=email1", "id"],
+        ["name=email", "name"],
+        ["css=#email1", "css:finder"],
+        ["xpath=//input[@id='email1']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Tester1@gmail.com"
+    }, {
+      "id": "5b94d1c6-3c3d-4716-b468-909266184b66",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ab356ef-f142-408b-a3d8-9f93fd6728ef",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Tester@1234"
+    }]
+  }, {
+    "id": "b7acd582-ba02-4dc2-8262-c648b43166fb",
+    "name": "Text-field-error check",
+    "commands": [{
+      "id": "ea84ded9-03c2-45aa-bd33-efd78dd96553",
+      "comment": "",
+      "command": "open",
+      "target": "https://routier.vercel.app/signup",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8a177d18-084e-4dfc-8fa1-6c80863edf7c",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "39a12271-c824-4743-abbc-88f8571587e8",
+      "comment": "Valid username",
+      "command": "type",
+      "target": "id=name",
+      "targets": [],
+      "value": "Studentstd"
+    }, {
+      "id": "76daf375-4425-4ef6-8572-83b8443852bd",
+      "comment": "Username cannot have numbers",
+      "command": "//type",
+      "target": "id=name",
+      "targets": [],
+      "value": "User1234"
+    }, {
+      "id": "2ff194dd-6e89-4dc6-80c0-d286c3cf5fd8",
+      "comment": "Username length cannot exceed 30 characters",
+      "command": "//type",
+      "target": "id=name",
+      "targets": [],
+      "value": "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+    }, {
+      "id": "4b34fdd9-3783-4983-a89e-a26f63cb2f65",
+      "comment": "Username cannot be less than 5 characters",
+      "command": "//type",
+      "target": "id=name",
+      "targets": [],
+      "value": "Us"
+    }, {
+      "id": "532f511f-7617-4a39-8750-2c5a61cea0e7",
+      "comment": "",
+      "command": "click",
+      "target": "id=email1",
+      "targets": [
+        ["id=email1", "id"],
+        ["name=email", "name"],
+        ["css=#email1", "css:finder"],
+        ["xpath=//input[@id='email1']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/form/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7c119b0-47c5-468b-b7df-ce8ee5e3ceca",
+      "comment": "",
+      "command": "type",
+      "target": "id=email1",
+      "targets": [
+        ["id=email1", "id"],
+        ["name=email", "name"],
+        ["css=#email1", "css:finder"],
+        ["xpath=//input[@id='email1']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/form/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "User12345@gmail.com"
+    }, {
+      "id": "7f40570d-cf17-4ca3-a093-6db0aa7079fc",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/form/div[2]/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c306d54-d18b-4172-ab5e-64640b74f5d9",
+      "comment": "Password needs to contain atleast 1 special character and 1 number",
+      "command": "//type",
+      "target": "id=password",
+      "targets": [],
+      "value": "Student"
+    }, {
+      "id": "37d2c913-d3d0-4573-b4ef-a2dd27a57935",
+      "comment": "Password needs to have 1 Uppercase character",
+      "command": "//type",
+      "target": "id=password",
+      "targets": [],
+      "value": "student@1234"
+    }, {
+      "id": "78e970ee-cd6a-4533-b615-991e2489c229",
+      "comment": "Password needs to be atleast 8 characters",
+      "command": "//type",
+      "target": "id=password",
+      "targets": [],
+      "value": "Stu@12345"
+    }, {
+      "id": "3e9ece9c-9cf8-4dcf-9fa0-d6a6d766d941",
+      "comment": "Password must have atleast 1 samll character",
+      "command": "//type",
+      "target": "id=password",
+      "targets": [],
+      "value": "STUDENT@1234"
+    }, {
+      "id": "792091f0-8f3f-480e-b741-a5d7f81ae3d3",
+      "comment": "",
+      "command": "//type",
+      "target": "id=password",
+      "targets": [],
+      "value": "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+    }, {
+      "id": "732aa4af-47bf-41cf-8e1c-fd5fc8cd3b1f",
+      "comment": "",
+      "command": "click",
+      "target": "id=cpassword",
+      "targets": [
+        ["id=cpassword", "id"],
+        ["name=cpassword", "name"],
+        ["css=#cpassword", "css:finder"],
+        ["xpath=//input[@id='cpassword']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/form/div[2]/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e1440c0b-9b67-4e1e-9e9b-0365af7b3f84",
+      "comment": "",
+      "command": "//type",
+      "target": "id=cpassword",
+      "targets": [],
+      "value": "STUDENT@1234"
+    }, {
+      "id": "289c1b17-0a65-474c-95ce-7f1bd33d2cbd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Signup_signupSubmit__p25tN",
+      "targets": [
+        ["css=.Signup_signupSubmit__p25tN", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Create Account')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "ac0f965c-88e7-4b09-8045-be0442d5a953",
+    "name": "Buttons",
+    "commands": [{
+      "id": "4c36548a-2ed6-467d-a7b3-40fd70a0683c",
+      "comment": "",
+      "command": "open",
+      "target": "https://routier.vercel.app/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1c5dbe33-0ee3-4ecd-9697-aaac6f4f7dbc",
+      "comment": "",
+      "command": "click",
+      "target": "id=email1",
+      "targets": [
+        ["id=email1", "id"],
+        ["name=email", "name"],
+        ["css=#email1", "css:finder"],
+        ["xpath=//input[@id='email1']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ff5d6790-9a4d-4929-9fd8-668e7ca45014",
+      "comment": "",
+      "command": "type",
+      "target": "id=email1",
+      "targets": [
+        ["id=email1", "id"],
+        ["name=email", "name"],
+        ["css=#email1", "css:finder"],
+        ["xpath=//input[@id='email1']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Tester1@gmail.com"
+    }, {
+      "id": "bf010285-d510-4fa5-b32e-ab939dec2520",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8c9788eb-efa1-44c5-9feb-87613deb59de",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "TEster@1234"
+    }, {
+      "id": "acc3789e-1021-4ddf-a5ed-a2822d1d3971",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Login_loginSubmit__hNNxb",
+      "targets": [
+        ["css=.Login_loginSubmit__hNNxb", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bde7be4-bdb7-48f7-a809-9e491496c9c6",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "d25f227e-7fee-420e-a543-b6065d78e931",
+    "name": "Image",
+    "commands": [{
+      "id": "31c50212-1c21-4ae0-afeb-19482427febf",
+      "comment": "",
+      "command": "open",
+      "target": "https://routier.vercel.app/signup",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9013f643-124c-4911-9831-6ae9c6ad8eb8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "938x767",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "82741aa2-d97b-4f6f-a53a-106054628b5d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log in",
+      "targets": [
+        ["linkText=Log in", "linkText"],
+        ["css=.Signup_login__vt\\+58", "css:finder"],
+        ["xpath=//a[contains(text(),'Log in')]", "xpath:link"],
+        ["xpath=//div[@id='alreadyAcc']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log in')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fcc606be-5555-4e3b-998b-ce7ea89bce93",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Login_text__yOAI2:nth-child(1)",
+      "targets": [
+        ["css=.Login_text__yOAI2:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/div/div", "xpath:idRelative"],
+        ["xpath=//form/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1121f83-d966-4ab1-a950-2a1719e0d4d5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Login_mainCont__174wH",
+      "targets": [
+        ["css=.Login_mainCont__174wH", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a0fb64c-6f3a-4a15-a138-5594650d57b5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Login_logoCont__69MhI",
+      "targets": [
+        ["css=.Login_logoCont__69MhI", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]", "xpath:idRelative"],
+        ["xpath=//div/div[2]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "018f8bbf-2ca3-4b68-85db-08a78e0bc9f4",
+    "name": "Login Page",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["17801dce-a2c8-4f34-889c-210a7a58780e", "ac0f965c-88e7-4b09-8045-be0442d5a953", "b7acd582-ba02-4dc2-8262-c648b43166fb"]
+  }],
+  "urls": ["https://routier.vercel.app/signup", "https://routier.vercel.app/login"],
+  "plugins": []
+}

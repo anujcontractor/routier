@@ -36,18 +36,16 @@ const Home = (props) => {
 
   let navigate = useNavigate();
   const context = useContext(PlaceContext);
-  const { getFavourites, favourites, getUserProfile } = context;
-  
+  const { getFavourites, favourites, getUserProfile, tags } = context;
+
   useEffect(() => {
     if (localStorage.getItem('token')) {
       // console.log("auth-token");
     } else {
-      // console.log("login-required");
       props.createNotification('warning', 'Login required')
       navigate('/');
     }
     
-    // getFavourites();
     getUserProfile();
   }, [navigate]);
 
@@ -63,7 +61,6 @@ const Home = (props) => {
     });
 
     props.setProgress(70);
-    // console.log(response.status);
 
     if (response.status === 200) {
 

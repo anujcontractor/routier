@@ -29,12 +29,35 @@ const userSchema = mongoose.Schema(
         ref: "Place",
       },
     ],
+    prefferedTodo: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "ToDo",
+      },
+    ],
+    prefferedStay: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Stay",
+      },
+    ],
+    prefferedRestaurant: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Restaurant",
+      },
+    ],
     favorites: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Favorites",
       },
     ],
+    preferredPlacesTags: [],
+    preferredTodoTags: [],
+    preferredStayTags: [],
+    preferredRestaurantTags: [],
+
   },
   {
     timestamps: true,

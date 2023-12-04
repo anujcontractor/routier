@@ -65,7 +65,7 @@
   font-weight: 500;
   padding: 0.5vw 0vw;
   margin-top: 2vw;
-  width: 23.125vw !important;
+  width: 23.125vw;
   /* width: 100%; */
   border: none;
   outline: none;
@@ -102,9 +102,11 @@
 }
 
 .signup {
+  position: relative;
   color: #046b82;
   font-weight: 600;
   text-decoration: none;
+  z-index: 2;
 }
 
 /*Logo section*/
@@ -123,10 +125,11 @@
 /*Image*/
 .tourSet {
   position: absolute;
-  left: 34vw;
-  width: 50%;
+  left: 40vw;
+  width: 43%;
   height: auto;
   bottom: 5vh;
+  z-index: 1;
 }
 
 /*media queries*/
@@ -141,14 +144,15 @@
     width: 100%;
   }
   .tourSet {
-    width: 60%;
+    width: 48%;
+    left: 45vw;
     bottom: 10vh;
   }
 }
 
 @media only screen and (max-width: 700px) {
   .tourSet {
-    width: 60%;
+    width: 50%;
     height: auto;
     bottom: 12vh;
   }

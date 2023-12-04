@@ -15,15 +15,51 @@ function Sites(props) {
 
     const { placeid } = useParams();
     const context = useContext(PlaceContext);
-    const { restaurants, getRestaurants, hotels, getHotels, todos, getTodos, getPlaceById, place, getFavourites, favourites,tags } = context;
+    const { restaurants, getRestaurants, hotels, getHotels, todos, getTodos, getPlaceById, place, getFavourites, favourites, prefferedRestaurant, prefferedStay, prefferedTodo } = context;
     let navigate = useNavigate();
 
-    // console.log(placeid);
     const [sites, setSites] = useState([]);
+    const [sortedsites, setSortedsites] = useState([]);
+
+    const compareByMatchingTags = (a, b, preferedtags) => {
+
+        const matchingTagsA = a.tags.filter(tag => preferedtags?.includes(tag));
+        const matchingTagsB = b.tags.filter(tag => preferedtags?.includes(tag));
+        const tagsComparison = matchingTagsB.length - matchingTagsA.length;
+
+        //If the matching tags are the same, compare by rating
+        if (tagsComparison === 0) {
+            const ratingComparison = b.rating - a.rating;
+            return ratingComparison;
+
+        }
+        return matchingTagsB.length - matchingTagsA.length;
+    };
+    const compareByVeg = (a, b) => {
+
+        let preferenceA = 0, preferenceB = 0;
+
+
+        if (prefferedRestaurant?.includes('veg')) {
+            preferenceA = a.veg;
+            preferenceB = b.veg;
+        } else if (prefferedRestaurant?.includes('nonveg')) {
+            preferenceA = a.nonveg;
+            preferenceB = b.nonveg;
+        }
+        if (preferenceA === preferenceB) {
+            const ratingComparison = b.rating - a.rating;
+            return ratingComparison;
+
+        }
+
+        return preferenceB - preferenceA;
+    };
+
     useEffect(() => {
 
         if (localStorage.getItem('token')) {
-            // console.log("auth-token");
+
         } else {
             props.createNotification('warning', 'Login required')
             navigate('/');
@@ -33,7 +69,7 @@ function Sites(props) {
 
 
             if (props.type === 'restaurants') {
-                // console.log("Hi");
+
                 getRestaurants();
             } else if (props.type === 'hotels') {
                 getHotels();
@@ -48,17 +84,17 @@ function Sites(props) {
     useEffect(() => {
         if (placeid === undefined) {
             if (props.type === 'restaurants') {
-                // console.log(restaurants);
+
                 setSites(restaurants);
             } else if (props.type === 'hotels') {
-                // console.log(hotels);
+
                 setSites(hotels);
             } else if (props.type === 'todos') {
-                // console.log(todos);
+
                 setSites(todos);
             }
         } else {
-            // console.log(place);
+
             setSites(place.restaurants);
             if (props.type === 'restaurants') {
                 setSites(place.restaurants);
@@ -69,7 +105,28 @@ function Sites(props) {
             }
         }
     }, [restaurants, hotels, todos, place]);
-    
+
+
+    useEffect(() => {
+
+        if (sites?.length !== 0) {
+            const sortedSitesCopy = sites ? [...sites] : [];
+
+            if (props.type === 'restaurants') {
+                sortedSitesCopy.sort(compareByVeg);
+            }
+
+            else if (props.type === 'todos')
+                sortedSitesCopy.sort((a, b) => compareByMatchingTags(a, b, prefferedTodo));
+            else if (props.type === 'hotels')
+                sortedSitesCopy.sort((a, b) => compareByMatchingTags(a, b, prefferedStay));
+            setSortedsites(sortedSitesCopy);
+
+        }
+
+    }, [sites, prefferedRestaurant, prefferedStay, prefferedTodo]);
+
+
     const [isFavoritedMap, setIsFavoritedMap] = useState({});
 
     // useEffect(() => {
@@ -84,15 +141,15 @@ function Sites(props) {
 
     //     console.log(isFavoritedMap)
     // }, [sites]);
-    
-    const isSiteidExist = (site_id)=> {
-        // console.log(favourites)
+
+    const isSiteidExist = (site_id) => {
+
         for (let i = 0; i < favourites.length; i++) {
             if (favourites[i].favoriteId === site_id) {
-              return true; // Siteid found in the array
+                return true; // Siteid found in the array
             }
-          }
-          return false; // Siteid not found in the array
+        }
+        return false; // Siteid not found in the array
     }
     const { type } = props;
     return (
@@ -151,8 +208,8 @@ function Sites(props) {
                 </section>
                 {/******** sites section ************/}
                 <section className="sites">
-                    {sites?.map((site, index) => {
-                        
+                    {sortedsites?.map((site, index) => {
+
                         return (
                             <Card
                                 key={index}
@@ -163,7 +220,7 @@ function Sites(props) {
                                 img={site.image[0]}
                                 rating={site.rating}
                                 placeid={placeid}
-                                fav = {isFavoritedMap[site._id]}
+                                fav={isFavoritedMap[site._id]}
                             />
                         );
                     })}

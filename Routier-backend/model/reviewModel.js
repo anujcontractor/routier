@@ -5,6 +5,7 @@ const reviewSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  placeName: String,
   placeType: String,
   location: {
     type: mongoose.Schema.Types.ObjectId,

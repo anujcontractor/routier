@@ -44,7 +44,15 @@
     text-align: center;
     vertical-align: baseline;
     align-content: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+}
+#r1{
+    font-weight: 100;
+    color: rgb(91, 91, 91);
+    font-size: 0.85rem;
+    padding-top: 5px;
+    /* margin-top: 6px; */
+    padding-left: 4px;
 }
 
 .cardImage img {
@@ -57,7 +65,7 @@
 }
 
 .cardData {
-    height: 40%;
+    height: 42%;
     display: flex;
     flex-direction: column;
     padding: 5px 10px;

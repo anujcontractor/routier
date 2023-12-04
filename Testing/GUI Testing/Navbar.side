@@ -1,0 +1,170 @@
+{
+  "id": "f23f7d30-cca6-4f7c-bde8-f9f2c259eb71",
+  "version": "2.0",
+  "name": "Navbar",
+  "url": "https://routier.vercel.app/home",
+  "tests": [{
+    "id": "1eab031c-19e7-4e17-8e84-4330b2c4f6a7",
+    "name": "Buttons",
+    "commands": [{
+      "id": "79243e36-4c95-4058-8c53-70a3294bfe26",
+      "comment": "",
+      "command": "open",
+      "target": "https://routier.vercel.app/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8361a7ce-7636-44ab-913d-5776e79bf3cb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "868x737",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "585b4f55-be65-4200-8f1d-ac278f1165f8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Reviews",
+      "targets": [
+        ["linkText=Reviews", "linkText"],
+        ["css=.Main_reviews__HiQZX", "css:finder"],
+        ["xpath=//a[contains(text(),'Reviews')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/nav/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/profile')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Reviews')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f43b833a-7440-4a20-ba5f-6904a3c2fc7b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=About Us",
+      "targets": [
+        ["linkText=About Us", "linkText"],
+        ["css=.Profile_trips__wmxQD", "css:finder"],
+        ["xpath=//a[contains(text(),'About Us')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/nav/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/aboutus')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'About Us')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "01ef55e1-a266-47af-a08f-415370cac25f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=go back to home page",
+      "targets": [
+        ["linkText=go back to home page", "linkText"],
+        ["css=.redirecttext", "css:finder"],
+        ["xpath=//a[contains(text(),'go back to home page')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'go back to home page')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0446b561-3ce0-47f5-850f-b74ce5ebf41d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Reviews",
+      "targets": [
+        ["linkText=Reviews", "linkText"],
+        ["css=.Main_reviews__HiQZX", "css:finder"],
+        ["xpath=//a[contains(text(),'Reviews')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/nav/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/profile')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Reviews')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a834b3a3-82ac-41a7-944b-f3828f637cb5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=.Profile_alerts__dqUdr", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/nav/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/home')])[2]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "336291e9-fc8a-45c0-812d-3cbb04f2994c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Favorites",
+      "targets": [
+        ["linkText=Favorites", "linkText"],
+        ["css=.Main_trips__kfuEI", "css:finder"],
+        ["xpath=//a[contains(text(),'Favorites')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/nav/div[2]/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/profile')])[2]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Favorites')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f2fe3be-4c14-4d44-ba3c-71279da48e70",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=.Profile_alerts__dqUdr", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/nav/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/home')])[2]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6fba0fd2-6946-41dc-a505-435a75c7140e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Main_profileIcon__CWAjl",
+      "targets": [
+        ["css=.Main_profileIcon__CWAjl", "css:finder"],
+        ["xpath=//div[@id='root']/div/nav/div[2]/a[4]/img", "xpath:idRelative"],
+        ["xpath=//a[4]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e10e18c-84e1-4f1b-b399-1345d8851a85",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Profile_logo__q4E1C",
+      "targets": [
+        ["css=.Profile_logo__q4E1C", "css:finder"],
+        ["xpath=//img[@alt='logo']", "xpath:img"],
+        ["xpath=//div[@id='root']/div/nav/a/div/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "90fb70f9-92b4-4db5-a8a1-6feed2c89be0",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "a190930c-891f-40e6-9964-7dee3b8e18a0",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://routier.vercel.app/home"],
+  "plugins": []
+}

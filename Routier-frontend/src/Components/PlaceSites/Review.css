@@ -10,8 +10,11 @@
 
 .review {
     display: flex;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
     margin-top: 20px;
+    background-color: #F7F7F8;
+    border-radius: 20px;
+    border: solid rgb(233, 233, 233) 1px ;
 }
 
 .userPhoto {
@@ -19,20 +22,29 @@
     width: 20%;
     min-width: 150px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 10px;
+    
 }
-
+.userPhoto p{
+    padding: 0;
+    margin: 0;
+    font-size: 0.79rem;
+}
 .userPhoto img{
     border-radius: 50%;
     width: 80px;
+    margin-bottom: 4px;
 }
 
 .reviewText {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    width: 80%;
+    overflow: hidden;
 }
 
 .reviewText p {
@@ -69,6 +81,7 @@
 
     .reviewText {
         padding: 0 1rem;
+        width: 100%;
     }
 
     .userPhoto {

@@ -27,15 +27,26 @@ const SearchComponent = (props) => {
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
-
+  
     // Perform search in the fetched data
-    const results = allData.filter((item) =>
-      item.name.toLowerCase().includes(term.toLowerCase())
-    );
-
+    const results = allData.filter((item) => {
+      // Check if the name or any tag includes the search term
+      const nameMatch = item.name.toLowerCase().includes(term.toLowerCase());
+      const tagMatch = item.tags.some((tag) => tag.toLowerCase().includes(term.toLowerCase()));
+      const restaurantMatch = item.restaurants.some((restaurant) =>
+        restaurant.name.toLowerCase().includes(term.toLowerCase())
+      );
+      const todoMatch = item.todos.some((todo) => todo.name.toLowerCase().includes(term.toLowerCase()));
+      const stayMatch = item.stays.some((stay) => stay.name.toLowerCase().includes(term.toLowerCase()));
+  
+      return nameMatch || tagMatch || restaurantMatch || todoMatch || stayMatch;
+      //return nameMatch || tagMatch;
+    });
+  
     setSearchResults(results);
-    console.log(searchResults)
+    console.log(searchResults);
   };
+  
 
   const handleSubmit = () => {
     props.setProgress(30);

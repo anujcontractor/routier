@@ -8,21 +8,12 @@ import like_icon_red from '../Assets/like_icon_red.svg'
 
 function Card(props) {
 
-    // console.log(props.type)
     const { siteid, name, description, img, rating, type, placeid, fav } = props;
     const context = useContext(PlaceContext);
     const { addFavourites, deleteFavourites, getFavourites, favourites } = context;
     const [ratingValue, setRatingValue] = useState(0)
     // const [favorited, setFavorited] = useState(fav);
 
-    const handleRating = (rate) => {
-        setRatingValue(rate)
-    }
-
-    const handleReset = () => {
-        // Set the initial value
-        // setRating(0)
-    }
     let sitetype;
     if (type === 'todos') {
         sitetype = 'todo';
@@ -52,9 +43,10 @@ function Card(props) {
             <div className="cardData">
                 <h3 className="name">{name}</h3>
                 <p className='starrating'>{/* set initial value */}
-                    <Rating initialValue={rating} size='20px' readonly />
+                    <Rating initialValue={rating} size='20px' readonly allowFraction />
+                    <p id='r1'>{rating}</p>
                 </p>
-                <p className="description">{description.slice(0, 70)}...</p>
+                <p className="description">{description.slice(0, 65)}...</p>
             </div>
         </div>
     )

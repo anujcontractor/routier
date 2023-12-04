@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@600&display=swap");
 
-button {
+button,
+Link {
   cursor: pointer;
 }
 ::-webkit-scrollbar {
@@ -100,7 +101,8 @@ button {
   filter: drop-shadow(1px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .tripsOption {
-  background-color: #d9d9d9;
+  background-color: #046b82;
+  color: #fff;
 }
 
 /* Profile */
@@ -158,6 +160,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.0375rem;
   margin-right: 5rem;
+  margin: 0;
 }
 .favBox {
   display: flex;
@@ -170,8 +173,8 @@ button {
   margin-top: 1rem;
   padding: 0.75rem;
   border-radius: 1.5rem;
-  border: solid 0.1rem #b5b5b5;
-  background-color: transparent;
+  /* border: solid 0.1rem #b5b5b5; */
+  background-color: #f7f7f7;
   overflow: hidden;
 }
 .favImg {
@@ -194,6 +197,7 @@ button {
   flex-direction: column;
   width: 73%;
   height: 100%;
+  overflow-y: scroll;
 }
 .favHead {
   width: 100%;
@@ -239,6 +243,18 @@ button {
   font-weight: 500;
   margin: 0;
 }
+.reviewHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.reviewDate {
+  color: #333;
+  font-family: "Poppins";
+  font-size: 0.75rem;
+  font-weight: 400;
+}
 .reviewDesc {
   color: #333;
   font-family: "Poppins";
@@ -247,10 +263,9 @@ button {
   font-weight: 400;
   margin: 0;
 }
-.expTitle,
-.reviewTitle,
-.favTitle {
-  cursor: pointer;
+.emptyMsg{
+  justify-content: center;
+  margin-bottom: 3.5rem;
 }
 .stars {
   display: flex;
@@ -294,6 +309,10 @@ button {
   .expTitle {
     font-size: 1.5rem;
   }
+  .reviewHead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 @media (max-width: 700px) {
   .logo {
@@ -320,6 +339,10 @@ button {
   .favImg {
     height: 100%;
     width: 100%;
+  }
+  .reviewHead {
+    flex-direction: row;
+    align-items: center;
   }
 }
 @media (max-width: 500px) {
@@ -350,8 +373,7 @@ button {
     height: 100vh;
     background-color: rgba(103, 103, 103, 0.85);
   }
-  .navlinksCont,
-  .navlinksCont2 {
+  .navlinksCont {
     display: none;
   }
   .navlinksCont2 .alerts,
@@ -383,6 +405,10 @@ button {
   .favDesc {
     font-size: 0.8rem;
   }
+  .reviewHead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 @media (max-width: 400px) {
   .avatar {
@@ -408,9 +434,6 @@ button {
   }
   .reviewDesc {
     font-size: 0.6rem;
-  }
-  .favImg {
-    height: 65%;
   }
 }
 @media (min-width: 500px) {

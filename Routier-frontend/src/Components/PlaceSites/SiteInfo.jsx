@@ -23,12 +23,11 @@ import FooterSmall from '../Main/FooterSmall';
 
 function SiteInfo(props) {
 
-  // const [reviews] = props;
   const context = useContext(PlaceContext);
-  const { place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, getFavourites, favourites, deleteFavourites } = context;
+  const { place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, getFavourites, favourites, deleteFavourites, user, getUserProfile } = context;
   const { placeid, siteid } = useParams();
   let navigate = useNavigate();
-  // console.log(siteid);
+
 
 
   let sitetype;
@@ -46,7 +45,6 @@ function SiteInfo(props) {
     if (localStorage.getItem('token')) {
       // console.log("auth-token");
     } else {
-      // console.log("login-required");
       props.createNotification('warning', 'Login required')
       navigate('/');
     }
@@ -59,11 +57,13 @@ function SiteInfo(props) {
       getTodoById(siteid);
     }
 
+    getUserProfile();
+
   }, [placeid, siteid, props.type]);
 
   useEffect(() => {
 
-  }, [site]);
+  }, [site, user]);
 
   const addFav = () => {
 
@@ -77,13 +77,13 @@ function SiteInfo(props) {
 
   }
 
+  console.log(site?.reviews);
+
   const photos = site?.image?.map((imgLink) => ({
     src: imgLink,
     width: 200, // Set the width as needed
     height: 200, // Set the height as needed
   }));
-  console.log(photos)
-
 
   return (
     <>
@@ -162,7 +162,9 @@ function SiteInfo(props) {
 
             {props.type === 'restaurants' &&
               (<p>{site.veg === true ? <>&bull;Veg</> : null}&nbsp;&nbsp;&nbsp; {site.nonveg === true ? <>&bull;Nonveg</> : null}</p>)}
-            <Rating initialValue={site?.rating} size='30px' readonly />
+            <p>Rating: {site?.rating}</p>
+            <Rating initialValue={site?.rating} size='30px' readonly allowFraction />
+
 
 
             {site?.time && (<p>{site.time}</p>)}
@@ -191,26 +193,16 @@ function SiteInfo(props) {
           <div className="reviewHeading"><h2>Reviews</h2><span>({site?.reviews?.length})</span></div>
           {site?.reviews?.length !== 0 ? (
             site?.reviews?.map((review, index) => (
-              <Review key={index} title={review.title} description={review.reviewText} rating={review.starRating} date={review.visitDate} />
+              <Review key={index} username={user?.name} reviewLen={user?.reviews?.length} title={review.title} description={review.reviewText} rating={review.starRating} date={review.visitDate} />
             ))
           ) : (
             <div>No reviews yet</div>
           )}
 
-          {/* {site?.reviews?.map((review, index) => {
-
-            return <Review title={review.title} description={review.reviewText} rating={review.starRating} date={review.visitDate} />
-          })} */}
-          {/* 
-          <Review />
-          <Review />
-          <Review />
-          <Review /> */}
-          {/* <div>No reviews yet</div> */}
         </section>
 
       </div>
-      <FooterSmall/>
+      <FooterSmall />
     </>
   )
 }
