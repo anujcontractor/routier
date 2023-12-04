@@ -24,8 +24,10 @@ import FooterSmall from '../Main/FooterSmall';
 function SiteInfo(props) {
 
   const context = useContext(PlaceContext);
-  const { place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, getFavourites, favourites, deleteFavourites, user, getUserProfile } = context;
+  const { place, site, setSite, getHotelById, getRestaurantById, getTodoById, addFavourites, getFavourites, favourites, deleteFavourites,  getUserProfile } = context;
   const { placeid, siteid } = useParams();
+
+
   let navigate = useNavigate();
 
 
@@ -60,10 +62,6 @@ function SiteInfo(props) {
     getUserProfile();
 
   }, [placeid, siteid, props.type]);
-
-  useEffect(() => {
-
-  }, [site, user]);
 
   const addFav = () => {
 
@@ -189,11 +187,12 @@ function SiteInfo(props) {
         </section>
 
         {/********* review section ********/}
+
         <section className='reviews'>
           <div className="reviewHeading"><h2>Reviews</h2><span>({site?.reviews?.length})</span></div>
           {site?.reviews?.length !== 0 ? (
             site?.reviews?.map((review, index) => (
-              <Review key={index} username={user?.name} reviewLen={user?.reviews?.length} title={review.title} description={review.reviewText} rating={review.starRating} date={review.visitDate} />
+              <Review key={index} userid={review.user} title={review.title} description={review.reviewText} rating={review.starRating} date={review.visitDate} />
             ))
           ) : (
             <div>No reviews yet</div>

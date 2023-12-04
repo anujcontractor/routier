@@ -48,7 +48,7 @@ function Review(props) {
 
   useEffect(() => {
     setProgress(30)
-    console.log("Updated reviewData:", reviewData);
+    // console.log("Updated reviewData:", reviewData);
     setProgress(100);
   }, [reviewData]);
 
@@ -64,8 +64,22 @@ function Review(props) {
       }
 
       // Check if date is selected
+      console.log(reviewData.visitDate)
+      
+
       if (!reviewData.visitDate) {
+        
         createNotification('warning', "kindly, provide the date you visited this place");
+        // setSubmissionStatus('error');
+        return;
+      }
+      
+      const currentDate = new Date();
+      const visitDate = new Date(reviewData.visitDate);
+
+      if (visitDate > currentDate) {
+        
+        createNotification('warning', "The visit date should be in the past.");
         // setSubmissionStatus('error');
         return;
       }
