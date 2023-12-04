@@ -22,6 +22,8 @@ import priyanshu from '../Assets/members/priyanshu.jpg';
 import harsh from '../Assets/members/harsh.jpg';
 import viswas from '../Assets/members/viswas.jpg';
 import bansari from '../Assets/members/bansari.jpg';
+import het from '../Assets/members/het.jpg';
+
 
 const AboutUssection = () => {
     return (
@@ -85,7 +87,7 @@ const OurTeamsection = () => {
                     <div className='idtext'>202101109</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile' className='profilepic'></img>
+                    <img src={het} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Het Patel</div>
                     <div className='idtext'>202101162</div>
                 </div>
