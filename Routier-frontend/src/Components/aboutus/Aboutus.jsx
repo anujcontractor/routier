@@ -11,6 +11,18 @@ import profile from '../Assets/aboutus/profile.png';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+/* members */
+import shwet from '../Assets/members/shwet.jpg';
+import anuj from '../Assets/members/anuj.png';
+import mann from '../Assets/members/mann.png';
+import poojan from '../Assets/members/poojan.jpg';
+import dharmin from '../Assets/members/dharmin.jpg';
+import aditya from '../Assets/members/aditya.jpg';
+import priyanshu from '../Assets/members/priyanshu.jpg';
+import harsh from '../Assets/members/harsh.jpg';
+import viswas from '../Assets/members/viswas.jpg';
+import bansari from '../Assets/members/bansari.jpg';
+
 const AboutUssection = () => {
     return (
         <div className='aboutuspart'>
@@ -53,22 +65,22 @@ const OurTeamsection = () => {
 
             <div className='profilespart'>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile' className='profilepic'></img>
+                    <img src={anuj} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Anuj Contractor</div>
                     <div className='idtext'>202101110</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile'className='profilepic'></img>
+                    <img src={dharmin} alt='profile'className='profilepic'></img>
                     <div className='nametext'>Dharmin Patel</div>
                     <div className='idtext'>202101147</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile'className='profilepic'></img>
+                    <img src={bansari} alt='profile'className='profilepic'></img>
                     <div className='nametext'>Bansri Patel</div>
                     <div className='idtext'>202101097</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile' className='profilepic'></img>
+                    <img src={shwet} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Shwet Patel</div>
                     <div className='idtext'>202101109</div>
                 </div>
@@ -78,32 +90,32 @@ const OurTeamsection = () => {
                     <div className='idtext'>202101162</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile' className='profilepic'></img>
+                    <img src={mann} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Mann Kataria</div>
                     <div className='idtext'>202101114</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile' className='profilepic'></img>
+                    <img src={aditya} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Aditya Makawana</div>
                     <div className='idtext'>202101112</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile' className='profilepic'></img>
+                    <img src={priyanshu} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Priyanshu Gagia</div>
                     <div className='idtext'>202101165</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile' className='profilepic'></img>
+                    <img src={poojan} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Poojan Shah</div>
                     <div className='idtext'>202101132</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile' className='profilepic'></img>
+                    <img src={harsh} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Harsh Mungara</div>
                     <div className='idtext'>202101130</div>
                 </div>
                 <div className='profilecard'>
-                    <img src={profile} alt='profile' className='profilepic'></img>
+                    <img src={viswas} alt='profile' className='profilepic'></img>
                     <div className='nametext'>Visvas solanki</div>
                     <div className='idtext'>202101138</div>
                 </div>

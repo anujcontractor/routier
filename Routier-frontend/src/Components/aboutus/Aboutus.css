@@ -237,6 +237,7 @@
     display: flex;
     width: 11vw;
     height: 11vw;
+    border-radius: 100%;
 }
 
 .footerforaboutus {
