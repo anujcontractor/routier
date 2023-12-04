@@ -31,5 +31,8 @@
     "mongoose": "^7.5.2",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0"
   }
 }
