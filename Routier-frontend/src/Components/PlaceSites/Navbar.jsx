@@ -47,7 +47,7 @@ function Navbar() {
                         Favorites
                     </Link>
                         
-                    <Link to='/aboutus' className='trips'>
+                    <Link to='/aboutus?info=aboutUs' className='trips'>
                         About us
                     </Link>
                     <Link to='/profile' className='profileCont'>

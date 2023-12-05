@@ -22,7 +22,7 @@ const Footer = () => {
         <div className={styles2.leftpart}>
           <img src={logoimg} alt="logo" className={styles2.logo}></img>
           <div className={styles2.text6}>Want to know about,Routier?</div>
-          <Link className={styles2.pillbutton} to="/aboutus">
+          <Link className={styles2.pillbutton} to="/aboutus?info=aboutUs">
             About us
           </Link>
         </div>

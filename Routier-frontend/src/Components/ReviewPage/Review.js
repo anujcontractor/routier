@@ -316,7 +316,7 @@ function Review(props) {
           <Link to="/home" className={styles.alerts}>
             Home
           </Link>
-          <Link to="/aboutus" className={styles.trips}>
+          <Link to='/aboutus?info=aboutUs' className={styles.trips}>
             About Us
           </Link>
         </div>
