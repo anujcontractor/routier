@@ -134,7 +134,10 @@ function Aboutus() {
     const queryParams = new URLSearchParams(location.search);
     const info = queryParams.get('info');
 
-    const [selectedOption, setSelectedOption] = useState(info);
+    
+    const defaultOption = 'aboutUs';
+    const initialSelectedOption = info ?? defaultOption;
+    const [selectedOption, setSelectedOption] = useState(initialSelectedOption);
     
     const handleToggle = (option) => {
         setSelectedOption(option);
