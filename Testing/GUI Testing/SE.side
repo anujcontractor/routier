@@ -1,0 +1,693 @@
+{
+  "id": "7ec16c65-c0b3-4e5c-94e0-70b31a14525b",
+  "version": "2.0",
+  "name": "SE",
+  "url": "https://routier.vercel.app/givereview/65588d001c5f251d62ae81c9?placeName=Ramada%20by%20Wyndham%20Udaipur%20Resort%20and%20Spa&placeImage=https%3A%2F%2Fwww.wyndhamhotels.com%2Fcontent%2Fdam%2Fproperty-images%2Fen-us%2Fra%2Fin%2Fothers%2Fudaipur%2F46197%2F46197_central_courtyard_1.jpg&type=hotels",
+  "tests": [{
+    "id": "d2cc2f69-758f-4fc6-859e-230fbad1b40b",
+    "name": "About Us",
+    "commands": [{
+      "id": "7d7570a7-39fd-4d81-bdf4-601b1f483a8f",
+      "comment": "",
+      "command": "open",
+      "target": "/aboutus",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fc6401fa-4e18-436e-a742-c37492b07695",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1379x809",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2dd14ea0-5bc6-48ff-bb00-f766c19fd838",
+      "comment": "",
+      "command": "click",
+      "target": "css=.aboutuspart",
+      "targets": [
+        ["css=.aboutuspart", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]", "xpath:idRelative"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "53d9f299-654e-49a3-aeb3-b3cf98702069",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1)",
+      "targets": [
+        ["css=p:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/div[2]/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52cd746d-1967-427b-aa07-298d016f70fe",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ButtonWhenNotSelectedB",
+      "targets": [
+        ["css=.ButtonWhenNotSelectedB", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[4]/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Our Team')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7ea7a614-3454-45ba-a7be-45f6521bfa33",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=go back to home page",
+      "targets": [
+        ["linkText=go back to home page", "linkText"],
+        ["css=.redirecttext", "css:finder"],
+        ["xpath=//a[contains(text(),'go back to home page')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'go back to home page')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "ae714f99-cafa-41db-a7f2-e500ce74b402",
+    "name": "Our team",
+    "commands": [{
+      "id": "20d1e1ed-f384-49ae-aef8-57b1cc4d5e12",
+      "comment": "",
+      "command": "open",
+      "target": "https://routier.vercel.app/aboutus",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "13f9af6f-979f-42b4-828e-2e4998222275",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1379x809",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ae9d3eb-5c4c-487f-9150-5d72a4ead442",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ButtonWhenNotSelectedB",
+      "targets": [
+        ["css=.ButtonWhenNotSelectedB", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[4]/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Our Team')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4b33a0bc-8743-4361-bda6-e8e2b15b03d4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.aboutustext",
+      "targets": [
+        ["css=.aboutustext", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "55e11347-3dd5-4c1c-8a66-8c5dfcfec6e0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.aboutustext",
+      "targets": [
+        ["css=.aboutustext", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e852dd5a-4308-4d53-86e7-cc914de2a62d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.aboutustext",
+      "targets": [
+        ["css=.aboutustext", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5380e75b-0ed3-4481-8bec-59f1792e04fd",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.aboutustext",
+      "targets": [
+        ["css=.aboutustext", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "49a733e4-8808-4c1f-a9af-9409e23bd793",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=go back to home page",
+      "targets": [
+        ["linkText=go back to home page", "linkText"],
+        ["css=.redirecttext", "css:finder"],
+        ["xpath=//a[contains(text(),'go back to home page')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'go back to home page')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa04ea1b-7ab1-4283-8b1b-412477e004c3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Our Team",
+      "targets": [
+        ["linkText=Our Team", "linkText"],
+        ["css=.Footer_footernormaltext__YOJ6N:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Our Team')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[6]/div[2]/div[2]/div/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/aboutus')])[3]", "xpath:href"],
+        ["xpath=//div[2]/div/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Our Team')]", "xpath:innerText"]
+      ],
+      "value": "Not done\\"
+    }, {
+      "id": "ffd558f2-d30e-408c-b2f9-863d95568608",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=What is Routier?",
+      "targets": [
+        ["linkText=What is Routier?", "linkText"],
+        ["css=.Footer_footernormaltext__YOJ6N:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'What is Routier?')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[6]/div/div[2]/div[2]/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/aboutus')]", "xpath:href"],
+        ["xpath=//div[2]/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'What is Routier?')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb2cec2f-1129-407c-98c4-b9f3d0778e4b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Our Team",
+      "targets": [
+        ["linkText=Our Team", "linkText"],
+        ["css=.Footer_footernormaltext__YOJ6N:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Our Team')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[6]/div/div[2]/div[2]/div/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/aboutus')])[2]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Our Team')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "91d4c61a-438d-4618-bcce-16611af026fd",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "linkText=Our Team",
+      "targets": [
+        ["linkText=Our Team", "linkText"],
+        ["css=.Footer_footernormaltext__YOJ6N:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Our Team')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[6]/div/div[2]/div[2]/div/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/aboutus')])[2]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Our Team')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "03abea0d-c63b-4839-ba51-3efd0f9012f5",
+    "name": "Profile page trips",
+    "commands": [{
+      "id": "9f9c3a0f-69fa-49a5-8023-df11d59bde3c",
+      "comment": "",
+      "command": "open",
+      "target": "https://routier.vercel.app/profile",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ff9d5d0f-91ca-45c1-807f-a5409099ac95",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1379x809",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7459767c-8b77-42c6-b14f-08fb1c93720e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=.Profile_alerts__dqUdr", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/nav/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/home')])[2]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2bfd0896-7329-42b3-8fa2-a1bca452218e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Main_profileIcon__CWAjl",
+      "targets": [
+        ["css=.Main_profileIcon__CWAjl", "css:finder"],
+        ["xpath=//div[@id='root']/div/nav/div[2]/a[4]/img", "xpath:idRelative"],
+        ["xpath=//a[4]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bd4f6199-7272-4909-89dd-f0fc149b4162",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=About Us",
+      "targets": [
+        ["linkText=About Us", "linkText"],
+        ["css=.Profile_trips__wmxQD", "css:finder"],
+        ["xpath=//a[contains(text(),'About Us')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/nav/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/aboutus')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'About Us')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "20a19857-65e4-4c23-bb68-fbde04e38ece",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=go back to home page",
+      "targets": [
+        ["linkText=go back to home page", "linkText"],
+        ["css=.redirecttext", "css:finder"],
+        ["xpath=//a[contains(text(),'go back to home page')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'go back to home page')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f8b35fa3-c7e7-4cd7-887b-4eef38effd98",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Main_profileIcon__CWAjl",
+      "targets": [
+        ["css=.Main_profileIcon__CWAjl", "css:finder"],
+        ["xpath=//div[@id='root']/div/nav/div[2]/a[4]/img", "xpath:idRelative"],
+        ["xpath=//a[4]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4459144-8bcc-409e-b493-e605b09daeb9",
+      "comment": "",
+      "command": "click",
+      "target": "id=reviews",
+      "targets": [
+        ["id=reviews", "id"],
+        ["css=#reviews", "css:finder"],
+        ["xpath=//button[@id='reviews']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Reviews')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1633940d-4038-42fd-b910-e0ff338a8863",
+      "comment": "",
+      "command": "click",
+      "target": "id=fav",
+      "targets": [
+        ["id=fav", "id"],
+        ["css=#fav", "css:finder"],
+        ["xpath=//button[@id='fav']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"],
+        ["xpath=//button[contains(.,'Favorites')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "10345ded-339c-4bbd-a1e9-c2a0153a57e5",
+      "comment": "",
+      "command": "click",
+      "target": "id=reviews",
+      "targets": [
+        ["id=reviews", "id"],
+        ["css=#reviews", "css:finder"],
+        ["xpath=//button[@id='reviews']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Reviews')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5fdfe359-28f6-4a50-b481-69f757e915bd",
+      "comment": "",
+      "command": "click",
+      "target": "id=trips",
+      "targets": [
+        ["id=trips", "id"],
+        ["css=#trips", "css:finder"],
+        ["xpath=//button[@id='trips']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Trips')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "786aa9ac-3e95-42a0-8f4c-e0177715a828",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Profile_expBox__YeOCP:nth-child(1) > .Profile_expTitle__YtFJh",
+      "targets": [
+        ["css=.Profile_expBox__YeOCP:nth-child(1) > .Profile_expTitle__YtFJh", "css:finder"],
+        ["xpath=//div[@id='tripsCont']/div[2]/a/p", "xpath:idRelative"],
+        ["xpath=//a/p", "xpath:position"],
+        ["xpath=//p[contains(.,'Good Hotel')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b45ad4c6-0990-41e3-b6d3-9beb7c621d17",
+      "comment": "",
+      "command": "click",
+      "target": "css=.profileIcon",
+      "targets": [
+        ["css=.profileIcon", "css:finder"],
+        ["xpath=//div[@id='root']/div/nav/div[2]/a[4]/img", "xpath:idRelative"],
+        ["xpath=//a[4]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1b631c15-3909-4b04-a954-4dd5b567fd0a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Profile_nametxt__zxRl8",
+      "targets": [
+        ["css=.Profile_nametxt__zxRl8", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Hello')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5a2a651-2bfd-4913-96d8-b48ace915599",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Profile_nametxt__zxRl8",
+      "targets": [
+        ["css=.Profile_nametxt__zxRl8", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Hello')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c451dc9e-4cb5-4560-bc84-2aee7961c4ee",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.Profile_nametxt__zxRl8",
+      "targets": [
+        ["css=.Profile_nametxt__zxRl8", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Hello')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c129cdb-eb5e-4d55-a198-cac7513b86a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Profile_emailtxt__a2O2R",
+      "targets": [
+        ["css=.Profile_emailtxt__a2O2R", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/p[2]", "xpath:idRelative"],
+        ["xpath=//p[2]", "xpath:position"],
+        ["xpath=//p[contains(.,'dharmin@gmail.com')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b2d43b83-35ea-413a-85c4-58fd55b07a5e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Profile_emailtxt__a2O2R",
+      "targets": [
+        ["css=.Profile_emailtxt__a2O2R", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/p[2]", "xpath:idRelative"],
+        ["xpath=//p[2]", "xpath:position"],
+        ["xpath=//p[contains(.,'dharmin@gmail.com')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe22c835-97fa-41f3-9de4-259593db13be",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.Profile_emailtxt__a2O2R",
+      "targets": [
+        ["css=.Profile_emailtxt__a2O2R", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/p[2]", "xpath:idRelative"],
+        ["xpath=//p[2]", "xpath:position"],
+        ["xpath=//p[contains(.,'dharmin@gmail.com')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba23c86e-596b-422a-8bb2-a0c7e6075a07",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Profile_emailtxt__a2O2R",
+      "targets": [
+        ["css=.Profile_emailtxt__a2O2R", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/p[2]", "xpath:idRelative"],
+        ["xpath=//p[2]", "xpath:position"],
+        ["xpath=//p[contains(.,'dharmin@gmail.com')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8cd31940-6c18-459d-9544-c3167bf1e48a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.Profile_personalCont__g8k5S",
+      "targets": [
+        ["css=.Profile_personalCont__g8k5S", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div", "xpath:idRelative"],
+        ["xpath=//main/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "0d970eac-719e-4ee0-842b-8555d87ea44c",
+    "name": "review page input",
+    "commands": [{
+      "id": "bbee9553-7494-4d19-ac70-1017cb5246f5",
+      "comment": "",
+      "command": "open",
+      "target": "https://routier.vercel.app/givereview/65588d001c5f251d62ae81c9?placeName=Ramada%20by%20Wyndham%20Udaipur%20Resort%20and%20Spa&placeImage=https%3A%2F%2Fwww.wyndhamhotels.com%2Fcontent%2Fdam%2Fproperty-images%2Fen-us%2Fra%2Fin%2Fothers%2Fudaipur%2F46197%2F46197_central_courtyard_1.jpg&type=hotels",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "66ee4c1b-75c5-4ddc-8ab5-25f1838024e6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1200x783",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b50f221f-c40e-428d-93f5-ddb89af635a7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=.Profile_alerts__dqUdr:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[2]/nav/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/home')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ab5ad29-2f17-4829-8193-5425b4d97c8e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=About Us",
+      "targets": [
+        ["linkText=About Us", "linkText"],
+        ["css=.Profile_trips__wmxQD:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'About Us')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div[2]/nav/div[2]/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/aboutus')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'About Us')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0cef0bb4-eefa-4bfa-b294-e7bf6de75705",
+      "comment": "",
+      "command": "click",
+      "target": "css=.style-module_fillIcons__6---A > .star-svg:nth-child(5) > path",
+      "targets": [
+        ["css=.style-module_fillIcons__6---A > .star-svg:nth-child(5) > path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "5ffc7590-39bc-4d2b-b6b9-bc31720f8b98",
+      "comment": "",
+      "command": "click",
+      "target": "css=.style-module_fillIcons__6---A > .star-svg:nth-child(4) > path",
+      "targets": [
+        ["css=.style-module_fillIcons__6---A > .star-svg:nth-child(4) > path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a77b268-84d0-45ba-b118-b5936551e1a7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.style-module_fillIcons__6---A > .star-svg:nth-child(3) > path",
+      "targets": [
+        ["css=.style-module_fillIcons__6---A > .star-svg:nth-child(3) > path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "cfdefb58-c756-479d-81ac-2643a36f08e6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.style-module_fillIcons__6---A > .star-svg:nth-child(2) > path",
+      "targets": [
+        ["css=.style-module_fillIcons__6---A > .star-svg:nth-child(2) > path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "047eac6b-6b57-4053-af7a-a4e3e8d80a89",
+      "comment": "",
+      "command": "click",
+      "target": "id=datePicker",
+      "targets": [
+        ["id=datePicker", "id"],
+        ["css=#datePicker", "css:finder"],
+        ["xpath=//input[@id='datePicker']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6175d593-c5c1-4f4b-845c-7c557ab50791",
+      "comment": "",
+      "command": "type",
+      "target": "id=datePicker",
+      "targets": [
+        ["id=datePicker", "id"],
+        ["css=#datePicker", "css:finder"],
+        ["xpath=//input[@id='datePicker']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2023-11-07"
+    }, {
+      "id": "763d0baa-0917-4fcb-957f-5359b37787c4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text1",
+      "targets": [
+        ["css=.text1", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div[3]/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d05c4d6f-6ec8-47cc-8957-39c16f0ebcac",
+      "comment": "",
+      "command": "type",
+      "target": "css=.text1",
+      "targets": [
+        ["css=.text1", "css:finder"],
+        ["xpath=//input[@value='Girl']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div[3]/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": "Girl"
+    }, {
+      "id": "bf88f70a-5d5f-450d-ac51-28a0aa816fc3",
+      "comment": "",
+      "command": "type",
+      "target": "css=.text2",
+      "targets": [
+        ["css=.text2", "css:finder"],
+        ["xpath=//input[@value='Great hotel']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div[4]/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/form/input", "xpath:position"]
+      ],
+      "value": "Great hotel"
+    }, {
+      "id": "4a2408c4-1857-48f0-a3bc-4642466cc87d",
+      "comment": "",
+      "command": "type",
+      "target": "css=.text3",
+      "targets": [
+        ["css=.text3", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div[5]/div/div/form/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Did enjoy whole night."
+    }, {
+      "id": "d2c04bb3-8620-438f-8a4f-a56ce7c8d0b5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.imageclass",
+      "targets": [
+        ["css=.imageclass", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div[6]/label/div/img", "xpath:idRelative"],
+        ["xpath=//label/div/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c20a6dde-978a-4387-b101-eadbd1211013",
+      "comment": "",
+      "command": "type",
+      "target": "id=image",
+      "targets": [
+        ["id=image", "id"],
+        ["name=image", "name"],
+        ["css=#image", "css:finder"],
+        ["xpath=//input[@id='image']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div[6]/label/div/input", "xpath:idRelative"],
+        ["xpath=//label/div/input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Screenshot_20211107-154843_WhatsAppBusiness.jpg"
+    }, {
+      "id": "59b6703e-0766-4586-8cb1-37cf5afa8ea4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submitbutton",
+      "targets": [
+        ["css=.submitbutton", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div[6]/div/button", "xpath:idRelative"],
+        ["xpath=//div[6]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit Review')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "315fb528-8d8d-4c15-9867-97d83706b2f8",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,567)",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "3a4604e4-1874-44d0-9741-e93df6394149",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d2cc2f69-758f-4fc6-859e-230fbad1b40b"]
+  }],
+  "urls": ["https://routier.vercel.app/", "https://routier.vercel.app/aboutus", "https://routier.vercel.app/profile", "https://routier.vercel.app/givereview/65588d001c5f251d62ae81c9?placeName=Ramada%20by%20Wyndham%20Udaipur%20Resort%20and%20Spa&placeImage=https%3A%2F%2Fwww.wyndhamhotels.com%2Fcontent%2Fdam%2Fproperty-images%2Fen-us%2Fra%2Fin%2Fothers%2Fudaipur%2F46197%2F46197_central_courtyard_1.jpg&type=hotels"],
+  "plugins": []
+}
