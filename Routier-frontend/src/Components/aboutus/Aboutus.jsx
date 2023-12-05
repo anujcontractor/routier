@@ -1,15 +1,12 @@
 import './Aboutus.css';
 import styles2 from '../Main/Footer.module.css';
 import footerlogo from '../Assets/main/footerlogo.png';
-import fb from '../Assets/main/fb.png';
-import x from '../Assets/main/x.png';
-import yt from '../Assets/main/yt.png';
-import insta from '../Assets/main/insta.png';
+import git from "../Assets/main/git.png";
 import newsletterpic from '../Assets/newsletterpic.png';
 import headerlogo from '../Assets/aboutus/headerlogo.png';
 import profile from '../Assets/aboutus/profile.png';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useLocation } from 'react-router-dom';
 
 /* members */
 import shwet from '../Assets/members/shwet.jpg';
@@ -133,11 +130,29 @@ const OurTeamsection = () => {
 };
 
 function Aboutus() {
-    const [selectedOption, setSelectedOption] = useState('aboutUs');
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const info = queryParams.get('info');
+
+    const [selectedOption, setSelectedOption] = useState(info);
     
     const handleToggle = (option) => {
         setSelectedOption(option);
     };
+
+    const handleGitlink = () => {
+        window.location.href = 'https://github.com/anujcontractor/routier';
+      };
+
+    const handleAboutUsClick = () => {
+        setSelectedOption('aboutUs');
+        window.scrollTo(0, 0);// Navigate to the About Us page
+      };
+
+    const handleOurTeamClick = () => {
+        setSelectedOption('ourTeam');
+        window.scrollTo(0, 0);// Navigate to the About Us page
+      };
 
     return(
         <>
@@ -188,10 +203,7 @@ function Aboutus() {
             <div>
                 <div className={styles2.footerroutier}>Routier</div>
                 <div className={styles2.icons}>
-                <img src={fb} alt='fb'></img>
-                <img src={x} alt='x'></img>
-                <img src={yt} alt='yt'></img>
-                <img src={insta} alt='insta'></img>
+                    <img  className={styles2.iconpic} src={git} alt="git" onClick={handleGitlink}></img>
                 </div>
             </div>
           </div>
@@ -199,8 +211,20 @@ function Aboutus() {
           <div className={styles2.footertextblockcover}>
               <div className={styles2.footertextblock}>
                 <div className={styles2.footertexttitle} >About us</div>
-                <Link className={styles2.footernormaltext} to="/aboutus">What is Routier?</Link>
-                <Link className={styles2.footernormaltext} to="/aboutus">Our Team</Link>
+                <Link
+                    onClick={handleAboutUsClick}
+                    className={styles2.footernormaltext}
+                    to="/aboutus?info=aboutUs"
+                >
+                    What is Routier?
+                </Link>
+                <Link
+                onClick={handleOurTeamClick}
+                    className={styles2.footernormaltext}
+                    to="/aboutus?info=ourTeam"
+                >
+                    Our Team
+                </Link>
               </div>
 
             </div>
