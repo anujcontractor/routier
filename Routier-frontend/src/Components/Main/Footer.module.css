@@ -127,6 +127,8 @@
   display: flex;
   width: 1.75rem;
   height: 1.75rem;
+  cursor: pointer;
+
 }
 
 .footertextblockcover {

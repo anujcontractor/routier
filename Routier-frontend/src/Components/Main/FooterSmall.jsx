@@ -10,6 +10,8 @@ import x from "../Assets/main/x.png";
 import yt from "../Assets/main/yt.png";
 import insta from "../Assets/main/insta.png";
 import newsletterpic from "../Assets/main/newsletterpic.png";
+import git from "../Assets/main/git.png";
+
 import { Link , useNavigate} from "react-router-dom";
 
 const FooterSmall = () => {
@@ -18,6 +20,10 @@ const FooterSmall = () => {
   const handleAboutUsClick = () => {
     window.scrollTo(0, 0); // Scroll to the top
     navigate.push('/aboutus'); // Navigate to the About Us page
+  };
+
+  const handleGitlink = () => {
+    window.location.href = 'https://github.com/anujcontractor/routier';
   };
 
   return (
@@ -37,10 +43,7 @@ const FooterSmall = () => {
             <div className={styles2.footerroutier}>
               <div>Routier</div>
               <div className={styles2.icons}>
-                <img src={fb} alt="fb"></img>
-                <img src={x} alt="x"></img>
-                <img src={yt} alt="yt"></img>
-                <img src={insta} alt="insta"></img>
+                <img  className={styles2.iconpic} src={git} alt="git" onClick={handleGitlink}></img>
               </div>
             </div>
           </div>

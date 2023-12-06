@@ -1,249 +1,258 @@
 .container {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 3.25rem;
-    background-color: #bad6de;
-  }
-  
-  .logo {
-    background: url("../Assets/main/Vector.svg");
-    width: 5rem;
-    height: 5.46875rem;
-  }
-  
-  .leftpart {
-    display: flex;
-    flex-direction: column;
-    gap: 1.12rem;
-  }
-  
-  .text6 {
-    max-width: 26.5rem;
-    color: #000;
-    font-family: Arial;
-    font-size: 2.6rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 3.125rem;
-  }
-  
-  .pillbutton {
-    display: flex;
-    padding: 0.625rem 0.97813rem 0.625rem 0.99063rem;
-    align-items: flex-start;
-    max-width: 6.4rem;
-    cursor: pointer;
-    color: #fff;
-    text-align: center;
-    font-family: Arial;
-    font-size: 0.92188rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.25rem;
-    border-radius: 1.3125rem;
-    border: 1px solid #000;
-    background: #000;
-  }
-  
-  .tourists {
-    display: flex;
-    width: 43vw;
-    height: auto;
-  }
-  
+  margin-top: 20rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3.25rem;
+  background-color: #bad6de;
+}
+
+.logo {
+  background: url("../Assets/main/Vector.svg");
+  width: 5rem;
+  height: 5.46875rem;
+}
+
+.leftpart {
+  display: flex;
+  flex-direction: column;
+  gap: 1.12rem;
+}
+
+.text6 {
+  max-width: 26.5rem;
+  color: #000;
+  font-family: Arial;
+  font-size: 2.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3.125rem;
+}
+
+.pillbutton {
+  display: flex;
+  padding: 0.625rem 0.97813rem 0.625rem 0.99063rem;
+  align-items: flex-start;
+  max-width: 6.4rem;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  font-family: Arial;
+  font-size: 0.92188rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25rem;
+  border-radius: 1.3125rem;
+  border: 1px solid #000;
+  background: #000;
+}
+
+.tourists {
+  display: flex;
+  width: 43vw;
+  height: auto;
+}
+
+.newsletter {
+  display: flex;
+  width: 95%;
+  margin-top: -25.56vh;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  border-radius: 1.25rem;
+}
+
+.newsletter img{
+  width: 100%;
+}
+
+.footer {
+  background: #bad6de;
+  margin-top: 40vh;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  width: auto;
+  min-height: 26.375vh;
+  padding: 2vw 6.5vw 4vw 6.5vw;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4rem;
+}
+
+.aboutus {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 9vw;
+  max-width: 72vw;
+}
+
+.footerroutier {
+  display: flex;
+  flex-direction: column;
+  color: #046b82;
+  font-family: Montserrat;
+  font-size: 2.8125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.21094rem;
+}
+
+.footerlogopic {
+  display: flex;
+  max-width: 3.56rem;
+}
+
+.footerlogoblock {
+  display: flex;
+  flex-direction: column;
+  width: 18.3vw;
+  justify-self: center;
+}
+
+.icons {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.0625vh;
+  flex-direction: row;
+}
+
+.iconpic {
+  display: flex;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.iconpic:hover{
+  cursor: pointer;
+}
+
+.footertextblockcover {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 2.25rem;
+  flex: 1 0 0;
+}
+
+.footertextblock {
+  display: flex;
+  flex-direction: column;
+  width: 16.92vw;
+}
+
+.footertexttitle {
+  color: var(--Blackish-Green, #121);
+  font-family: Poppins;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 1vmax;
+}
+
+.footernormaltext {
+  color: var(--Blackish-Green, #121);
+  font-family: Poppins;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  opacity: 0.7;
+  margin-bottom: 0.75vmax;
+}
+
+@media (max-width: 1000px) {
   .newsletter {
-    display: flex;
-    width: 95%;
-    margin-top: -25.56vh;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    border-radius: 1.25rem;
+    display: none;
   }
-  
-  .newsletter img{
+
+  .footer {
+    margin-top: 10rem;
+  }
+}
+@media (max-width: 780px) {
+  .container {
+    margin-top: 25rem;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
   }
-  
-  .footer {
-    background: #bad6de;
-    margin-top: 5vw;
-    position: relative;
-    z-index: 0;
-    display: flex;
-    width: auto;
-    min-height: 26.375vh;
-    padding: 2vw 6.5vw 4vw 6.5vw;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 4rem;
+
+  .leftpart {
+    padding-top: 3vw;
+    padding-left: 5vw;
   }
-  
+
+  .tourists {
+    width: 100%;
+    height: auto;
+  }
+
   .aboutus {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 9vw;
-    max-width: 72vw;
-  }
-  
-  .footerroutier {
-    display: flex;
     flex-direction: column;
-    color: #046b82;
-    font-family: Montserrat;
-    font-size: 2.8125rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.21094rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2vh;
   }
-  
-  .footerlogopic {
-    display: flex;
-    max-width: 3.56rem;
+
+  .footer {
+    margin-top: 8rem;
   }
-  
+
   .footerlogoblock {
-    display: flex;
-    flex-direction: column;
-    width: 18.3vw;
-    justify-self: center;
-  }
-  
-  .icons {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.0625vh;
     flex-direction: row;
+    gap: 5vw;
+    width: auto;
   }
-  
+
+  .footerroutier {
+    font-size: 1.8125rem;
+    letter-spacing: -0.11094rem;
+  }
   .footertextblockcover {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    gap: 2.25rem;
-    flex: 1 0 0;
+    flex-wrap: wrap;
+    width: 100%;
   }
-  
+
   .footertextblock {
-    display: flex;
+    /* max-width: 30vw; */
+    width: 100%;
+    justify-items: center;
+    
+  }
+
+}
+@media (max-width: 450px){
+  .container {
+    margin-top: 15rem;
+  }
+  .footer {
+    margin-top: 5rem;
+  }
+
+  .footerlogoblock {
     flex-direction: column;
-    width: 16.92vw;
+    gap: 5vw;
+    width: auto;
   }
-  
-  .footertexttitle {
-    color: var(--Blackish-Green, #121);
-    font-family: Poppins;
-    font-size: 2rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    margin-bottom: 1vmax;
+  .footertexttitle{
+    font-size: 1.5rem;
   }
-  
-  .footernormaltext {
-    color: var(--Blackish-Green, #121);
-    font-family: Poppins;
-    font-size: 1.2rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    opacity: 0.7;
-    margin-bottom: 0.75vmax;
+
+  .footernormaltext{
+    font-size: 1rem;
   }
-  
-  @media (max-width: 1000px) {
-    .newsletter {
-      display: none;
-    }
-  
-    .footer {
-      margin-top: 10rem;
-    }
+}
+@media (max-width: 345px) {
+  .footertextblock {
+    max-width: 30vw;
+    justify-items: center;
   }
-  @media (max-width: 780px) {
-    .container {
-      margin-top: 25rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
-    }
-  
-    .leftpart {
-      padding-top: 3vw;
-      padding-left: 5vw;
-    }
-  
-    .tourists {
-      width: 100%;
-      height: auto;
-    }
-  
-    .aboutus {
-      flex-direction: column;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2vh;
-    }
-  
-    .footer {
-      margin-top: 8rem;
-    }
-  
-    .footerlogoblock {
-      flex-direction: row;
-      gap: 5vw;
-      width: auto;
-    }
-  
-    .footerroutier {
-      font-size: 1.8125rem;
-      letter-spacing: -0.11094rem;
-    }
-    .footertextblockcover {
-      flex-wrap: wrap;
-      width: 100%;
-    }
-  
-    .footertextblock {
-      /* max-width: 30vw; */
-      width: 100%;
-      justify-items: center;
-      
-    }
-  
-  }
-  @media (max-width: 450px){
-    .container {
-      margin-top: 15rem;
-    }
-    .footer {
-      margin-top: 5rem;
-    }
-  
-    .footerlogoblock {
-      flex-direction: column;
-      gap: 5vw;
-      width: auto;
-    }
-    .footertexttitle{
-      font-size: 1.5rem;
-    }
-  
-    .footernormaltext{
-      font-size: 1rem;
-    }
-  }
-  @media (max-width: 345px) {
-    .footertextblock {
-      max-width: 30vw;
-      justify-items: center;
-    }
-  }
-  
+}
